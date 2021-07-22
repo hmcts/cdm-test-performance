@@ -37,7 +37,7 @@ object casedocapi {
   val idamLogin =
 
     exec(http("GetIdamToken")
-      .post(IdamAPI + "/o/token?client_id=" + ccdClientId + "&client_secret=" + ccdGatewayClientSecret + "&grant_type=password&scope=" + ccdScope + "&username=${CMCUserName}&password=${CMCUserPassword}")
+      .post(IdamAPI + "/o/token?client_id=" + ccdClientId + "&client_secret=" + ccdGatewayClientSecret + "&grant_type=password&scope=" + ccdScope + "&username=ccdloadtest1@gmail.com&password=Password12")
       .header("Content-Type", "application/x-www-form-urlencoded")
       .header("Content-Length", "0")
       .check(status.is(200))
@@ -64,6 +64,16 @@ object casedocapi {
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID1"))
       .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken1")))
 
+    .exec {
+      session =>
+        val fw = new BufferedWriter(new FileWriter("1mbFileIds.csv", true))
+        try {
+          fw.write(session("Document_ID1").as[String]+ "\r\n")
+        }
+        finally fw.close()
+        session
+    }
+
     .pause(Environment.constantthinkTime)
 
     .exec(_.setAll(  
@@ -84,6 +94,16 @@ object casedocapi {
         .transferEncoding("binary"))
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID2"))
       .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken2")))
+
+    .exec {
+      session =>
+        val fw = new BufferedWriter(new FileWriter("2mbFileIds.csv", true))
+        try {
+          fw.write(session("Document_ID2").as[String]+ "\r\n")
+        }
+        finally fw.close()
+        session
+    }
 
     .pause(Environment.constantthinkTime)
 
@@ -106,6 +126,16 @@ object casedocapi {
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID3"))
       .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken3")))
 
+    .exec {
+      session =>
+        val fw = new BufferedWriter(new FileWriter("3mbFileIds.csv", true))
+        try {
+          fw.write(session("Document_ID3").as[String]+ "\r\n")
+        }
+        finally fw.close()
+        session
+    }
+
     .pause(Environment.constantthinkTime)
 
     .exec(_.setAll(  
@@ -126,6 +156,16 @@ object casedocapi {
         .transferEncoding("binary"))
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID4"))
       .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken4")))
+
+    .exec {
+      session =>
+        val fw = new BufferedWriter(new FileWriter("5mbFileIds.csv", true))
+        try {
+          fw.write(session("Document_ID4").as[String]+ "\r\n")
+        }
+        finally fw.close()
+        session
+    }
 
     .pause(Environment.constantthinkTime)
     
@@ -148,34 +188,33 @@ object casedocapi {
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID5"))
       .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken5")))
 
+    .exec {
+      session =>
+        val fw = new BufferedWriter(new FileWriter("10mbFileIds.csv", true))
+        try {
+          fw.write(session("Document_ID5").as[String]+ "\r\n")
+        }
+        finally fw.close()
+        session
+    }
+
     .pause(Environment.constantthinkTime)
 
   val addDocToCase = 
 
     exec(http("API_Probate_GetEventToken")
-      .get(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/PROBATE/case-types/GrantOfRepresentation/cases/${caseId}/event-triggers/boUploadDocumentsStop/token")
+      .get(ccdDataStoreUrl + "/caseworkers/539560/jurisdictions/PROBATE/case-types/GrantOfRepresentation/cases/1625056476757492/event-triggers/boUploadDocumentsStop/token")
       .header("ServiceAuthorization", "Bearer ${bearerToken}")
       .header("Authorization", "Bearer ${accessToken}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken")))
 
     .exec(http("API_Probate_DocUpload")
-      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/PROBATE/case-types/GrantOfRepresentation/cases/${caseId}/events")
+      .post(ccdDataStoreUrl + "/caseworkers/539560/jurisdictions/PROBATE/case-types/GrantOfRepresentation/cases/1625056476757492/events")
       .header("ServiceAuthorization", "Bearer ${bearerToken}")
       .header("Authorization", "Bearer ${accessToken}")
       .header("Content-Type","application/json")
       .body(ElFileBody("bodies/casedocapi/CaseDocSubmitEvent.json")))
-
-    //Outputs the user email and idam id to a CSV, can be commented out if not needed  
-    // .exec {
-    //   session =>
-    //     val fw = new BufferedWriter(new FileWriter("10mbFileIds.csv", true))
-    //     try {
-    //       fw.write(session("Document_ID").as[String]+ "\r\n")
-    //     }
-    //     finally fw.close()
-    //     session
-    // }
 
     .pause(Environment.constantthinkTime)
 

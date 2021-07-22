@@ -22,11 +22,11 @@ class CaseDocApiSimulation extends Simulation  {
 
   val tenfilesimulation = scenario("Case Doc API Upload & Download")
     .repeat(1) {
-      feed(caseDocUsers)
-      .feed(caseDocCases)
-      .exec(casedocapi.S2SLogin)
+      // feed(caseDocUsers)
+      // feed(caseDocCases)
+      exec(casedocapi.S2SLogin)
       .exec(casedocapi.idamLogin)
-      .repeat(22) { //22
+      .repeat(1) { //22
         exec(casedocapi.caseDocUpload)
         .exec(casedocapi.addDocToCase)
         .exec(casedocapi.caseDocDownload)
@@ -34,7 +34,7 @@ class CaseDocApiSimulation extends Simulation  {
     }
 
   setUp(
-    tenfilesimulation.inject(rampUsers(60) during (10 minutes))
+    tenfilesimulation.inject(rampUsers(1) during (10 minutes)) //60 during 10
   )
   .protocols(httpProtocol)
 
