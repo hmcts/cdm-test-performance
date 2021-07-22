@@ -1,6 +1,6 @@
 {
-  "email": "PerfSeniorTribunal_006@justice.gov.uk",
-  "forename": "Perf",
+  "email": "PerfECMPipeline@gmail.com",
+  "forename": "PerfECMPipeline",
   "surname": "Caseworker",
   "password": "Password12",
   "roles": [
@@ -8,10 +8,67 @@
       "code": "caseworker"
     }, 
     {
-      "code": "caseworker-ia"
+      "code": "caseworker-employment"
     }, 
     {
-      "code": "caseworker-ia-legalrep-solicitor"
+      "code": "caseworker-employment-api"
+    }, 
+    {
+      "code": "caseworker-employment-bristol"
+    }, 
+    {
+      "code": "caseworker-employment-leeds"
+    }, 
+    {
+      "code": "caseworker-employment-londoncentral"
+    }, 
+    {
+      "code": "caseworker-employment-londoneast"
+    }, 
+    {
+      "code": "caseworker-employment-londonsouth"
+    }, 
+    {
+      "code": "caseworker-employment-manchester"
+    }, 
+    {
+      "code": "caseworker-employment-midlandseast"
+    }, 
+    {
+      "code": "caseworker-employment-midlandswest"
+    }, 
+    {
+      "code": "caseworker-employment-newcastle"
+    }, 
+    {
+      "code": "caseworker-employment-scotland"
+    }, 
+    {
+      "code": "caseworker-employment-tribunal-glasgow"
+    }, 
+    {
+      "code": "caseworker-employment-tribunal-glasgow-caseofficer"
+    }, 
+    {
+      "code": "caseworker-employment-tribunal-glasgow-casesupervisor"
+    }, 
+    {
+      "code": "caseworker-employment-tribunal-manchester"
+    }, 
+    {
+      "code": "caseworker-employment-tribunal-manchester-caseofficer"
+    }, 
+    {
+      "code": "caseworker-employment-tribunal-manchester-casesupervisor"
+    }, 
+    {
+      "code": "caseworker-employment-wales"
+    }, 
+    {
+      "code": "caseworker-employment-watford"
+    }, 
+    {
+      "code": "payments"
     }
 ]
 }
