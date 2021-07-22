@@ -26,7 +26,7 @@ class CaseDocApiSimulation extends Simulation  {
       // feed(caseDocCases)
       exec(casedocapi.S2SLogin)
       .exec(casedocapi.idamLogin)
-      .repeat(1) { //22
+      .repeat(22) { //22
         exec(casedocapi.caseDocUpload)
         .exec(casedocapi.addDocToCase)
         .exec(casedocapi.caseDocDownload)
@@ -34,7 +34,7 @@ class CaseDocApiSimulation extends Simulation  {
     }
 
   setUp(
-    tenfilesimulation.inject(rampUsers(1) during (10 minutes)) //60 during 10
+    tenfilesimulation.inject(rampUsers(60) during (10 minutes)) //60 during 10
   )
   .protocols(httpProtocol)
 

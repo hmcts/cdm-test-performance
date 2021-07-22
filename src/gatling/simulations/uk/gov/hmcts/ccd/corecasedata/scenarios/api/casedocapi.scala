@@ -64,15 +64,15 @@ object casedocapi {
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID1"))
       .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken1")))
 
-    .exec {
-      session =>
-        val fw = new BufferedWriter(new FileWriter("1mbFileIds.csv", true))
-        try {
-          fw.write(session("Document_ID1").as[String]+ "\r\n")
-        }
-        finally fw.close()
-        session
-    }
+    // .exec {
+    //   session =>
+    //     val fw = new BufferedWriter(new FileWriter("1mbFileIds.csv", true))
+    //     try {
+    //       fw.write(session("Document_ID1").as[String]+ "\r\n")
+    //     }
+    //     finally fw.close()
+    //     session
+    // }
 
     .pause(Environment.constantthinkTime)
 
@@ -95,15 +95,15 @@ object casedocapi {
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID2"))
       .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken2")))
 
-    .exec {
-      session =>
-        val fw = new BufferedWriter(new FileWriter("2mbFileIds.csv", true))
-        try {
-          fw.write(session("Document_ID2").as[String]+ "\r\n")
-        }
-        finally fw.close()
-        session
-    }
+    // .exec {
+    //   session =>
+    //     val fw = new BufferedWriter(new FileWriter("2mbFileIds.csv", true))
+    //     try {
+    //       fw.write(session("Document_ID2").as[String]+ "\r\n")
+    //     }
+    //     finally fw.close()
+    //     session
+    // }
 
     .pause(Environment.constantthinkTime)
 
@@ -126,15 +126,15 @@ object casedocapi {
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID3"))
       .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken3")))
 
-    .exec {
-      session =>
-        val fw = new BufferedWriter(new FileWriter("3mbFileIds.csv", true))
-        try {
-          fw.write(session("Document_ID3").as[String]+ "\r\n")
-        }
-        finally fw.close()
-        session
-    }
+    // .exec {
+    //   session =>
+    //     val fw = new BufferedWriter(new FileWriter("3mbFileIds.csv", true))
+    //     try {
+    //       fw.write(session("Document_ID3").as[String]+ "\r\n")
+    //     }
+    //     finally fw.close()
+    //     session
+    // }
 
     .pause(Environment.constantthinkTime)
 
@@ -157,15 +157,15 @@ object casedocapi {
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID4"))
       .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken4")))
 
-    .exec {
-      session =>
-        val fw = new BufferedWriter(new FileWriter("5mbFileIds.csv", true))
-        try {
-          fw.write(session("Document_ID4").as[String]+ "\r\n")
-        }
-        finally fw.close()
-        session
-    }
+    // .exec {
+    //   session =>
+    //     val fw = new BufferedWriter(new FileWriter("5mbFileIds.csv", true))
+    //     try {
+    //       fw.write(session("Document_ID4").as[String]+ "\r\n")
+    //     }
+    //     finally fw.close()
+    //     session
+    // }
 
     .pause(Environment.constantthinkTime)
     
@@ -188,15 +188,15 @@ object casedocapi {
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID5"))
       .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken5")))
 
-    .exec {
-      session =>
-        val fw = new BufferedWriter(new FileWriter("10mbFileIds.csv", true))
-        try {
-          fw.write(session("Document_ID5").as[String]+ "\r\n")
-        }
-        finally fw.close()
-        session
-    }
+    // .exec {
+    //   session =>
+    //     val fw = new BufferedWriter(new FileWriter("10mbFileIds.csv", true))
+    //     try {
+    //       fw.write(session("Document_ID5").as[String]+ "\r\n")
+    //     }
+    //     finally fw.close()
+    //     session
+    // }
 
     .pause(Environment.constantthinkTime)
 
