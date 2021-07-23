@@ -22,13 +22,11 @@ class CaseDocApiSimulation extends Simulation  {
 
   val tenfilesimulation = scenario("Case Doc API Upload & Download")
     .repeat(1) {
-      // feed(caseDocUsers)
-      // feed(caseDocCases)
       exec(casedocapi.S2SLogin)
       .exec(casedocapi.idamLogin)
       .repeat(22) { //22
         exec(casedocapi.caseDocUpload)
-        .exec(casedocapi.addDocToCase)
+        // .exec(casedocapi.addDocToCase)
         .exec(casedocapi.caseDocDownload)
       }
     }

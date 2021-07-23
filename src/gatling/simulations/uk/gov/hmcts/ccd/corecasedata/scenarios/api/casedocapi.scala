@@ -68,7 +68,7 @@ object casedocapi {
     //   session =>
     //     val fw = new BufferedWriter(new FileWriter("1mbFileIds.csv", true))
     //     try {
-    //       fw.write(session("Document_ID1").as[String]+ "\r\n")
+    //       fw.write(session("caseId").as[String] + "," + session("Document_ID1").as[String] + "\r\n")
     //     }
     //     finally fw.close()
     //     session
@@ -99,7 +99,7 @@ object casedocapi {
     //   session =>
     //     val fw = new BufferedWriter(new FileWriter("2mbFileIds.csv", true))
     //     try {
-    //       fw.write(session("Document_ID2").as[String]+ "\r\n")
+    //       fw.write(session("caseId").as[String] + "," + session("Document_ID2").as[String] + "\r\n")
     //     }
     //     finally fw.close()
     //     session
@@ -130,7 +130,7 @@ object casedocapi {
     //   session =>
     //     val fw = new BufferedWriter(new FileWriter("3mbFileIds.csv", true))
     //     try {
-    //       fw.write(session("Document_ID3").as[String]+ "\r\n")
+    //       fw.write(session("caseId").as[String] + "," + session("Document_ID3").as[String] + "\r\n")
     //     }
     //     finally fw.close()
     //     session
@@ -161,7 +161,7 @@ object casedocapi {
     //   session =>
     //     val fw = new BufferedWriter(new FileWriter("5mbFileIds.csv", true))
     //     try {
-    //       fw.write(session("Document_ID4").as[String]+ "\r\n")
+    //       fw.write(session("caseId").as[String] + "," + session("Document_ID4").as[String] + "\r\n")
     //     }
     //     finally fw.close()
     //     session
@@ -192,7 +192,7 @@ object casedocapi {
     //   session =>
     //     val fw = new BufferedWriter(new FileWriter("10mbFileIds.csv", true))
     //     try {
-    //       fw.write(session("Document_ID5").as[String]+ "\r\n")
+    //       fw.write(session("caseId").as[String] + "," + session("Document_ID5").as[String] + "\r\n")
     //     }
     //     finally fw.close()
     //     session
@@ -203,14 +203,14 @@ object casedocapi {
   val addDocToCase = 
 
     exec(http("API_Probate_GetEventToken")
-      .get(ccdDataStoreUrl + "/caseworkers/539560/jurisdictions/PROBATE/case-types/GrantOfRepresentation/cases/1625056476757492/event-triggers/boUploadDocumentsStop/token")
+      .get(ccdDataStoreUrl + "/caseworkers/539560/jurisdictions/PROBATE/case-types/GrantOfRepresentation/cases/${caseId}/event-triggers/boUploadDocumentsStop/token")
       .header("ServiceAuthorization", "Bearer ${bearerToken}")
       .header("Authorization", "Bearer ${accessToken}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken")))
 
     .exec(http("API_Probate_DocUpload")
-      .post(ccdDataStoreUrl + "/caseworkers/539560/jurisdictions/PROBATE/case-types/GrantOfRepresentation/cases/1625056476757492/events")
+      .post(ccdDataStoreUrl + "/caseworkers/539560/jurisdictions/PROBATE/case-types/GrantOfRepresentation/cases/${caseId}/events")
       .header("ServiceAuthorization", "Bearer ${bearerToken}")
       .header("Authorization", "Bearer ${accessToken}")
       .header("Content-Type","application/json")
@@ -220,10 +220,16 @@ object casedocapi {
 
   val caseDocDownload =
 
-    repeat(2) {
+    feed(feed1mb)
+    .feed(feed2mb)
+    .feed(feed3mb)
+    .feed(feed5mb)
+    .feed(feed10mb)
+
+    .repeat(2) {
 
       exec(http("CaseDocApi_Download1mb")
-        .get(CaseDocAPI + "/cases/documents/${Document_ID1}/binary")
+        .get(CaseDocAPI + "/cases/documents/${1mbId}/binary")
         .header("Authorization", "Bearer ${accessToken}")
         .header("ServiceAuthorization", "${bearerToken}")
         .header("accept", "application/json"))
@@ -231,7 +237,7 @@ object casedocapi {
       .pause(Environment.constantthinkTime)
 
       .exec(http("CaseDocApi_Download2mb")
-        .get(CaseDocAPI + "/cases/documents/${Document_ID2}/binary")
+        .get(CaseDocAPI + "/cases/documents/${2mbId}/binary")
         .header("Authorization", "Bearer ${accessToken}")
         .header("ServiceAuthorization", "${bearerToken}")
         .header("accept", "application/json"))
@@ -239,7 +245,7 @@ object casedocapi {
       .pause(Environment.constantthinkTime)
 
       .exec(http("CaseDocApi_Download3mb")
-        .get(CaseDocAPI + "/cases/documents/${Document_ID3}/binary")
+        .get(CaseDocAPI + "/cases/documents/${3mbId}/binary")
         .header("Authorization", "Bearer ${accessToken}")
         .header("ServiceAuthorization", "${bearerToken}")
         .header("accept", "application/json"))
@@ -247,7 +253,7 @@ object casedocapi {
       .pause(Environment.constantthinkTime)
 
       .exec(http("CaseDocApi_Download5mb")
-        .get(CaseDocAPI + "/cases/documents/${Document_ID4}/binary")
+        .get(CaseDocAPI + "/cases/documents/${5mbId}/binary")
         .header("Authorization", "Bearer ${accessToken}")
         .header("ServiceAuthorization", "${bearerToken}")
         .header("accept", "application/json"))
@@ -255,7 +261,7 @@ object casedocapi {
       .pause(Environment.constantthinkTime)
 
       .exec(http("CaseDocApi_Download10mb")
-        .get(CaseDocAPI + "/cases/documents/${Document_ID5}/binary")
+        .get(CaseDocAPI + "/cases/documents/${10mbId}/binary")
         .header("Authorization", "Bearer ${accessToken}")
         .header("ServiceAuthorization", "${bearerToken}")
         .header("accept", "application/json"))
