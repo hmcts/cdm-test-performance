@@ -54,8 +54,8 @@ gatling {
     scalaVersion '2.12.8'
     simulations = [ 
                     // 'uk.gov.hmcts.ccd.corecasedata.simulations.CCD_PerformanceRegression'
-                    // 'uk.gov.hmcts.ccd.corecasedata.simulations.DMStoreSimulation'
-                    'uk.gov.hmcts.ccd.corecasedata.simulations.CaseDocApiSimulation'
+                    'uk.gov.hmcts.ccd.corecasedata.simulations.DMStoreSimulation'
+                    // 'uk.gov.hmcts.ccd.corecasedata.simulations.CaseDocApiSimulation'
                     // 'uk.gov.hmcts.ccd.corecasedata.simulations.CCD_StressTest'
                     // 'uk.gov.hmcts.ccd.corecasedata.simulations.CreateUser'
                     // 'uk.gov.hmcts.ccd.corecasedata.simulations.CCDUIPTSimulation'
