@@ -224,7 +224,7 @@ class CCD_PerformanceRegression extends Simulation  {
     API_DivorceCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
     API_IACCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
     API_FPLCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
-    API_FRCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
+    // API_FRCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
     API_CMCCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
 
     //CCD UI scenarios
