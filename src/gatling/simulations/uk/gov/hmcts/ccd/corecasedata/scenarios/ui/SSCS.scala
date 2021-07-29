@@ -193,13 +193,14 @@ object SSCS {
 		.headers(headers_6))
 
 	.exec(http("SSCS_020_050_Login")
-		.get("/data/caseworkers/:uid/jurisdictions/SSCS/case-types/Benefit/cases/pagination_metadata?state=appealCreated")
+		.get("/data/caseworkers/:uid/jurisdictions/SSCS/case-types/Benefit/cases/pagination_metadata")
 		.headers(headers_12))
 
 	.exec(http("SSCS_020_055_Login")
-		.get("/aggregated/caseworkers/:uid/jurisdictions/SSCS/case-types/Benefit/cases?view=WORKBASKET&state=appealCreated&page=1")
+		.get("/aggregated/caseworkers/:uid/jurisdictions/SSCS/case-types/Benefit/cases?view=WORKBASKET&page=1")
 		.headers(headers_12)
-		.check(regex("""case_id":"(.+?)","case_fields""").findAll.optional.saveAs("caseNumbers")))
+		// .check(regex("""case_id":"(.+?)","case_fields""").findAll.optional.saveAs("caseNumbers"))
+    )
 
 	.exec(http("SSCS_020_060_Login")
 		.get("/data/internal/case-types/Benefit/work-basket-inputs")
