@@ -15,11 +15,11 @@ class CCD_PerformanceRegression extends Simulation  {
   val api_sscsIteration = 50 //50
   val api_divorceIteration = 60 //60
   val api_iacIteration = 40 //40
-  val api_fplIteration = 40 //40
+  val api_fplIteration = 38 //40
   val api_frIteration = 40 //40
   val api_cmcIteration = 45 //45
 
-  val ui_PBiteration = 12
+  val ui_PBiteration = 11
   val ui_SSCSiteration = 14
   val ui_CMCiteration = 14
   val ui_Diviteration = 14
@@ -219,13 +219,13 @@ class CCD_PerformanceRegression extends Simulation  {
 
   setUp(
     //CCD API scenarios
-    API_ProbateCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
-    API_SSCSCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
-    API_DivorceCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
-    API_IACCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
-    API_FPLCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
-    // API_FRCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
-    API_CMCCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
+    API_ProbateCreateCase.inject(rampUsers(50) during (10 minutes)), //50 during 10
+    API_SSCSCreateCase.inject(rampUsers(50) during (10 minutes)), //50 during 10
+    API_DivorceCreateCase.inject(rampUsers(50) during (10 minutes)), //50 during 10
+    API_IACCreateCase.inject(rampUsers(50) during (10 minutes)), //50 during 10
+    API_FPLCreateCase.inject(rampUsers(50) during (10 minutes)), //50 during 10
+    API_FRCreateCase.inject(rampUsers(50) during (10 minutes)), //50 during 10
+    API_CMCCreateCase.inject(rampUsers(50) during (10 minutes)), //50 during 10
 
     //CCD UI scenarios
     UI_CCDProbateScenario.inject(rampUsers(40) during (10 minutes)),
@@ -241,7 +241,7 @@ class CCD_PerformanceRegression extends Simulation  {
     CCDElasticSearch.inject(rampUsers(200) during (10 minutes))
     
     //Debugging requests (leave commented out for test runs please)
-    // API_FPLCreateCase.inject(atOnceUsers(1)).disablePauses
+    // API_FRCreateCase.inject(atOnceUsers(1)).disablePauses
     )
   .protocols(httpProtocol)
 }

@@ -1,70 +1,116 @@
 {
-"data": {
-    "isAdmin": "No",
-    "solicitorName": "Joe Bloggs",
-    "ApplicantOrganisationPolicy": {
-      "Organisation": {
-        "OrganisationID": "HMCTS",
-        "OrganisationName": null
-      },
-      "OrgPolicyReference": null
-    },
-    "solicitorFirm": "pforg-ljkcj",
-    "solicitorReference": "4ED5TBN",
-    "solicitorAddress": {
-      "AddressLine1": "4",
-      "AddressLine2": "Hibernia Gardens",
-      "AddressLine3": "Maharaj road",
-      "PostTown": "Hounslow",
-      "County": "middlesex",
-      "PostCode": "TW3 3SD",
-      "Country": "UK"
-    },
-    "solicitorPhone": null,
-    "solicitorEmail": "test@test.com",
-    "solicitorDXnumber": null,
-    "solicitorAgreeToReceiveEmails": "No",
-    "divorceCaseNumber": "EZ11D81265",
-    "divorceStageReached": "Petition Issued",
-    "applicantFMName": "John",
-    "applicantLName": "Smith",
-    "regionList": "southeast",
-    "southEastFRCList": "thamesvalley",
-    "thamesvalleyCourtList": "FR_thamesvalleyList_4",
-    "appRespondentFMName": "Tess",
-    "appRespondentLName": "Smith",
-    "appRespondentRep": "No",
-    "respondentAddress": {
-      "AddressLine1": "Flat 10",
-      "AddressLine2": "Bramber House",
-      "AddressLine3": "Seven Kings Way",
-      "PostTown": "Kingston Upon Thames",
-      "County": "",
-      "Country": "United Kingdom",
-      "PostCode": "KT2 5BU"
-    },
-    "respondentPhone": null,
-    "respondentEmail": null,
-    "natureOfApplication2": [
-      "Lump Sum Order"
-    ],
-    "consentOrder": {
-      "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/d1d461ea-4701-4543-8ff7-488185d95f76",
-      "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/d1d461ea-4701-4543-8ff7-488185d95f76/binary",
-      "document_filename": "1MB.pdf"
-    },
-    "d81Question": "Yes",
-    "d81Joint": {
-      "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/4094e7fd-2cc9-48b0-bb0f-60316365bb9b",
-      "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/4094e7fd-2cc9-48b0-bb0f-60316365bb9b/binary",
-      "document_filename": "1MB.pdf"
-    },
-    "otherCollection": []
+  "data": {
+     "isAdmin": "No",
+     "applicantRepresented": null,
+     "applicantAddress": null,
+     "applicantPhone": null,
+     "applicantEmail": null,
+     "solicitorName": "John Test",
+     "ApplicantOrganisationPolicy": {
+        "OrgPolicyCaseAssignedRole": "[APPSOLICITOR]",
+        "OrgPolicyReference": null,
+        "PrepopulateToUsersOrganisation": null,
+        "Organisation": {
+           "OrganisationID": "4ED5TBN",
+           "OrganisationName": "pforg-ljkcj"
+        },
+        "PreviousOrganisations": []
+     },
+     "solicitorFirm": "pforg-ljkcj",
+     "solicitorReference": "4ED5TBN",
+     "solicitorAddress": {
+        "AddressLine1": "4",
+        "AddressLine2": "Hibernia Gardens",
+        "AddressLine3": "Maharaj road",
+        "PostTown": "Hounslow",
+        "County": "middlesex",
+        "PostCode": "TW3 3SD",
+        "Country": "UK"
+     },
+     "solicitorPhone": null,
+     "solicitorEmail": "john@test.com",
+     "solicitorDXnumber": null,
+     "solicitorAgreeToReceiveEmails": "No",
+     "divorceCaseNumber": "EZ11D81265",
+     "divorceStageReached": "Petition Issued",
+     "divorceUploadEvidence1": null,
+     "divorceDecreeNisiDate": null,
+     "divorceUploadEvidence2": null,
+     "divorceDecreeAbsoluteDate": null,
+     "applicantFMName": "John",
+     "applicantLName": "Smith",
+     "regionList": "southeast",
+     "midlandsFRCList": null,
+     "londonFRCList": null,
+     "northWestFRCList": null,
+     "northEastFRCList": null,
+     "southEastFRCList": "thamesvalley",
+     "southWestFRCList": null,
+     "walesFRCList": null,
+     "nottinghamCourtList": null,
+     "birminghamCourtList": null,
+     "londonCourtList": null,
+     "liverpoolCourtList": null,
+     "manchesterCourtList": null,
+     "lancashireCourtList": null,
+     "clevelandCourtList": null,
+     "nwyorkshireCourtList": null,
+     "humberCourtList": null,
+     "kentSurreyCourtList": null,
+     "bedfordshireCourtList": null,
+     "thamesvalleyCourtList": "FR_thamesvalleyList_4",
+     "devonCourtList": null,
+     "dorsetCourtList": null,
+     "bristolCourtList": null,
+     "newportCourtList": null,
+     "swanseaCourtList": null,
+     "northWalesCourtList": null,
+     "appRespondentFMName": "Tess",
+     "appRespondentLName": "Smith",
+     "appRespondentRep": "No",
+     "rSolicitorName": null,
+     "RespondentOrganisationPolicy": null,
+     "rSolicitorFirm": null,
+     "rSolicitorReference": null,
+     "rSolicitorAddress": null,
+     "rSolicitorPhone": null,
+     "rSolicitorEmail": null,
+     "rSolicitorDXnumber": null,
+     "respondentAddress": {
+        "AddressLine1": "Flat 1",
+        "AddressLine2": "Bramber House",
+        "AddressLine3": "Seven Kings Way",
+        "PostTown": "Kingston Upon Thames",
+        "County": "",
+        "Country": "United Kingdom",
+        "PostCode": "KT2 5BU"
+     },
+     "respondentPhone": null,
+     "respondentEmail": null,
+     "natureOfApplication2": [
+        "Lump Sum Order"
+     ],
+     "natureOfApplication3a": null,
+     "natureOfApplication3b": null,
+     "consentOrder": {
+        "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/707c3927-dcdf-4042-a2fb-e0c5cab2409f",
+        "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/707c3927-dcdf-4042-a2fb-e0c5cab2409f/binary",
+        "document_filename": "1MbFileNew.PDF"
+     },
+     "d81Question": "Yes",
+     "d81Joint": {
+        "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/c7c74647-92d4-4ef2-800a-536513b86bd1",
+        "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/c7c74647-92d4-4ef2-800a-536513b86bd1/binary",
+        "document_filename": "1MbFileNew.PDF"
+     },
+     "d81Applicant": null,
+     "d81Respondent": null,
+     "otherCollection": []
   },
   "event": {
-    "id": "FR_solicitorCreate",
-    "summary": "",
-    "description": ""
+     "id": "FR_solicitorCreate",
+     "summary": "",
+     "description": ""
   },
   "event_token": "${eventToken}",
   "ignore_warning": false,
