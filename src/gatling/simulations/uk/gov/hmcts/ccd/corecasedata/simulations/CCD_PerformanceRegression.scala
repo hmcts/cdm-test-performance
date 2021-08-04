@@ -224,7 +224,7 @@ class CCD_PerformanceRegression extends Simulation  {
     API_DivorceCreateCase.inject(rampUsers(50) during (10 minutes)), //50 during 10
     API_IACCreateCase.inject(rampUsers(50) during (10 minutes)), //50 during 10
     API_FPLCreateCase.inject(rampUsers(50) during (10 minutes)), //50 during 10
-    // API_FRCreateCase.inject(rampUsers(50) during (10 minutes)), //50 during 10
+    API_FRCreateCase.inject(rampUsers(50) during (10 minutes)), //50 during 10
     API_CMCCreateCase.inject(rampUsers(50) during (10 minutes)), //50 during 10
 
     //CCD UI scenarios
@@ -241,7 +241,7 @@ class CCD_PerformanceRegression extends Simulation  {
     CCDElasticSearch.inject(rampUsers(200) during (10 minutes))
     
     //Debugging requests (leave commented out for test runs please)
-    // API_FRCreateCase.inject(atOnceUsers(1)).disablePauses
+    // UI_CCDCMCScenario.inject(atOnceUsers(5)).disablePauses
     )
   .protocols(httpProtocol)
 }
