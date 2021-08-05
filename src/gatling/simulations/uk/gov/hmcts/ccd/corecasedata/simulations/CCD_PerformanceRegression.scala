@@ -15,11 +15,11 @@ class CCD_PerformanceRegression extends Simulation  {
   val api_sscsIteration = 50 //50
   val api_divorceIteration = 60 //60
   val api_iacIteration = 40 //40
-  val api_fplIteration = 38 //40
+  val api_fplIteration = 36 //40
   val api_frIteration = 40 //40
   val api_cmcIteration = 45 //45
 
-  val ui_PBiteration = 11
+  val ui_PBiteration = 10
   val ui_SSCSiteration = 14
   val ui_CMCiteration = 14
   val ui_Diviteration = 14
@@ -219,6 +219,7 @@ class CCD_PerformanceRegression extends Simulation  {
 
   setUp(
     //CCD API scenarios
+    
     API_ProbateCreateCase.inject(rampUsers(60) during (10 minutes)), //50 during 10
     API_SSCSCreateCase.inject(rampUsers(60) during (10 minutes)), //50 during 10
     API_DivorceCreateCase.inject(rampUsers(60) during (10 minutes)), //50 during 10
@@ -241,7 +242,7 @@ class CCD_PerformanceRegression extends Simulation  {
     CCDElasticSearch.inject(rampUsers(200) during (10 minutes))
     
     //Debugging requests (leave commented out for test runs please)
-    // UI_CCDCMCScenario.inject(atOnceUsers(5)).disablePauses
+    // API_DivorceCreateCase.inject(atOnceUsers(1)).disablePauses
     )
   .protocols(httpProtocol)
 }
