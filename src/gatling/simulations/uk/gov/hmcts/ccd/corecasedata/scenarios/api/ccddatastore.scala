@@ -717,7 +717,7 @@ val CDSGetRequest =
     .exec(http("OIDC01_Authenticate")
       .post(IdamAPI + "/authenticate")
       .header("Content-Type", "application/x-www-form-urlencoded")
-      .formParam("username", "pforgdiv-02bu5-user0@mailinator.com") //pforgdiv-02bu5-user0@mailinator.com ${DivorceUserName}
+      .formParam("username", "${DivorceUserName}") //${DivorceUserName}
       .formParam("password", "Pass19word") //${DivorceUserPassword}
       .formParam("redirectUri", ccdRedirectUri)
       .formParam("originIp", "0:0:0:0:0:0:0:1")
