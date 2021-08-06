@@ -15,7 +15,7 @@ class CCD_PerformanceRegression extends Simulation  {
   val api_sscsIteration = 50 //50
   val api_divorceIteration = 60 //60
   val api_iacIteration = 40 //40
-  val api_fplIteration = 36 //40
+  val api_fplIteration = 36 //36
   val api_frIteration = 40 //40
   val api_cmcIteration = 45 //45
 
@@ -52,7 +52,7 @@ class CCD_PerformanceRegression extends Simulation  {
         exec(ccddatastore.CCDAPI_ProbateCreate)
         .exec(ccddatastore.CCDAPI_ProbateCaseEvents)
         // .exec(ccddatastore.CCDAPI_ProbateDocUpload) //10/05/2021 - not currently working
-        // .exec(WaitforNextIteration.waitforNextIteration)
+        .exec(WaitforNextIteration.waitforNextIteration)
       }
     }
 
@@ -72,7 +72,7 @@ class CCD_PerformanceRegression extends Simulation  {
       .repeat(api_sscsIteration) { //api_sscsIteration
         exec(ccddatastore.CCDAPI_SSCSCreate)
         .exec(ccddatastore.CCDAPI_SSCSCaseEvents)
-        // .exec(WaitforNextIteration.waitforNextIteration)
+        .exec(WaitforNextIteration.waitforNextIteration)
       }
     }
 
@@ -82,7 +82,7 @@ class CCD_PerformanceRegression extends Simulation  {
       .repeat(api_divorceIteration) { //api_divorceIteration
         exec(ccddatastore.CCDAPI_DivorceSolicitorCreate)
         .exec(ccddatastore.CCDAPI_DivorceSolicitorCaseEvents)
-        // .exec(WaitforNextIteration.waitforNextIteration)
+        .exec(WaitforNextIteration.waitforNextIteration)
       }
     }
 
@@ -121,7 +121,7 @@ class CCD_PerformanceRegression extends Simulation  {
       .repeat(api_cmcIteration) { //api_cmcIteration
         exec(ccddatastore.CCDAPI_CMCCreate)
         .exec(ccddatastore.CCDAPI_CMCCaseEvents)
-        // .exec(WaitforNextIteration.waitforNextIteration)
+        .exec(WaitforNextIteration.waitforNextIteration)
       }
     }
 
@@ -220,13 +220,13 @@ class CCD_PerformanceRegression extends Simulation  {
   setUp(
     //CCD API scenarios
     
-    API_ProbateCreateCase.inject(rampUsers(60) during (10 minutes)), //50 during 10
-    API_SSCSCreateCase.inject(rampUsers(60) during (10 minutes)), //50 during 10
-    API_DivorceCreateCase.inject(rampUsers(60) during (10 minutes)), //50 during 10
-    API_IACCreateCase.inject(rampUsers(60) during (10 minutes)), //50 during 10
-    API_FPLCreateCase.inject(rampUsers(60) during (10 minutes)), //50 during 10
+    API_ProbateCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
+    API_SSCSCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
+    API_DivorceCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
+    API_IACCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
+    API_FPLCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
     // API_FRCreateCase.inject(rampUsers(50) during (10 minutes)), //50 during 10
-    API_CMCCreateCase.inject(rampUsers(50) during (10 minutes)), //50 during 10
+    API_CMCCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
 
     //CCD UI scenarios
     UI_CCDProbateScenario.inject(rampUsers(40) during (10 minutes)),
@@ -242,7 +242,7 @@ class CCD_PerformanceRegression extends Simulation  {
     CCDElasticSearch.inject(rampUsers(200) during (10 minutes))
     
     //Debugging requests (leave commented out for test runs please)
-    // API_DivorceCreateCase.inject(atOnceUsers(1)).disablePauses
+    // API_SSCSCreateCase.inject(rampUsers(60) during (7 minutes)).disablePauses
     )
   .protocols(httpProtocol)
 }
