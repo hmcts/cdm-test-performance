@@ -19,10 +19,10 @@ class CCD_PerformanceRegression extends Simulation  {
   val api_frIteration = 40 //40
   val api_cmcIteration = 45 //45
 
-  val ui_PBiteration = 10
+  val ui_PBiteration = 9
   val ui_SSCSiteration = 14
   val ui_CMCiteration = 14
-  val ui_Diviteration = 14
+  val ui_Diviteration = 13
 
   val caseActivityIteration = 120
   val caseActivityListIteration = 12
