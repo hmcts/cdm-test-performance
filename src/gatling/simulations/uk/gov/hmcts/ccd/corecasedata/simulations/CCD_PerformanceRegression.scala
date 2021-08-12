@@ -243,5 +243,6 @@ class CCD_PerformanceRegression extends Simulation  {
     //Debugging requests (leave commented out for test runs please)
     // API_FPLCreateCase.inject(rampUsers(10) during (1 minutes)).disablePauses
     )
+  .maxDuration(60 minutes)
   .protocols(httpProtocol)
 }
