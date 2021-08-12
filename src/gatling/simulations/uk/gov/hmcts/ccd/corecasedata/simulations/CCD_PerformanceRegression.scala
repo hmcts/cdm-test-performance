@@ -11,7 +11,7 @@ import scala.concurrent.duration._
 class CCD_PerformanceRegression extends Simulation  {
 
   //Iteration Settings
-  val api_probateIteration = 60 //60
+  val api_probateIteration = 55 //55
   val api_sscsIteration = 50 //50
   val api_divorceIteration = 60 //60
   val api_iacIteration = 40 //40
@@ -19,10 +19,10 @@ class CCD_PerformanceRegression extends Simulation  {
   val api_frIteration = 40 //40
   val api_cmcIteration = 45 //45
 
-  val ui_PBiteration = 8
-  val ui_SSCSiteration = 16
-  val ui_CMCiteration = 14
-  val ui_Diviteration = 11
+  val ui_PBiteration = 9
+  val ui_SSCSiteration = 17
+  val ui_CMCiteration = 15
+  val ui_Diviteration = 9
 
   val caseActivityIteration = 120
   val caseActivityListIteration = 12
