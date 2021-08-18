@@ -27,7 +27,7 @@ class CCD_PerformanceRegression extends Simulation  {
   val caseActivityIteration = 120
   val caseActivityListIteration = 12
   val ccdSearchIteration = 40
-  val elasticSearchIteration = 350
+  val elasticSearchIteration = 370
 
   //Gatling specific configs, required for perf testing
   val BaseURL = Environment.baseURL
@@ -219,13 +219,13 @@ class CCD_PerformanceRegression extends Simulation  {
 
   setUp(
     //CCD API scenarios
-    API_ProbateCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
-    API_SSCSCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
-    API_DivorceCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
-    API_IACCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
-    API_FPLCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
+    API_ProbateCreateCase.inject(rampUsers(150) during (10 minutes)), //50 during 10
+    API_SSCSCreateCase.inject(rampUsers(150) during (10 minutes)), //50 during 10
+    API_DivorceCreateCase.inject(rampUsers(150) during (10 minutes)), //50 during 10
+    API_IACCreateCase.inject(rampUsers(150) during (10 minutes)), //50 during 10
+    API_FPLCreateCase.inject(rampUsers(150) during (10 minutes)), //50 during 10
     // API_FRCreateCase.inject(rampUsers(50) during (10 minutes)), //50 during 10
-    API_CMCCreateCase.inject(rampUsers(100) during (10 minutes)), //50 during 10
+    API_CMCCreateCase.inject(rampUsers(150) during (10 minutes)), //50 during 10
 
     //CCD UI scenarios
     UI_CCDProbateScenario.inject(rampUsers(40) during (10 minutes)),
@@ -234,11 +234,11 @@ class CCD_PerformanceRegression extends Simulation  {
     // UI_CCDDivScenario.inject(rampUsers(15) during (10 minutes)),
 
     //Case Activity Requests
-    CaseActivityScn.inject(rampUsers(1000) during (10 minutes)),
+    CaseActivityScn.inject(rampUsers(1200) during (10 minutes)), //1000 during 10
 
     //CCD Searches
-    CCDSearchView.inject(rampUsers(100) during (10 minutes)),
-    CCDElasticSearch.inject(rampUsers(200) during (10 minutes))
+    CCDSearchView.inject(rampUsers(200) during (10 minutes)), //100 during 10
+    CCDElasticSearch.inject(rampUsers(300) during (10 minutes)) //200 during 10
     
     //Debugging requests (leave commented out for test runs please)
     // API_FPLCreateCase.inject(rampUsers(10) during (1 minutes)).disablePauses
