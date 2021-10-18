@@ -1090,20 +1090,36 @@ val CDSGetRequest =
     .pause(Environment.constantthinkTime)
 
     .exec(http("API_FPL_GetEventToken")
-      .get(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${FPLJurisdiction}/case-types/${FPLCaseType}/cases/${caseId}/event-triggers/enterApplicant/token")
+      .get(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${FPLJurisdiction}/case-types/${FPLCaseType}/cases/${caseId}/event-triggers/enterLocalAuthority/token")
       .header("ServiceAuthorization", "Bearer ${bearerToken}")
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken7")))
 
-    .exec(http("API_FPL_EnterOrganisationDetails")
+    .exec(http("API_FPL_EnterLocalAuthority")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${FPLJurisdiction}/case-types/${FPLCaseType}/cases/${caseId}/events")
       .header("ServiceAuthorization", "Bearer ${bearerToken}")
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")      
-      .body(ElFileBody("bodies/fpl/CCD_FPL_OrganisationDetails.json")))
+      .body(ElFileBody("bodies/fpl/CCD_FPL_LocalAuthority.json")))
 
     .pause(Environment.constantthinkTime)
+
+    // .exec(http("API_FPL_GetEventToken")
+    //   .get(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${FPLJurisdiction}/case-types/${FPLCaseType}/cases/${caseId}/event-triggers/enterApplicant/token")
+    //   .header("ServiceAuthorization", "Bearer ${bearerToken}")
+    //   .header("Authorization", "Bearer ${access_token}")
+    //   .header("Content-Type","application/json")
+    //   .check(jsonPath("$.token").saveAs("eventToken7")))
+
+    // .exec(http("API_FPL_EnterOrganisationDetails")
+    //   .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${FPLJurisdiction}/case-types/${FPLCaseType}/cases/${caseId}/events")
+    //   .header("ServiceAuthorization", "Bearer ${bearerToken}")
+    //   .header("Authorization", "Bearer ${access_token}")
+    //   .header("Content-Type","application/json")      
+    //   .body(ElFileBody("bodies/fpl/CCD_FPL_OrganisationDetails.json")))
+
+    // .pause(Environment.constantthinkTime)
 
     .exec(http("API_FPL_GetEventToken")
       .get(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${FPLJurisdiction}/case-types/${FPLCaseType}/cases/${caseId}/event-triggers/otherProposal/token")

@@ -1,0 +1,48 @@
+{
+  "data": {
+     "localAuthority": {
+        "name": "fplorg-a00rw",
+        "email": null,
+        "legalTeamManager": null,
+        "pbaNumber": "PBA0082126",
+        "customerReference": null,
+        "clientCode": null,
+        "phone": "02081002000",
+        "id": "H01PU5I",
+        "designated": null,
+        "address": {
+           "AddressLine1": "4",
+           "AddressLine2": "Hibernia Gardens",
+           "AddressLine3": null,
+           "PostTown": "Hounslow",
+           "County": "middlesex",
+           "PostCode": "TW3 3SD",
+           "Country": null
+        },
+        "colleagues": []
+     },
+     "localAuthorityColleagues": [
+        {
+           "value": {
+              "role": "SOLICITOR",
+              "dx": null,
+              "title": null,
+              "reference": null,
+              "fullName": "John Smith",
+              "email": "john@testsol.com",
+              "phone": null,
+              "notificationRecipient": "No",
+              "mainContact": null
+           },
+           "id": "e87a0443-4a34-483e-848b-1476bd3302bc"
+        }
+     ]
+  },
+  "event": {
+     "id": "enterLocalAuthority",
+     "summary": "",
+     "description": ""
+  },
+  "event_token": "${eventToken7}",
+  "ignore_warning": false
+}
