@@ -11,3 +11,4 @@ out/**
 src/gatling/resources/application.conf
 src/gatling/resources/200mbaudio.mp3
 src/gatling/resources/460mbaudio.mp3
+bin/*
