@@ -27,10 +27,8 @@ class DMStoreSimulation extends Simulation  {
       }
     }
 
-    
-
   setUp(
-    tenfilesimulation.inject(rampUsers(60) during (10 minutes)) //60 during 10
+    tenfilesimulation.inject(rampUsers(30) during (10 minutes)) //60 during 10
   )
   .protocols(httpProtocol)
 
