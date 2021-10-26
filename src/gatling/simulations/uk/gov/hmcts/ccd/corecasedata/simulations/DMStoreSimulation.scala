@@ -21,7 +21,7 @@ class DMStoreSimulation extends Simulation  {
   val tenfilesimulation = scenario("Dm Store Upload & Download")
     .repeat(1) {
       exec(dmstore.S2SLogin)
-      .repeat(66) { //22
+      .repeat(150) { //22
         exec(dmstore.API_DocUpload)
         .exec(dmstore.API_DocDownload)
       }
