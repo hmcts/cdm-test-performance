@@ -21,14 +21,14 @@ class DMStoreSimulation extends Simulation  {
   val tenfilesimulation = scenario("Dm Store Upload & Download")
     .repeat(1) {
       exec(dmstore.S2SLogin)
-      .repeat(150) { //22
+      .repeat(1) { //22
         exec(dmstore.API_DocUpload)
         .exec(dmstore.API_DocDownload)
       }
     }
 
   setUp(
-    tenfilesimulation.inject(rampUsers(30) during (10 minutes)) //60 during 10
+    tenfilesimulation.inject(rampUsers(1) during (10 minutes)) //60 during 10
   )
   .protocols(httpProtocol)
 

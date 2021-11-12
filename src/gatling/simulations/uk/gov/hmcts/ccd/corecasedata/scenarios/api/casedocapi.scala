@@ -30,14 +30,14 @@ object casedocapi {
     exec(http("GetS2SToken")
       .post(s2sUrl + "/testing-support/lease")
       .header("Content-Type", "application/json")
-      .body(StringBody("{\"microservice\":\"ccd_gw\"}"))
+      .body(StringBody("{\"microservice\":\"sscs\"}")) //probate_backend
       .check(bodyString.saveAs("bearerToken")))
       .exitHereIfFailed
 
   val idamLogin =
 
     exec(http("GetIdamToken")
-      .post(IdamAPI + "/o/token?client_id=" + ccdClientId + "&client_secret=" + ccdGatewayClientSecret + "&grant_type=password&scope=" + ccdScope + "&username=ccdloadtest1@gmail.com&password=Password12")
+      .post(IdamAPI + "/o/token?client_id=" + ccdClientId + "&client_secret=" + ccdGatewayClientSecret + "&grant_type=password&scope=" + ccdScope + "&username=ccdloadtest751@gmail.com&password=Password12")
       .header("Content-Type", "application/x-www-form-urlencoded")
       .header("Content-Length", "0")
       .check(status.is(200))
@@ -56,10 +56,10 @@ object casedocapi {
       .header("accept", "application/json")
       .header("Content-Type", "multipart/form-data")
       .formParam("classification", "PUBLIC")
-      .formParam("caseTypeId", "GrantOfRepresentation")
-      .formParam("jurisdictionId", "PROBATE")
+      .formParam("caseTypeId", "Benefit") //GrantOfRepresentation
+      .formParam("jurisdictionId", "SSCS") //PROBATE
       .bodyPart(RawFileBodyPart("files", "${FileName1}")
-        .fileName("1MB.pdf")
+        .fileName("${FileName1}")
         .transferEncoding("binary"))
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID1"))
       .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken1")))

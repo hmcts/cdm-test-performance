@@ -241,7 +241,7 @@ class CCD_PerformanceRegression extends Simulation  {
     CCDElasticSearch.inject(rampUsers(300) during (10 minutes)) //200 during 10
     
     //Debugging requests (leave commented out for test runs please)
-    // API_FPLCreateCase.inject(rampUsers(1) during (1 minutes)).disablePauses
+    // API_CMCCreateCase.inject(rampUsers(1) during (1 minutes)).disablePauses
     )
   .maxDuration(60 minutes)
   .protocols(httpProtocol)

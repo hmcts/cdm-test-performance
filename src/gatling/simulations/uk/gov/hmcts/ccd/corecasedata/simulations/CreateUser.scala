@@ -19,7 +19,7 @@ class CreateUser extends Simulation  {
   val GrantRole = scenario("Grant idam role")
     .repeat(1) {
       exec(CreateUser.IdamAdminLogin)
-      .repeat(50) { //Set this value to the number of users you need to update (RolesForUsers.csv)
+      .repeat(1) { //Set this value to the number of users you need to update (RolesForUsers.csv)
         exec(CreateUser.IdamUser)
         .repeat(1) { //Set this value to the number of roles you need to add per user (RolesToAdd.csv)
           exec(CreateUser.GetAndApplyRole)
@@ -57,9 +57,9 @@ class CreateUser extends Simulation  {
     }
 
   setUp(
-    // GrantRole.inject(rampUsers(1) during (1 minutes)))
+    GrantRole.inject(rampUsers(150) during (5 minutes)))
     // DeleteRole.inject(rampUsers(1) during (1 minutes)))
-    CreateUserTestingSupport.inject(rampUsers(1) during (1 minutes)))
+    // CreateUserTestingSupport.inject(rampUsers(1) during (1 minutes)))
     // DeleteUserTestingSupport.inject(rampUsers(1) during (1 minutes)))
     // GetUserID.inject(rampUsers(1) during (1 minutes)))
     .protocols(httpProtocol)

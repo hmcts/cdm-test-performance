@@ -12,7 +12,7 @@ object CreateUser {
   val CommonHeader = Environment.commonHeader
   val CCDAPIEnvurl = Environment.baseURL
 //  val feedUserData = csv("CaseSharingUsers_Small.csv")
-  val idamAdminFeeder = csv("IdamAdmin.csv")
+  val idamAdminFeeder = csv("IdamAdmin.csv").circular
   val feedUserData = csv("RolesForUsers.csv")
   val divUserData = csv("DivorceSolUserData.csv")
   val roleFeeder = csv("RolesToAdd.csv").circular
@@ -38,26 +38,27 @@ object CreateUser {
     "Authorization" -> "AdminApiAuthToken ${authToken}",
     "Content-Type" -> "application/json")
 
-  val IdamUser = feed(divUserData)
+  val IdamUser = feed(feedUserData)
 
     .exec(http("GetUserID")
-      .get(Environment.idamAPI + "/users?email=${DivorceUserName}")
+      .get(Environment.idamAPI + "/users?email=${email}")
       .headers(headers_0)
       .check(jsonPath("$.id").saveAs("userId"))
-      .check(status.saveAs("statusvalue")))
+      // .check(status.saveAs("statusvalue"))
+      )
 
     //Outputs the user email and idam id to a CSV, can be commented out if not needed  
-    .doIf(session=>session("statusvalue").as[String].contains("200")) {
-      exec {
-        session =>
-          val fw = new BufferedWriter(new FileWriter("EmailAndIdamIDs.csv", true))
-          try {
-            fw.write(session("DivorceUserName").as[String] + ","+session("userId").as[String] + "\r\n")
-          }
-          finally fw.close()
-          session
-      }
-    }
+    // .doIf(session=>session("statusvalue").as[String].contains("200")) {
+    //   exec {
+    //     session =>
+    //       val fw = new BufferedWriter(new FileWriter("EmailAndIdamIDs.csv", true))
+    //       try {
+    //         fw.write(session("DivorceUserName").as[String] + ","+session("userId").as[String] + "\r\n")
+    //       }
+    //       finally fw.close()
+    //       session
+    //   }
+    // }
 
   val GetAndApplyRole = feed(roleFeeder)
 
@@ -70,12 +71,12 @@ object CreateUser {
       .patch(Environment.idamAPI + "/users/${userId}/roles/${roleId}")
       .headers(headers_0))
 
-    .exec {
-      session =>
-        println(session("email").as[String])
-        println(session("role").as[String])
-        session
-    }
+    // .exec {
+    //   session =>
+    //     println(session("email").as[String])
+    //     println(session("role").as[String])
+    //     session
+    // }
 
     .pause(1)
 

@@ -24,7 +24,7 @@ class CaseDocApiSimulation extends Simulation  {
     .repeat(1) {
       exec(casedocapi.S2SLogin)
       .exec(casedocapi.idamLogin)
-      .repeat(22) { //22
+      .repeat(1) { //22
         exec(casedocapi.caseDocUpload)
         // .exec(casedocapi.addDocToCase)
         .exec(casedocapi.caseDocDownload)
