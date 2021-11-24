@@ -164,27 +164,12 @@ class CCD_PerformanceRegression extends Simulation  {
       .repeat(ui_CMCiteration) {
         exec(CMC.CMCCreateCase)
         .exec(CMC.CMCStayCase)
-        // .exec(CMC.CMCAttachScannedDocs)// Not currently working 10/05/2021
         .exec(CMC.CMCSupportUpdate)
         .exec(CMC.CMCSearchAndView)
         // .exec(WaitforNextIteration.waitforNextIteration)
       }
       .exec(Logout.ccdLogout)
   }
-
-  val UI_CCDDivScenario = scenario("CCD UI Divorce")
-    .repeat(1) {
-      exec(Browse.Homepage)
-        .exec(DVExcep.submitLogin)
-        .repeat(ui_Diviteration) {
-          exec(DVExcep.DVCreateCase)
-          .exec(DVExcep.DVDocUpload)
-          .exec(DVExcep.DVSearch)
-          .exec(DVExcep.DVView)
-          // .exec(WaitforNextIteration.waitforNextIteration)
-        }
-        .exec(Logout.ccdLogout)
-    }
 
   //CCD Case Activity Requests
   val CaseActivityScn = scenario("CCD Case Activity Requests")
@@ -231,13 +216,11 @@ class CCD_PerformanceRegression extends Simulation  {
     API_DivorceCreateCase.inject(rampUsers(180) during (10 minutes)), //50 during 10
     API_IACCreateCase.inject(rampUsers(180) during (10 minutes)), //50 during 10
     // API_FPLCreateCase.inject(rampUsers(150) during (10 minutes)), //50 during 10
-    // API_FRCreateCase.inject(rampUsers(50) during (10 minutes)), //50 during 10
 
     //CCD UI scenarios
     UI_CCDProbateScenario.inject(rampUsers(40) during (10 minutes)),
     UI_CCDSSCSScenario.inject(rampUsers(40) during (10 minutes)),
     UI_CCDCMCScenario.inject(rampUsers(40) during (10 minutes)),
-    // UI_CCDDivScenario.inject(rampUsers(15) during (10 minutes)),
 
     //Case Activity Requests
     CaseActivityScn.inject(rampUsers(1200) during (10 minutes)), //1000 during 10
