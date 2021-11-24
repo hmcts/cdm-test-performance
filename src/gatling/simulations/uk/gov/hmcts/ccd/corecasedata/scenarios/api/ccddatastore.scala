@@ -52,34 +52,6 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
   "Authorization" -> "AdminApiAuthToken ",
   "Content-Type" -> "application/json")
 
-  //Case Sharing Requests - for manage-case-assignment API//
-
-  val CreateCaseForCaseSharing =
-
-    // exec(http("GetIdamUserID")
-    //   .get("https://idam-api.perftest.platform.hmcts.net/users?email=${email}") //1f65a0df-b064-4f9b-85ea-3eec5a28ce86 ${caseSharingUser}
-    //   .headers(headers_0)
-    //   .check(jsonPath("$.id").saveAs("userId")))
-
-    exec(http("PB_GetEventToken")
-      .get(ccdDataStoreUrl + "/caseworkers/539560/jurisdictions/PROBATE/case-types/GrantOfRepresentation/event-triggers/applyForGrant/token")
-      .header("ServiceAuthorization", "Bearer ${bearerToken}")
-      .header("Authorization", "Bearer ${access_token}")
-      .header("Content-Type","application/json")
-      .check(jsonPath("$.token").saveAs("eventToken")))
-
-    .exec(http("PB_CreateCase")
-      .post(ccdDataStoreUrl + "/caseworkers/539560/jurisdictions/PROBATE/case-types/GrantOfRepresentation/cases")
-      .header("ServiceAuthorization", "Bearer ${bearerToken}")
-      .header("Authorization", "Bearer ${access_token}")
-      .header("Content-Type","application/json")
-      // .body(StringBody("{\n  \"data\": {\n    \"solsSolicitorFirmName\": \"jon & ola\",\n    \"solsSolicitorAddress\": {\n      \"AddressLine1\": \"Flat 12\",\n      \"AddressLine2\": \"Bramber House\",\n      \"AddressLine3\": \"Seven Kings Way\",\n      \"PostTown\": \"Kingston Upon Thames\",\n      \"County\": \"\",\n      \"PostCode\": \"KT2 5BU\",\n      \"Country\": \"United Kingdom\"\n    },\n    \"solsSolicitorAppReference\": \"test\",\n    \"solsSolicitorEmail\": \"ccdorg-mvgvh_mcccd.user52@mailinator.com\",\n    \"solsSolicitorPhoneNumber\": null,\n    \"organisationPolicy\": {\n      \"OrgPolicyCaseAssignedRole\": \"[Claimant]\",\n      \"OrgPolicyReference\": null,\n      \"Organisation\": {\n        \"OrganisationID\": \"IGWEE4D\",\n        \"OrganisationName\": \"ccdorg-mvgvh\"\n      }\n    }\n  },\n  \"event\": {\n    \"id\": \"solicitorCreateApplication\",\n    \"summary\": \"\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"${eventToken}\",\n  \"ignore_warning\": false,\n  \"draft_id\": null\n}"))
-      // .body(StringBody(" {   \n \t\"data\" : {\n      \"TextField\" : \"textField1\",\n      \"TextAreaField\" : \"textAreaField1\",\n      \"AddressField\" : {\n        \"AddressLine1\" : \"102 Petty France\",\n        \"AddressLine2\" : \"CCD\",\n        \"AddressLine3\" : \"c/o HMCTS Reform\",\n        \"Country\" : \"UK\"\n      },\n      \"OrganisationPolicyField1\" : {\n        \"OrgPolicyCaseAssignedRole\" : \"[Claimant]\",\n        \"OrgPolicyReference\" : \"ref\",\n        \"Organisation\" : {\n          \"OrganisationID\" : \"orgID1\",\n          \"OrganisationName\" : \"orgName1\"\n        }\n      },\n      \"OrganisationPolicyField2\" : {\n        \"OrgPolicyCaseAssignedRole\" : \"[Defendant]\",\n        \"OrgPolicyReference\" : \"ref\",\n        \"Organisation\" : {\n          \"OrganisationID\" : \"orgID2\",\n          \"OrganisationName\" : \"orgName2\"\n        }\n      }\n    },\n    \"event\" : {\n      \"id\" : \"createCase\",\n      \"summary\" : \"\",\n      \"description\" : \"\"\n    },\n    \"event_token\" : \"${eventToken}\",\n    \"ignore_warning\" : false,\n    \"draft_id\" : null\n \t\n }"))
-      .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"applyForGrant\",\n    \"summary\": \"test case\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"${eventToken}\",\n  \"ignore_warning\": false,\n  \"draft_id\": null\n}"))
-      .check(jsonPath("$.id").saveAs("caseId")))
-
-    .pause(1)
-
   val CCDAPI_ProbateCreate = 
 
     exec(http("API_Probate_GetEventToken")
@@ -344,45 +316,6 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"LiftStay\",\n    \"summary\": \"perf test\",\n    \"description\": \"lift stay perf testing description\"\n  },\n  \"event_token\": \"${eventToken5}\",\n  \"ignore_warning\": false\n}")))
 
     .pause(Environment.constantthinkTime)
-
-  val CCDLogin_Divorce =
-
-    feed(feedDivorceUserData)
-
-    .exec(http("GetS2SToken")
-      .post(s2sUrl + "/testing-support/lease")
-      .header("Content-Type", "application/json")
-      .body(StringBody("{\"microservice\":\"ccd_data\"}"))
-      .check(bodyString.saveAs("bearerToken")))
-      .exitHereIfFailed
-
-    .exec(http("OIDC01_Authenticate")
-      .post(IdamAPI + "/authenticate")
-      .header("Content-Type", "application/x-www-form-urlencoded")
-      .formParam("username", "${DivorceUserName}") //${DivorceUserName}
-      .formParam("password", "Pass19word") //${DivorceUserPassword}
-      .formParam("redirectUri", ccdRedirectUri)
-      .formParam("originIp", "0:0:0:0:0:0:0:1")
-      .check(status is 200)
-      .check(headerRegex("Set-Cookie", "Idam.Session=(.*)").saveAs("authCookie")))
-      .exitHereIfFailed
-
-   .exec(http("OIDC02_Authorize_CCD")
-      .post(IdamAPI + "/o/authorize?response_type=code&client_id=" + ccdClientId + "&redirect_uri=" + ccdRedirectUri + "&scope=" + ccdScope).disableFollowRedirect
-      .header("Content-Type", "application/x-www-form-urlencoded")
-      .header("Cookie", "Idam.Session=${authCookie}")
-      .header("Content-Length", "0")
-      .check(status is 302)
-      .check(headerRegex("Location", "code=(.*)&client_id").saveAs("code")))
-      .exitHereIfFailed
-
-   .exec(http("OIDC03_Token_CCD")
-      .post(IdamAPI + "/o/token?grant_type=authorization_code&code=${code}&client_id=" + ccdClientId +"&redirect_uri=" + ccdRedirectUri + "&client_secret=" + ccdGatewayClientSecret)
-      .header("Content-Type", "application/x-www-form-urlencoded")
-      .header("Content-Length", "0")
-      .check(status is 200)
-      .check(jsonPath("$.access_token").saveAs("access_token")))
-      .exitHereIfFailed
 
   val CCDAPI_DivorceSolicitorCreate =
 
