@@ -15,37 +15,13 @@ object ccddatastore {
 
 val config: Config = ConfigFactory.load()
 
-val IdamURL = Environment.idamURL
-val IdamAPI = Environment.idamAPI
-val CCDEnvurl = Environment.ccdEnvurl
-val s2sUrl = Environment.s2sUrl
-val ccdRedirectUri = "https://ccd-data-store-api-perftest.service.core-compute-perftest.internal/oauth2redirect"
 val ccdDataStoreUrl = "http://ccd-data-store-api-perftest.service.core-compute-perftest.internal"
-val escaseDataUrl = "https://ccd-api-gateway-web-perftest.service.core-compute-perftest.internal"
-val dmStoreUrl = "http://dm-store-perftest.service.core-compute-perftest.internal"
 val CaseDocAPI = Environment.caseDocUrl
-val ccdClientId = "ccd_gateway"
-val ccdGatewayClientSecret = config.getString("ccdGatewayCS")
 
 val ccdScope = "openid profile authorities acr roles openid profile roles"
-val feedCSUserData = csv("CaseSharingUsers_Large.csv").circular
 val feedCaseSearchData = csv("caseSearchData.csv").random
-val feedWorkbasketData = csv("workbasketCaseTypes.csv").circular
-val feedXUISearchData = csv("XUISearchData.csv").circular
-val feedXUIUserData = csv("XUISearchUsers.csv").circular
-val feedProbateUserData = csv("ProbateUserData.csv").circular
-val feedProbateSolicitorUserData = csv("ProbateSolicitorUserData.csv").circular
-val feedSSCSUserData = csv("SSCSUserData.csv").circular
-val feedDivorceUserData = csv("DivorceSolUserData.csv").circular
-val feedCMCUserData = csv("CMCUserData.csv").circular
-val feedIACUserData = csv("IACUserData.csv").circular
-val feedFPLUserData = csv("FPLUserData.csv").circular
-val feedFRUserData = csv("FRUserData.csv").circular
-val feedEthosUserData = csv("EthosUserData.csv").circular
 val feedEthosSearchData = csv("EthosSearchData.csv").random
 
-val MinThinkTime = Environment.minThinkTime
-val MaxThinkTime = Environment.maxThinkTime
 val constantThinkTime = Environment.constantthinkTime
 
 val headers_0 = Map( //Authorization token needs to be generated with idam login
