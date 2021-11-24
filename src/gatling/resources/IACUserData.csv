@@ -1,4 +1,4 @@
-IACUserName,IACUserPassword,IACJurisdiction,IACCaseType,idamId
+Username,Password,Jurisdiction,CaseType,idamId
 PerftestIAC0001@gmail.com,Password12,IA,Asylum,a4d3f58d-b4fe-4ce4-a8bd-ad7ff243f4ac
 PerftestIAC0002@gmail.com,Password12,IA,Asylum,1ac699ec-ff97-4e90-a54e-02ab9c93558c
 PerftestIAC0003@gmail.com,Password12,IA,Asylum,cbfa1ba2-c339-4337-93a2-0e2d46322fcd

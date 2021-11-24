@@ -1,0 +1,26 @@
+{
+  "data": {
+     "boDocumentsUploaded": [
+        {
+           "value": {
+              "DocumentType": "will",
+              "Comment": "test doc upload",
+              "DocumentLink": {
+                 "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID}",
+                 "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID}/binary",
+                 "document_filename": "${FileName1}",
+                 "document_hash": "${hashToken}"
+              }
+           },
+           "id": null
+        }
+     ]
+  },
+  "event": {
+     "id": "boUploadDocumentsStop",
+     "summary": "",
+     "description": ""
+  },
+  "event_token": "${eventToken3}",
+  "ignore_warning": false
+}

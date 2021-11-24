@@ -1,4 +1,4 @@
-SSCSUserName,SSCSUserPassword,SSCSJurisdiction,SSCSCaseType,idamId
+Username,Password,Jurisdiction,CaseType,idamId
 ccdloadtest401@gmail.com,Password12,SSCS,Benefit,546965
 ccdloadtest402@gmail.com,Password12,SSCS,Benefit,546966
 ccdloadtest403@gmail.com,Password12,SSCS,Benefit,546967

@@ -3,7 +3,7 @@
      "PetitionerSolicitorName":"perf test",
      "D8SolicitorReference":"1212131314141",
      "PetitionerSolicitorPhone":"07123456789",
-     "PetitionerSolicitorEmail":"${DivorceUserName}",
+     "PetitionerSolicitorEmail":"${Username}",
      "SolicitorAgreeToReceiveEmails":"Yes",
      "DerivedPetitionerSolicitorAddr":"12 div street, london, kt25bu",
      "PetitionerOrganisationPolicy":{

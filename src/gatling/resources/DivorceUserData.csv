@@ -1,4 +1,4 @@
-DivorceUserName,DivorceUserPassword,DVJurisdiction,DVCaseType,idamId
+Username,Password,Jurisdiction,CaseType,idamId
 ccdloadtest601@gmail.com,Password12,DIVORCE,DIVORCE_XUI,547165
 ccdloadtest602@gmail.com,Password12,DIVORCE,DIVORCE_XUI,547166
 ccdloadtest603@gmail.com,Password12,DIVORCE,DIVORCE_XUI,547167

@@ -1,4 +1,4 @@
-ProbateUserName,ProbateUserPassword,PBJurisdiction,PBCaseType,idamId
+Username,Password,Jurisdiction,CaseType,idamId
 ccdloadtest751@gmail.com,Password12,PROBATE,GrantOfRepresentation,547315
 ccdloadtest752@gmail.com,Password12,PROBATE,GrantOfRepresentation,547316
 ccdloadtest753@gmail.com,Password12,PROBATE,GrantOfRepresentation,547317

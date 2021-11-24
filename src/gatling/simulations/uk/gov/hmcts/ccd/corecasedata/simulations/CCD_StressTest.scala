@@ -30,6 +30,14 @@ class CCD_StressTest extends Simulation  {
   val ccdSearchIteration = 1400 //35
   val elasticSearchIteration = 3600 //90
 
+  val feedSSCSUserData = csv("SSCSUserData.csv").circular
+  val feedProbateUserData = csv("ProbateUserData.csv").circular
+  val feedCMCUserData = csv("CMCUserData.csv").circular
+  val feedDivorceUserData = csv("DivorceSolUserData.csv").circular
+  val feedIACUserData = csv("IACUserData.csv").circular
+  val feedFPLUserData = csv("FPLUserData.csv").circular
+  val feedEthosUserData = csv("EthosUserData.csv").circular
+
   //Gatling specific configs, required for perf testing
   val BaseURL = Environment.baseURL
   val config: Config = ConfigFactory.load()
@@ -47,29 +55,26 @@ class CCD_StressTest extends Simulation  {
   //CCD API - Create & Case Event Journeys
   val API_ProbateCreateCase = scenario("Probate Case Create")
     .repeat(1) {
-      exec(ccddatastore.CCDLogin_Probate)
+      exec(S2S.s2s("ccd_data"))
+      .feed(feedProbateUserData)
+      .exec(IdamLogin.GetIdamToken)
       .repeat(api_probateIteration) { //api_probateIteration
         exec(ccddatastore.CCDAPI_ProbateCreate)
         .exec(ccddatastore.CCDAPI_ProbateCaseEvents)
-        .exec(WaitforNextIteration.waitforNextIteration)
-      }
-    }
-
-  val API_ProbateSolicitorCreate = scenario("Probate Solicitor Case Create")
-    .repeat(1) {
-      exec(ccddatastore.CCDLogin_ProbateSolicitor)
-      .repeat(api_probateIteration) { //api_probateIteration
-        exec(ccddatastore.CCDAPI_ProbateSolicitorCreate)
-        .exec(ccddatastore.CCDAPI_ProbateSolicitorCaseEvents)
+        .exec(S2S.s2s("probate_backend")) 
+        .exec(ccddatastore.CCDAPI_ProbateDocUpload) 
         .exec(WaitforNextIteration.waitforNextIteration)
       }
     }
 
   val API_SSCSCreateCase = scenario("SSCS Case Create")
     .repeat(1) {
-      exec(ccddatastore.CCDLogin_SSCS)
+      exec(S2S.s2s("ccd_data"))
+      .feed(feedSSCSUserData)
+      .exec(IdamLogin.GetIdamToken)
       .repeat(api_sscsIteration) { //api_sscsIteration
         exec(ccddatastore.CCDAPI_SSCSCreate)
+        .exec(S2S.s2s("sscs"))
         .exec(ccddatastore.CCDAPI_SSCSCaseEvents)
         .exec(WaitforNextIteration.waitforNextIteration)
       }
@@ -77,7 +82,9 @@ class CCD_StressTest extends Simulation  {
 
   val API_DivorceSolicitorCreateCase = scenario("Divorce Solicitor Case Create")
     .repeat(1) {
-      exec(ccddatastore.CCDLogin_Divorce)
+      exec(S2S.s2s("ccd_data"))
+      .feed(feedDivorceUserData)
+      .exec(IdamLogin.GetIdamToken)
       .repeat(api_divorceIteration) { //api_divorceIteration
         exec(ccddatastore.CCDAPI_DivorceSolicitorCreate)
         .exec(ccddatastore.CCDAPI_DivorceSolicitorCaseEvents)
@@ -87,7 +94,9 @@ class CCD_StressTest extends Simulation  {
 
   val API_IACCreateCase = scenario("IAC Case Create")
     .repeat(1) {
-      exec(ccddatastore.CCDLogin_IAC)
+      exec(S2S.s2s("ccd_data"))
+      .feed(feedIACUserData)
+      .exec(IdamLogin.GetIdamToken)      
       .repeat(api_iacIteration) { //api_iacIteration
         exec(ccddatastore.CCDAPI_IACCreate)
         .exec(WaitforNextIteration.waitforNextIteration)
@@ -96,27 +105,22 @@ class CCD_StressTest extends Simulation  {
 
   val API_FPLCreateCase = scenario("FPL Case Create")
     .repeat(1) {
-      exec(ccddatastore.CCDLogin_FPL)
+      exec(S2S.s2s("ccd_data"))
+      .feed(feedFPLUserData)
+      .exec(IdamLogin.GetIdamToken) 
       .repeat(api_fplIteration) { //api_fplIteration
         exec(ccddatastore.CCDAPI_FPLCreate)
+        .exec(S2S.s2s("xui_webapp"))
         .exec(ccddatastore.CCDAPI_FPLCaseEvents)
-        .exec(WaitforNextIteration.waitforNextIteration)
-      }
-    }
-
-  val API_FRCreateCase = scenario("FR Case Create")
-    .repeat(1) {
-      exec(ccddatastore.CCDLogin_FR)
-      .repeat(api_frIteration) { //api_frIteration
-        exec(ccddatastore.CCDAPI_FRCreate)
-        .exec(ccddatastore.CCDAPI_FRCaseEvents)
         .exec(WaitforNextIteration.waitforNextIteration)
       }
     }
 
   val API_CMCCreateCase = scenario("CMC Case Create")
     .repeat(1) {
-      exec(ccddatastore.CCDLogin_CMC)
+      exec(S2S.s2s("ccd_data"))
+      .feed(feedCMCUserData)
+      .exec(IdamLogin.GetIdamToken)
       .repeat(api_cmcIteration) { //api_cmcIteration
         exec(ccddatastore.CCDAPI_CMCCreate)
         .exec(ccddatastore.CCDAPI_CMCCaseEvents)
@@ -186,7 +190,9 @@ class CCD_StressTest extends Simulation  {
   //CCD Search Requests (non-Elastic Search)
   val CCDSearchView = scenario("CCD Search and View Cases")
     .repeat(1) {
-      exec(ccddatastore.CCDLogin_Ethos)
+      exec(S2S.s2s("ccd_data"))
+      .feed(feedEthosUserData)
+      .exec(IdamLogin.GetIdamToken) 
       .repeat(ccdSearchIteration) {
         exec(ccddatastore.CCDAPI_EthosJourney)
         .exec(WaitforNextIteration.waitforNextIteration)
@@ -204,12 +210,6 @@ class CCD_StressTest extends Simulation  {
 
   setUp(
     API_DivorceSolicitorCreateCase.inject(
-      incrementConcurrentUsers(100)
-        .times(40)
-        .eachLevelLasting(5.minutes)
-        .separatedByRampsLasting(2.minutes)
-        .startingFrom(10)),
-    API_ProbateSolicitorCreate.inject(
       incrementConcurrentUsers(100)
         .times(40)
         .eachLevelLasting(5.minutes)

@@ -30,8 +30,8 @@ object casedocapi {
     exec(http("GetS2SToken")
       .post(s2sUrl + "/testing-support/lease")
       .header("Content-Type", "application/json")
-      .body(StringBody("{\"microservice\":\"sscs\"}")) //probate_backend
-      .check(bodyString.saveAs("bearerToken")))
+      .body(StringBody("{\"microservice\":\"probate_backend\"}")) //probate_backend
+      .check(bodyString.saveAs("docUploadBearerToken")))
       .exitHereIfFailed
 
   val idamLogin =

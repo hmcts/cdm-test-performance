@@ -1,0 +1,36 @@
+{
+  "data": {
+     "sscsDocument": [
+        {
+           "value": {
+              "documentType": null,
+              "documentEmailContent": null,
+              "documentDateAdded": null,
+              "documentFileName": null,
+              "controlNumber": null,
+              "documentComment": null,
+              "evidenceIssued": null,
+              "bundleAddition": null,
+              "documentTranslationStatus": null,
+              "dateApproved": null,
+              "partyUploaded": null,
+              "originalPartySender": null,
+              "documentLink": {
+                 "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID}",
+                 "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID}/binary",
+                 "document_filename": "${FileName1}",
+                 "document_hash": "${hashToken}"
+              }
+           },
+           "id": null
+        }
+     ]
+  },
+  "event": {
+     "id": "uploadDocument",
+     "summary": "",
+     "description": ""
+  },
+  "event_token": "${eventToken3}",
+  "ignore_warning": false
+}
