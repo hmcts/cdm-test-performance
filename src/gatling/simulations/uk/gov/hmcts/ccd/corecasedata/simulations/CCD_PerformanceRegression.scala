@@ -208,7 +208,7 @@ class CCD_PerformanceRegression extends Simulation  {
 
   //Main CCD Performance Test
   
-  setUp(/*
+  setUp(
     //CCD API scenarios
     API_ProbateCreateCase.inject(rampUsers(180) during (10 minutes)), //50 during 10
     API_SSCSCreateCase.inject(rampUsers(180) during (10 minutes)), //50 during 10
@@ -228,9 +228,9 @@ class CCD_PerformanceRegression extends Simulation  {
     //CCD Searches
     CCDSearchView.inject(rampUsers(200) during (10 minutes)), //100 during 10
     CCDElasticSearch.inject(rampUsers(300) during (10 minutes)) //200 during 10
-    */
+    
     //Debugging requests (leave commented out for test runs please)
-    CCDSearchView.inject(rampUsers(1) during (1 minutes)).disablePauses
+    // CCDSearchView.inject(rampUsers(1) during (1 minutes)).disablePauses
     )
   .maxDuration(60 minutes)
   .protocols(httpProtocol)
