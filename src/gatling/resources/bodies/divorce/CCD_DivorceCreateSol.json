@@ -1,76 +1,78 @@
 {
-  "data":{
-     "PetitionerSolicitorName":"perf test",
-     "D8SolicitorReference":"1212131314141",
-     "PetitionerSolicitorPhone":"07123456789",
-     "PetitionerSolicitorEmail":"${Username}",
-     "SolicitorAgreeToReceiveEmails":"Yes",
-     "DerivedPetitionerSolicitorAddr":"12 div street, london, kt25bu",
-     "PetitionerOrganisationPolicy":{
-        "OrgPolicyCaseAssignedRole":"[PETSOLICITOR]",
-        "OrgPolicyReference":null,
-        "PrepopulateToUsersOrganisation":null,
-        "Organisation":{
-           "OrganisationID":"${orgId}",
-           "OrganisationName":"${orgName}"
+  "data": {
+     "PetitionerSolicitorName": "perf",
+     "D8SolicitorReference": "12121132233",
+     "PetitionerSolicitorPhone": "07111222333",
+     "PetitionerSolicitorEmail": "${Username}",
+     "SolicitorAgreeToReceiveEmails": "Yes",
+     "DerivedPetitionerSolicitorAddr": "12 test street, kt25bu",
+     "PetitionerOrganisationPolicy": {
+        "OrgPolicyCaseAssignedRole": "[PETSOLICITOR]",
+        "OrgPolicyReference": null,
+        "PrepopulateToUsersOrganisation": null,
+        "Organisation": {
+           "OrganisationID": "${orgId}",
+           "OrganisationName": "${orgName}"
         },
-        "PreviousOrganisations":[
-           
-        ]
+        "PreviousOrganisations": []
      },
-     "D8PetitionerFirstName":"Jane",
-     "D8PetitionerLastName":"Smith",
-     "D8PetitionerNameDifferentToMarriageCert":"No",
-     "D8DivorceWho":"husband",
-     "D8InferredPetitionerGender":"female",
-     "D8MarriageIsSameSexCouple":"No",
-     "D8DerivedPetitionerHomeAddress":"12 divorce street, london, kt25bu",
-     "D8PetitionerPhoneNumber":null,
-     "D8PetitionerEmail":null,
-     "D8PetitionerContactDetailsConfidential":"keep",
-     "D8RespondentFirstName":"Steve",
-     "D8RespondentLastName":"Smith",
-     "D8RespondentNameAsOnMarriageCertificate":"No",
-     "D8InferredRespondentGender":"male",
-     "respondentSolicitorRepresented":"No",
-     "RespondentOrganisationPolicy":{
-        "OrgPolicyCaseAssignedRole":"[RESPSOLICITOR]",
-        "OrgPolicyReference":null,
-        "PrepopulateToUsersOrganisation":null,
-        "Organisation":{
-           "OrganisationID":null,
-           "OrganisationName":null
-        },
-        "PreviousOrganisations":[
-           
-        ]
-     },
-     "D8DerivedRespondentHomeAddress":null,
-     "D8DerivedRespondentCorrespondenceAddr":"12 divorce street, london, kt25bu",
-     "D8MarriageDate":"2000-03-03",
-     "D8MarriagePetitionerName":"Jane Smith",
-     "D8MarriageRespondentName":"Steve Smith",
-     "D8MarriedInUk":"Yes",
-     "D8JurisdictionConnectionNewPolicy":[
-        "I"
+     "D8PetitionerFirstName": "jane",
+     "D8PetitionerLastName": "smith",
+     "D8PetitionerNameDifferentToMarriageCert": "No",
+     "D8PetitionerNameChangedHow": [],
+     "D8PetitionerNameChangedHowOtherDetails": null,
+     "D8DivorceWho": "husband",
+     "D8InferredPetitionerGender": "female",
+     "D8MarriageIsSameSexCouple": "No",
+     "D8DerivedPetitionerHomeAddress": "12 test street, kt25bu",
+     "D8PetitionerPhoneNumber": null,
+     "D8PetitionerEmail": null,
+     "D8PetitionerContactDetailsConfidential": "keep",
+     "D8RespondentFirstName": "steve",
+     "D8RespondentLastName": "smith",
+     "D8RespondentNameAsOnMarriageCertificate": "No",
+     "RespNameDifferentToMarriageCertExplain": null,
+     "D8InferredRespondentGender": "male",
+     "respondentSolicitorRepresented": "No",
+     "D8RespondentRepresentedHomeAddress": null,
+     "D8RespondentSolicitorName": null,
+     "respondentSolicitorReference": null,
+     "D8RespondentSolicitorPhone": null,
+     "D8RespondentSolicitorEmail": null,
+     "D8DerivedRespondentSolicitorAddr": null,
+     "RespSolDigital": null,
+     "RespondentOrganisationPolicy": null,
+     "D8DerivedRespondentHomeAddress": null,
+     "D8DerivedRespondentCorrespondenceAddr": "12 divorce street, kt25bu",
+     "D8MarriageDate": "2000-02-01",
+     "D8MarriagePetitionerName": "jane smith",
+     "D8MarriageRespondentName": "steve smith",
+     "D8MarriedInUk": "Yes",
+     "D8MarriagePlaceOfMarriage": null,
+     "D8CountryName": null,
+     "D8JurisdictionConnectionNewPolicy": [
+        "I",
+        "H"
      ],
-     "NewLegalConnectionPolicy":null,
-     "D8ReasonForDivorce":"unreasonable-behaviour",
-     "D8ReasonForDivorceBehaviourDetails":"Bad behaviour",
-     "D8LegalProceedings":"No",
-     "D8FinancialOrder":"No",
-     "D8DivorceCostsClaim":"No",
-     "D8DocumentsUploaded":[
-        
-     ],
-     "LanguagePreferenceWelsh":"No"
+     "NewLegalConnectionPolicy": null,
+     "D8ReasonForDivorce": "unreasonable-behaviour",
+     "D8ReasonForDivorceBehaviourDetails": "bad behaviour",
+     "D8LegalProceedings": "No",
+     "D8LegalProceedingsDetails": null,
+     "D8FinancialOrder": "No",
+     "D8FinancialOrderFor": [],
+     "D8DivorceCostsClaim": "No",
+     "D8DivorceClaimFrom": [],
+     "D8DivorceCostsClaimExplain": null,
+     "D8DocumentsUploaded": [],
+     "LanguagePreferenceWelsh": "No"
   },
-  "event":{
-     "id":"solicitorCreate",
-     "summary":"",
-     "description":""
+  "event": {
+     "id": "solicitorCreate",
+     "summary": "",
+     "description": ""
   },
-  "event_token":"${eventToken}",
-  "ignore_warning":false,
-  "draft_id":null
+  "event_token": "${eventToken}",
+  "ignore_warning": false,
+  "draft_id": null
 }

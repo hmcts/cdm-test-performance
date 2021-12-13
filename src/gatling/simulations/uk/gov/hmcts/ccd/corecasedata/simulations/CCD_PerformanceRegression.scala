@@ -208,6 +208,7 @@ class CCD_PerformanceRegression extends Simulation  {
 
   //Main CCD Performance Test
   
+  /*
   setUp(
     //CCD API scenarios
     API_ProbateCreateCase.inject(rampUsers(180) during (10 minutes)), //50 during 10
@@ -230,34 +231,34 @@ class CCD_PerformanceRegression extends Simulation  {
     CCDElasticSearch.inject(rampUsers(300) during (10 minutes)) //200 during 10
     
     //Debugging requests (leave commented out for test runs please)
-    // CCDSearchView.inject(rampUsers(1) during (1 minutes)).disablePauses
+    // API_DivorceCreateCase.inject(rampUsers(1) during (1 minutes)).disablePauses
     )
   .maxDuration(60 minutes)
   .protocols(httpProtocol)
-
-  /*
+*/
+  
   //Smoke Test Scenario
   setUp(
     //CCD API scenarios
-    API_ProbateCreateCase.inject(rampUsers(10) during (1 minutes)), 
-    API_SSCSCreateCase.inject(rampUsers(10) during (1 minutes)), 
-    API_DivorceCreateCase.inject(rampUsers(10) during (1 minutes)),
-    API_IACCreateCase.inject(rampUsers(10) during (1 minutes)),
-    API_CMCCreateCase.inject(rampUsers(10) during (1 minutes)), 
+    API_ProbateCreateCase.inject(rampUsers(10) during (1 minutes)), //50 during 10
+    API_SSCSCreateCase.inject(rampUsers(10) during (1 minutes)), //50 during 10
+    API_CMCCreateCase.inject(rampUsers(10) during (1 minutes)), //50 during 10
+    API_DivorceCreateCase.inject(rampUsers(10) during (1 minutes)), //50 during 10
+    API_IACCreateCase.inject(rampUsers(10) during (1 minutes)), //50 during 10
 
     //CCD UI scenarios
     UI_CCDProbateScenario.inject(rampUsers(10) during (1 minutes)),
     UI_CCDSSCSScenario.inject(rampUsers(10) during (1 minutes)),
     UI_CCDCMCScenario.inject(rampUsers(10) during (1 minutes)),
 
-    //Case Activity Requests
-    CaseActivityScn.inject(rampUsers(50) during (3 minutes)), 
+    // //Case Activity Requests
+    CaseActivityScn.inject(rampUsers(10) during (3 minutes)), 
 
-    //CCD Searches
-    CCDSearchView.inject(rampUsers(20) during (2 minutes)), 
-    CCDElasticSearch.inject(rampUsers(20) during (2 minutes)) 
+    // //CCD Searches
+    CCDSearchView.inject(rampUsers(10) during (2 minutes)), 
+    CCDElasticSearch.inject(rampUsers(10) during (2 minutes)) 
     )
   .maxDuration(10 minutes)
   .protocols(httpProtocol)
-  */
+  
 }
