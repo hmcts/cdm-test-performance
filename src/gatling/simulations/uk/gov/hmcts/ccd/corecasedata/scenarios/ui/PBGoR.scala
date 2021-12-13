@@ -45,8 +45,8 @@ object PBGoR {
       .post(IdamURL + "/login?response_type=code&client_id=ccd_gateway&redirect_uri=" + CCDEnvurl + "/oauth2redirect")
       .disableFollowRedirect
       .headers(idam_header)
-      .formParam("username", "${ProbateUserName}") //${CCDUserName}
-      .formParam("password", "${ProbateUserPassword}")
+      .formParam("username", "${Username}") //${CCDUserName}
+      .formParam("password", "${Password}")
       .formParam("save", "Sign in")
       .formParam("selfRegistrationEnabled", "false")
       .formParam("_csrf", "${csrf}")
@@ -84,37 +84,37 @@ object PBGoR {
     //.exitHereIfFailed
 
     .exec(http("PBGoR_020_040_Login")
-      .options(BaseURL + "/aggregated/caseworkers/:uid/jurisdictions/${PBJurisdiction}/case-types?access=read"))
+      .options(BaseURL + "/aggregated/caseworkers/:uid/jurisdictions/${Jurisdiction}/case-types?access=read"))
 
     .exec(http("PBGoR_020_045_Login")
-      .get(BaseURL + "/aggregated/caseworkers/:uid/jurisdictions/${PBJurisdiction}/case-types?access=read")
+      .get(BaseURL + "/aggregated/caseworkers/:uid/jurisdictions/${Jurisdiction}/case-types?access=read")
       .headers(CommonHeader))
     //.exitHereIfFailed
 
     .exec(http("PBGoR_020_050_Login")
-      .options(BaseURL + "/aggregated/caseworkers/:uid/jurisdictions/${PBJurisdiction}/case-types/${PBCaseType}/work-basket-inputs"))
+      .options(BaseURL + "/aggregated/caseworkers/:uid/jurisdictions/${Jurisdiction}/case-types/${CaseType}/work-basket-inputs"))
     //.exitHereIfFailed
 
     .exec(http("PBGoR_020_055_Login")
-      .options(BaseURL + "/aggregated/caseworkers/:uid/jurisdictions/${PBJurisdiction}/case-types/${PBCaseType}/cases?view=WORKBASKET&state=BOCaseStopped&page=1"))
+      .options(BaseURL + "/aggregated/caseworkers/:uid/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases?view=WORKBASKET&state=BOCaseStopped&page=1"))
     //.exitHereIfFailed
 
     .exec(http("PBGoR_020_060_Login")
-      .options(BaseURL + "/data/caseworkers/:uid/jurisdictions/${PBJurisdiction}/case-types/${PBCaseType}/cases/pagination_metadata?state=BOCaseStopped"))
+      .options(BaseURL + "/data/caseworkers/:uid/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/pagination_metadata?state=BOCaseStopped"))
     //.exitHereIfFailed
 
     .exec(http("PBGoR_020_065_Login")
-      .get(BaseURL + "/aggregated/caseworkers/:uid/jurisdictions/${PBJurisdiction}/case-types/${PBCaseType}/work-basket-inputs")
+      .get(BaseURL + "/aggregated/caseworkers/:uid/jurisdictions/${Jurisdiction}/case-types/${CaseType}/work-basket-inputs")
       .headers(CommonHeader))
     //.exitHereIfFailed
 
     .exec(http("PBGoR_020_070_Login")
-      .get(BaseURL + "/aggregated/caseworkers/:uid/jurisdictions/${PBJurisdiction}/case-types/${PBCaseType}/cases?view=WORKBASKET&state=BOCaseStopped&page=1")
+      .get(BaseURL + "/aggregated/caseworkers/:uid/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases?view=WORKBASKET&state=BOCaseStopped&page=1")
       .headers(CommonHeader))
     //.exitHereIfFailed
 
     .exec(http("PBGoR_020_075_Login")
-      .get(BaseURL + "/data/caseworkers/:uid/jurisdictions/${PBJurisdiction}/case-types/${PBCaseType}/cases/pagination_metadata?state=BOCaseStopped")
+      .get(BaseURL + "/data/caseworkers/:uid/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/pagination_metadata?state=BOCaseStopped")
       .headers(CommonHeader))
     //.exitHereIfFailed
 
@@ -135,7 +135,7 @@ object PBGoR {
     .pause(MinThinkTime seconds, MaxThinkTime seconds)
 
     .exec(http("PBGoR_030_010_CreateCaseDetails")
-      .get(BaseURL + "/data/internal/case-types/${PBCaseType}/event-triggers/applyForGrant?ignore-warning=false")
+      .get(BaseURL + "/data/internal/case-types/${CaseType}/event-triggers/applyForGrant?ignore-warning=false")
       // .headers(headers_1)
       .headers(probateHeader)
       .header("Accept", "application/vnd.uk.gov.hmcts.ccd-data-store-api.ui-start-case-trigger.v2+json;charset=UTF-8")
@@ -144,7 +144,7 @@ object PBGoR {
     .pause(MinThinkTime seconds, MaxThinkTime seconds)
 
     .exec(http("PBGoR_030_015_CreateCaseSubmit")
-      .post("/data/caseworkers/:uid/jurisdictions/${PBJurisdiction}/case-types/${PBCaseType}/cases?ignore-warning=false")
+      .post("/data/caseworkers/:uid/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases?ignore-warning=false")
       .headers(CommonHeader)
       .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"applyForGrant\",\n    \"summary\": \"\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"${New_Case_event_token}\",\n  \"ignore_warning\": false,\n  \"draft_id\": null\n}"))
       .check(jsonPath("$.id").saveAs("New_Case_Id")))
@@ -162,7 +162,7 @@ object PBGoR {
     .pause(MinThinkTime seconds, MaxThinkTime seconds)
 
     .exec(http("PBGoR_040_010_PaymentSuccessfulDetails")
-      .post("/data/case-types/${PBCaseType}/validate?pageId=paymentSuccessAppboPaymentSuccessfulAppPage1")
+      .post("/data/case-types/${CaseType}/validate?pageId=paymentSuccessAppboPaymentSuccessfulAppPage1")
       // .headers(headers_4)
       .headers(probateHeader)
       .header("Accept", "application/vnd.uk.gov.hmcts.ccd-data-store-api.case-data-validate.v2+json;charset=UTF-8")
@@ -171,7 +171,7 @@ object PBGoR {
     .pause(MinThinkTime seconds, MaxThinkTime seconds)
 
     .exec(http("PBGoR_040_015_PaymentSuccessfulSubmit")
-      .post("/data/caseworkers/:uid/jurisdictions/${PBJurisdiction}/case-types/${PBCaseType}/cases/${New_Case_Id}/events")
+      .post("/data/caseworkers/:uid/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${New_Case_Id}/events")
       .headers(CommonHeader)
       .body(StringBody("{\n  \"data\": {\n    \"applicationSubmittedDate\": \"2019-03-01\"\n  },\n  \"event\": {\n    \"id\": \"paymentSuccessApp\",\n    \"summary\": \"\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"${existing_case_event_token}\",\n  \"ignore_warning\": false\n}")))
 
@@ -203,7 +203,7 @@ object PBGoR {
       .check(regex("""documents/(.+?)/binary""").saveAs("Document_ID")))
 
     .exec(http("PBGoR_050_015_DocumentUploadProcess")
-      .post("/data/case-types/${PBCaseType}/validate?pageId=boUploadDocumentsForCaseCreatedboUploadDocumentPage1")
+      .post("/data/case-types/${CaseType}/validate?pageId=boUploadDocumentsForCaseCreatedboUploadDocumentPage1")
       // .headers(headers_4)
       .headers(probateHeader)
       .header("Accept", "application/vnd.uk.gov.hmcts.ccd-data-store-api.case-data-validate.v2+json;charset=UTF-8")
@@ -212,7 +212,7 @@ object PBGoR {
     .pause(MinThinkTime seconds, MaxThinkTime seconds)
 
     .exec(http("PBGoR_050_020_DocumentUploadSubmit")
-      .post("/data/caseworkers/:uid/jurisdictions/${PBJurisdiction}/case-types/${PBCaseType}/cases/${New_Case_Id}/events")
+      .post("/data/caseworkers/:uid/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${New_Case_Id}/events")
       .headers(CommonHeader)
       .body(StringBody("{\n  \"data\": {\n    \"boDocumentsUploaded\": [\n      {\n        \"id\": null,\n        \"value\": {\n          \"DocumentType\": \"deathCertificate\",\n          \"Comment\": \"test 1mb file\",\n          \"DocumentLink\": {\n            \"document_url\": \"http://dm-store-perftest.service.core-compute-perftest.internal:443/documents/${Document_ID}\",\n            \"document_binary_url\": \"http://dm-store-perftest.service.core-compute-perftest.internal:443/documents/${Document_ID}/binary\",\n            \"document_filename\": \"${FileName1}\"\n          }\n        }\n      }\n    ]\n  },\n  \"event\": {\n    \"id\": \"boUploadDocumentsForCaseCreated\",\n    \"summary\": \"\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"${existing_case_event_token}\",\n  \"ignore_warning\": false\n}")))
 
@@ -249,11 +249,11 @@ object PBGoR {
 
   val PBSearch =
     exec(http("PBGoR_070_005_SearchForCase")
-      .get("/data/caseworkers/:uid/jurisdictions/${PBJurisdiction}/case-types/${PBCaseType}/cases/pagination_metadata")
+      .get("/data/caseworkers/:uid/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/pagination_metadata")
       .headers(CommonHeader))
 
     .exec(http("PBGoR_070_010_SearchForCase")
-      .get("/aggregated/caseworkers/:uid/jurisdictions/${PBJurisdiction}/case-types/${PBCaseType}/cases?view=WORKBASKET&page=1")
+      .get("/aggregated/caseworkers/:uid/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases?view=WORKBASKET&page=1")
       // .headers(headers_7)
       .headers(probateHeader))
 

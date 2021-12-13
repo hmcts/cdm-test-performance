@@ -151,8 +151,8 @@ object SSCS {
 		.post(IdamURL + "/login?response_type=code&client_id=ccd_gateway&redirect_uri=" + CCDEnvurl + "/oauth2redirect")
 		.disableFollowRedirect
 		.headers(idam_header)
-		.formParam("username", "${SSCSUserName}")
-		.formParam("password", "${SSCSUserPassword}")
+		.formParam("username", "${Username}")
+		.formParam("password", "${Password}")
 		.formParam("save", "Sign in")
 		.formParam("selfRegistrationEnabled", "false")
 		.formParam("_csrf", "${csrf}")
