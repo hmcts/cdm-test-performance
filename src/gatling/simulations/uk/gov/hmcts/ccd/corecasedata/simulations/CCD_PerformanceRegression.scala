@@ -227,7 +227,7 @@ class CCD_PerformanceRegression extends Simulation  {
     // UI_CCDCMCScenario.inject(rampUsers(40) during (10 minutes)),
 
     //Case Activity Requests
-    CaseActivityScn.inject(rampUsers(1200) during (10 minutes)), //1000 during 10
+    CaseActivityScn.inject(rampUsers(1500) during (10 minutes)), //1000 during 10
 
     //CCD Searches
     CCDSearchView.inject(rampUsers(200) during (10 minutes)), //100 during 10
