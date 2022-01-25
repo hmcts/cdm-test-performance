@@ -237,7 +237,7 @@ class CCD_PerformanceRegression extends Simulation  {
     //Debugging requests (leave commented out for test runs please)
     // API_ProbateCreateCase.inject(rampUsers(1) during (1 minutes)).disablePauses
     )
-  .maxDuration(60 minutes)
+  .maxDuration(30 minutes) //60
   .protocols(httpProtocol)
 
   /*
