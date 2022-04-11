@@ -36,42 +36,42 @@ val CDSGetRequest =
       .check(bodyString.saveAs("bearerToken")))
       .exitHereIfFailed
 
-  // .exec(http("GetIdamToken")
-  //     .post(IdamAPI + "/o/token?client_id=ccd_gateway&client_secret=" + ccdGatewayClientSecret + "&grant_type=password&scope=" + ccdScope + "&username=${email}&password=Password12")
-  //     .header("Content-Type", "application/x-www-form-urlencoded")
-  //     .header("Content-Length", "0")
-  //     .check(status.is(200))
-  //     .check(jsonPath("$.access_token").saveAs("access_token")))
-  //     .exitHereIfFailed
-
-  .exec(http("OIDC01_Authenticate")
-      .post(IdamAPI + "/authenticate")
-      .header("Content-Type", "application/x-www-form-urlencoded")
-      .formParam("username", "${email}")
-      .formParam("password", "Password12")
-      .formParam("redirectUri", ccdRedirectUri)
-      .formParam("originIp", "0:0:0:0:0:0:0:1")
-      .check(status is 200)
-      .check(headerRegex("Set-Cookie", "Idam.Session=(.*)").saveAs("authCookie")))
-      .exitHereIfFailed
-
-  .exec(http("OIDC02_Authorize_CCD")
-      .post(IdamAPI + "/o/authorize?response_type=code&client_id=" + ccdClientId + "&redirect_uri=" + ccdRedirectUri + "&scope=" + ccdScope).disableFollowRedirect
-      .header("Content-Type", "application/x-www-form-urlencoded")
-      .header("Cookie", "Idam.Session=${authCookie}")
-      .header("Content-Length", "0")
-      .check(status is 302)
-      .check(headerRegex("Location", "code=(.*)&client_id").saveAs("code")))
-      .exitHereIfFailed
-
-  .exec(http("OIDC03_Token_CCD")
-      .post(IdamAPI + "/o/token?grant_type=authorization_code&code=${code}&client_id=" + ccdClientId +"&redirect_uri=" + ccdRedirectUri + "&client_secret=" + ccdGatewayClientSecret)
+  .exec(http("GetIdamToken")
+      .post(IdamAPI + "/o/token?client_id=ccd_gateway&client_secret=" + ccdGatewayClientSecret + "&grant_type=password&scope=" + ccdScope + "&username=${email}&password=Password12")
       .header("Content-Type", "application/x-www-form-urlencoded")
       .header("Content-Length", "0")
-      //.header("Cookie", "Idam.Session=${authCookie}")
-      .check(status is 200)
+      .check(status.is(200))
       .check(jsonPath("$.access_token").saveAs("access_token")))
       .exitHereIfFailed
+
+  // .exec(http("OIDC01_Authenticate")
+  //     .post(IdamAPI + "/authenticate")
+  //     .header("Content-Type", "application/x-www-form-urlencoded")
+  //     .formParam("username", "${email}")
+  //     .formParam("password", "Password12")
+  //     .formParam("redirectUri", ccdRedirectUri)
+  //     .formParam("originIp", "0:0:0:0:0:0:0:1")
+  //     .check(status is 200)
+  //     .check(headerRegex("Set-Cookie", "Idam.Session=(.*)").saveAs("authCookie")))
+  //     .exitHereIfFailed
+
+  // .exec(http("OIDC02_Authorize_CCD")
+  //     .post(IdamAPI + "/o/authorize?response_type=code&client_id=" + ccdClientId + "&redirect_uri=" + ccdRedirectUri + "&scope=" + ccdScope).disableFollowRedirect
+  //     .header("Content-Type", "application/x-www-form-urlencoded")
+  //     .header("Cookie", "Idam.Session=${authCookie}")
+  //     .header("Content-Length", "0")
+  //     .check(status is 302)
+  //     .check(headerRegex("Location", "code=(.*)&client_id").saveAs("code")))
+  //     .exitHereIfFailed
+
+  // .exec(http("OIDC03_Token_CCD")
+  //     .post(IdamAPI + "/o/token?grant_type=authorization_code&code=${code}&client_id=" + ccdClientId +"&redirect_uri=" + ccdRedirectUri + "&client_secret=" + ccdGatewayClientSecret)
+  //     .header("Content-Type", "application/x-www-form-urlencoded")
+  //     .header("Content-Length", "0")
+  //     //.header("Cookie", "Idam.Session=${authCookie}")
+  //     .check(status is 200)
+  //     .check(jsonPath("$.access_token").saveAs("access_token")))
+  //     .exitHereIfFailed
 
 val CaseActivityRequest = 
 
