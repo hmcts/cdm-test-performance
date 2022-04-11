@@ -211,14 +211,13 @@ class CCD_PerformanceRegression extends Simulation  {
 
   //Main CCD Performance Test
   
-  
   setUp(
     //CCD API scenarios
-    API_ProbateCreateCase.inject(rampUsers(450) during (10 minutes)), //180 during 10
+    API_ProbateCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
     // API_SSCSCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
-    API_CMCCreateCase.inject(rampUsers(450) during (10 minutes)), //180 during 10
-    // API_DivorceCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
-    // API_IACCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
+    API_CMCCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
+    API_DivorceCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
+    API_IACCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
     
     // API_FPLCreateCase.inject(rampUsers(150) during (10 minutes)), //50 during 10
 
@@ -228,7 +227,7 @@ class CCD_PerformanceRegression extends Simulation  {
     // UI_CCDCMCScenario.inject(rampUsers(40) during (10 minutes)),
 
     //Case Activity Requests
-    CaseActivityScn.inject(rampUsers(1500) during (10 minutes)), //1000 during 10
+    CaseActivityScn.inject(rampUsers(1500) during (20 minutes)), //1000 during 10
 
     //CCD Searches
     CCDSearchView.inject(rampUsers(200) during (10 minutes)), //100 during 10
@@ -240,29 +239,24 @@ class CCD_PerformanceRegression extends Simulation  {
   .maxDuration(60 minutes) //60
   .protocols(httpProtocol)
 
-  /*
+  
   //Smoke Test Scenario
-  setUp(
+  /*setUp(
     //CCD API scenarios
-    API_ProbateCreateCase.inject(rampUsers(10) during (1 minutes)), //50 during 10
-    API_SSCSCreateCase.inject(rampUsers(10) during (1 minutes)), //50 during 10
-    API_CMCCreateCase.inject(rampUsers(10) during (1 minutes)), //50 during 10
-    API_DivorceCreateCase.inject(rampUsers(10) during (1 minutes)), //50 during 10
-    API_IACCreateCase.inject(rampUsers(10) during (1 minutes)), //50 during 10
-
-    //CCD UI scenarios
-    UI_CCDProbateScenario.inject(rampUsers(10) during (1 minutes)),
-    UI_CCDSSCSScenario.inject(rampUsers(10) during (1 minutes)),
-    UI_CCDCMCScenario.inject(rampUsers(10) during (1 minutes)),
+    API_ProbateCreateCase.inject(rampUsers(5) during (1 minutes)), //50 during 10
+    // API_SSCSCreateCase.inject(rampUsers(5) during (1 minutes)), //50 during 10
+    API_CMCCreateCase.inject(rampUsers(5) during (1 minutes)), //50 during 10
+    API_DivorceCreateCase.inject(rampUsers(5) during (1 minutes)), //50 during 10
+    API_IACCreateCase.inject(rampUsers(5) during (1 minutes)), //50 during 10
 
     // //Case Activity Requests
-    CaseActivityScn.inject(rampUsers(10) during (3 minutes)), 
+    CaseActivityScn.inject(rampUsers(5) during (1 minutes)), 
 
     // //CCD Searches
-    CCDSearchView.inject(rampUsers(10) during (2 minutes)), 
-    CCDElasticSearch.inject(rampUsers(10) during (2 minutes)) 
+    CCDSearchView.inject(rampUsers(5) during (1 minutes)), 
+    CCDElasticSearch.inject(rampUsers(5) during (1 minutes)) 
     )
   .maxDuration(10 minutes)
-  .protocols(httpProtocol)
-  */
+  .protocols(httpProtocol)*/
+  
 }
