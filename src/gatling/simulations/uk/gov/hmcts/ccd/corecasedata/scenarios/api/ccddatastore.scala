@@ -346,6 +346,23 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
 
     .pause(Environment.constantthinkTime)
 
+  val CCDAPI_DivorceNFDCreate = 
+
+    exec(http("API_NFD_GetEventToken")
+      .get(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/event-triggers/solicitor-create-application/token")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .exec(http("API_NFD_SolCreateCase")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/nfd/CCD_CreateNFDApp.json"))
+      .check(jsonPath("$.id").saveAs("caseId")))
+
   val CCDAPI_IACCreate =
 
     exec(http("API_IAC_GetEventToken")

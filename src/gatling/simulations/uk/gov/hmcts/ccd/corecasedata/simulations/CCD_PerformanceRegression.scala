@@ -36,6 +36,7 @@ class CCD_PerformanceRegression extends Simulation  {
   val feedIACUserData = csv("IACUserData.csv").circular
   val feedFPLUserData = csv("FPLUserData.csv").circular
   val feedEthosUserData = csv("EthosUserData.csv").circular
+  val feedNFDUserData = csv("NFDUserData.csv").circular
 
   //Gatling specific configs, required for perf testing
   val BaseURL = Environment.baseURL
@@ -127,6 +128,18 @@ class CCD_PerformanceRegression extends Simulation  {
       }
     }
 
+  val API_NFDCreateCase = scenario("Divorce Case Create")
+    .repeat(1) {
+      exec(S2S.s2s("ccd_data"))
+      .feed(feedNFDUserData)
+      .exec(IdamLogin.GetIdamToken)
+      .repeat(1) { //api_nfdIteration
+        exec(ccddatastore.CCDAPI_DivorceNFDCreate)
+        // .exec(ccddatastore.CCDAPI_DivorceSolicitorCaseEvents)
+        // .exec(WaitforNextIteration.waitforNextIteration)
+      }
+    }
+
   //CCD UI Requests
   val UI_CCDProbateScenario = scenario("CCD UI Probate")
     .repeat(1) {
@@ -211,20 +224,16 @@ class CCD_PerformanceRegression extends Simulation  {
 
   //Main CCD Performance Test
   
+  
   setUp(
     //CCD API scenarios
-    API_ProbateCreateCase.inject(rampUsers(450) during (10 minutes)), //180 during 10
-    // API_SSCSCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
-    API_CMCCreateCase.inject(rampUsers(450) during (10 minutes)), //180 during 10
-    // API_DivorceCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
-    // API_IACCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
+    API_ProbateCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
+    API_SSCSCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
+    API_CMCCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
+    API_DivorceCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
+    API_IACCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
     
     // API_FPLCreateCase.inject(rampUsers(150) during (10 minutes)), //50 during 10
-
-    //CCD UI scenarios
-    // UI_CCDProbateScenario.inject(rampUsers(40) during (10 minutes)),
-    // UI_CCDSSCSScenario.inject(rampUsers(40) during (10 minutes)),
-    // UI_CCDCMCScenario.inject(rampUsers(40) during (10 minutes)),
 
     //Case Activity Requests
     CaseActivityScn.inject(rampUsers(1500) during (20 minutes)), //1000 during 10
@@ -238,6 +247,7 @@ class CCD_PerformanceRegression extends Simulation  {
     )
   .maxDuration(60 minutes) //60
   .protocols(httpProtocol)
+  
 
   
   //Smoke Test Scenario
@@ -258,5 +268,13 @@ class CCD_PerformanceRegression extends Simulation  {
     )
   .maxDuration(10 minutes)
   .protocols(httpProtocol)*/
-  
+
+  /*
+  //Debug scenario
+  setUp(
+    API_NFDCreateCase.inject(rampUsers(1) during (1 minutes))
+  )
+  .protocols(httpProtocol)
+  .disablePauses
+  */
 }
