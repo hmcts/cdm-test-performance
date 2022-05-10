@@ -227,11 +227,11 @@ class CCD_PerformanceRegression extends Simulation  {
   
   setUp(
     //CCD API scenarios
-    API_ProbateCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
-    API_SSCSCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
-    API_CMCCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
-    API_DivorceCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
-    API_IACCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
+    API_ProbateCreateCase.inject(rampUsers(225) during (10 minutes)), //180 during 10
+    // API_SSCSCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
+    API_CMCCreateCase.inject(rampUsers(225) during (10 minutes)), //180 during 10
+    API_DivorceCreateCase.inject(rampUsers(225) during (10 minutes)), //180 during 10
+    API_IACCreateCase.inject(rampUsers(225) during (10 minutes)), //180 during 10
     
     // API_FPLCreateCase.inject(rampUsers(150) during (10 minutes)), //50 during 10
 
@@ -272,9 +272,9 @@ class CCD_PerformanceRegression extends Simulation  {
   /*
   //Debug scenario
   setUp(
-    API_NFDCreateCase.inject(rampUsers(1) during (1 minutes))
+    API_SSCSCreateCase.inject(rampUsers(1) during (1 minutes))
   )
   .protocols(httpProtocol)
-  .disablePauses
+  // .disablePauses
   */
 }
