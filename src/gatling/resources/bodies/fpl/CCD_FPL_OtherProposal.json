@@ -1,0 +1,15 @@
+{
+  "data": {
+    "allocationProposal": {
+      "proposal": "Circuit judge",
+      "proposalReason": "Perf testing"
+    }
+  },
+  "event": {
+    "id": "otherProposal",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "${eventToken3}",
+  "ignore_warning": false
+}

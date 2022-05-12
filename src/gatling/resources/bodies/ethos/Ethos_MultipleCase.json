@@ -1,0 +1,34 @@
+{
+    "data": {
+       "multipleName": "Multiple test case 1 ",
+        "multipleSource": "ET1 Online",
+        "caseIdCollection": [
+            {
+                "id": null,
+                "value": {
+                    "ethos_CaseReference": "3328825\/2017"
+                }
+            },
+            {
+                "id": null,
+                "value": {
+                    "ethos_CaseReference": "3328826\/2017"
+                }
+            },
+            {
+                "id": null,
+                "value": {
+                    "ethos_CaseReference": "3328873\/2017"
+                }
+            }
+        ]
+    },
+    "event": {
+        "id": "createMultiple",
+        "summary": "Perftest Multiples Case",
+        "description": ""
+    },
+    "event_token": "<event_token>",
+    "ignore_warning": false,
+    "draft_id": null
+}

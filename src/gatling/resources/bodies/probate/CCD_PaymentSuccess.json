@@ -1,0 +1,12 @@
+{
+    "data": {
+      "applicationSubmittedDate": "2021-02-03"
+    },
+    "event": {
+      "id": "paymentSuccessApp",
+      "summary": "",
+      "description": ""
+    },
+    "event_token": "${eventToken2}",
+    "ignore_warning": false
+  }

@@ -1,0 +1,10 @@
+{
+  "data": {},
+  "event": {
+    "id": "generalApplicationReceived",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "${eventToken1}",
+  "ignore_warning": false
+}

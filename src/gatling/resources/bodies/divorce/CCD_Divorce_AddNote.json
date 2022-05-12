@@ -1,0 +1,21 @@
+{
+  "data": {
+    "CaseNotes": [
+      {
+        "id": null,
+        "value": {
+          "Author": "John Smith",
+          "Date": null,
+          "Note": "Perf Testing note"
+        }
+      }
+    ]
+  },
+  "event": {
+    "id": "AddNote",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "${eventToken2}",
+  "ignore_warning": false
+}

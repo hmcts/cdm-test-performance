@@ -1,0 +1,12 @@
+{
+  "data": {
+    "dwpState": "Exception"
+  },
+  "event": {
+    "id": "dwpActionDirection",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "${eventToken5}",
+  "ignore_warning": false
+}

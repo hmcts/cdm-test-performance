@@ -1,0 +1,133 @@
+{
+  "data": {
+    "boDocumentsUploaded": [
+      {
+        "id": "cfad06b5-22ce-40bb-a521-b1403630367f",
+        "value": {
+          "DocumentType": "uploadedLegalStatement",
+          "DocumentLink": {
+            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal:443/documents/${Document_ID1}",
+            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal:443/documents/${Document_ID1}/binary",
+            "document_filename": "${FileName1}"
+          },
+          "Comment": "test 1mb file"
+        }
+      },
+      {
+        "id": null,
+        "value": {
+          "DocumentType": "email",
+          "DocumentLink": {
+            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID2}",
+            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID2}/binary",
+            "document_filename": "${FileName2}"
+          },
+          "Comment": "test"
+        }
+      },
+      {
+        "id": null,
+        "value": {
+          "DocumentType": "email",
+          "DocumentLink": {
+            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID3}",
+            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID3}/binary",
+            "document_filename": "${FileName3}"
+          },
+          "Comment": "test"
+        }
+      },
+      {
+        "id": null,
+        "value": {
+          "DocumentType": "email",
+          "DocumentLink": {
+            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID4}",
+            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID4}/binary",
+            "document_filename": "${FileName4}"
+          },
+          "Comment": "test"
+        }
+      },
+      {
+        "id": null,
+        "value": {
+          "DocumentType": "correspondence",
+          "DocumentLink": {
+            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID5}",
+            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID5}/binary",
+            "document_filename": "${FileName5}"
+          },
+          "Comment": "test"
+        }
+      },
+      {
+        "id": null,
+        "value": {
+          "DocumentType": "correspondence",
+          "DocumentLink": {
+            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID6}",
+            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID6}/binary",
+            "document_filename": "${FileName6}"
+          },
+          "Comment": "test"
+        }
+      },
+      {
+        "id": null,
+        "value": {
+          "DocumentType": "email",
+          "DocumentLink": {
+            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID7}",
+            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID7}/binary",
+            "document_filename": "${FileName7}"
+          },
+          "Comment": "test"
+        }
+      },
+      {
+        "id": null,
+        "value": {
+          "DocumentType": "correspondence",
+          "DocumentLink": {
+            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID8}",
+            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID8}/binary",
+            "document_filename": "${FileName8}"
+          },
+          "Comment": "test"
+        }
+      },
+      {
+        "id": null,
+        "value": {
+          "DocumentType": "will",
+          "DocumentLink": {
+            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID9}",
+            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID9}/binary",
+            "document_filename": "${FileName9}"
+          },
+          "Comment": "test"
+        }
+      },
+      {
+        "id": null,
+        "value": {
+          "DocumentType": "correspondence",
+          "DocumentLink": {
+            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID10}",
+            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID10}/binary",
+            "document_filename": "${FileName10}"
+          },
+          "Comment": "test"
+        }
+      }
+    ]
+  },
+  "event": {
+    "id": "boUploadDocumentsForCaseCreated",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "${eventToken3}",
+  "ignore_warning": false
+}

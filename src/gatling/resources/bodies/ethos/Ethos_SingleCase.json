@@ -1,0 +1,2046 @@
+{
+    "data":
+{
+    "caseType": "Single",
+    "state": "Accepted",
+    "stateAPI": "Accepted",
+    "claimant": "Alethea Citrine",
+    "caseNotes": "C stytes n lner usin mzile pne n - nw usin lyndline n 0  686  KH 07/06\r\nDRB Stru ut yt P 9/7/8\r\nPtentiyl yppeyl UKExTPx/8/8/Lx & Px/09/9/Lx\r\nRule (0) eyrin rynted n 8/8, ywyit eyrin dyte.\r\nPtentiyl yppeyl UKExTPx/070/9/Lx\r\n\r\nFile n verlw sel ppsite Jynet\r\n**Files wit Keren Smit** ",
+    "caseSource": "ET1 Online",
+    "respondent": "T miter r Mr Perrys's Fress znd ",
+    "depositType": [
+        {
+            "value": {
+                "deposit_due": "2020-10-26",
+                "Deposit_amount": "2000",
+                "deposit_covers": "All",
+                "deposit_order_sent": "2018-10-04",
+                "deposit_requested_by": "Tribunal"
+            }
+        }
+    ],
+    "receiptDate": "2020-11-04",
+    "claimantType": {
+        "claimant_addressUK": {
+            "County": "West borgville",
+      "PostCode": "SX28 8WH",
+            "PostTown": "Noddy town",
+            "AddressLine1": "90 Gargravm Curt"
+        },
+        "claimant_email_address": "mr.j.bassmy@gmal.cm",
+        "claimant_mobile_number": "01132416816",
+        "claimant_contact_preference": "Email"
+    },
+    "fileLocation": "EAT B/F",
+    "multipleFlag": "No",
+    "positionType": "Awaiting appeal order",
+    "preAcceptCase": {
+        "caseAccepted": "Yes",
+        "dateAccepted": "2018-04-08"
+    },
+    "repCollection": [
+        {
+            "id": null,
+            "value": {
+                "resp_rep_name": "freds representatives",
+                "name_of_organisation": "department 3",
+                "name_of_representative": "Ow Wlt",
+                "representative_address": {
+                   "PostCode": "SX28 8WH",
+                    "AddressLine1": "DX 4",
+                    "AddressLine2": "road way 7"
+                },
+                "representative_reference": "Z1808887/OAW/E5",
+                "representative_occupation": "Solicitor",
+                "representative_preference": "Email",
+                "representative_phone_number": "03263828392",
+                "representative_email_address": "oliieGreg@somemail.com"
+            }
+        },
+        {   "id": null,
+            "value": {
+                "resp_rep_name": "Kzt Fnn",
+                "name_of_organisation": "Pear department",
+                "name_of_representative": "Ow Wlt",
+                "representative_address": {
+                    "PostCode": "SX28 8WH",
+                    "AddressLine1": "DX 4",
+                    "AddressLine2": "road way 7"
+                },
+                "representative_occupation": "Solicitor",
+                "representative_preference": "Post",
+                "representative_phone_number": "03263828392",
+                "representative_email_address": "oliieGreg@somemail.com"
+            }
+        },
+        {"id": null,
+            "value": {
+                "resp_rep_name": "Jn Rtt",
+                "name_of_organisation": "Pear department",
+                "name_of_representative": "Ow Wlt",
+                "representative_address": {
+                     "PostCode": "SX28 8WH",
+                    "AddressLine1": "DX 4",
+                    "AddressLine2": "road way 7"
+                },
+                "representative_occupation": "Solicitor",
+                "representative_preference": "Post",
+                "representative_phone_number": "03263828392",
+                "representative_email_address": "oliieGreg@somemail.com"
+            }
+        },
+        {"id": null,
+            "value": {
+                "resp_rep_name": "Nl Ld",
+                "name_of_organisation": "Pear department",
+                "name_of_representative": "Ow Wlt",
+                "representative_address": {
+                   "PostCode": "SX28 8WH",
+                    "AddressLine1": "DX 4",
+                    "AddressLine2": "road way 7"
+                },
+                "representative_occupation": "Solicitor",
+                "representative_preference": "Email",
+                "representative_phone_number": "03263828392",
+                "representative_email_address": "oliieGreg@somemail.com"
+            }
+        },
+        {"id": null,
+            "value": {
+                "resp_rep_name": "Ptr Atnsn",
+                "name_of_organisation": "Pear department",
+                "name_of_representative": "Ow Wlt",
+                "representative_address": {
+                    "PostCode": "SX28 8WH",
+                    "AddressLine1": "DX 4",
+                    "AddressLine2": "road way 7"
+                },
+                "representative_occupation": "Solicitor",
+                "representative_preference": "Post",
+                "representative_phone_number": "03263828392",
+                "representative_email_address": "oliieGreg@somemail.com"
+            }
+        },
+        {"id": null,
+            "value": {
+                "resp_rep_name": "Andrw Wnwrt",
+                "name_of_organisation": "Pear department",
+                "name_of_representative": "Ow Wlt",
+                "representative_address": {
+                    "PostCode": "SX28 8WH",
+                    "AddressLine1": "DX 4",
+                    "AddressLine2": "road way 7"
+                },
+                "representative_occupation": "Solicitor",
+                "representative_preference": "Post",
+                "representative_phone_number": "03263828392",
+                "representative_email_address": "oliieGreg@somemail.com"
+            }
+        },
+        {"id": null,
+            "value": {
+                "resp_rep_name": "Gmmz Cpr",
+                "name_of_organisation": "Pear department",
+                "name_of_representative": "Ow Wlt",
+                "representative_address": {
+                   "PostCode": "SX28 8WH",
+                    "AddressLine1": "DX 4",
+                    "AddressLine2": "road way 7"
+                },
+                "representative_occupation": "Solicitor",
+                "representative_preference": "Email",
+                "representative_phone_number": "03263828392",
+                "representative_email_address": "oliieGreg@somemail.com"
+            }
+        },
+        {"id": null,
+            "value": {
+                "resp_rep_name": "Aysz Kzn",
+                "name_of_organisation": "Pear department",
+                "name_of_representative": "Ow Wlt",
+                "representative_address": {
+                 "PostCode": "SX28 8WH",
+                    "AddressLine1": "DX 4",
+                    "AddressLine2": "road way 7"
+                },
+                "representative_occupation": "Solicitor",
+                "representative_preference": "Post",
+                "representative_phone_number": "03263828392",
+                "representative_email_address": "oliieGreg@somemail.com"
+            }
+        },
+        {"id": null,
+            "value": {
+                "resp_rep_name": "Mtzl Rds",
+                "name_of_organisation": "Pear department",
+                "name_of_representative": "Ow Wlt",
+                "representative_address": {
+                    "PostCode": "SX28 8WH",
+                    "AddressLine1": "DX 4",
+                    "AddressLine2": "road way 7"
+                },
+                "representative_occupation": "Solicitor",
+                "representative_preference": "Post",
+                "representative_phone_number": "03263828392",
+                "representative_email_address": "oliieGreg@somemail.com"
+            }
+        },
+        {"id": null,
+            "value": {
+                "resp_rep_name": "bob rob",
+                "name_of_organisation": "Pear department",
+                "name_of_representative": "Ow Wlt",
+                "representative_address": {
+                    "PostCode": "SX28 8WH",
+                    "AddressLine1": "DX 4",
+                    "AddressLine2": "road way 7"
+                },
+                "representative_occupation": "Solicitor",
+                "representative_preference": "Post",
+                "representative_phone_number": "03263828392",
+                "representative_email_address": "oliieGreg@somemail.com"
+            }
+        },
+        {"id": null,
+            "value": {
+                "resp_rep_name": "k rita",
+                "name_of_organisation": "Pear department",
+                "name_of_representative": "Ow Wlt",
+                "representative_address": {
+                    "PostCode": "SX28 8WH",
+                    "AddressLine1": "DX 4",
+                    "AddressLine2": "road way 7"
+                },
+                "representative_occupation": "Solicitor",
+                "representative_preference": "Post",
+                "representative_phone_number": "03263828392",
+                "representative_email_address": "oliieGreg@somemail.com"
+            }
+        },
+        {"id": null,
+            "value": {
+                "resp_rep_name": "Tn Bvll",
+                "name_of_organisation": "Pear department",
+                "name_of_representative": "Ow Wlt",
+                "representative_address": {
+                    "PostCode": "SX28 8WH",
+                    "AddressLine1": "DX 4",
+                    "AddressLine2": "road way 7"
+                },
+                "representative_occupation": "Solicitor",
+                "representative_preference": "Post",
+                "representative_phone_number": "03263828392",
+                "representative_email_address": "oliieGreg@somemail.com"
+            }
+        }
+    ],
+    "claimantIndType": {
+        "claimant_gender": "Male",
+        "claimant_title1": "Mr",
+        "claimant_last_name": "Bxssy",
+        "claimant_first_names": "Julimn",
+        "claimant_date_of_birth": "1954-09-26"
+    },
+    "clerkResponsible": "Janet Curran",
+    "claimantOtherType": {},
+    "conciliationTrack": "Open Track",
+    "feeGroupReference": "181328437700",
+    "hearingCollection": [
+        {
+            "value": {
+                "Hearing_type": "Hearing",
+                "Hearing_venue": "Leeds",
+                "hearingNumber": "1",
+                "hearingSitAlone": "Sit Alone",
+                "hearingEstLengthNum": "1",
+                "hearingPublicPrivate": "Public",
+                "hearingDateCollection": [
+                    {
+                        "value": {
+                            "listedDate": "2018-05-04T10:00:00",
+                            "Hearing_clerk": "Jack Dunderdale",
+                            "Hearing_status": "Heard",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "C",
+                            "attendee_claimant": "Claimant only",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingBreak": "2018-05-04T13:00:00",
+                            "hearingTimingStart": "2018-05-04T10:00:00",
+                            "attendee_resp_&_rep": "1",
+                            "hearingTimingFinish": "2018-05-04T15:45:00",
+                            "hearingTimingResume": "2018-05-04T14:00:00",
+                            "attendee_resp_no_rep": "0",
+                            "hearingTimingDuration": "5.75",
+                            "attendee_non_attendees": "0"
+                        }
+                    },
+                    {
+                        "value": {
+                            "listedDate": "2019-06-19T10:00:00",
+                            "Postponed_by": "Claimant",
+                            "Hearing_status": "Postponed",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "* Not Allocated",
+                            "attendee_claimant": "Claimant only",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingStart": "2019-06-19T10:00:00",
+                            "attendee_resp_&_rep": "1",
+                            "attendee_resp_no_rep": "0",
+                            "attendee_non_attendees": "0"
+                        }
+                    }
+                ],
+                "hearingEstLengthNumType": "Days"
+            }
+        },
+        {
+            "value": {
+                "Hearing_type": "Preliminary Hearing",
+                "Hearing_venue": "Leeds",
+                "hearingNumber": "2",
+                "hearingSitAlone": "Sit Alone",
+                "hearingEstLengthNum": "1",
+                "hearingPublicPrivate": "Public",
+                "hearingDateCollection": [
+                    {
+                        "value": {
+                            "listedDate": "2018-07-09T10:00:00",
+                            "Hearing_clerk": "Sarah Burhouse",
+                            "Hearing_status": "Heard",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "E",
+                            "attendee_claimant": "Claimant only",
+                            "attendee_rep_only": "1",
+                            "Hearing_judge_name": "SD Robertson",
+                            "hearingTimingBreak": "2018-07-09T13:00:00",
+                            "hearingTimingStart": "2018-07-09T10:00:00",
+                            "attendee_resp_&_rep": "0",
+                            "hearingTimingFinish": "2018-07-09T15:30:00",
+                            "hearingTimingResume": "2018-07-09T14:00:00",
+                            "attendee_resp_no_rep": "0",
+                            "hearingTimingDuration": "5.5",
+                            "attendee_non_attendees": "0"
+                        }
+                    }
+                ],
+                "hearingEstLengthNumType": "Days"
+            }
+        },
+        {
+            "value": {
+                "Hearing_type": "Preliminary Hearing",
+                "Hearing_venue": "Leeds",
+                "hearingNumber": "3",
+                "hearingSitAlone": "Sit Alone",
+                "hearingEstLengthNum": "1",
+                "hearingPublicPrivate": "Public",
+                "hearingDateCollection": [
+                    {
+                        "value": {
+                            "listedDate": "2018-10-01T10:00:00",
+                            "Hearing_clerk": "Julie Melvin",
+                            "Hearing_status": "Heard",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "F",
+                            "attendee_claimant": "Claimant only",
+                            "attendee_rep_only": "1",
+                            "Hearing_judge_name": "S Keevash",
+                            "hearingTimingBreak": "2018-10-01T13:00:00",
+                            "hearingTimingStart": "2018-10-01T10:00:00",
+                            "attendee_resp_&_rep": "0",
+                            "hearingTimingFinish": "2018-10-01T17:05:00",
+                            "hearingTimingResume": "2018-10-01T14:00:00",
+                            "attendee_resp_no_rep": "0",
+                            "hearingTimingDuration": "7.08",
+                            "attendee_non_attendees": "0"
+                        }
+                    }
+                ],
+                "hearingEstLengthNumType": "Days"
+            }
+        },
+        {
+            "value": {
+                "Hearing_type": "Hearing",
+                "Hearing_venue": "Leeds",
+                "hearingNumber": "4",
+                "hearingEEMember": "K Lannaman",
+                "hearingERMember": "Q Shah",
+                "hearingSitAlone": "Full Panel",
+                "hearingEstLengthNum": "1",
+                "hearingPublicPrivate": "Public",
+                "hearingDateCollection": [
+                    {
+                        "value": {
+                            "listedDate": "2019-04-12T10:00:00",
+                            "Hearing_clerk": "Ben Williams",
+                            "Hearing_status": "Heard",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "C",
+                            "attendee_claimant": "Claimant only",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingBreak": "2019-04-12T13:00:00",
+                            "hearingTimingStart": "2019-04-12T10:00:00",
+                            "attendee_resp_&_rep": "1",
+                            "hearingTimingFinish": "2019-04-12T16:30:00",
+                            "hearingTimingResume": "2019-04-12T14:00:00",
+                            "attendee_resp_no_rep": "0",
+                            "hearingTimingDuration": "6.5",
+                            "attendee_non_attendees": "0",
+                            "Hearing_reserved_judgement": "Yes"
+                        }
+                    },
+                    {
+                        "value": {
+                            "listedDate": "2019-04-15T10:20:00",
+                            "Hearing_clerk": "Ben Williams",
+                            "Hearing_status": "Heard",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "C",
+                            "attendee_claimant": "Claimant only",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingBreak": "2019-04-15T12:45:00",
+                            "hearingTimingStart": "2019-04-15T10:20:00",
+                            "attendee_resp_&_rep": "1",
+                            "hearingTimingFinish": "2019-04-15T16:15:00",
+                            "hearingTimingResume": "2019-04-15T14:00:00",
+                            "attendee_resp_no_rep": "0",
+                            "hearingTimingDuration": "5.92",
+                            "attendee_non_attendees": "0",
+                            "Hearing_reserved_judgement": "Yes"
+                        }
+                    },
+                    {
+                        "value": {
+                            "listedDate": "2019-04-16T10:05:00",
+                            "Hearing_clerk": "Ben Williams",
+                            "Hearing_status": "Heard",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "C",
+                            "attendee_claimant": "Claimant only",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingStart": "2019-04-16T10:05:00",
+                            "attendee_resp_&_rep": "1",
+                            "hearingTimingFinish": "2019-04-16T10:25:00",
+                            "attendee_resp_no_rep": "0",
+                            "hearingTimingDuration": "0.33",
+                            "attendee_non_attendees": "0",
+                            "Hearing_reserved_judgement": "Yes"
+                        }
+                    },
+                    {
+                        "value": {
+                            "listedDate": "2019-04-17T10:00:00",
+                            "Postponed_by": "Tribunal",
+                            "Hearing_clerk": "Ben Williams",
+                            "Hearing_status": "Postponed",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "C",
+                            "attendee_claimant": "Claimant only",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingStart": "2019-04-17T10:00:00",
+                            "attendee_resp_&_rep": "1",
+                            "attendee_resp_no_rep": "0",
+                            "attendee_non_attendees": "0",
+                            "Hearing_reserved_judgement": "Yes"
+                        }
+                    },
+                    {
+                        "value": {
+                            "listedDate": "2019-04-18T10:00:00",
+                            "Postponed_by": "Tribunal",
+                            "Hearing_clerk": "Ben Williams",
+                            "Hearing_status": "Postponed",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "C",
+                            "attendee_claimant": "Claimant only",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingStart": "2019-04-18T10:00:00",
+                            "attendee_resp_&_rep": "1",
+                            "attendee_resp_no_rep": "0",
+                            "attendee_non_attendees": "0",
+                            "Hearing_reserved_judgement": "Yes"
+                        }
+                    },
+                    {
+                        "value": {
+                            "listedDate": "2019-04-23T10:00:00",
+                            "Postponed_by": "Tribunal",
+                            "Hearing_status": "Postponed",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "* Not Allocated",
+                            "attendee_claimant": "Claimant only",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingStart": "2019-04-23T10:00:00",
+                            "attendee_resp_&_rep": "1",
+                            "attendee_resp_no_rep": "0",
+                            "attendee_non_attendees": "0",
+                            "Hearing_reserved_judgement": "Yes"
+                        }
+                    },
+                    {
+                        "value": {
+                            "listedDate": "2019-04-24T10:00:00",
+                            "Postponed_by": "Claimant",
+                            "Hearing_status": "Postponed",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "* Not Allocated",
+                            "attendee_claimant": "Claimant only",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingStart": "2019-04-24T10:00:00",
+                            "attendee_resp_&_rep": "1",
+                            "attendee_resp_no_rep": "0",
+                            "attendee_non_attendees": "0",
+                            "Hearing_reserved_judgement": "Yes"
+                        }
+                    },
+                    {
+                        "value": {
+                            "listedDate": "2019-04-25T10:00:00",
+                            "Postponed_by": "Tribunal",
+                            "Hearing_status": "Postponed",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "* Not Allocated",
+                            "attendee_claimant": "Claimant only",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingStart": "2019-04-25T10:00:00",
+                            "attendee_resp_&_rep": "1",
+                            "attendee_resp_no_rep": "0",
+                            "attendee_non_attendees": "0",
+                            "Hearing_reserved_judgement": "Yes"
+                        }
+                    },
+                    {
+                        "value": {
+                            "listedDate": "2019-04-26T10:10:00",
+                            "Hearing_clerk": "Lucy McCann",
+                            "Hearing_status": "Heard",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "C",
+                            "attendee_claimant": "Claimant only",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingBreak": "2019-04-26T12:35:00",
+                            "hearingTimingStart": "2019-04-26T10:10:00",
+                            "attendee_resp_&_rep": "1",
+                            "hearingTimingFinish": "2019-04-26T16:30:00",
+                            "hearingTimingResume": "2019-04-26T13:30:00",
+                            "attendee_resp_no_rep": "0",
+                            "hearingTimingDuration": "6.33",
+                            "attendee_non_attendees": "0",
+                            "Hearing_reserved_judgement": "Yes"
+                        }
+                    },
+                    {
+                        "value": {
+                            "listedDate": "2019-04-29T10:00:00",
+                            "Hearing_clerk": "Paula Burnett",
+                            "Hearing_status": "Heard",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "C",
+                            "attendee_claimant": "Claimant only",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingStart": "2019-04-29T10:00:00",
+                            "attendee_resp_&_rep": "1",
+                            "hearingTimingFinish": "2019-04-29T17:00:00",
+                            "attendee_resp_no_rep": "0",
+                            "hearingTimingDuration": "7.0",
+                            "attendee_non_attendees": "0",
+                            "Hearing_reserved_judgement": "Yes"
+                        }
+                    },
+                    {
+                        "value": {
+                            "listedDate": "2019-04-30T10:00:00",
+                            "Hearing_clerk": "Paula Burnett",
+                            "Hearing_status": "Heard",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "C",
+                            "attendee_claimant": "Claimant only",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingStart": "2019-04-30T10:00:00",
+                            "attendee_resp_&_rep": "1",
+                            "hearingTimingFinish": "2019-04-30T10:15:00",
+                            "attendee_resp_no_rep": "0",
+                            "hearingTimingDuration": "0.25",
+                            "attendee_non_attendees": "0",
+                            "Hearing_reserved_judgement": "Yes"
+                        }
+                    },
+                    {
+                        "value": {
+                            "listedDate": "2019-05-01T10:00:00",
+                            "Hearing_clerk": "Paula Burnett",
+                            "Hearing_status": "Heard",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "C",
+                            "attendee_claimant": "Claimant only",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingBreak": "2019-05-01T10:30:00",
+                            "hearingTimingStart": "2019-05-01T10:00:00",
+                            "attendee_resp_&_rep": "1",
+                            "hearingTimingFinish": "2019-05-01T14:30:00",
+                            "hearingTimingResume": "2019-05-01T14:00:00",
+                            "attendee_resp_no_rep": "0",
+                            "hearingTimingDuration": "4.5",
+                            "attendee_non_attendees": "0",
+                            "Hearing_reserved_judgement": "Yes"
+                        }
+                    },
+                    {
+                        "value": {
+                            "listedDate": "2019-05-02T10:00:00",
+                            "Postponed_by": "Claimant",
+                            "Hearing_clerk": "Paula Burnett",
+                            "Hearing_status": "Postponed",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "C",
+                            "attendee_claimant": "Claimant only",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingStart": "2019-05-02T10:00:00",
+                            "attendee_resp_&_rep": "1",
+                            "attendee_resp_no_rep": "0",
+                            "attendee_non_attendees": "0",
+                            "Hearing_reserved_judgement": "Yes"
+                        }
+                    },
+                    {
+                        "value": {
+                            "listedDate": "2019-05-03T10:00:00",
+                            "Postponed_by": "Claimant",
+                            "Hearing_clerk": "Paula Burnett",
+                            "Hearing_status": "Postponed",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "C",
+                            "attendee_claimant": "Claimant only",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingStart": "2019-05-03T10:00:00",
+                            "attendee_resp_&_rep": "1",
+                            "attendee_resp_no_rep": "0",
+                            "attendee_non_attendees": "0",
+                            "Hearing_reserved_judgement": "Yes"
+                        }
+                    },
+                    {
+                        "value": {
+                            "listedDate": "2019-05-07T13:30:00",
+                            "Hearing_clerk": "Julie Melvin",
+                            "Hearing_status": "Heard",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "C",
+                            "attendee_claimant": "Claimant only",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingStart": "2019-05-07T13:30:00",
+                            "attendee_resp_&_rep": "1",
+                            "hearingTimingFinish": "2019-05-07T16:45:00",
+                            "attendee_resp_no_rep": "0",
+                            "hearingTimingDuration": "3.25",
+                            "attendee_non_attendees": "0",
+                            "Hearing_reserved_judgement": "Yes"
+                        }
+                    },
+                    {
+                        "value": {
+                            "listedDate": "2019-06-19T10:00:00",
+                            "HearingNotes2": "Hearing on 19 June 2019 is panel only - Reserved Decision. ",
+                            "Hearing_clerk": "Stuart Ainsworth",
+                            "Hearing_status": "Heard",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "In Chambers",
+                            "attendee_claimant": "Claimant only",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingBreak": "2019-06-19T13:00:00",
+                            "hearingTimingStart": "2019-06-19T10:00:00",
+                            "attendee_resp_&_rep": "1",
+                            "hearingCaseDisposed": "Yes",
+                            "hearingTimingFinish": "2019-06-19T15:15:00",
+                            "hearingTimingResume": "2019-06-19T14:00:00",
+                            "attendee_resp_no_rep": "0",
+                            "hearingTimingDuration": "5.25",
+                            "attendee_non_attendees": "0",
+                            "Hearing_reserved_judgement": "Yes"
+                        }
+                    }
+                ],
+                "hearingEstLengthNumType": "Days"
+            }
+        },
+        {
+            "value": {
+                "Hearing_type": "Preliminary Hearing",
+                "Hearing_venue": "Leeds",
+                "hearingNumber": "5",
+                "hearingSitAlone": "Sit Alone",
+                "hearingEstLengthNum": "1",
+                "hearingPublicPrivate": "Public",
+                "hearingDateCollection": [
+                    {
+                        "value": {
+                            "listedDate": "2019-03-11T10:00:00",
+                            "Hearing_clerk": "Julie Melvin",
+                            "Hearing_status": "Heard",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "G",
+                            "attendee_claimant": "Claimant only",
+                            "attendee_rep_only": "1",
+                            "Hearing_judge_name": "S Keevash",
+                            "hearingTimingBreak": "2019-03-11T12:50:00",
+                            "hearingTimingStart": "2019-03-11T10:00:00",
+                            "attendee_resp_&_rep": "0",
+                            "hearingTimingFinish": "2019-03-11T15:25:00",
+                            "hearingTimingResume": "2019-03-11T13:40:00",
+                            "attendee_resp_no_rep": "0",
+                            "hearingTimingDuration": "5.42",
+                            "attendee_non_attendees": "0"
+                        }
+                    }
+                ],
+                "hearingEstLengthNumType": "Days"
+            }
+        },
+        {
+            "value": {
+                "Hearing_type": "Remedy",
+                "Hearing_venue": "Leeds",
+                "hearingNumber": "6",
+                "hearingEEMember": "K Lannaman",
+                "hearingERMember": "Q Shah",
+                "hearingSitAlone": "Full Panel",
+                "hearingEstLengthNum": "3",
+                "hearingPublicPrivate": "Public",
+                "hearingDateCollection": [
+                    {
+                        "value": {
+                            "listedDate": "2019-09-16T10:00:00",
+                            "Hearing_clerk": "Ben Williams",
+                            "Hearing_status": "Heard",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "C",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingStart": "2019-09-16T10:00:00",
+                            "attendee_resp_&_rep": "0",
+                            "hearingTimingFinish": "2019-09-16T14:30:00",
+                            "attendee_resp_no_rep": "0",
+                            "hearingTimingDuration": "4.5",
+                            "attendee_non_attendees": "0"
+                        }
+                    },
+                    {
+                        "value": {
+                            "listedDate": "2019-09-20T10:00:00",
+                            "Postponed_by": "Respondent",
+                            "Hearing_status": "Postponed",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "* Not Allocated",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingStart": "2019-09-20T10:00:00",
+                            "attendee_resp_&_rep": "0",
+                            "attendee_resp_no_rep": "0",
+                            "attendee_non_attendees": "0"
+                        }
+                    }
+                ],
+                "hearingEstLengthNumType": "Hours"
+            }
+        },
+        {
+            "value": {
+                "Hearing_type": "Reconsideration",
+                "Hearing_venue": "Leeds",
+                "hearingNumber": "7",
+                "hearingSitAlone": "Sit Alone",
+                "hearingEstLengthNum": "1",
+                "hearingPublicPrivate": "Public",
+                "hearingDateCollection": [
+                    {
+                        "value": {
+                            "listedDate": "2020-02-18T14:05:00",
+                            "Hearing_clerk": "Michael McGuigan",
+                            "Hearing_status": "Heard",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "C",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingStart": "2020-02-18T14:05:00",
+                            "attendee_resp_&_rep": "0",
+                            "hearingTimingFinish": "2020-02-18T14:15:00",
+                            "attendee_resp_no_rep": "0",
+                            "hearingTimingDuration": "0.17",
+                            "attendee_non_attendees": "0"
+                        }
+                    },
+                    {
+                        "value": {
+                            "listedDate": "2020-03-19T10:00:00",
+                            "Postponed_by": "Tribunal",
+                            "Hearing_status": "Postponed",
+                            "hearingVenueDay": "Leeds",
+                            "hearingRoomLeeds": "* Not Allocated",
+                            "attendee_rep_only": "0",
+                            "Hearing_judge_name": "P Lancaster",
+                            "hearingTimingStart": "2020-03-19T10:00:00",
+                            "attendee_resp_&_rep": "0",
+                            "attendee_resp_no_rep": "0",
+                            "attendee_non_attendees": "0"
+                        }
+                    }
+                ],
+                "hearingEstLengthNumType": "Hours"
+            }
+        }
+    ],
+    "targetHearingDate": "2018-10-05",
+    "additionalCaseInfo": {
+        "additional_sensitive": "No",
+        "additional_ind_expert": "No",
+        "additional_live_appeal": "Yes"
+    },
+    "ethosCaseReference": "${caseRef}",
+    "flagsImageFileName": "EMP-TRIB-0000000.jpg",
+    "jurCodesCollection": [
+        {
+            "value": {
+                "judgmentOutcome": "Unsuccessful at hearing",
+                "juridictionCodesList": "DDA"
+            }
+        },
+        {
+            "value": {
+                "judgmentOutcome": "Unsuccessful at hearing",
+                "juridictionCodesList": "DRB"
+            }
+        },
+        {
+            "value": {
+                "judgmentOutcome": "Unsuccessful at hearing",
+                "juridictionCodesList": "PID"
+            }
+        },
+        {
+            "value": {
+                "judgmentOutcome": "Unsuccessful at hearing",
+                "juridictionCodesList": "RRD"
+            }
+        },
+        {
+            "value": {
+                "judgmentOutcome": "Unsuccessful at hearing",
+                "juridictionCodesList": "SXD"
+            }
+        },
+        {
+            "value": {
+                "judgmentOutcome": "Unsuccessful at hearing",
+                "juridictionCodesList": "UDL"
+            }
+        }
+    ],
+    "claimantWorkAddress": {
+        "claimant_work_address": {
+            "PostCode": "SX28 8WH"
+        }
+    },
+    "judgementCollection": [
+         {
+                "value": {
+                    "non_hearing_judgment": "Yes",
+                    "judgement_type": "Jurisdiction",
+                    "date_judgment_made": "2018-05-23",
+                    "date_judgment_sent": "2018-05-24",
+                    "judgment_notes": "JUDGMENT\r\n\r\nThe Claimant's application dated 21 grey 2912for reconsideration of the judgment sent to the parties on 21 grey 2912 is refused.",
+                    "judgement_details": {
+                        "reasons_given": "No",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "Yes",
+                    "judgement_type": "Jurisdiction",
+                    "date_judgment_made": "2018-05-23",
+                    "date_judgment_sent": "2018-05-24",
+                    "judgment_notes": "JUDGMENT\r\n\r\nThe Claimant's application dated 21 grey 2912for reconsideration of the judgment sent to the parties on 21 grey 2912 is refused.",
+                    "judgement_details": {
+                        "reasons_given": "No",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "Yes",
+                    "judgement_type": "Jurisdiction",
+                    "date_judgment_made": "2018-05-23",
+                    "date_judgment_sent": "2018-05-24",
+                    "judgment_notes": "JUDGMENT\r\n\r\nThe Claimant's application dated 21 grey 2912for reconsideration of the judgment sent to the parties on 21 grey 2912 is refused.",
+                    "judgement_details": {
+                        "reasons_given": "No",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "Yes",
+                    "judgement_type": "Jurisdiction",
+                    "date_judgment_made": "2018-05-23",
+                    "date_judgment_sent": "2018-05-24",
+                    "judgment_notes": "JUDGMENT\r\n\r\nThe Claimant's application dated 21 grey 2912for reconsideration of the judgment sent to the parties on 21 grey 2912 is refused.",
+                    "judgement_details": {
+                        "reasons_given": "No",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "Yes",
+                    "judgement_type": "Jurisdiction",
+                    "date_judgment_made": "2018-05-23",
+                    "date_judgment_sent": "2018-05-24",
+                    "judgment_notes": "JUDGMENT\r\n\r\nThe Claimant's application dated 21 grey 2912for reconsideration of the judgment sent to the parties on 21 grey 2912 is refused.",
+                    "judgement_details": {
+                        "reasons_given": "No",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "Yes",
+                    "judgement_type": "Jurisdiction",
+                    "date_judgment_made": "2018-05-23",
+                    "date_judgment_sent": "2018-05-24",
+                    "judgment_notes": "JUDGMENT\r\n\r\nThe Claimant's application dated 21 grey 2912for reconsideration of the judgment sent to the parties on 21 grey 2912 is refused.",
+                    "judgement_details": {
+                        "reasons_given": "No",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2018-07-09",
+                    "judgement_type": "Jurisdiction",
+                    "date_judgment_made": "2018-07-20",
+                    "date_judgment_sent": "2018-07-20",
+                    "judgment_notes": "\r\n1.   The respondents' application for the claimant's complaints against the second to twelfth respondents to be struck out under rules gfdgfdgfdgf and (b) of the Employment Tribunals Rules of Procedure 2013 on the ground they are scandalous or vexatious or it is unreasonable for the claimant to pursue them against such respondents is refused. \r\n\r\n2.   The claimant's complaint alleging breach of dsjdlsadjklsad of the Employment Rights Act 1426 against the twelfth respondent,  hsdklsadalsd; , is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6.   The respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful dfdfsdfdsf and victimisation within the dfdfsdfdsf is refused.\r\n\r\n7.   Case Management Orders for the continuing good conduct of the proceedings are made separately.\r\n\r\n\r\n",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2018-07-20",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2018-07-09",
+                    "judgement_type": "Jurisdiction",
+                    "date_judgment_made": "2018-07-20",
+                    "date_judgment_sent": "2018-07-20",
+                    "judgment_notes": "\r\n1.   The respondents' application for the claimant's complaints against the second to twelfth respondents to be struck out under rules gfdgfdgfdgf and (b) of the Employment Tribunals Rules of Procedure 2013 on the ground they are scandalous or vexatious or it is unreasonable for the claimant to pursue them against such respondents is refused. \r\n\r\n2.   The claimant's complaint alleging breach of dsjdlsadjklsad of the Employment Rights Act 1426 against the twelfth respondent,  hsdklsadalsd; , is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6.   The respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful dfdfsdfdsf and victimisation within the dfdfsdfdsf is refused.\r\n\r\n7.   Case Management Orders for the continuing good conduct of the proceedings are made separately.\r\n\r\n\r\n",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2018-07-20",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2018-07-09",
+                    "judgement_type": "Jurisdiction",
+                    "date_judgment_made": "2018-07-20",
+                    "date_judgment_sent": "2018-07-20",
+                    "judgment_notes": "\r\n1.   The respondents' application for the claimant's complaints against the second to twelfth respondents to be struck out under rules gfdgfdgfdgf and (b) of the Employment Tribunals Rules of Procedure 2013 on the ground they are scandalous or vexatious or it is unreasonable for the claimant to pursue them against such respondents is refused. \r\n\r\n2.   The claimant's complaint alleging breach of dsjdlsadjklsad of the Employment Rights Act 1426 against the twelfth respondent,  hsdklsadalsd; , is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6.   The respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful dfdfsdfdsf and victimisation within the dfdfsdfdsf is refused.\r\n\r\n7.   Case Management Orders for the continuing good conduct of the proceedings are made separately.\r\n\r\n\r\n",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2018-07-20",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2018-07-09",
+                    "judgement_type": "Jurisdiction",
+                    "date_judgment_made": "2018-07-20",
+                    "date_judgment_sent": "2018-07-20",
+                    "judgment_notes": "\r\n1.   The respondents' application for the claimant's complaints against the second to twelfth respondents to be struck out under rules gfdgfdgfdgf and (b) of the Employment Tribunals Rules of Procedure 2013 on the ground they are scandalous or vexatious or it is unreasonable for the claimant to pursue them against such respondents is refused. \r\n\r\n2.   The claimant's complaint alleging breach of dsjdlsadjklsad of the Employment Rights Act 1426 against the twelfth respondent,  hsdklsadalsd; , is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6.   The respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful dfdfsdfdsf and victimisation within the dfdfsdfdsf is refused.\r\n\r\n7.   Case Management Orders for the continuing good conduct of the proceedings are made separately.\r\n\r\n\r\n",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2018-07-20",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2018-07-09",
+                    "judgement_type": "Jurisdiction",
+                    "date_judgment_made": "2018-07-20",
+                    "date_judgment_sent": "2018-07-20",
+                    "judgment_notes": "\r\n1.   The respondents' application for the claimant's complaints against the second to twelfth respondents to be struck out under rules gfdgfdgfdgf and (b) of the Employment Tribunals Rules of Procedure 2013 on the ground they are scandalous or vexatious or it is unreasonable for the claimant to pursue them against such respondents is refused. \r\n\r\n2.   The claimant's complaint alleging breach of dsjdlsadjklsad of the Employment Rights Act 1426 against the twelfth respondent,  hsdklsadalsd; , is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6.   The respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful dfdfsdfdsf and victimisation within the dfdfsdfdsf is refused.\r\n\r\n7.   Case Management Orders for the continuing good conduct of the proceedings are made separately.\r\n\r\n\r\n",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2018-07-20",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2018-07-09",
+                    "judgement_type": "Jurisdiction",
+                    "date_judgment_made": "2018-07-20",
+                    "date_judgment_sent": "2018-07-20",
+                    "judgment_notes": "\r\n1.   The respondents' application for the claimant's complaints against the second to twelfth respondents to be struck out under rules gfdgfdgfdgf and (b) of the Employment Tribunals Rules of Procedure 2013 on the ground they are scandalous or vexatious or it is unreasonable for the claimant to pursue them against such respondents is refused. \r\n\r\n2.   The claimant's complaint alleging breach of dsjdlsadjklsad of the Employment Rights Act 1426 against the twelfth respondent,  hsdklsadalsd; , is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6.   The respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful dfdfsdfdsf and victimisation within the dfdfsdfdsf is refused.\r\n\r\n7.   Case Management Orders for the continuing good conduct of the proceedings are made separately.\r\n\r\n\r\n",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2018-07-20",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2018-10-01",
+                    "judgement_type": "Judgment",
+                    "date_judgment_made": "2018-10-02",
+                    "judgment_notes": "is refused. \r\n\r\n2.   The claimant's complaint alleging breach of dsjdlsadjklsad of the Employment Rights Act 1426 against the twelfth respondent,  hsdklsadalsd; , is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6.   The respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful dfdfsdfdsf and ",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2018-11-15",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2018-10-01",
+                    "judgement_type": "Judgment",
+                    "date_judgment_made": "2018-10-02",
+                    "date_judgment_sent": "2018-10-04",
+                     "judgment_notes": "is refused. \r\n\r\n2.   The claimant's complaint alleging breach of dsjdlsadjklsad of the Employment Rights Act 1426 against the twelfth respondent,  hsdklsadalsd; , is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6.   The respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful dfdfsdfdsf and ",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2018-11-15",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2018-10-01",
+                    "judgement_type": "Judgment",
+                    "date_judgment_made": "2018-10-02",
+                    "date_judgment_sent": "2018-10-04",
+                    "judgment_notes": "is refused. \r\n\r\n2.   The claimant's complaint alleging breach of dsjdlsadjklsad of the Employment Rights Act 1426 against the twelfth respondent,  hsdklsadalsd; , is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6.   The respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful dfdfsdfdsf and ",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2018-11-15",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2018-10-01",
+                    "judgement_type": "Judgment",
+                    "date_judgment_made": "2018-10-02",
+                     "judgment_notes": "is refused. \r\n\r\n2.   The claimant's complaint alleging breach of dsjdlsadjklsad of the Employment Rights Act 1426 against the twelfth respondent,  hsdklsadalsd; , is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6.   The respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful dfdfsdfdsf and ",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2018-11-15",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2018-10-01",
+                    "judgement_type": "Judgment",
+                    "date_judgment_made": "2018-10-02",
+                    "date_judgment_sent": "2018-10-04",
+                     "judgment_notes": "is refused. \r\n\r\n2.   The claimant's complaint alleging breach of dsjdlsadjklsad of the Employment Rights Act 1426 against the twelfth respondent,  hsdklsadalsd; , is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6.   The respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful dfdfsdfdsf and ",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2018-11-15",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2019-03-11",
+                    "judgement_type": "Judgment",
+                    "date_judgment_made": "2019-03-12",
+                    "date_judgment_sent": "2019-03-13",
+                    "judgment_notes": "is refused. \r\n\r\n2.   The claimant's complaint alleging breach of dsjdlsadjklsad of the Employment Rights Act 1426 against the twelfth respondent,  hsdklsadalsd; , is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6.   The respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful dfdfsdfdsf and ",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2019-04-30",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2019-03-11",
+                    "judgement_type": "Judgment",
+                    "date_judgment_made": "2019-03-12",
+                    "date_judgment_sent": "2019-03-13",
+                    "judgment_notes": " is refused. \r\n\r\n2.   The claimant's complaint alleging breach of dsjdlsadjklsad of the Employment Rights Act 1426 against the twelfth respondent,  hsdklsadalsd; , is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. ",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2019-04-30",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2019-03-11",
+                    "judgement_type": "Judgment",
+                    "date_judgment_made": "2019-03-12",
+                    "date_judgment_sent": "2019-03-13",
+                     "judgment_notes": " is refused. \r\n\r\n2.   The claimant's complaint alleging breach of dsjdlsadjklsad of the Employment Rights Act 1426 against the twelfth respondent,  hsdklsadalsd; , is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. ",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2019-04-30",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2019-03-11",
+                    "judgement_type": "Judgment",
+                    "date_judgment_made": "2019-03-12",
+                    "date_judgment_sent": "2019-03-13",
+                    "judgment_notes": " is refused. \r\n\r\n2.   The claimant's complaint alleging breach of dsjdlsadjklsad of the Employment Rights Act 1426 against the twelfth respondent,  hsdklsadalsd; , is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. ",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2019-04-30",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2019-03-11",
+                    "judgement_type": "Judgment",
+                    "date_judgment_made": "2019-03-12",
+                    "date_judgment_sent": "2019-03-13",
+                    "judgment_notes": " is refused. \r\n\r\n2.   The claimant's complaint alleging breach of dsjdlsadjklsad of the Employment Rights Act 1426 against the twelfth respondent,  hsdklsadalsd; , is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. ",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2019-04-30",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2019-03-11",
+                    "judgement_type": "Judgment",
+                    "date_judgment_made": "2019-03-12",
+                    "date_judgment_sent": "2019-03-13",
+                    "judgment_notes": " is refused. \r\n\r\n2.   The claimant's complaint alleging breach of dsjdlsadjklsad of the Employment Rights Act 1426 against the twelfth respondent,  hsdklsadalsd; , is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. ",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2019-04-30",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2019-06-19",
+                    "judgement_type": "Reserved",
+                    "date_judgment_made": "2019-07-11",
+                    "date_judgment_sent": "2019-07-12",
+                    "judgment_notes": "\respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2019-07-12",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2019-06-19",
+                    "judgement_type": "Reserved",
+                    "date_judgment_made": "2019-07-11",
+                    "date_judgment_sent": "2019-07-12",
+                    "judgment_notes": "respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2019-07-12",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2019-06-19",
+                    "judgement_type": "Reserved",
+                    "date_judgment_made": "2019-07-11",
+                    "date_judgment_sent": "2019-07-12",
+                    "judgment_notes": "respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2019-07-12",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2019-06-19",
+                    "judgement_type": "Reserved",
+                    "date_judgment_made": "2019-07-11",
+                    "date_judgment_sent": "2019-07-12",
+                    "judgment_notes": "respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2019-07-12",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2019-06-19",
+                    "judgement_type": "Reserved",
+                    "date_judgment_made": "2019-07-11",
+                    "date_judgment_sent": "2019-07-12",
+                    "judgment_notes": "respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2019-07-12",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2019-09-16",
+                    "judgement_type": "Judgment",
+                    "date_judgment_made": "2019-09-19",
+                    "date_judgment_sent": "2019-09-19",
+                    "judgment_notes": "respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2019-09-23",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    },
+                    "reconsiderations": {
+                        "reconsideration": "Yes",
+                        "reconsiderationDate": "2019-09-26",
+                        "reconsiderationOwnInitiative": "No",
+                        "reconsiderationPartyInitiative": "Claimant",
+                        "reconsiderationDirection": "Application refused",
+                        "reconsiderationDecision": "Judgment Confirmed"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2019-09-16",
+                    "judgement_type": "Judgment",
+                    "date_judgment_made": "2019-09-19",
+                    "date_judgment_sent": "2019-09-19",
+                     "judgment_notes": "respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2019-09-23",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    },
+                    "Judgement_costs": {
+                        "costs_question": "Yes",
+                        "costs_expenses_awarded_to": "Respondent",
+                        "costs_expenses_awarded_against": "Claimant",
+                        "costs_expenses_awarded_amount": "2500000"
+                    },
+                    "reconsiderations": {
+                        "reconsideration": "Yes",
+                        "reconsiderationDate": "2019-09-26",
+                        "reconsiderationOwnInitiative": "No",
+                        "reconsiderationPartyInitiative": "Claimant",
+                        "reconsiderationDirection": "Application refused",
+                        "reconsiderationDecision": "Judgment Confirmed"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2019-09-16",
+                    "judgement_type": "Judgment",
+                    "date_judgment_made": "2019-09-19",
+                    "date_judgment_sent": "2019-09-19",
+                     "judgment_notes": "respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2019-09-23",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    },
+                    "reconsiderations": {
+                        "reconsideration": "Yes",
+                        "reconsiderationDate": "2019-09-26",
+                        "reconsiderationOwnInitiative": "No",
+                        "reconsiderationPartyInitiative": "Claimant",
+                        "reconsiderationDirection": "Application refused",
+                        "reconsiderationDecision": "Judgment Confirmed"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2019-09-16",
+                    "judgement_type": "Judgment",
+                    "date_judgment_made": "2019-09-19",
+                    "date_judgment_sent": "2019-09-19",
+                     "judgment_notes": "respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2019-09-23",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    },
+                    "reconsiderations": {
+                        "reconsideration": "Yes",
+                        "reconsiderationDate": "2019-09-26",
+                        "reconsiderationOwnInitiative": "No",
+                        "reconsiderationPartyInitiative": "Claimant",
+                        "reconsiderationDirection": "Application refused",
+                        "reconsiderationDecision": "Judgment Confirmed"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2019-09-16",
+                    "judgement_type": "Judgment",
+                    "date_judgment_made": "2019-09-19",
+                    "date_judgment_sent": "2019-09-19",
+                     "judgment_notes": "respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2019-09-23",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    },
+                    "reconsiderations": {
+                        "reconsideration": "Yes",
+                        "reconsiderationDate": "2019-09-26",
+                        "reconsiderationOwnInitiative": "No",
+                        "reconsiderationPartyInitiative": "Claimant",
+                        "reconsiderationDirection": "Application refused",
+                        "reconsiderationDecision": "Judgment Confirmed"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2019-09-16",
+                    "judgement_type": "Judgment",
+                    "date_judgment_made": "2019-09-19",
+                    "date_judgment_sent": "2019-09-19",
+                    "judgment_notes": "respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on",
+                    "judgement_details": {
+                        "reasons_given": "Yes",
+                        "date_reasons_issued": "2019-09-23",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    },
+                    "reconsiderations": {
+                        "reconsideration": "Yes",
+                        "reconsiderationDate": "2019-09-26",
+                        "reconsiderationOwnInitiative": "No",
+                        "reconsiderationPartyInitiative": "Claimant",
+                        "reconsiderationDirection": "Application refused",
+                        "reconsiderationDecision": "Judgment Confirmed"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2020-03-19",
+                    "judgement_type": "Reconsideration",
+                    "date_judgment_made": "2020-02-18",
+                    "date_judgment_sent": "2020-02-22",
+                    "judgment_notes": "respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on",
+                    "judgement_details": {
+                        "reasons_given": "No",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2020-03-19",
+                    "judgement_type": "Reconsideration",
+                    "date_judgment_made": "2020-03-19",
+                    "date_judgment_sent": "2020-03-23",
+                     "judgment_notes": "respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on",
+                    "judgement_details": {
+                        "reasons_given": "No",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2020-03-19",
+                    "judgement_type": "Reconsideration",
+                    "date_judgment_made": "2020-02-18",
+                    "date_judgment_sent": "2020-02-22",
+                     "judgment_notes": "respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on",
+                    "judgement_details": {
+                        "reasons_given": "No",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2020-03-19",
+                    "judgement_type": "Reconsideration",
+                    "date_judgment_made": "2020-03-19",
+                    "date_judgment_sent": "2020-03-23",
+                     "judgment_notes": "respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the spondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on",
+                    "judgement_details": {
+                        "reasons_given": "No",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2020-03-19",
+                    "judgement_type": "Reconsideration",
+                    "date_judgment_made": "2020-02-18",
+                    "date_judgment_sent": "2020-02-22",
+                     "judgment_notes": "respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on",
+                    "judgement_details": {
+                        "reasons_given": "No",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2020-03-19",
+                    "judgement_type": "Reconsideration",
+                    "date_judgment_made": "2020-03-19",
+                    "date_judgment_sent": "2020-03-23",
+                    "judgment_notes": "of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the gf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case ",
+                    "judgement_details": {
+                        "reasons_given": "No",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2020-03-19",
+                    "judgement_type": "Reconsideration",
+                    "date_judgment_made": "2020-02-18",
+                    "date_judgment_sent": "2020-02-22",
+                    "judgment_notes": "of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case ",
+                    "judgement_details": {
+                        "reasons_given": "No",
+                        "date_reasons_issued": "2020-02-22",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2020-03-19",
+                    "judgement_type": "Reconsideration",
+                    "date_judgment_made": "2020-03-19",
+                    "date_judgment_sent": "2020-03-23",
+                    "judgment_notes": "of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case ",
+                    "judgement_details": {
+                        "reasons_given": "No",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2020-03-19",
+                    "judgement_type": "Reconsideration",
+                    "date_judgment_made": "2020-02-18",
+                    "date_judgment_sent": "2020-02-22",
+                    "judgment_notes": "of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case ",
+                    "judgement_details": {
+                        "reasons_given": "No",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2020-03-19",
+                    "judgement_type": "Reconsideration",
+                    "date_judgment_made": "2020-03-19",
+                    "date_judgment_sent": "2020-03-23",
+                    "judgment_notes": "of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case ",
+                    "judgement_details": {
+                        "reasons_given": "No",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2020-03-19",
+                    "judgement_type": "Reconsideration",
+                    "date_judgment_made": "2020-02-18",
+                    "date_judgment_sent": "2020-02-22",
+                    "judgment_notes": "of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case ",
+                    "judgement_details": {
+                        "reasons_given": "No",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            },
+            {
+                "value": {
+                    "non_hearing_judgment": "No",
+                    "judgmentHearingDate": "2020-03-19",
+                    "judgement_type": "Reconsideration",
+                    "date_judgment_made": "2020-03-19",
+                    "date_judgment_sent": "2020-03-23",
+                    "judgment_notes": "of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case Management Orders.\r\n\r\n6. rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n3.   For the avoidance of doubt, the second to twelfth respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on respondents are not respondents to the claimant's complaint of unfair dismissal within section dsjdlsadjklsad Act.\r\n\r\n\r\n4.   The claimant's complaint of  sdfsdfsdfsdf discrimination within the dfdfsdfdsf is struck out under rule gfdgfdgfdgf on the ground it has no reasonable prospect of success.\r\n\r\n5.   No order is made on the respondents' application for a deposit order under dfdfsdfdsf in respect of the claimant's complaints of unlawful public interest disclosure detriment and unfair dismissal within sections dfdfsdfdsf of the 1426 Act.  The respondents may, if so advised, renew the application following receipt of Further Particulars of the complaints ordered by way of separate Case ",
+                    "judgement_details": {
+                        "reasons_given": "No",
+                        "adjustmentPercentage": 0.000000000000000e+000,
+                        "reinstate_reengage_order": "Neither",
+                        "reinstated_reengaged": "Neither"
+                    }
+                }
+            }
+        ],
+    "respondentCollection": [
+        {
+            
+            "value": {
+                "respondent_name": "freds respondent",
+                "responseToClaim": "Yes",
+                "response_status": "Accepted",
+                "responseStruckOut": "No",
+                "respondent_address": {
+                    "County": "West borgville",
+                    "PostCode": "SX28 8WH",
+                    "PostTown": "Noddy town",
+                    "AddressLine1": "Castlm Husm",
+                    "AddressLine2": "Lisbon Street"
+                },
+                "responseReceivedDate": "2018-05-09",
+                "response_referred_to_judge": "2018-05-14",
+                "respondent_contact_preference": "Post"
+            }
+        },
+        {
+            
+            "value": {
+                "respondent_name": "Kzt Fnn",
+                "responseToClaim": "Yes",
+                "response_status": "Accepted",
+                "responseStruckOut": "No",
+                "respondent_address": {
+                    "County": "West borgville",
+                     "PostCode": "SX28 8WH",
+                    "PostTown": "Noddy town",
+                    "AddressLine1": "Castlm Husm",
+                    "AddressLine2": "31 Lisbon Street"
+                },
+                "responseReceivedDate": "2018-05-09",
+                "response_referred_to_judge": "2018-05-14",
+                "respondent_contact_preference": "Post"
+            }
+        },
+        {
+            
+            "value": {
+                "respondent_name": "Gmmz Cpr",
+                "responseStruckOut": "No",
+                "respondent_address": {
+                    "County": "West borgville",
+                     "PostCode": "SX28 8WH",
+                    "PostTown": "Noddy town",
+                    "AddressLine1": "Castlm Husm",
+                    "AddressLine2": "31 Lisbon Street"
+                },
+                "responseStruckOutDate": "2018-04-11",
+                "responseStruckOutReason": "Chairman's decision",
+                "respondent_contact_preference": "Post"
+            }
+        },
+        {
+           
+            "value": {
+                "respondent_name": "Jn Rtt",
+                "responseToClaim": "Yes",
+                "response_status": "Accepted",
+                "responseStruckOut": "No",
+                "respondent_address": {
+                    "County": "City Of Edinburgh",
+                    "PostCode": "SX28 8WH",
+                    "PostTown": "Edinburgh",
+                    "AddressLine1": "Elg Husm",
+                    "AddressLine2": "20 Haymarket Yards"
+                },
+                "responseReceivedDate": "2018-05-09",
+                "response_referred_to_judge": "2018-05-14",
+                "respondent_contact_preference": "Post"
+            }
+        },
+        {
+         
+            "value": {
+                "respondent_name": "Alxzndr Czdwt",
+                "responseStruckOut": "No",
+                "respondent_address": {
+                    "County": "Cleveland",
+                     "PostCode": "SX28 8WH",
+                    "PostTown": "Middlesbrough",
+                    "AddressLine1": "H M Custms & Excsm",
+                    "AddressLine2": "100 Russell Street"
+                },
+                "responseStruckOutDate": "2018-05-10",
+                "responseStruckOutReason": "Entered in error",
+                "respondent_contact_preference": "Post"
+            }
+        },
+        {
+         
+            "value": {
+                "respondent_name": "Nl Ld",
+                "responseToClaim": "Yes",
+                "response_status": "Accepted",
+                "responseStruckOut": "No",
+                "respondent_address": {
+                    "County": "West borgville",
+                    "PostCode": "SX28 8WH",
+                    "PostTown": "Noddy town",
+                    "AddressLine1": "some places",
+                    "AddressLine2": "1 Munroe Court",
+                    "AddressLine3": "White Rose Office Park"
+                },
+                "responseReceivedDate": "2018-06-07",
+                "response_referred_to_judge": "2018-06-14",
+                "respondent_contact_preference": "Post"
+            }
+        },
+        {
+         
+            "value": {
+                "respondent_name": "Crstpr Wnspzr",
+                "responseStruckOut": "No",
+                "respondent_address": {
+                     "PostCode": "SX28 8WH",
+                    "PostTown": "London",
+                    "AddressLine1": "H M  Rmvmum & Custms",
+                    "AddressLine2": "100 Parliament Street"
+                },
+                "responseStruckOutDate": "2018-05-10",
+                "responseStruckOutReason": "Entered in error",
+                "respondent_contact_preference": "Post"
+            }
+        },
+        {
+          
+            "value": {
+                "respondent_name": "Ptr Atnsn",
+                "responseToClaim": "Yes",
+                "response_status": "Accepted",
+                "responseStruckOut": "No",
+                "respondent_address": {
+                     "PostCode": "SX28 8WH",
+                    "PostTown": "Noddy town",
+                    "AddressLine1": "Castlm Husm",
+                    "AddressLine2": "31 Lisbon Street"
+                },
+                "responseReceivedDate": "2018-06-07",
+                "response_referred_to_judge": "2018-06-14",
+                "respondent_contact_preference": "Post"
+            }
+        },
+        {
+          
+            "value": {
+                "respondent_name": "Annz Crzwly",
+                "responseStruckOut": "No",
+                "respondent_address": {
+                    "County": "Tyne & Wear",
+                     "PostCode": "SX28 8WH",
+                    "PostTown": "Newcastle Upon Tyne",
+                    "AddressLine1": "some places",
+                    "AddressLine2": "N I Constributions Office",
+                    "AddressLine3": "Benton Park View"
+                },
+                "responseStruckOutDate": "2018-05-10",
+                "responseStruckOutReason": "Entered in error",
+                "respondent_contact_preference": "Post"
+            }
+        },
+        {
+          
+            "value": {
+                "respondent_name": "Elzzxt Cunnnzm",
+                "responseStruckOut": "No",
+                "respondent_address": {
+                    "PostCode": "SX28 8WH",
+                    "PostTown": "Glasgow",
+                    "AddressLine1": "some places",
+                    "AddressLine2": "Scotland Central",
+                    "AddressLine3": "Cotton House"
+                },
+                "responseStruckOutDate": "2018-05-10",
+                "responseStruckOutReason": "Entered in error",
+                "respondent_contact_preference": "Post"
+            }
+        },
+        {
+            
+            "value": {
+                "respondent_name": "Andrw Wnwrt",
+                "responseToClaim": "Yes",
+                "response_status": "Accepted",
+                "responseStruckOut": "No",
+                "respondent_address": {
+                     "PostCode": "SX28 8WH",
+                    "PostTown": "Noddy town",
+                    "AddressLine1": "some places",
+                    "AddressLine2": "Noddy town 1 T S O ",
+                    "AddressLine3": "Flower house"
+                },
+                "responseReceivedDate": "2018-06-07",
+                "response_referred_to_judge": "2018-06-14",
+                "respondent_contact_preference": "Post"
+            }
+        },
+        {
+         
+            "value": {
+                "respondent_name": "Gmmz Cpr",
+                "responseToClaim": "Yes",
+                "response_status": "Accepted",
+                "responseStruckOut": "No",
+                "respondent_address": {
+                    "County": "West borgville",
+                     "PostCode": "SX28 8WH",
+                    "PostTown": "Noddy town",
+                    "AddressLine1": "some places",
+                    "AddressLine2": "Noddy town 1 T S O",
+                    "AddressLine3": "Flower house"
+                },
+                "responseReceivedDate": "2018-06-07",
+                "responseRespondentName": "Gmmz Cpr",
+                "responseRespondentAddress": {
+                     "PostCode": "SX28 8WH",
+                    "PostTown": "London",
+                    "AddressLine1": "Hmrc 00",
+                    "AddressLine2": "Parliament Street"
+                },
+                "response_referred_to_judge": "2018-06-14",
+                "respondent_contact_preference": "Post"
+            }
+        },
+        {
+       
+            "value": {
+                "respondent_name": "Aysz Kzn",
+                "responseToClaim": "Yes",
+                "response_status": "Accepted",
+                "responseStruckOut": "No",
+                "respondent_address": {
+               "PostCode": "SX28 8WH",
+                    "PostTown": "Noddy town",
+                    "AddressLine1": "Castlm Husm",
+                    "AddressLine2": "31 Lisbon Street"
+                },
+                "responseReceivedDate": "2018-06-07",
+                "response_referred_to_judge": "2018-06-14",
+                "respondent_contact_preference": "Post"
+            }
+        },
+        {
+    
+            "value": {
+                "respondent_name": "Mtzl Rds",
+                "responseToClaim": "Yes",
+                "response_status": "Accepted",
+                "responseStruckOut": "No",
+                "respondent_address": {
+                    "County": "West borgville",
+                     "PostCode": "SX28 8WH",
+                    "PostTown": "Noddy town",
+                    "AddressLine1": "some places",
+                    "AddressLine2": "Noddy town 1 T S O",
+                    "AddressLine3": "Flower house"
+                },
+                "responseReceivedDate": "2018-06-07",
+                "response_referred_to_judge": "2018-06-14",
+                "respondent_contact_preference": "Post"
+            }
+        },
+        {
+       
+            "value": {
+                "respondent_name": "bob rob",
+                "response_status": "Accepted",
+                "responseStruckOut": "No",
+                "respondent_address": {
+                "PostCode": "SX28 8WH",
+                    "PostTown": "Bootle",
+                    "AddressLine1": "Cvl Smrvcm H R",
+                    "AddressLine2": "Ground Floor, Wing 1",
+                    "AddressLine3": "St Johns House"
+                },
+                "responseReceivedDate": "2018-06-07",
+                "response_referred_to_judge": "2018-06-14",
+                "respondent_contact_preference": "Post"
+            }
+        },
+        {
+          
+            "value": {
+                "respondent_name": "Stpn Frsyt",
+                "responseStruckOut": "No",
+                "respondent_address": {
+                    "County": "West borgville",
+                     "PostCode": "SX28 8WH",
+                    "PostTown": "Noddy town",
+                    "AddressLine1": "some places",
+                    "AddressLine2": "Noddy town 1 T S O ",
+                    "AddressLine3": "Flower house"
+                },
+                "responseStruckOutDate": "2018-05-10",
+                "responseStruckOutReason": "Entered in error",
+                "respondent_contact_preference": "Post"
+            }
+        },
+        {
+        
+            "value": {
+                "respondent_name": "k rita",
+                "responseToClaim": "Yes",
+                "response_status": "Accepted",
+                "responseStruckOut": "No",
+                "respondent_address": {
+                "PostCode": "SX28 8WH",
+                    "PostTown": "Noddy town",
+                    "AddressLine1": "Castlm Husm",
+                    "AddressLine2": "31 Lisbon Street"
+                },
+                "responseReceivedDate": "2018-06-07",
+                "response_referred_to_judge": "2018-06-14",
+                "respondent_contact_preference": "Post"
+            }
+        },
+        {
+           
+            "value": {
+                "respondent_name": "Tn Bvll",
+                "responseToClaim": "Yes",
+                "response_status": "Accepted",
+                "responseStruckOut": "No",
+                "respondent_address": {
+                    "PostCode": "SX28 8WH",
+                    "PostTown": "Hull",
+                    "AddressLine1": "Tax Acacmmy - Lmarg",
+                    "AddressLine2": "Cherry Court",
+                    "AddressLine3": "36 Ferensway"
+                },
+                "responseReceivedDate": "2018-06-07",
+                "responseStruckOutDate": "2018-07-09",
+                "responseStruckOutReason": "Chairman's decision",
+                "responseStruckOutChairman": "Yes",
+                "response_referred_to_judge": "2018-06-14",
+                "respondent_contact_preference": "Post"
+            }
+        }
+    ],
+    "claimant_TypeOfClaimant": "Individual",
+    "broughtForwardCollection": [
+        {
+            "value": {
+                "broughtForwardDate": "2019-08-12",
+                "broughtForwardDateReason": "Other action",
+                "broughtForwardDateCleared": "2020-01-30"
+            }
+        }
+    ],
+    "tribunalCorrespondenceFax": "01264 785136",
+    "tribunalCorrespondenceEmail": "Noddy townET@justice.gov.uk",
+    "tribunalCorrespondenceAddress": {
+         "PostCode": "SX28 8WH",
+        "PostTown": "Noddy town",
+        "AddressLine1": "4th Floor",
+        "AddressLine2": "City Exchange",
+        "AddressLine3": "11 Albion Street"
+    },
+    "tribunalCorrespondenceTelephone": "03263828392"
+},
+    "event": {
+        "id": "initiateCase",
+        "summary": "Perf Testing Case",
+        "description": ""
+    },
+    "event_token": "${eventToken}",
+    "ignore_warning": false,
+    "draft_id": null
+}

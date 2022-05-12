@@ -1,0 +1,25 @@
+{
+  "data": {
+     "solsSolicitorIsApplying": "Yes",
+     "willAccessOriginal": "Yes",
+     "originalWillSignedDate": "2020-01-01",
+     "willHasCodicils": "No",
+     "dispenseWithNotice": "No",
+     "titleAndClearingType": "TCTNoT",
+     "solsSolicitorIsExec": "Yes",
+     "solsIdentifiedApplyingExecsCcdCopy": "John Smith",
+     "solsIdentifiedNotApplyingExecsCcdCopy": "None",
+     "solsIdentifiedApplyingExecs": "John Smith",
+     "solsIdentifiedNotApplyingExecs": "None",
+     "otherExecutorExists": "No",
+     "furtherEvidenceForApplication": null,
+     "solsAdditionalInfo": null
+  },
+  "event": {
+     "id": "solicitorUpdateProbate",
+     "summary": "",
+     "description": ""
+  },
+  "event_token": "${eventToken3}",
+  "ignore_warning": false
+}

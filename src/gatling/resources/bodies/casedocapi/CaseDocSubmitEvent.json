@@ -1,0 +1,78 @@
+{
+  "data": {
+    "boDocumentsUploaded": [
+      {
+        "id": "3301ecb1-ef17-41ec-94c9-5de42f87ea1c",
+        "value": {
+          "DocumentType": "will",
+          "DocumentLink": {
+            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID1}",
+            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID1}/binary",
+            "document_filename": "1MB.pdf",
+            "document_hash": "${hashToken1}"
+          },
+          "Comment": "test"
+        }
+      },
+      {
+        "id": null,
+        "value": {
+          "DocumentType": "correspondence",
+          "DocumentLink": {
+            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID2}",
+            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID2}/binary",
+            "document_filename": "2MB.pdf",
+            "document_hash": "${hashToken2}"
+          },
+          "Comment": "test"
+        }
+      },
+      {
+        "id": null,
+        "value": {
+          "DocumentType": "correspondence",
+          "DocumentLink": {
+            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID3}",
+            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID3}/binary",
+            "document_filename": "3MB.pdf",
+            "document_hash": "${hashToken3}"
+          },
+          "Comment": "test"
+        }
+      },
+      {
+        "id": null,
+        "value": {
+          "DocumentType": "correspondence",
+          "DocumentLink": {
+            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID4}",
+            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID4}/binary",
+            "document_filename": "5MB.pdf",
+            "document_hash": "${hashToken4}"
+          },
+          "Comment": "test"
+        }
+      },
+      {
+        "id": null,
+        "value": {
+          "DocumentType": "correspondence",
+          "DocumentLink": {
+            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID5}",
+            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID5}/binary",
+            "document_filename": "10MB.pdf",
+            "document_hash": "${hashToken5}"
+          },
+          "Comment": "test"
+        }
+      }
+    ]
+  },
+  "event": {
+    "id": "boUploadDocumentsStop",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "${eventToken}",
+  "ignore_warning": false
+}

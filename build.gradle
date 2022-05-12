@@ -1,5 +1,4 @@
 plugins {
-//    id 'org.owasp.dependencycheck' version '5.1.0'
     id "org.owasp.dependencycheck" version "5.2.1"
     id 'scala'
     id 'com.github.lkishalmi.gatling' version '3.0.2'
@@ -48,16 +47,21 @@ dependencies {
     compile group: 'io.gatling', name: 'gatling-app', version: '3.2.0'
     compile group: 'io.gatling', name: 'gatling-recorder', version: '3.2.0'
     compile group: 'io.gatling.highcharts', name: 'gatling-charts-highcharts', version: '3.2.0'
-
 }
 
 gatling {
     toolVersion '3.2.0'
     scalaVersion '2.12.8'
-    simulations = [ //'uk.gov.hmcts.ccd.corecasedata.simulations.CreateUser'
-                    'uk.gov.hmcts.ccd.corecasedata.simulations.CCDUIPTSimulation'
-                    //'uk.gov.hmcts.ccd.corecasedata.simulations.CCDDataStoreSimulation'
-                    //'uk.gov.hmcts.ccd.corecasedata.simulations.CCDDataStoreSimulation'
+    simulations = [ 
+                    // 'uk.gov.hmcts.ccd.corecasedata.simulations.CCD_PerformanceRegression'
+                    // 'uk.gov.hmcts.ccd.corecasedata.simulations.CCDUIPTSimulation'
+                    // 'uk.gov.hmcts.ccd.corecasedata.simulations.DMStoreSimulation'
+                    // 'uk.gov.hmcts.ccd.corecasedata.simulations.CaseDocApiSimulation'
+                    // 'uk.gov.hmcts.ccd.corecasedata.simulations.CCD_StressTest'
+                    'uk.gov.hmcts.ccd.corecasedata.simulations.CreateUser'
+                    // 'uk.gov.hmcts.ccd.corecasedata.simulations.CCDDataStoreSimulation'
+                    // 'uk.gov.hmcts.ccd.corecasedata.simulations.CaseSharingSimulation'
+                    // 'uk.gov.hmcts.ccd.corecasedata.simulations.CCD_SearchSimulation'
     ]
 }
 

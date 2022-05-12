@@ -1,0 +1,52 @@
+{
+  "data": {
+    "applicants": [
+      {
+        "id": "e243b957-e56b-4a84-923b-3dbac10e0f76",
+        "value": {
+          "party": {
+            "organisationName": "fplorg-a00rw",
+            "pbaNumber": "PBA1234567",
+            "clientCode": null,
+            "customerReference": null,
+            "address": {
+              "AddressLine1": "4",
+              "AddressLine2": "Hibernia Gardens",
+              "AddressLine3": null,
+              "PostTown": "Hounslow",
+              "County": "middlesex",
+              "PostCode": "TW3 3SD",
+              "Country": null
+            },
+            "telephoneNumber": {
+              "telephoneNumber": "02077778888",
+              "contactDirection": "John Smith"
+            },
+            "jobTitle": "Legal Advisor",
+            "mobileNumber": {
+              "telephoneNumber": "07123123456"
+            },
+            "email": {
+              "email": "test@la.gov.uk"
+            }
+          }
+        }
+      }
+    ],
+    "solicitor": {
+      "name": "Steve Smith",
+      "mobile": "07898765678",
+      "telephone": "02088887766",
+      "email": "Steve@smith.com",
+      "dx": null,
+      "reference": null
+    }
+  },
+  "event": {
+    "id": "enterApplicant",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "${eventToken7}",
+  "ignore_warning": false
+}

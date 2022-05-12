@@ -1,0 +1,72 @@
+{
+  "data": {
+    "isAdmin": "No",
+    "solicitorName": "Joe Bloggs",
+    "solicitorFirm": "pforg-ljkcj",
+    "solicitorReference": "4ED5TBN",
+    "solicitorAddress": {
+      "AddressLine1": "4",
+      "AddressLine2": "Hibernia Gardens",
+      "AddressLine3": "Maharaj road",
+      "PostTown": "Hounslow",
+      "County": "middlesex",
+      "PostCode": "TW3 3SD",
+      "Country": "UK"
+    },
+    "solicitorPhone": null,
+    "solicitorEmail": "test@test.com",
+    "solicitorDXnumber": null,
+    "solicitorAgreeToReceiveEmails": "No",
+    "divorceCaseNumber": "EZ11D81265",
+    "divorceStageReached": "Petition Issued",
+    "applicantFMName": "John",
+    "applicantLName": "Smith",
+    "regionList": "southeast",
+    "southEastFRCList": "thamesvalley",
+    "thamesvalleyCourtList": "FR_thamesvalleyList_4",
+    "divRoleOfFrApplicant": null,
+    "appRespondentFMName": "Tess",
+    "appRespondentLName": "Smith",
+    "appRespondentRep": "No",
+    "respondentAddress": {
+      "AddressLine1": "Flat 10",
+      "AddressLine2": "Bramber House",
+      "AddressLine3": "Seven Kings Way",
+      "PostTown": "Kingston Upon Thames",
+      "County": null,
+      "Country": "United Kingdom",
+      "PostCode": "KT2 5BU"
+    },
+    "respondentPhone": null,
+    "respondentEmail": null,
+    "natureOfApplication2": [
+      "Lump Sum Order",
+      "Property Adjustment Order",
+      "Periodical Payment Order",
+      "Pension Sharing Order"
+    ],
+    "natureOfApplication3a": "Test address",
+    "natureOfApplication3b": "No mortgage details",
+    "orderForChildrenQuestion1": "No",
+    "consentOrder": {
+      "document_url": "${consentOrderDocumentId}",
+      "document_binary_url": "${consentOrderDocumentId}/binary",
+      "document_filename": "1MB.pdf"
+    },
+    "d81Question": "Yes",
+    "d81Joint": {
+      "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${d81JointDocumentId}",
+      "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${d81JointDocumentId}/binary",
+      "document_filename": "1MB.pdf"
+    },
+    "pensionCollection": [],
+    "otherCollection": []
+  },
+  "event": {
+    "id": "FR_amendApplicationDetails",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "${eventToken2}",
+  "ignore_warning": false
+}

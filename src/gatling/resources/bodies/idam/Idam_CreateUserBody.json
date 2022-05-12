@@ -1,0 +1,20 @@
+{
+  "email": "${email}",
+  "forename": "IAC",
+  "surname": "Perftest",
+  "password": "Password12",
+  "roles": [
+    {
+      "code": "pui-case-manager"
+    },
+    {
+      "code": "caseworker-ia-legalrep-solicitor"
+    },
+    {
+      "code": "caseworker-ia"
+    },
+    {
+      "code": "caseworker"
+    }
+  ]
+}

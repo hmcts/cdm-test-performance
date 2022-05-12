@@ -5,6 +5,12 @@ target/**
 *.iml
 *.project
 .gradle/
-build/**
 *.log
 out/**
+src/gatling/resources/application.conf
+bin/*
+.settings/*
+.vscode/*
+.classpath
+build/*
+CreatedIdamUsers.csv

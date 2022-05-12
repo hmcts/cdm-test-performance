@@ -1,0 +1,20 @@
+{
+  "data": {
+    "hearing": {
+      "timeFrame": "Within 18 days",
+      "type": "Standard case management hearing",
+      "type_GiveReason": "Perf Testing",
+      "withoutNotice": "No",
+      "reducedNotice": "No",
+      "respondentsAware": "Yes",
+      "respondentsAwareReason": "Perf testing"
+    }
+  },
+  "event": {
+    "id": "hearingNeeded",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "${eventToken6}",
+  "ignore_warning": false
+}

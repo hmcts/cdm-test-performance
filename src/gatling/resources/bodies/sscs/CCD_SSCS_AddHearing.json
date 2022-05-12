@@ -1,0 +1,39 @@
+{
+  "data": {
+    "hearings": [
+      {
+        "id": null,
+        "value": {
+          "venue": {
+            "name": "London",
+            "address": {
+              "line1": "Test Street",
+              "line2": "Test",
+              "line3": "Test",
+              "town": "London",
+              "county": "London",
+              "postcode": "KT25BU",
+              "country": "UK"
+            },
+            "googleMapLink": "test"
+          },
+          "judge": "Mr Test",
+          "hearingDate": "2021-11-01",
+          "time": "12:00",
+          "postponedDate": "2021-11-12",
+          "adjourned": "No",
+          "adjournedDate": "2021-11-01",
+          "hearingId": "test123445322",
+          "eventDate": "2021-12-03"
+        }
+      }
+    ]
+  },
+  "event": {
+    "id": "addHearing",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "${eventToken4}",
+  "ignore_warning": false
+}

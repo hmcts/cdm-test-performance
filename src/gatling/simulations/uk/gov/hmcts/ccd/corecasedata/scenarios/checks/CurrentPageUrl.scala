@@ -9,8 +9,6 @@ import io.gatling.http.check.url.CurrentLocationCheckType
 //import io.gatling.core.check.extractor.css.CssCheckType
 import io.gatling.core.check.css.CssCheckType
 
-
-
 /*object CurrentPageCheck {
     def save: CheckBuilder[HttpCheck, Response, Response, String] = currentLocation.saveAs("currentPage")
 
@@ -19,6 +17,5 @@ import io.gatling.core.check.css.CssCheckType
 
 object CurrentPageUrl {
     def save: CheckBuilder[CurrentLocationCheckType,String,String] = currentLocation.saveAs("currentPageUrl")
-
     def currentPageTemplate: String = "${currentPageUrl}"
 }

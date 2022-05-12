@@ -1,0 +1,25 @@
+{
+  "data": {
+    "solsSOTNeedToUpdate": "No",
+    "solsLegalStatementDocument": {
+      "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/899d6095-3a41-4963-b2de-96fee8fca6ac",
+      "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/899d6095-3a41-4963-b2de-96fee8fca6ac/binary",
+      "document_filename": "legalStatementProbate.pdf"
+    },
+    "solsSOTForenames": "John",
+    "solsSOTSurname": "Smith",
+    "solsSOTJobTitle": "mr solicitor",
+    "solsSolicitorFirmName": "test firm",
+    "extraCopiesOfGrant": "0",
+    "outsideUKGrantCopies": "0",
+    "solsPaymentMethods": "fee account",
+    "solsFeeAccountNumber": "00123"
+  },
+  "event": {
+    "id": "solicitorReviewAndConfirm",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "${eventToken4}",
+  "ignore_warning": false
+}

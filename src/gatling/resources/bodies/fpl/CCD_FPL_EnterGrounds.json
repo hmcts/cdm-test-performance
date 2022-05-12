@@ -1,0 +1,18 @@
+{
+  "data": {
+    "grounds": {
+      "thresholdReason": [
+        "beyondControl",
+        "noCare"
+      ],
+      "thresholdDetails": "Perf testing"
+    }
+  },
+  "event": {
+    "id": "enterGrounds",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "${eventToken3}",
+  "ignore_warning": false
+}

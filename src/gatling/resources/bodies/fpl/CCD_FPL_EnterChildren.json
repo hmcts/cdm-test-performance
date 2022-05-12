@@ -1,0 +1,86 @@
+{
+  "data": {
+    "children1": [
+      {
+        "id": "a9c8270c-ae28-4d59-bc03-dcb31f4df5eb",
+        "value": {
+          "party": {
+            "firstName": "John",
+            "lastName": "Smith",
+            "dateOfBirth": "2015-02-01",
+            "gender": "Boy",
+            "livingSituation": "Living with other family or friends",
+            "addressChangeDate": null,
+            "address": {
+              "AddressLine1": null,
+              "AddressLine2": null,
+              "AddressLine3": null,
+              "PostTown": null,
+              "County": null,
+              "PostCode": null,
+              "Country": null
+            },
+            "keyDates": null,
+            "careAndContactPlan": null,
+            "adoption": "No",
+            "mothersName": null,
+            "fathersName": null,
+            "fathersResponsibility": null,
+            "socialWorkerName": null,
+            "socialWorkerTelephoneNumber": {
+              "telephoneNumber": null,
+              "contactDirection": null
+            },
+            "additionalNeeds": null,
+            "detailsHidden": null,
+            "litigationIssues": "YES",
+            "litigationIssuesDetails": null
+          }
+        }
+      },
+      {
+        "id": null,
+        "value": {
+          "party": {
+            "firstName": "Jane",
+            "lastName": "Smith",
+            "dateOfBirth": "2018-02-01",
+            "gender": "Girl",
+            "livingSituation": "Living with other family or friends",
+            "addressChangeDate": null,
+            "address": {
+              "AddressLine1": null,
+              "AddressLine2": null,
+              "AddressLine3": null,
+              "PostTown": null,
+              "County": null,
+              "PostCode": null,
+              "Country": null
+            },
+            "keyDates": null,
+            "careAndContactPlan": null,
+            "adoption": "No",
+            "mothersName": null,
+            "fathersName": null,
+            "fathersResponsibility": null,
+            "socialWorkerName": null,
+            "socialWorkerTelephoneNumber": {
+              "telephoneNumber": null,
+              "contactDirection": null
+            },
+            "additionalNeeds": null,
+            "detailsHidden": null,
+            "litigationIssues": null
+          }
+        }
+      }
+    ]
+  },
+  "event": {
+    "id": "enterChildren",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "${eventToken1}",
+  "ignore_warning": false
+}
