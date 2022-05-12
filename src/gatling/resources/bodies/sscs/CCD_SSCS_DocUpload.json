@@ -3,23 +3,24 @@
      "sscsDocument": [
         {
            "value": {
-              "documentType": null,
+              "documentType": "otherPartyHearingPreferences",
               "documentEmailContent": null,
-              "documentDateAdded": null,
+              "documentDateAdded": "2022-05-03",
               "documentFileName": null,
               "controlNumber": null,
               "documentComment": null,
-              "evidenceIssued": null,
+              "evidenceIssued": "No",
               "bundleAddition": null,
               "documentTranslationStatus": null,
               "dateApproved": null,
               "partyUploaded": null,
               "originalPartySender": null,
+              "originalSenderOtherPartyId": null,
+              "originalSenderOtherPartyName": null,
               "documentLink": {
                  "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID}",
                  "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID}/binary",
-                 "document_filename": "${FileName1}",
-                 "document_hash": "${hashToken}"
+                 "document_filename": "${FileName1}"
               }
            },
            "id": null

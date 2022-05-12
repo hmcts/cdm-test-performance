@@ -1,0 +1,13 @@
+{
+    "data": {
+      "caseName": "test case"
+    },
+    "event": {
+      "id": "openCase",
+      "summary": "",
+      "description": ""
+    },
+    "event_token": "${eventToken}",
+    "ignore_warning": false,
+    "draft_id": null
+  }

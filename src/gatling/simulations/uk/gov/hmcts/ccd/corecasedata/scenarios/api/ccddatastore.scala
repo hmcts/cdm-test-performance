@@ -2,7 +2,6 @@ package uk.gov.hmcts.ccd.corecasedata.scenarios
 
 import java.text.SimpleDateFormat
 import java.util.Date
-
 import com.typesafe.config.{Config, ConfigFactory}
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
@@ -10,6 +9,7 @@ import uk.gov.hmcts.ccd.corecasedata.scenarios.utils._
 import java.io.{BufferedWriter, FileWriter}
 import io.gatling.core.check.jsonpath.JsonPathCheckType
 import com.fasterxml.jackson.databind.JsonNode
+import scala.util.Random
 
 object ccddatastore {
 
@@ -23,6 +23,11 @@ val feedCaseSearchData = csv("caseSearchData.csv").random
 val feedEthosSearchData = csv("EthosSearchData.csv").random
 
 val constantThinkTime = Environment.constantthinkTime
+
+private val rng: Random = new Random()
+private def niNumber(): String = rng.alphanumeric.filter(_.isDigit).take(8).mkString
+private def firstName(): String = rng.alphanumeric.filter(_.isLetter).take(10).mkString
+private def lastName(): String = rng.alphanumeric.filter(_.isLetter).take(10).mkString
 
 val headers_0 = Map( //Authorization token needs to be generated with idam login
   "Authorization" -> "AdminApiAuthToken ",
@@ -123,18 +128,24 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
   val CCDAPI_SSCSCreate =
 
     exec(http("API_SSCS_GetEventToken")
-      .get(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/event-triggers/appealCreated/token")
+      .get(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/event-triggers/validAppealCreated/token")
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .exec(_.setAll(
+        ("NINumber", niNumber()),
+        ("firstname", firstName()),
+        ("lastname", lastName())
+    ))
 
     .exec(http("API_SSCS_CreateCase")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases")
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
-      .body(StringBody("{\n  \"data\": {\n    \"caseReference\": null,\n    \"caseCreated\": \"2021-11-03\",\n    \"region\": null,\n    \"appeal\": {\n      \"receivedVia\": \"Online\",\n      \"mrnDetails\": {\n        \"dwpIssuingOffice\": \"DWP\",\n        \"mrnDate\": \"2020-12-22\",\n        \"mrnLateReason\": null,\n        \"mrnMissingReason\": null\n      },\n      \"appellant\": {\n        \"name\": {\n          \"title\": \"Mr\",\n          \"firstName\": \"John\",\n          \"middleName\": null,\n          \"lastName\": \"Smith\"\n        },\n        \"identity\": {\n          \"dob\": \"2000-03-01\",\n          \"nino\": \"AB1234567Z\"\n        },\n        \"address\": {\n          \"line1\": \"24 Test Street\",\n          \"line2\": null,\n          \"line3\": null,\n          \"town\": \"London\",\n          \"county\": null,\n          \"postcode\": \"KT2 5BU\",\n          \"country\": \"UK\"\n        },\n        \"contact\": {\n          \"phone\": \"07123456789\",\n          \"mobile\": null,\n          \"email\": null\n        },\n        \"isAppointee\": \"No\",\n        \"appointee\": {\n          \"name\": {\n            \"title\": null,\n            \"firstName\": null,\n            \"middleName\": null,\n            \"lastName\": null\n          },\n          \"identity\": {\n            \"dob\": null,\n            \"nino\": null\n          },\n          \"address\": {\n            \"line1\": null,\n            \"line2\": null,\n            \"line3\": null,\n            \"town\": null,\n            \"county\": null,\n            \"postcode\": null,\n            \"country\": null\n          },\n          \"contact\": {\n            \"phone\": null,\n            \"mobile\": null,\n            \"email\": null\n          }\n        },\n        \"isAddressSameAsAppointee\": null\n      },\n      \"benefitType\": {\n        \"code\": null,\n        \"description\": null\n      },\n      \"hearingType\": null,\n      \"hearingOptions\": {\n        \"wantsToAttend\": null,\n        \"languageInterpreter\": null,\n        \"other\": null,\n        \"signLanguageType\": null\n      },\n      \"appealReasons\": {\n        \"reasons\": [],\n        \"otherReasons\": null\n      },\n      \"supporter\": {\n        \"name\": {\n          \"title\": null,\n          \"firstName\": null,\n          \"middleName\": null,\n          \"lastName\": null\n        },\n        \"contact\": {\n          \"phone\": null,\n          \"mobile\": null,\n          \"email\": null\n        }\n      },\n      \"rep\": {\n        \"hasRepresentative\": null\n      },\n      \"signer\": null\n    },\n    \"regionalProcessingCenter\": {\n      \"name\": null,\n      \"address1\": null,\n      \"address2\": null,\n      \"address3\": null,\n      \"address4\": null,\n      \"postcode\": null,\n      \"city\": null,\n      \"phoneNumber\": null,\n      \"faxNumber\": null,\n      \"email\": null\n    },\n    \"panel\": {\n      \"assignedTo\": null,\n      \"medicalMember\": null,\n      \"disabilityQualifiedMember\": null\n    }\n  },\n  \"event\": {\n    \"id\": \"appealCreated\",\n    \"summary\": \"\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"${eventToken}\",\n  \"ignore_warning\": false,\n  \"draft_id\": null\n}"))
+      .body(ElFileBody("bodies/sscs/CCD_SSCS_CreateValidAppeal.json"))
       .check(jsonPath("$.id").saveAs("caseId")))
 
     .pause(Environment.constantthinkTime)
@@ -377,7 +388,7 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
-      .body(ElFileBody("IACCreateCase.json"))
+      .body(ElFileBody("bodies/iac/IACCreateCase.json"))
       .check(jsonPath("$.id").saveAs("caseId")))
 
   val CCDAPI_FPLCreate =

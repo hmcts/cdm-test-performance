@@ -140,53 +140,6 @@ class CCD_PerformanceRegression extends Simulation  {
       }
     }
 
-  //CCD UI Requests
-  val UI_CCDProbateScenario = scenario("CCD UI Probate")
-    .repeat(1) {
-      exec(Browse.Homepage)
-      .feed(feedProbateUserData)
-      .exec(PBGoR.submitLogin)
-      .repeat(ui_PBiteration) {
-        exec(PBGoR.PBCreateCase)
-        .exec(PBGoR.PBPaymentSuccessful)
-        .exec(PBGoR.PBDocUpload)
-        .exec(PBGoR.PBStopCase)
-        .exec(PBGoR.PBSearch)
-        .exec(PBGoR.PBView)
-        // .exec(WaitforNextIteration.waitforNextIteration)
-      }
-      .exec(Logout.ccdLogout)
-  }
-
-  val UI_CCDSSCSScenario = scenario("CCD UI SSCS")
-    .repeat(1) {
-     exec(Browse.Homepage)
-     .feed(feedSSCSUserData)
-      .exec(SSCS.SSCSLogin)
-      .repeat(ui_SSCSiteration) {
-        exec(SSCS.SSCSCreateCase)
-        .exec(SSCS.SSCSDocUpload)
-        .exec(SSCS.SSCSSearchAndView)
-        // .exec(WaitforNextIteration.waitforNextIteration)
-      }
-      .exec(Logout.ccdLogout)
-    }
-
-  val UI_CCDCMCScenario = scenario("CCD UI CMC")
-    .repeat(1) {
-      exec(Browse.Homepage)
-      .feed(feedCMCUserData)
-      .exec(CMC.CMCLogin)
-      .repeat(ui_CMCiteration) {
-        exec(CMC.CMCCreateCase)
-        .exec(CMC.CMCStayCase)
-        .exec(CMC.CMCSupportUpdate)
-        .exec(CMC.CMCSearchAndView)
-        // .exec(WaitforNextIteration.waitforNextIteration)
-      }
-      .exec(Logout.ccdLogout)
-  }
-
   //CCD Case Activity Requests
   val CaseActivityScn = scenario("CCD Case Activity Requests")
     .repeat(1) {
@@ -223,8 +176,6 @@ class CCD_PerformanceRegression extends Simulation  {
     }
 
   //Main CCD Performance Test
-  
-  
   setUp(
     //CCD API scenarios
     API_ProbateCreateCase.inject(rampUsers(225) during (10 minutes)), //180 during 10
@@ -233,21 +184,15 @@ class CCD_PerformanceRegression extends Simulation  {
     API_DivorceCreateCase.inject(rampUsers(225) during (10 minutes)), //180 during 10
     API_IACCreateCase.inject(rampUsers(225) during (10 minutes)), //180 during 10
     
-    // API_FPLCreateCase.inject(rampUsers(150) during (10 minutes)), //50 during 10
-
     //Case Activity Requests
     CaseActivityScn.inject(rampUsers(1500) during (20 minutes)), //1000 during 10
 
     //CCD Searches
     CCDSearchView.inject(rampUsers(200) during (10 minutes)), //100 during 10
     CCDElasticSearch.inject(rampUsers(300) during (10 minutes)) //200 during 10
-    
-    //Debugging requests (leave commented out for test runs please)
-    // API_ProbateCreateCase.inject(rampUsers(1) during (1 minutes)).disablePauses
     )
   .maxDuration(60 minutes) //60
   .protocols(httpProtocol)
-  
 
   
   //Smoke Test Scenario

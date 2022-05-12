@@ -17,6 +17,7 @@ object CreateUser {
   val divUserData = csv("DivorceSolUserData.csv")
   val roleFeeder = csv("RolesToAdd.csv").circular
   val numberFeeder = csv("NumberList.csv").circular
+  val userFeeder = csv("UserFeeder.csv").circular
 
   val headers_1 = Map( //ServiceAuthorization token can be called from http://rpe-service-auth-provider-perftest.service.core-compute-perftest.internal/testing-support/lease
     "Content-Type" -> "application/json",
@@ -60,7 +61,9 @@ object CreateUser {
     //   }
     // }
 
-  val GetAndApplyRole = feed(roleFeeder)
+  val GetAndApplyRole = 
+  
+    feed(roleFeeder)
 
     .exec(http("GetRole_${role}")
       .get(Environment.idamAPI + "/roles/name/${role}")
@@ -80,7 +83,9 @@ object CreateUser {
 
     .pause(1)
 
-  val GetAndRemoveRole = feed(roleFeeder)
+  val GetAndRemoveRole = 
+  
+    feed(roleFeeder)
 
     .exec(http("GetRole_${role}") //${role}
       .get(Environment.idamAPI + "/roles/name/${role}") //${role}
@@ -117,48 +122,59 @@ object CreateUser {
 //         session
 //     }
 
-  val CreateUserProfile = feed(feedUserData)
+  // val CreateUserProfile = feed(feedUserData)
 
-    .exec(http("request_4")
-      .post("http://ccd-user-profile-api-perftest.service.core-compute-perftest.internal/user-profile/users")
-      .headers(headers_1)
-      .body(StringBody("{\n    \"id\": \"${CCDUserName}\",\n    \"jurisdictions\": [{\"id\": \"DIVORCE\"},{\"id\": \"AUTOTEST1\"},{\"id\": \"CMC\"},{\"id\": \"PROBATE\"},{\"id\": \"SSCS\"},{\"id\": \"TRIBUNALS\"},{\"id\": \"EMPLOYMENT\"}],\n    \"work_basket_default_jurisdiction\": \"DIVORCE\",\n    \"work_basket_default_case_type\": \"DIVORCE\",\n    \"work_basket_default_state\": \"Submitted\"\n}")))
+  //   .exec(http("SetCCDUserProfile")
+  //     .post("http://ccd-user-profile-api-perftest.service.core-compute-perftest.internal/user-profile/users")
+  //     .headers("Content-Type", "application/json")
+  //     .header("Accept", "application/json")
+  //     .body(StringBody("{\n    \"id\": \"${CCDUserName}\",\n    \"jurisdictions\": [{\"id\": \"DIVORCE\"},{\"id\": \"AUTOTEST1\"},{\"id\": \"CMC\"},{\"id\": \"PROBATE\"},{\"id\": \"SSCS\"},{\"id\": \"TRIBUNALS\"},{\"id\": \"EMPLOYMENT\"}],\n    \"work_basket_default_jurisdiction\": \"DIVORCE\",\n    \"work_basket_default_case_type\": \"DIVORCE\",\n    \"work_basket_default_state\": \"Submitted\"\n}")))
 
-    // .exec {
-    //   session =>
-    //     println(session("CCDUserName").as[String])
-    //     session
-    // }
+  //   // .exec {
+  //   //   session =>
+  //   //     println(session("CCDUserName").as[String])
+  //   //     session
+  //   // }
 
-    .pause(1)
+  //   .pause(1)
 
   val CreateUserInIdam =
 
-    feed(numberFeeder)
+    // feed(numberFeeder)
+    feed(userFeeder)
 
     .exec(http("CreateUser")
       .post(Environment.idamAPI + "/testing-support/accounts")
       .header("Content-Type", "application/json")
-      .body(ElFileBody("Idam_CreateUserBody.json")))
+      .body(ElFileBody("bodies/idam/Idam_CreateUserBody.json"))
+      .check(jsonPath("$.id").saveAs("idamNewId"))
+      .check(jsonPath("$.email").saveAs("email"))
+      .check(status.saveAs("statusvalue")))
 
     //Outputs the user email and idam id to a CSV, can be commented out if not needed  
-    // .exec {
-    //   session =>
-    //     val fw = new BufferedWriter(new FileWriter("CreatedIdamUsers.csv", true))
-    //     try {
-    //       fw.write("PerfTest_SeniorTribunal_" + session("userNumber").as[String] + "@justice.gov.uk" + "\r\n")
-    //     }
-    //     finally fw.close()
-    //     session
-    // }
+    .doIf(session=>session("statusvalue").as[String].contains("201")) {
+      exec {
+        session =>
+          val fw = new BufferedWriter(new FileWriter("CreatedIdamUsers.csv", true))
+          try {
+            fw.write(session("email").as[String] + "," + "Password12,IA,Asylum," + session("idamNewId").as[String] + "\r\n")
+          }
+          finally fw.close()
+          session
+      }
+    }
+
+    .pause(1)
 
   val DeleteUserInIdam =
 
-    feed(feedUserData)
+    feed(userFeeder)
 
     .exec(http("DeleteUser")
       .delete(Environment.idamAPI + "/testing-support/accounts/${email}")
       .header("Content-Type", "application/json")
       .header("Accept", "application/json"))
+
+    .pause(1)
 
 }
