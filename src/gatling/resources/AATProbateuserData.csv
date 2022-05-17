@@ -1,2 +1,2 @@
-ProbateUserName,ProbateUserPassword,idamId,PBJurisdiction,PBCaseType
-probatebackoffice@gmail.com,Monday01,349978,PROBATE,GrantOfRepresentation
+Username,Password,Jurisdiction,CaseType,idamId
+probatebackoffice@gmail.com,Monday01,PROBATE,GrantOfRepresentation,349978
