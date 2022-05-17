@@ -15,7 +15,7 @@ def component = "case-worker"
 
 def secrets = [
     'ccd-aat': [
-        secret('ccd-api-gateway-oauth2-client-secret', 'ccdGatewayCS')
+        secret('ccd-api-gateway-oauth2-client-secret', 'S2S_SECRET')
     ]
 ]
 
