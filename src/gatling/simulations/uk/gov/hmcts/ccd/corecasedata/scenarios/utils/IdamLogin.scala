@@ -10,7 +10,7 @@ object IdamLogin {
   val config: Config = ConfigFactory.load()
   val IdamAPI = Environment.idamAPI
   val ccdScope = "openid profile authorities acr roles openid profile roles"
-  val ccdGatewayClientSecret = config.getString("ccdGatewayCS")
+  val ccdGatewayClientSecret = config.getString("auth.ccdGatewayCS")
 
   val GetIdamToken =
 
