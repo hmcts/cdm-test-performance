@@ -15,7 +15,7 @@ object ccddatastore {
 
 val config: Config = ConfigFactory.load()
 
-val ccdDataStoreUrl = "http://ccd-data-store-api-perftest.service.core-compute-perftest.internal"
+val ccdDataStoreUrl = "http://ccd-data-store-api-${env}.service.core-compute-${env}.internal"
 val CaseDocAPI = Environment.caseDocUrl
 
 val ccdScope = "openid profile authorities acr roles openid profile roles"
@@ -42,6 +42,14 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken")))
 
+    .exec(http("API_Provate_ValidateCreateCase")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"applyForGrant\",\n    \"summary\": \"test case\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"${eventToken}\",\n  \"ignore_warning\": false,\n  \"draft_id\": null\n}"))
+      )
+
     .exec(http("API_Probate_CreateCase")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases")
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
@@ -61,6 +69,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken2")))
 
+    .exec(http("API_Probate_ValidatePaymentSuccessful")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/probate/CCD_PaymentSuccess.json")))
+
     .exec(http("API_Probate_PaymentSuccessful")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
@@ -77,6 +92,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken4")))
+
+    .exec(http("API_Probate_ValidateStopCase")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(StringBody("{\n  \"data\": {\n    \"boCaseStopReasonList\": [\n      {\n        \"id\": null,\n        \"value\": {\n          \"caseStopReason\": \"Other\"\n        }\n      }\n    ]\n  },\n  \"event\": {\n    \"id\": \"boStopCaseForCaseCreated\",\n    \"summary\": \"\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"${eventToken4}\",\n  \"ignore_warning\": false\n}")))
 
     .exec(http("API_Probate_StopCase")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
@@ -117,12 +139,20 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID"))
       .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken")))
 
+    .exec(http("API_Probate_ValidateDocUpload")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/probate/CCD_Probate_DocUpload.json")))
+
     .exec(http("API_Probate_DocUpload")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
       .body(ElFileBody("bodies/probate/CCD_Probate_DocUpload.json")))
+
     .pause(Environment.constantthinkTime)
 
   val CCDAPI_SSCSCreate =
@@ -139,6 +169,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
         ("firstname", firstName()),
         ("lastname", lastName())
     ))
+
+    .exec(http("API_SSCS_ValidateCreateCase")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/sscs/CCD_SSCS_CreateValidAppeal.json")))
 
     .exec(http("API_SSCS_CreateCase")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases")
@@ -178,6 +215,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID"))
       .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken")))
 
+    .exec(http("API_SSCS_ValidateDocUpload")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/sscs/CCD_SSCS_DocUpload.json")))
+
     .exec(http("API_SSCS_DocUpload")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
@@ -194,6 +238,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken4")))
 
+    .exec(http("API_SSCS_ValidateAddHearing")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/sscs/CCD_SSCS_AddHearing.json")))
+
     .exec(http("API_SSCS_AddHearing")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
@@ -209,6 +260,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken5")))
+
+    .exec(http("API_SSCS_ValidateActionDirection")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/sscs/CCD_SSCS_ActionDirection.json")))
 
     .exec(http("API_SSCS_ActionDirection")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
@@ -227,6 +285,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .exec(http("API_CMC_ValidateCreateCase")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"CreateClaim\",\n    \"summary\": \"\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"${eventToken}\",\n  \"ignore_warning\": false,\n  \"draft_id\": null\n}")))
 
     .exec(http("API_CMC_CreateCase")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases")
@@ -247,6 +312,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken1")))
 
+    .exec(http("API_CMC_ValidateCaseStayed")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"StayClaim\",\n    \"summary\": \"\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"${eventToken1}\",\n  \"ignore_warning\": false\n}")))
+
     .exec(http("API_CMC_CaseStayed")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
@@ -262,6 +334,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken2")))
+
+    .exec(http("API_CMC_ValidateClaimNotes")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"ClaimNotes\",\n    \"summary\": \"Test Claim Note\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"${eventToken2}\",\n  \"ignore_warning\": false\n}")))
 
     .exec(http("API_CMC_ClaimNotes")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
@@ -279,6 +358,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken4")))
 
+    .exec(http("API_CMC_ValidateLinkLetterHolder")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"LinkLetterHolder\",\n    \"summary\": \"perf test\",\n    \"description\": \"link letter holder perf test description\"\n  },\n  \"event_token\": \"${eventToken4}\",\n  \"ignore_warning\": false\n}")))
+
     .exec(http("API_CMC_LinkLetterHolder")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
@@ -294,6 +380,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken5")))
+
+    .exec(http("API_CMC_ValidateLiftStay")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"LiftStay\",\n    \"summary\": \"perf test\",\n    \"description\": \"lift stay perf testing description\"\n  },\n  \"event_token\": \"${eventToken5}\",\n  \"ignore_warning\": false\n}")))
 
     .exec(http("API_CMC_LiftStay")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
@@ -312,6 +405,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .exec(http("API_Divorce_ValidateSolCreateCase")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/divorce/CCD_DivorceCreateSol.json")))
 
     .exec(http("API_Divorce_SolCreateCase")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases")
@@ -332,6 +432,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken2")))
 
+    .exec(http("API_Divorce_ValidateSolUpdateLanguage")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")      
+      .body(StringBody("{\"data\":{\"LanguagePreferenceWelsh\":\"No\"},\"event\":{\"id\":\"UpdateLanguage\",\"summary\":\"\",\"description\":\"\"},\"event_token\":\"${eventToken2}\",\"ignore_warning\":false}")))
+
     .exec(http("API_Divorce_SolUpdateLanguage")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
@@ -347,6 +454,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken3")))
+
+    .exec(http("API_Divorce_ValidateolCaseSubmit")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")      
+      .body(StringBody("{\n   \"data\":{\n      \"SolUrgentCase\":\"No\",\n      \"SolServiceMethod\":\"courtService\",\n      \"SolStatementOfReconciliationCertify\":\"Yes\",\n      \"SolStatementOfReconciliationDiscussed\":\"Yes\",\n      \"D8StatementOfTruth\":\"Yes\",\n      \"solSignStatementofTruth\":\"Yes\",\n      \"SolStatementOfReconciliationName\":\"Vuser\",\n      \"SolStatementOfReconciliationFirm\":\"Perf\",\n      \"StatementOfReconciliationComments\":null,\n      \"solApplicationFeeInPounds\":\"550\",\n      \"SolPaymentHowToPay\":\"feesHelpWith\",\n      \"D8HelpWithFeesReferenceNumber\":\"perfte\",\n      \"solApplicationFeeOrderSummary\":{\n         \"PaymentReference\":null,\n         \"PaymentTotal\":\"55000\",\n         \"Fees\":[\n            {\n               \"value\":{\n                  \"FeeCode\":\"FEE0002\",\n                  \"FeeAmount\":\"55000\",\n                  \"FeeDescription\":\"Filing an application for a divorce, nullity or civil partnership dissolution\",\n                  \"FeeVersion\":\"5\"\n               }\n            }\n         ]\n      }\n   },\n   \"event\":{\n      \"id\":\"solicitorStatementOfTruthPaySubmit\",\n      \"summary\":\"\",\n      \"description\":\"\"\n   },\n   \"event_token\":\"${eventToken3}\",\n   \"ignore_warning\":false\n}")))
 
     .exec(http("API_Divorce_SolCaseSubmit")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
@@ -383,6 +497,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken")))
 
+    .exec(http("API_IAC_ValidateCreateCase")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/iac/IACCreateCase.json")))
+
     .exec(http("API_IAC_CreateCase")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases")
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
@@ -400,12 +521,19 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken")))
 
+    .exec(http("API_FPL_ValidateCreateCase")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("FPLCreateCase.json")))
+
     .exec(http("API_FPL_CreateCase")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases")
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
-      .body(ElFileBody("FPLCreateCase.json")).asJson
+      .body(ElFileBody("FPLCreateCase.json"))//.asJson
       .check(jsonPath("$.id").saveAs("caseId")))
 
     .pause(Environment.constantthinkTime)
@@ -418,6 +546,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken1")))
+
+    .exec(http("API_FPL_ValidateAddChildren")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")      
+      .body(ElFileBody("bodies/fpl/CCD_FPL_EnterChildren.json")))
 
     .exec(http("API_FPL_AddChildren")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
@@ -435,6 +570,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken2")))
 
+    .exec(http("API_FPL_ValidateEnterRespondents")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")      
+      .body(ElFileBody("bodies/fpl/CCD_FPL_EnterRespondents.json")))
+
     .exec(http("API_FPL_EnterRespondents")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
@@ -450,6 +592,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken3")))
+
+    .exec(http("API_FPL_ValidateEnterGrounds")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")      
+      .body(ElFileBody("bodies/fpl/CCD_FPL_EnterGrounds.json")))
 
     .exec(http("API_FPL_EnterGrounds")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
@@ -486,6 +635,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID"))
       .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken")))
 
+    .exec(http("API_FPL_ValidateDocUpload")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")      
+      .body(ElFileBody("bodies/fpl/CCD_FPL_UploadDocuments.json")))
+
     .exec(http("API_FPL_DocUpload")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
@@ -501,6 +657,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken5")))
+    
+    .exec(http("API_FPL_ValidateOrdersNeeded")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")      
+      .body(ElFileBody("bodies/fpl/CCD_FPL_OrdersNeeded.json")))
 
     .exec(http("API_FPL_OrdersNeeded")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
@@ -518,6 +681,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken6")))
 
+    .exec(http("API_FPL_ValidateHearingNeeded")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")      
+      .body(ElFileBody("bodies/fpl/CCD_FPL_HearingNeeded.json")))
+
     .exec(http("API_FPL_HearingNeeded")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
@@ -534,6 +704,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken7")))
 
+    .exec(http("API_FPL_ValidateEnterLocalAuthority")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")      
+      .body(ElFileBody("bodies/fpl/CCD_FPL_LocalAuthority.json")))
+
     .exec(http("API_FPL_EnterLocalAuthority")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
@@ -549,6 +726,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken3")))
+
+    .exec(http("API_FPL_ValidateOtherProposal")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")      
+      .body(ElFileBody("bodies/fpl/CCD_FPL_OtherProposal.json")))
 
     .exec(http("API_FPL_OtherProposal")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
@@ -567,6 +751,13 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .check(jsonPath("$.token").saveAs("eventToken8"))
       .check(jsonPath("$.case_details.case_data.draftApplicationDocument.document_url").saveAs("documentUrl"))
       .check(jsonPath("$.case_details.case_data.draftApplicationDocument.document_filename").saveAs("documentFilename")))
+
+    .exec(http("API_FPL_ValidateSubmitApplication")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/fpl/CCD_FPL_SubmitApplication.json")))
 
     .exec(http("API_FPL_SubmitApplication")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")

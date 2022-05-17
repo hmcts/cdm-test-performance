@@ -7,26 +7,59 @@ import io.gatling.http.Predef._ //comment out for VM runs, only required for pro
 import uk.gov.hmcts.ccd.corecasedata.scenarios._
 import uk.gov.hmcts.ccd.corecasedata.scenarios.utils._
 import scala.concurrent.duration._
+import io.gatling.core.controller.inject.open.OpenInjectionStep
+import io.gatling.commons.stats.assertion.Assertion
+import io.gatling.core.pause.PauseType
 
 class CCD_PerformanceRegression extends Simulation  {
 
-  //Iteration Settings
-  val api_probateIteration = 55 //55
-  val api_sscsIteration = 50 //50
-  val api_divorceIteration = 60 //60
-  val api_iacIteration = 40 //40
-  val api_fplIteration = 36 //36
-  val api_frIteration = 40 //40
-  val api_cmcIteration = 45 //45
+  /* TEST TYPE DEFINITION */
+	/* pipeline = nightly pipeline against the AAT environment (see the Jenkins_nightly file) */
+	/* perftest (default) = performance test against the perftest environment */
+	val testType = scala.util.Properties.envOrElse("TEST_TYPE", "perftest")
 
-  val ui_PBiteration = 9
-  val ui_SSCSiteration = 17
-  val ui_CMCiteration = 15
-  val ui_Diviteration = 9
+	//set the environment based on the test type
+	val environment = testType match{
+		case "perftest" => "perftest"
+		case "pipeline" => "aat"
+		case _ => "**INVALID**"
+	}
 
-  val caseActivityIteration = 120
-  val caseActivityListIteration = 12
-  val ccdSearchIteration = 40
+	/* ******************************** */
+	/* ADDITIONAL COMMAND LINE ARGUMENT OPTIONS */
+	val debugMode = System.getProperty("debug", "off") //runs a single user e.g. ./gradlew gatlingRun -Ddebug=on (default: off)
+	val env = System.getProperty("env", environment) //manually override the environment aat|perftest e.g. ./gradlew gatlingRun -Denv=aat
+	/* ******************************** */
+
+	/* PERFORMANCE TEST CONFIGURATION */
+	val probateTargetPerHour:Double = 8000
+	val cmcTargetPerHour:Double = 8000
+  val divorceTargetPerHour:Double = 8000
+  val iacTargetPerHour:Double = 8000
+  val fplTargetPerHour:Double = 8000
+  val nfdTargetPerHour:Double = 8000
+  val caseActivityTargetPerHour:Double = 850000
+  val caseActivityListTargetPerHour:Double = 90000
+  val searchTargetPerHour:Double = 8000
+  val elasticSearchTargetPerHour:Double = 120000
+
+	val rampUpDurationMins = 10
+	val rampDownDurationMins = 10
+	val testDurationMins = 60
+
+	val numberOfPipelineUsers = 5
+	val pipelinePausesMillis:Long = 3000 //3 seconds
+
+	//Determine the pause pattern to use:
+	//Performance test = use the pauses defined in the scripts
+	//Pipeline = override pauses in the script with a fixed value (pipelinePauseMillis)
+	//Debug mode = disable all pauses
+	val pauseOption:PauseType = debugMode match{
+		case "off" if testType == "perftest" => constantPauses
+		case "off" if testType == "pipeline" => customPauses(pipelinePausesMillis)
+		case _ => disabledPauses
+	}
+
   val elasticSearchIteration = 370
 
   val feedSSCSUserData = csv("SSCSUserData.csv").circular
@@ -43,8 +76,9 @@ class CCD_PerformanceRegression extends Simulation  {
   val config: Config = ConfigFactory.load()
 
   val httpProtocol = Environment.HttpProtocol
-    .baseUrl(BaseURL)
+    .baseUrl(Environment.baseURL.replace("${env}", s"${env}"))
     .doNotTrackHeader("1")
+    .disableCaching
 
   /*================================================================================================
 
@@ -54,172 +88,163 @@ class CCD_PerformanceRegression extends Simulation  {
 
   //CCD API - Create & Case Event Journeys
   val API_ProbateCreateCase = scenario("Probate Case Create")
-    .repeat(1) {
-      exec(S2S.s2s("ccd_data"))
+    .exitBlockOnFail {
+      exec(_.set("env", s"${env}"))
+      .exec(S2S.s2s("ccd_data"))
       .feed(feedProbateUserData)
       .exec(IdamLogin.GetIdamToken)
-      .repeat(api_probateIteration) { //api_probateIteration
-        exec(ccddatastore.CCDAPI_ProbateCreate)
-        .exec(ccddatastore.CCDAPI_ProbateCaseEvents)
-        .exec(S2S.s2s("probate_backend")) 
-        .exec(ccddatastore.CCDAPI_ProbateDocUpload) 
-        .exec(WaitforNextIteration.waitforNextIteration)
-      }
+      .exec(ccddatastore.CCDAPI_ProbateCreate)
+      .exec(ccddatastore.CCDAPI_ProbateCaseEvents)
+      .exec(S2S.s2s("probate_backend")) 
+      .exec(ccddatastore.CCDAPI_ProbateDocUpload) 
     }
 
   val API_SSCSCreateCase = scenario("SSCS Case Create")
-    .repeat(1) {
-      exec(S2S.s2s("ccd_data"))
+    .exitBlockOnFail {
+      exec(_.set("env", s"${env}"))
+      .exec(S2S.s2s("ccd_data"))
       .feed(feedSSCSUserData)
       .exec(IdamLogin.GetIdamToken)
-      .repeat(api_sscsIteration) { //api_sscsIteration
-        exec(ccddatastore.CCDAPI_SSCSCreate)
-        .exec(S2S.s2s("sscs"))
-        .exec(ccddatastore.CCDAPI_SSCSCaseEvents)
-        .exec(WaitforNextIteration.waitforNextIteration)
-      }
+      .exec(ccddatastore.CCDAPI_SSCSCreate)
+      .exec(S2S.s2s("sscs"))
+      .exec(ccddatastore.CCDAPI_SSCSCaseEvents)
     }
 
   val API_CMCCreateCase = scenario("CMC Case Create")
-    .repeat(1) {
-      exec(S2S.s2s("ccd_data"))
+    .exitBlockOnFail {
+      exec(_.set("env", s"${env}"))
+      .exec(S2S.s2s("ccd_data"))
       .feed(feedCMCUserData)
       .exec(IdamLogin.GetIdamToken)
-      .repeat(api_cmcIteration) { //api_cmcIteration
-        exec(ccddatastore.CCDAPI_CMCCreate)
-        .exec(ccddatastore.CCDAPI_CMCCaseEvents)
-        .exec(WaitforNextIteration.waitforNextIteration)
-      }
+      .exec(ccddatastore.CCDAPI_CMCCreate)
+      .exec(ccddatastore.CCDAPI_CMCCaseEvents)
     }
 
   val API_DivorceCreateCase = scenario("Divorce Case Create")
-    .repeat(1) {
-      exec(S2S.s2s("ccd_data"))
+    .exitBlockOnFail {
+      exec(_.set("env", s"${env}"))
+      .exec(S2S.s2s("ccd_data"))
       .feed(feedDivorceUserData)
       .exec(IdamLogin.GetIdamToken)
-      .repeat(api_divorceIteration) { //api_divorceIteration
-        exec(ccddatastore.CCDAPI_DivorceSolicitorCreate)
-        .exec(ccddatastore.CCDAPI_DivorceSolicitorCaseEvents)
-        .exec(WaitforNextIteration.waitforNextIteration)
-      }
+      .exec(ccddatastore.CCDAPI_DivorceSolicitorCreate)
+      .exec(ccddatastore.CCDAPI_DivorceSolicitorCaseEvents)
     }
 
   val API_IACCreateCase = scenario("IAC Case Create")
-    .repeat(1) {
-      exec(S2S.s2s("ccd_data"))
+    .exitBlockOnFail {
+      exec(_.set("env", s"${env}"))
+      .exec(S2S.s2s("ccd_data"))
       .feed(feedIACUserData)
       .exec(IdamLogin.GetIdamToken)      
-      .repeat(api_iacIteration) { //api_iacIteration
-        exec(ccddatastore.CCDAPI_IACCreate)
-        .exec(WaitforNextIteration.waitforNextIteration)
-      }
+      .exec(ccddatastore.CCDAPI_IACCreate)
     }
 
   val API_FPLCreateCase = scenario("FPL Case Create")
-    .repeat(1) {
-      exec(S2S.s2s("ccd_data"))
+    .exitBlockOnFail {
+      exec(_.set("env", s"${env}"))
+      .exec(S2S.s2s("ccd_data"))
       .feed(feedFPLUserData)
       .exec(IdamLogin.GetIdamToken) 
-      .repeat(api_fplIteration) { //api_fplIteration
-        exec(ccddatastore.CCDAPI_FPLCreate)
-        .exec(S2S.s2s("xui_webapp"))
-        .exec(ccddatastore.CCDAPI_FPLCaseEvents)
-        .exec(WaitforNextIteration.waitforNextIteration)
-      }
+      .exec(ccddatastore.CCDAPI_FPLCreate)
+      .exec(S2S.s2s("xui_webapp"))
+      .exec(ccddatastore.CCDAPI_FPLCaseEvents)
     }
 
   val API_NFDCreateCase = scenario("Divorce Case Create")
-    .repeat(1) {
-      exec(S2S.s2s("ccd_data"))
+    .exitBlockOnFail {
+      exec(_.set("env", s"${env}"))
+      .exec(S2S.s2s("ccd_data"))
       .feed(feedNFDUserData)
       .exec(IdamLogin.GetIdamToken)
-      .repeat(1) { //api_nfdIteration
-        exec(ccddatastore.CCDAPI_DivorceNFDCreate)
-        // .exec(ccddatastore.CCDAPI_DivorceSolicitorCaseEvents)
-        // .exec(WaitforNextIteration.waitforNextIteration)
-      }
+      .exec(ccddatastore.CCDAPI_DivorceNFDCreate)
     }
 
   //CCD Case Activity Requests
+  val CaseActivityListScn = scenario("CCD Case Activity List Requests")
+    .exitBlockOnFail {
+      exec(_.set("env", s"${env}"))
+      .exec(ccdcaseactivity.CDSGetRequest)
+      .exec(ccdcaseactivity.CaseActivityList)
+    }
+  
   val CaseActivityScn = scenario("CCD Case Activity Requests")
-    .repeat(1) {
-      exec(ccdcaseactivity.CDSGetRequest)
-      .repeat(5) {
-        repeat(caseActivityListIteration) {
-          exec(ccdcaseactivity.CaseActivityList)
-        }
-        .repeat(caseActivityIteration) {
-          exec(ccdcaseactivity.CaseActivityRequest)
-        }
-      }
+    .exitBlockOnFail {
+      exec(_.set("env", s"${env}"))
+      .exec(ccdcaseactivity.CDSGetRequest)
+      .exec(ccdcaseactivity.CaseActivityRequest)
     }
 
   //CCD Search Requests (non-Elastic Search)
   val CCDSearchView = scenario("CCD Search and View Cases")
-    .repeat(1) {
-      exec(S2S.s2s("ccd_data"))
+    .exitBlockOnFail {
+      exec(_.set("env", s"${env}"))
+      .exec(S2S.s2s("ccd_data"))
       .feed(feedEthosUserData)
       .exec(IdamLogin.GetIdamToken) 
-      .repeat(ccdSearchIteration) {
-        exec(ccddatastore.CCDAPI_EthosJourney)
-        .exec(WaitforNextIteration.waitforNextIteration)
-      }
+      .exec(ccddatastore.CCDAPI_EthosJourney)
     }
 
   //CCD Elastic Search Requests
   val CCDElasticSearch = scenario("CCD - Elastic Search")
-    .repeat(1) {
-      exec(elasticsearch.CDSGetRequest)
-      .repeat(elasticSearchIteration) {
-        exec(elasticsearch.ElasticSearchWorkbasket)
-      }
+    .exitBlockOnFail {
+      exec(_.set("env", s"${env}"))
+      .exec(elasticsearch.CDSGetRequest)
+      .exec(elasticsearch.ElasticSearchWorkbasket)
     }
 
-  //Main CCD Performance Test
-  setUp(
-    //CCD API scenarios
-    API_ProbateCreateCase.inject(rampUsers(225) during (10 minutes)), //180 during 10
-    // API_SSCSCreateCase.inject(rampUsers(180) during (10 minutes)), //180 during 10
-    API_CMCCreateCase.inject(rampUsers(225) during (10 minutes)), //180 during 10
-    API_DivorceCreateCase.inject(rampUsers(225) during (10 minutes)), //180 during 10
-    API_IACCreateCase.inject(rampUsers(225) during (10 minutes)), //180 during 10
-    
-    //Case Activity Requests
-    CaseActivityScn.inject(rampUsers(1500) during (20 minutes)), //1000 during 10
+	def simulationProfile(simulationType: String, userPerHourRate: Double, numberOfPipelineUsers: Double): Seq[OpenInjectionStep] = {
+		val userPerSecRate = userPerHourRate / 3600
+		simulationType match {
+			case "perftest" =>
+				if (debugMode == "off") {
+					Seq(
+						rampUsersPerSec(0.00) to (userPerSecRate) during (rampUpDurationMins minutes),
+						constantUsersPerSec(userPerSecRate) during (testDurationMins minutes),
+						rampUsersPerSec(userPerSecRate) to (0.00) during (rampDownDurationMins minutes)
+					)
+				}
+				else{
+					Seq(atOnceUsers(1))
+				}
+			case "pipeline" =>
+				Seq(rampUsers(numberOfPipelineUsers.toInt) during (2 minutes))
+			case _ =>
+				Seq(nothingFor(0))
+		}
+	}
 
-    //CCD Searches
-    CCDSearchView.inject(rampUsers(200) during (10 minutes)), //100 during 10
-    CCDElasticSearch.inject(rampUsers(300) during (10 minutes)) //200 during 10
-    )
-  .maxDuration(60 minutes) //60
+  //defines the test assertions, based on the test type
+  def assertions(simulationType: String): Seq[Assertion] = {
+    simulationType match {
+      case "perftest" =>
+        if (debugMode == "off") {
+          Seq(global.successfulRequests.percent.gte(95)
+          )
+        }
+        else{
+          Seq(global.successfulRequests.percent.gte(95)
+          )
+        }
+      case "pipeline" =>
+        Seq(global.successfulRequests.percent.gte(95),
+            forAll.successfulRequests.percent.gte(90)
+        )
+      case _ =>
+        Seq()
+    }
+  }
+
+	setUp(
+		API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
+		API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
+		API_DivorceCreateCase.inject(simulationProfile(testType, divorceTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
+		API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
+		CaseActivityListScn.inject(simulationProfile(testType, caseActivityListTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
+		CaseActivityScn.inject(simulationProfile(testType, caseActivityTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
+		CCDSearchView.inject(simulationProfile(testType, searchTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
+		CCDElasticSearch.inject(simulationProfile(testType, elasticSearchTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
+	)
   .protocols(httpProtocol)
+  .assertions(assertions(testType))
 
-  
-  //Smoke Test Scenario
-  /*setUp(
-    //CCD API scenarios
-    API_ProbateCreateCase.inject(rampUsers(5) during (1 minutes)), //50 during 10
-    // API_SSCSCreateCase.inject(rampUsers(5) during (1 minutes)), //50 during 10
-    API_CMCCreateCase.inject(rampUsers(5) during (1 minutes)), //50 during 10
-    API_DivorceCreateCase.inject(rampUsers(5) during (1 minutes)), //50 during 10
-    API_IACCreateCase.inject(rampUsers(5) during (1 minutes)), //50 during 10
-
-    // //Case Activity Requests
-    CaseActivityScn.inject(rampUsers(5) during (1 minutes)), 
-
-    // //CCD Searches
-    CCDSearchView.inject(rampUsers(5) during (1 minutes)), 
-    CCDElasticSearch.inject(rampUsers(5) during (1 minutes)) 
-    )
-  .maxDuration(10 minutes)
-  .protocols(httpProtocol)*/
-
-  /*
-  //Debug scenario
-  setUp(
-    API_SSCSCreateCase.inject(rampUsers(1) during (1 minutes))
-  )
-  .protocols(httpProtocol)
-  // .disablePauses
-  */
 }

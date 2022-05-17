@@ -5,16 +5,16 @@ import io.gatling.http.Predef._
 
 object Environment {
 
-  val idamURL = "https://idam-web-public.perftest.platform.hmcts.net"
-  val idamAPI = "https://idam-api.perftest.platform.hmcts.net"
-  val ccdEnvurl = "https://www-ccd.perftest.platform.hmcts.net"
-  val ccdDataStoreUrl = "ccd-data-store-api-perftest.service.core-compute-perftest.internal"
-  val baseURL = "https://gateway-ccd.perftest.platform.hmcts.net"
-  val s2sUrl = "http://rpe-service-auth-provider-perftest.service.core-compute-perftest.internal"
-  val xuiMCUrl = "https://manage-case.perftest.platform.hmcts.net/oauth2/callback"
-  val xuiBaseURL = "https://manage-case.perftest.platform.hmcts.net"
-  val dmStore = "http://dm-store-perftest.service.core-compute-perftest.internal"
-  val caseDocUrl = "http://ccd-case-document-am-api-perftest.service.core-compute-perftest.internal"
+  val idamURL = "https://idam-web-public.${env}.platform.hmcts.net"
+  val idamAPI = "https://idam-api.${env}.platform.hmcts.net"
+  val ccdEnvurl = "https://www-ccd.${env}.platform.hmcts.net"
+  val ccdDataStoreUrl = "ccd-data-store-api-${env}.service.core-compute-${env}.internal"
+  val baseURL = "https://gateway-ccd.${env}.platform.hmcts.net"
+  val s2sUrl = "http://rpe-service-auth-provider-${env}.service.core-compute-${env}.internal"
+  val xuiMCUrl = "https://manage-case.${env}.platform.hmcts.net/oauth2/callback"
+  val xuiBaseURL = "https://manage-case.${env}.platform.hmcts.net"
+  val dmStore = "http://dm-store-${env}.service.core-compute-${env}.internal"
+  val caseDocUrl = "http://ccd-case-document-am-api-${env}.service.core-compute-${env}.internal"
 
   val minThinkTime = 10 //10
   val maxThinkTime = 30 //30
