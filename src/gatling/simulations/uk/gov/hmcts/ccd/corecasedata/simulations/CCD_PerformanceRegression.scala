@@ -62,14 +62,18 @@ class CCD_PerformanceRegression extends Simulation  {
 
   val elasticSearchIteration = 370
 
+  //Perftest Data
   val feedSSCSUserData = csv("SSCSUserData.csv").circular
-  val feedProbateUserData = csv("ProbateUserData.csv").circular
+  val feedProbateUserDataPerftest = csv("ProbateUserData.csv").circular
   val feedCMCUserData = csv("CMCUserData.csv").circular
   val feedDivorceUserData = csv("DivorceSolUserData.csv").circular
   val feedIACUserData = csv("IACUserData.csv").circular
   val feedFPLUserData = csv("FPLUserData.csv").circular
   val feedEthosUserData = csv("EthosUserData.csv").circular
   val feedNFDUserData = csv("NFDUserData.csv").circular
+
+  //AAT Data
+  val feedProbateUserDataAAT = csv("AATProbateUserData.csv").circular
 
   //Gatling specific configs, required for perf testing
   val BaseURL = Environment.baseURL
@@ -91,7 +95,10 @@ class CCD_PerformanceRegression extends Simulation  {
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
       .exec(S2S.s2s("ccd_data"))
-      .feed(feedProbateUserData)
+      .doSwitch("${env}") (
+        "perftest" -> feed(feedProbateUserDataPerftest),
+        "aat" -> feed(feedProbateUserDataAAT)
+       )
       .exec(IdamLogin.GetIdamToken)
       .exec(ccddatastore.CCDAPI_ProbateCreate)
       .exec(ccddatastore.CCDAPI_ProbateCaseEvents)
