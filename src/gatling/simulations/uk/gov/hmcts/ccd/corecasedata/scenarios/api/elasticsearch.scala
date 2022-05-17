@@ -17,7 +17,7 @@ val ccdRedirectUri = "https://ccd-data-store-api-perftest.service.core-compute-p
 val ccdDataStoreUrl = "http://ccd-data-store-api-perftest.service.core-compute-perftest.internal"
 val escaseDataUrl = "https://ccd-api-gateway-web-perftest.service.core-compute-perftest.internal"
 val ccdClientId = "ccd_gateway"
-val ccdGatewayClientSecret = config.getString("ccdGatewayCS")
+val ccdGatewayClientSecret = config.getString("auth.ccdGatewayCS")
 
 val ccdScope = "openid profile authorities acr roles openid profile roles"
 val feedCSUserData = csv("CaseSharingUsers_Large.csv").circular

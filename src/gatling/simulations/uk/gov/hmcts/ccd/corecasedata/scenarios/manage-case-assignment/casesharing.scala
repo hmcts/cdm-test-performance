@@ -21,7 +21,7 @@ object casesharing {
     "Content-Type" -> "application/json")
 
   val xuiwebappClientSecret = config.getString("xuiwebappCS")
-  val ccdGatewayClientSecret = config.getString("ccdGatewayCS")
+  val ccdGatewayClientSecret = config.getString("auth.ccdGatewayCS")
 
   val CDSGetRequestLarge =
 

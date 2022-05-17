@@ -16,7 +16,7 @@ object casedocapi {
   val ccdDataStoreUrl = "http://ccd-data-store-api-perftest.service.core-compute-perftest.internal"
   val ccdClientId = "ccd_gateway"
   val ccdRedirectUri = "https://ccd-data-store-api-perftest.service.core-compute-perftest.internal/oauth2redirect"
-  val ccdGatewayClientSecret = config.getString("ccdGatewayCS")
+  val ccdGatewayClientSecret = config.getString("auth.ccdGatewayCS")
   val constantThinkTime = Environment.constantthinkTime
   val ccdScope = "openid profile authorities acr roles openid profile roles"
   val feed1mb = csv("casedocdata/1mbIds.csv").random
