@@ -90,6 +90,8 @@ val ElasticSearchGetVaryingSizes =
       .queryParam("ctid", "${caseType}")
       .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":1000,\"sort\":[{\"created_date\":\"DESC\"}]}")))
 
+    .pause(Environment.constantthinkTime)
+
   val CitizenSearch =
 
     feed(feedWorkbasketData)
