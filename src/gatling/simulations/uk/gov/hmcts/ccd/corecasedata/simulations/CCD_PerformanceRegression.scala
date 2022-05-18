@@ -196,6 +196,7 @@ class CCD_PerformanceRegression extends Simulation  {
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
       .exec(elasticsearch.CDSGetRequest)
+      .exec(elasticsearch.ElasticSearchGetVaryingSizes)
       .exec(elasticsearch.ElasticSearchWorkbasket)
     }
 

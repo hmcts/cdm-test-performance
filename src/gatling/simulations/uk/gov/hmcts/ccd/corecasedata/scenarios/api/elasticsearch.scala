@@ -48,84 +48,47 @@ val CDSGetRequest =
     .check(jsonPath("$.access_token").saveAs("access_token")))
     .exitHereIfFailed
 
-  // .exec(http("OIDC01_Authenticate")
-  //     .post(IdamAPI + "/authenticate")
-  //     .header("Content-Type", "application/x-www-form-urlencoded")
-  //     .formParam("username", "${email}") //${email}
-  //     .formParam("password", "Password12")
-  //     .formParam("redirectUri", ccdRedirectUri)
-  //     .formParam("originIp", "0:0:0:0:0:0:0:1")
-  //     .check(status is 200)
-  //     .check(headerRegex("Set-Cookie", "Idam.Session=(.*)").saveAs("authCookie")))
-  //     .exitHereIfFailed
+val ElasticSearchGetVaryingSizes =
 
-  // .exec(http("OIDC02_Authorize_CCD")
-  //     .post(IdamAPI + "/o/authorize?response_type=code&client_id=" + ccdClientId + "&redirect_uri=" + ccdRedirectUri + "&scope=" + ccdScope).disableFollowRedirect
-  //     .header("Content-Type", "application/x-www-form-urlencoded")
-  //     .header("Cookie", "Idam.Session=${authCookie}")
-  //     .header("Content-Length", "0")
-  //     .check(status is 302)
-  //     .check(headerRegex("Location", "code=(.*)&client_id").saveAs("code")))
-  //     .exitHereIfFailed
+    feed(feedWorkbasketData)
 
-  // .exec(http("OIDC03_Token_CCD")
-  //     .post(IdamAPI + "/o/token?grant_type=authorization_code&code=${code}&client_id=" + ccdClientId +"&redirect_uri=" + ccdRedirectUri + "&client_secret=" + ccdGatewayClientSecret)
-  //     .header("Content-Type", "application/x-www-form-urlencoded")
-  //     .header("Content-Length", "0")
-  //     .check(status is 200)
-  //     .check(jsonPath("$.access_token").saveAs("access_token")))
-  //     .exitHereIfFailed
-
-val CitizenLogin = 
-
-    exec(http("GetS2SToken")
-      .post(s2sUrl + "/testing-support/lease")
-      .header("Content-Type", "application/json")
-      .body(StringBody("{\"microservice\":\"ccd_data\"}"))
-      .check(bodyString.saveAs("bearerToken")))
-      .exitHereIfFailed
-
-    .exec(http("OIDC01_Authenticate")
-      .post(IdamAPI + "/authenticate")
-      .header("Content-Type", "application/x-www-form-urlencoded")
-      .formParam("username", "ccdloadtest1@gmail.com") //${userEmail}
-      .formParam("password", "Password12")
-      .formParam("redirectUri", ccdRedirectUri)
-      .formParam("originIp", "0:0:0:0:0:0:0:1")
-      .check(status is 200)
-      .check(headerRegex("Set-Cookie", "Idam.Session=(.*)").saveAs("authCookie")))
-      .exitHereIfFailed
-
-    .exec(http("OIDC02_Authorize_CCD")
-      .post(IdamAPI + "/o/authorize?response_type=code&client_id=" + ccdClientId + "&redirect_uri=" + ccdRedirectUri + "&scope=" + ccdScope).disableFollowRedirect
-      .header("Content-Type", "application/x-www-form-urlencoded")
-      .header("Cookie", "Idam.Session=${authCookie}")
-      .header("Content-Length", "0")
-      .check(status is 302)
-      .check(headerRegex("Location", "code=(.*)&client_id").saveAs("code")))
-      .exitHereIfFailed
-
-    .exec(http("OIDC03_Token_CCD")
-      .post(IdamAPI + "/o/token?grant_type=authorization_code&code=${code}&client_id=" + ccdClientId +"&redirect_uri=" + ccdRedirectUri + "&client_secret=" + ccdGatewayClientSecret)
-      .header("Content-Type", "application/x-www-form-urlencoded")
-      .header("Content-Length", "0")
-      //.header("Cookie", "Idam.Session=${authCookie}")
-      .check(status is 200)
-      .check(jsonPath("$.access_token").saveAs("access_token")))
-      .exitHereIfFailed
-
-val ElasticSearchGet25GoR =
-
-    exec(http("CCD_SearchCaseEndpoint_ElasticSearch")
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet25Cases")
       .post(ccdDataStoreUrl + "/searchCases")
       .header("ServiceAuthorization", "Bearer ${bearerToken}")
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
-      .queryParam("ctid", "GrantOfRepresentation")
-      .body(StringBody("{\n\t\"query\": {\n\t\t\"match_all\": {}\n\t\t},\n\t\t\"size\": 25,\n\t\t\"sort\":[ \n      { \n         \"last_modified\":\"desc\"\n      },\n      \"_score\"\n   ]\n}"))
-      .check(status in (200)))
+      .queryParam("ctid", "${caseType}")
+      .body(StringBody("{\n\t\"query\": {\n\t\t\"match_all\": {}\n\t\t},\n\t\t\"size\": 25,\n\t\t\"sort\":[ \n      { \n         \"last_modified\":\"desc\"\n      },\n      \"_score\"\n   ]\n}")))
 
     .pause(Environment.constantthinkTime)
+
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet100Cases")
+      .post(ccdDataStoreUrl + "/searchCases")
+      .header("ServiceAuthorization", "Bearer ${bearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .queryParam("ctid", "${caseType}")
+      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":100,\"sort\":[{\"created_date\":\"DESC\"}]}")))
+
+    .pause(Environment.constantthinkTime)
+
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet500Cases")
+      .post(ccdDataStoreUrl + "/searchCases")
+      .header("ServiceAuthorization", "Bearer ${bearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .queryParam("ctid", "${caseType}")
+      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":500,\"sort\":[{\"created_date\":\"DESC\"}]}")))
+
+    .pause(Environment.constantthinkTime)
+
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet1000Cases")
+      .post(ccdDataStoreUrl + "/searchCases")
+      .header("ServiceAuthorization", "Bearer ${bearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .queryParam("ctid", "${caseType}")
+      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":1000,\"sort\":[{\"created_date\":\"DESC\"}]}")))
 
   val CitizenSearch =
 
@@ -202,7 +165,7 @@ val ElasticSearchGet25GoR =
 
     .pause(Environment.constantthinkTime)
 
-  val ElasticSearchWorkbasketGoR1000 = 
+  val ElasticSearchWorkbasketGo1000 = 
 
     exec(http("CCD_SearchCaseEndpoint_ElasticSearch")
       .post(ccdDataStoreUrl + "/internal/searchCases")
@@ -264,7 +227,7 @@ val ElasticSearchGet25GoR =
 
     feed(feedWorkbasketData)
 
-    .exec(http("CCD_SearchCaseEndpoint_ElasticSearch")
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket25")
       .post(ccdDataStoreUrl + "/searchCases")
       .header("ServiceAuthorization", "Bearer ${bearerToken}")
       .header("Authorization", "Bearer ${access_token}")
@@ -273,8 +236,46 @@ val ElasticSearchGet25GoR =
       .queryParam("use_case", "WORKBASKET")
       .queryParam("view", "WORKBASKET")
       .queryParam("page", "1")
-      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":25,\"sort\":[{\"created_date\":\"DESC\"}]}"))
-      .check(status in (200)))
+      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":25,\"sort\":[{\"created_date\":\"DESC\"}]}")))
+
+    .pause(Environment.constantthinkTime)
+
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket100")
+      .post(ccdDataStoreUrl + "/searchCases")
+      .header("ServiceAuthorization", "Bearer ${bearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .queryParam("ctid", "${caseType}")
+      .queryParam("use_case", "WORKBASKET")
+      .queryParam("view", "WORKBASKET")
+      .queryParam("page", "1")
+      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":100,\"sort\":[{\"created_date\":\"DESC\"}]}")))
+
+    .pause(Environment.constantthinkTime)
+
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket500")
+      .post(ccdDataStoreUrl + "/searchCases")
+      .header("ServiceAuthorization", "Bearer ${bearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .queryParam("ctid", "${caseType}")
+      .queryParam("use_case", "WORKBASKET")
+      .queryParam("view", "WORKBASKET")
+      .queryParam("page", "1")
+      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":500,\"sort\":[{\"created_date\":\"DESC\"}]}")))
+
+    .pause(Environment.constantthinkTime)
+
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket1000")
+      .post(ccdDataStoreUrl + "/searchCases")
+      .header("ServiceAuthorization", "Bearer ${bearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .queryParam("ctid", "${caseType}")
+      .queryParam("use_case", "WORKBASKET")
+      .queryParam("view", "WORKBASKET")
+      .queryParam("page", "1")
+      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":1000,\"sort\":[{\"created_date\":\"DESC\"}]}")))
 
     .pause(Environment.constantthinkTime)
 
