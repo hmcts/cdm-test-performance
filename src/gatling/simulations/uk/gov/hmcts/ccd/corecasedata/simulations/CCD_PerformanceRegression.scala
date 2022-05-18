@@ -177,7 +177,7 @@ class CCD_PerformanceRegression extends Simulation  {
       exec(_.set("env", s"${env}"))
       .exec(ccdcaseactivity.CDSGetRequest)
       .repeat(caseActivityListIteration) {
-      .exec(ccdcaseactivity.CaseActivityList)
+        exec(ccdcaseactivity.CaseActivityList)
       }
     }
   
@@ -186,7 +186,7 @@ class CCD_PerformanceRegression extends Simulation  {
       exec(_.set("env", s"${env}"))
       .exec(ccdcaseactivity.CDSGetRequest)
       .repeat(caseActivityIteration) {
-        .exec(ccdcaseactivity.CaseActivityRequest)
+        exec(ccdcaseactivity.CaseActivityRequest)
       }
     }
 
@@ -198,7 +198,7 @@ class CCD_PerformanceRegression extends Simulation  {
       .feed(feedEthosUserData)
       .exec(IdamLogin.GetIdamToken) 
       .repeat(ccdSearchIteration) {
-        .exec(ccddatastore.CCDAPI_EthosJourney)
+        exec(ccddatastore.CCDAPI_EthosJourney)
       }
     }
 
@@ -208,7 +208,7 @@ class CCD_PerformanceRegression extends Simulation  {
       exec(_.set("env", s"${env}"))
       .exec(elasticsearch.CDSGetRequest)
       .repeat(elasticSearchIteration) {
-        .exec(elasticsearch.ElasticSearchGetVaryingSizes)
+        exec(elasticsearch.ElasticSearchGetVaryingSizes)
         .exec(elasticsearch.ElasticSearchWorkbasket)
       }
     }
