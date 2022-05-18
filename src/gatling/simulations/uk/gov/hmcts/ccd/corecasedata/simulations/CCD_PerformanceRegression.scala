@@ -65,8 +65,6 @@ class CCD_PerformanceRegression extends Simulation  {
 		case _ => disabledPauses
 	}
 
-  val elasticSearchIteration = 370
-
   //Perftest Data
   val feedSSCSUserData = csv("SSCSUserData.csv").circular
   val feedProbateUserDataPerftest = csv("ProbateUserData.csv").circular
