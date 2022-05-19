@@ -72,6 +72,16 @@ val ElasticSearchGetVaryingSizes =
 
     .pause(5)
 
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet75Cases")
+      .post(ccdDataStoreUrl + "/searchCases")
+      .header("ServiceAuthorization", "Bearer ${bearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .queryParam("ctid", "${caseType}")
+      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":75,\"sort\":[{\"created_date\":\"DESC\"}]}")))
+
+    .pause(5)
+
     .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet100Cases")
       .post(ccdDataStoreUrl + "/searchCases")
       .header("ServiceAuthorization", "Bearer ${bearerToken}")
@@ -79,16 +89,6 @@ val ElasticSearchGetVaryingSizes =
       .header("Content-Type","application/json")
       .queryParam("ctid", "${caseType}")
       .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":100,\"sort\":[{\"created_date\":\"DESC\"}]}")))
-
-    .pause(5)
-
-    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet500Cases")
-      .post(ccdDataStoreUrl + "/searchCases")
-      .header("ServiceAuthorization", "Bearer ${bearerToken}")
-      .header("Authorization", "Bearer ${access_token}")
-      .header("Content-Type","application/json")
-      .queryParam("ctid", "${caseType}")
-      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":500,\"sort\":[{\"created_date\":\"DESC\"}]}")))
 
     .pause(5)
 
@@ -255,6 +255,19 @@ val ElasticSearchGetVaryingSizes =
 
     .pause(5)
 
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket75")
+      .post(ccdDataStoreUrl + "/searchCases")
+      .header("ServiceAuthorization", "Bearer ${bearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .queryParam("ctid", "${caseType}")
+      .queryParam("use_case", "WORKBASKET")
+      .queryParam("view", "WORKBASKET")
+      .queryParam("page", "1")
+      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":75,\"sort\":[{\"created_date\":\"DESC\"}]}")))
+
+    .pause(5)
+
     .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket100")
       .post(ccdDataStoreUrl + "/searchCases")
       .header("ServiceAuthorization", "Bearer ${bearerToken}")
@@ -265,19 +278,6 @@ val ElasticSearchGetVaryingSizes =
       .queryParam("view", "WORKBASKET")
       .queryParam("page", "1")
       .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":100,\"sort\":[{\"created_date\":\"DESC\"}]}")))
-
-    .pause(5)
-
-    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket500")
-      .post(ccdDataStoreUrl + "/searchCases")
-      .header("ServiceAuthorization", "Bearer ${bearerToken}")
-      .header("Authorization", "Bearer ${access_token}")
-      .header("Content-Type","application/json")
-      .queryParam("ctid", "${caseType}")
-      .queryParam("use_case", "WORKBASKET")
-      .queryParam("view", "WORKBASKET")
-      .queryParam("page", "1")
-      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":500,\"sort\":[{\"created_date\":\"DESC\"}]}")))
 
     .pause(5)
 
