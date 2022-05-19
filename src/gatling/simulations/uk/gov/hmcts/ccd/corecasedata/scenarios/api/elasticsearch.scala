@@ -60,7 +60,7 @@ val ElasticSearchGetVaryingSizes =
       .queryParam("ctid", "${caseType}")
       .body(StringBody("{\n\t\"query\": {\n\t\t\"match_all\": {}\n\t\t},\n\t\t\"size\": 25,\n\t\t\"sort\":[ \n      { \n         \"last_modified\":\"desc\"\n      },\n      \"_score\"\n   ]\n}")))
 
-    .pause(Environment.constantthinkTime)
+    .pause(5)
 
     .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet100Cases")
       .post(ccdDataStoreUrl + "/searchCases")
@@ -68,9 +68,9 @@ val ElasticSearchGetVaryingSizes =
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
       .queryParam("ctid", "${caseType}")
-      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":100,\"sort\":[{\"created_date\":\"DESC\"}]}")))
+      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":50,\"sort\":[{\"created_date\":\"DESC\"}]}")))
 
-    .pause(Environment.constantthinkTime)
+    .pause(5)
 
     .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet500Cases")
       .post(ccdDataStoreUrl + "/searchCases")
@@ -78,9 +78,9 @@ val ElasticSearchGetVaryingSizes =
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
       .queryParam("ctid", "${caseType}")
-      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":500,\"sort\":[{\"created_date\":\"DESC\"}]}")))
+      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":100,\"sort\":[{\"created_date\":\"DESC\"}]}")))
 
-    .pause(Environment.constantthinkTime)
+    .pause(5)
 
     .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet1000Cases")
       .post(ccdDataStoreUrl + "/searchCases")
@@ -88,9 +88,9 @@ val ElasticSearchGetVaryingSizes =
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
       .queryParam("ctid", "${caseType}")
-      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":1000,\"sort\":[{\"created_date\":\"DESC\"}]}")))
+      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":500,\"sort\":[{\"created_date\":\"DESC\"}]}")))
 
-    .pause(Environment.constantthinkTime)
+    .pause(5)
 
   val CitizenSearch =
 
@@ -240,7 +240,7 @@ val ElasticSearchGetVaryingSizes =
       .queryParam("page", "1")
       .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":25,\"sort\":[{\"created_date\":\"DESC\"}]}")))
 
-    .pause(Environment.constantthinkTime)
+    .pause(5)
 
     .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket100")
       .post(ccdDataStoreUrl + "/searchCases")
@@ -251,9 +251,9 @@ val ElasticSearchGetVaryingSizes =
       .queryParam("use_case", "WORKBASKET")
       .queryParam("view", "WORKBASKET")
       .queryParam("page", "1")
-      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":100,\"sort\":[{\"created_date\":\"DESC\"}]}")))
+      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":50,\"sort\":[{\"created_date\":\"DESC\"}]}")))
 
-    .pause(Environment.constantthinkTime)
+    .pause(5)
 
     .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket500")
       .post(ccdDataStoreUrl + "/searchCases")
@@ -264,9 +264,9 @@ val ElasticSearchGetVaryingSizes =
       .queryParam("use_case", "WORKBASKET")
       .queryParam("view", "WORKBASKET")
       .queryParam("page", "1")
-      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":500,\"sort\":[{\"created_date\":\"DESC\"}]}")))
+      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":100,\"sort\":[{\"created_date\":\"DESC\"}]}")))
 
-    .pause(Environment.constantthinkTime)
+    .pause(5)
 
     .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket1000")
       .post(ccdDataStoreUrl + "/searchCases")
@@ -277,9 +277,9 @@ val ElasticSearchGetVaryingSizes =
       .queryParam("use_case", "WORKBASKET")
       .queryParam("view", "WORKBASKET")
       .queryParam("page", "1")
-      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":1000,\"sort\":[{\"created_date\":\"DESC\"}]}")))
+      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":500,\"sort\":[{\"created_date\":\"DESC\"}]}")))
 
-    .pause(Environment.constantthinkTime)
+    .pause(5)
 
   val ElasticSearchGetRef =
 

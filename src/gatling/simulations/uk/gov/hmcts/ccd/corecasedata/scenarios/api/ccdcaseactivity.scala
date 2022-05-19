@@ -60,7 +60,7 @@ val CaseActivityRequest =
     .header("ServiceAuthorization", "Bearer ${bearerToken}")
     .header("Authorization", "Bearer ${access_token}"))
 
-  .pause(Environment.constantthinkTime)
+  .pause(3)
 
   .exec(http("CaseActivity_POST")
     .post(ccdCaseActivityUrl + "/cases/${caseRef}/activity")
@@ -75,7 +75,7 @@ val CaseActivityRequest =
     .header("ServiceAuthorization", "Bearer ${bearerToken}")
     .header("Authorization", "Bearer ${access_token}"))
 
-  .pause(Environment.constantthinkTime)
+  .pause(3)
 
 val CaseActivityList = 
 
@@ -93,6 +93,6 @@ val CaseActivityList =
     .header("ServiceAuthorization", "Bearer ${bearerToken}")
     .header("Authorization", "Bearer ${access_token}"))
 
-  .pause(Environment.constantthinkTime)
+  .pause(20)
 
 }

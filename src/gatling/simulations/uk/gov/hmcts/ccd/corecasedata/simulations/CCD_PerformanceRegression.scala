@@ -39,11 +39,15 @@ class CCD_PerformanceRegression extends Simulation  {
   val fplTargetPerHour:Double = 8000
   val nfdTargetPerHour:Double = 8000
   val caseActivityTargetPerHour:Double = 850000
+  val caseActivityRepeatsPerUser = 850
   val caseActivityListTargetPerHour:Double = 90000
+  val caseActivityListRepeatsPerUser = 180
   val searchTargetPerHour:Double = 8000
+  val searchRepeatsPerUser = 40
   val elasticSearchTargetPerHour:Double = 120000
+  val esRepeatsPerUser = 120
 
-  val caseActivityIteration = 1200
+  val caseActivityIteration = 900
   val caseActivityListIteration = 120
   val ccdSearchIteration = 40
   val elasticSearchIteration = 370
@@ -174,7 +178,7 @@ class CCD_PerformanceRegression extends Simulation  {
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
       .exec(ccdcaseactivity.CDSGetRequest)
-      .repeat(caseActivityListIteration) {
+      .repeat(caseActivityListRepeatsPerUser) {
         exec(ccdcaseactivity.CaseActivityList)
       }
     }
@@ -183,7 +187,7 @@ class CCD_PerformanceRegression extends Simulation  {
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
       .exec(ccdcaseactivity.CDSGetRequest)
-      .repeat(caseActivityIteration) {
+      .repeat(caseActivityRepeatsPerUser) {
         exec(ccdcaseactivity.CaseActivityRequest)
       }
     }
@@ -195,8 +199,9 @@ class CCD_PerformanceRegression extends Simulation  {
       .exec(S2S.s2s("ccd_data"))
       .feed(feedEthosUserData)
       .exec(IdamLogin.GetIdamToken) 
-      .repeat(ccdSearchIteration) {
+      .repeat(searchRepeatsPerUser) {
         exec(ccddatastore.CCDAPI_EthosJourney)
+        .exec(WaitforNextIteration.waitforNextIteration)
       }
     }
 
@@ -205,7 +210,7 @@ class CCD_PerformanceRegression extends Simulation  {
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
       .exec(elasticsearch.CDSGetRequest)
-      .repeat(elasticSearchIteration) {
+      .repeat(esRepeatsPerUser) {
         exec(elasticsearch.ElasticSearchGetVaryingSizes)
         .exec(elasticsearch.ElasticSearchWorkbasket)
       }
@@ -258,10 +263,10 @@ class CCD_PerformanceRegression extends Simulation  {
 		API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
 		API_DivorceCreateCase.inject(simulationProfile(testType, divorceTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
 		API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
-		CaseActivityListScn.inject(rampUsers(750) during (10 minutes)),		
-		CaseActivityScn.inject(rampUsers(750) during (10 minutes)),
-    CCDSearchView.inject(rampUsers(200) during (10 minutes)),		
-		CCDElasticSearch.inject(rampUsers(300) during (10 minutes)),		
+		CaseActivityListScn.inject(simulationProfile(testType, caseActivityListTargetPerHour/caseActivityListRepeatsPerUser, numberOfPipelineUsers)).pauses(pauseOption),		
+		CaseActivityScn.inject(simulationProfile(testType, caseActivityTargetPerHour/caseActivityRepeatsPerUser, numberOfPipelineUsers)).pauses(pauseOption), 
+    CCDElasticSearch.inject(simulationProfile(testType, elasticSearchTargetPerHour/esRepeatsPerUser, numberOfPipelineUsers)).pauses(pauseOption),  	
+    CCDSearchView.inject(simulationProfile(testType, searchTargetPerHour/searchRepeatsPerUser, numberOfPipelineUsers)).pauses(pauseOption),  	
 
 		// CCDSearchView.inject(simulationProfile(testType, searchTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
 		// CCDElasticSearch.inject(simulationProfile(testType, elasticSearchTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
