@@ -62,7 +62,7 @@ val ElasticSearchGetVaryingSizes =
 
     .pause(5)
 
-    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet100Cases")
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet50Cases")
       .post(ccdDataStoreUrl + "/searchCases")
       .header("ServiceAuthorization", "Bearer ${bearerToken}")
       .header("Authorization", "Bearer ${access_token}")
@@ -72,7 +72,7 @@ val ElasticSearchGetVaryingSizes =
 
     .pause(5)
 
-    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet500Cases")
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet100Cases")
       .post(ccdDataStoreUrl + "/searchCases")
       .header("ServiceAuthorization", "Bearer ${bearerToken}")
       .header("Authorization", "Bearer ${access_token}")
@@ -82,7 +82,7 @@ val ElasticSearchGetVaryingSizes =
 
     .pause(5)
 
-    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet1000Cases")
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet500Cases")
       .post(ccdDataStoreUrl + "/searchCases")
       .header("ServiceAuthorization", "Bearer ${bearerToken}")
       .header("Authorization", "Bearer ${access_token}")
@@ -242,7 +242,7 @@ val ElasticSearchGetVaryingSizes =
 
     .pause(5)
 
-    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket100")
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket50")
       .post(ccdDataStoreUrl + "/searchCases")
       .header("ServiceAuthorization", "Bearer ${bearerToken}")
       .header("Authorization", "Bearer ${access_token}")
@@ -255,7 +255,7 @@ val ElasticSearchGetVaryingSizes =
 
     .pause(5)
 
-    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket500")
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket100")
       .post(ccdDataStoreUrl + "/searchCases")
       .header("ServiceAuthorization", "Bearer ${bearerToken}")
       .header("Authorization", "Bearer ${access_token}")
@@ -268,7 +268,7 @@ val ElasticSearchGetVaryingSizes =
 
     .pause(5)
 
-    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket1000")
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket500")
       .post(ccdDataStoreUrl + "/searchCases")
       .header("ServiceAuthorization", "Bearer ${bearerToken}")
       .header("Authorization", "Bearer ${access_token}")
