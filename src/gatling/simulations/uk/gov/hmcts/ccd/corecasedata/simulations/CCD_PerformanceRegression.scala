@@ -43,8 +43,8 @@ class CCD_PerformanceRegression extends Simulation  {
   val searchTargetPerHour:Double = 8000
   val elasticSearchTargetPerHour:Double = 120000
 
-  val caseActivityIteration = 600
-  val caseActivityListIteration = 60
+  val caseActivityIteration = 1200
+  val caseActivityListIteration = 120
   val ccdSearchIteration = 40
   val elasticSearchIteration = 370
 
@@ -258,8 +258,8 @@ class CCD_PerformanceRegression extends Simulation  {
 		API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
 		API_DivorceCreateCase.inject(simulationProfile(testType, divorceTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
 		API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
-		CaseActivityListScn.inject(rampUsers(500) during (10 minutes)),		
-		CaseActivityScn.inject(rampUsers(500) during (10 minutes)),
+		CaseActivityListScn.inject(rampUsers(750) during (10 minutes)),		
+		CaseActivityScn.inject(rampUsers(750) during (10 minutes)),
     CCDSearchView.inject(rampUsers(200) during (10 minutes)),		
 		CCDElasticSearch.inject(rampUsers(300) during (10 minutes)),		
 
