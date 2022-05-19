@@ -92,6 +92,62 @@ val ElasticSearchGetVaryingSizes =
 
     .pause(5)
 
+  val ElasticSearchWorkbasket = 
+
+    feed(feedWorkbasketData)
+
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket25")
+      .post(ccdDataStoreUrl + "/searchCases")
+      .header("ServiceAuthorization", "Bearer ${bearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .queryParam("ctid", "${caseType}")
+      .queryParam("use_case", "WORKBASKET")
+      .queryParam("view", "WORKBASKET")
+      .queryParam("page", "1")
+      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":25,\"sort\":[{\"created_date\":\"DESC\"}]}")))
+
+    .pause(5)
+
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket50")
+      .post(ccdDataStoreUrl + "/searchCases")
+      .header("ServiceAuthorization", "Bearer ${bearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .queryParam("ctid", "${caseType}")
+      .queryParam("use_case", "WORKBASKET")
+      .queryParam("view", "WORKBASKET")
+      .queryParam("page", "1")
+      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":50,\"sort\":[{\"created_date\":\"DESC\"}]}")))
+
+    .pause(5)
+
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket75")
+      .post(ccdDataStoreUrl + "/searchCases")
+      .header("ServiceAuthorization", "Bearer ${bearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .queryParam("ctid", "${caseType}")
+      .queryParam("use_case", "WORKBASKET")
+      .queryParam("view", "WORKBASKET")
+      .queryParam("page", "1")
+      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":75,\"sort\":[{\"created_date\":\"DESC\"}]}")))
+
+    .pause(5)
+
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket100")
+      .post(ccdDataStoreUrl + "/searchCases")
+      .header("ServiceAuthorization", "Bearer ${bearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .queryParam("ctid", "${caseType}")
+      .queryParam("use_case", "WORKBASKET")
+      .queryParam("view", "WORKBASKET")
+      .queryParam("page", "1")
+      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":100,\"sort\":[{\"created_date\":\"DESC\"}]}")))
+
+    .pause(5)
+
   val CitizenSearch =
 
     feed(feedWorkbasketData)
@@ -225,62 +281,7 @@ val ElasticSearchGetVaryingSizes =
 
     .pause(Environment.constantthinkTime)
 
-  val ElasticSearchWorkbasket = 
-
-    feed(feedWorkbasketData)
-
-    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket25")
-      .post(ccdDataStoreUrl + "/searchCases")
-      .header("ServiceAuthorization", "Bearer ${bearerToken}")
-      .header("Authorization", "Bearer ${access_token}")
-      .header("Content-Type","application/json")
-      .queryParam("ctid", "${caseType}")
-      .queryParam("use_case", "WORKBASKET")
-      .queryParam("view", "WORKBASKET")
-      .queryParam("page", "1")
-      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":25,\"sort\":[{\"created_date\":\"DESC\"}]}")))
-
-    .pause(5)
-
-    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket50")
-      .post(ccdDataStoreUrl + "/searchCases")
-      .header("ServiceAuthorization", "Bearer ${bearerToken}")
-      .header("Authorization", "Bearer ${access_token}")
-      .header("Content-Type","application/json")
-      .queryParam("ctid", "${caseType}")
-      .queryParam("use_case", "WORKBASKET")
-      .queryParam("view", "WORKBASKET")
-      .queryParam("page", "1")
-      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":50,\"sort\":[{\"created_date\":\"DESC\"}]}")))
-
-    .pause(5)
-
-    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket75")
-      .post(ccdDataStoreUrl + "/searchCases")
-      .header("ServiceAuthorization", "Bearer ${bearerToken}")
-      .header("Authorization", "Bearer ${access_token}")
-      .header("Content-Type","application/json")
-      .queryParam("ctid", "${caseType}")
-      .queryParam("use_case", "WORKBASKET")
-      .queryParam("view", "WORKBASKET")
-      .queryParam("page", "1")
-      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":75,\"sort\":[{\"created_date\":\"DESC\"}]}")))
-
-    .pause(5)
-
-    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket100")
-      .post(ccdDataStoreUrl + "/searchCases")
-      .header("ServiceAuthorization", "Bearer ${bearerToken}")
-      .header("Authorization", "Bearer ${access_token}")
-      .header("Content-Type","application/json")
-      .queryParam("ctid", "${caseType}")
-      .queryParam("use_case", "WORKBASKET")
-      .queryParam("view", "WORKBASKET")
-      .queryParam("page", "1")
-      .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":100,\"sort\":[{\"created_date\":\"DESC\"}]}")))
-
-    .pause(5)
-
+  
   val ElasticSearchGetRef =
 
     feed(feedCaseSearchData)
