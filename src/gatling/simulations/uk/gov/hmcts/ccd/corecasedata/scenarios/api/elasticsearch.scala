@@ -60,7 +60,7 @@ val ElasticSearchGetVaryingSizes =
       .queryParam("ctid", "${caseType}")
       .body(StringBody("{\n\t\"query\": {\n\t\t\"match_all\": {}\n\t\t},\n\t\t\"size\": 25,\n\t\t\"sort\":[ \n      { \n         \"last_modified\":\"desc\"\n      },\n      \"_score\"\n   ]\n}")))
 
-    .pause(5)
+    .pause(Environment.constantthinkTime)
 
     .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet50Cases")
       .post(ccdDataStoreUrl + "/searchCases")
@@ -70,7 +70,7 @@ val ElasticSearchGetVaryingSizes =
       .queryParam("ctid", "${caseType}")
       .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":50,\"sort\":[{\"created_date\":\"DESC\"}]}")))
 
-    .pause(5)
+    .pause(Environment.constantthinkTime)
 
     .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet75Cases")
       .post(ccdDataStoreUrl + "/searchCases")
@@ -80,7 +80,7 @@ val ElasticSearchGetVaryingSizes =
       .queryParam("ctid", "${caseType}")
       .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":75,\"sort\":[{\"created_date\":\"DESC\"}]}")))
 
-    .pause(5)
+    .pause(Environment.constantthinkTime)
 
     .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet100Cases")
       .post(ccdDataStoreUrl + "/searchCases")
@@ -90,7 +90,7 @@ val ElasticSearchGetVaryingSizes =
       .queryParam("ctid", "${caseType}")
       .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":100,\"sort\":[{\"created_date\":\"DESC\"}]}")))
 
-    .pause(5)
+    .pause(Environment.constantthinkTime)
 
   val ElasticSearchWorkbasket = 
 
@@ -107,7 +107,7 @@ val ElasticSearchGetVaryingSizes =
       .queryParam("page", "1")
       .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":25,\"sort\":[{\"created_date\":\"DESC\"}]}")))
 
-    .pause(5)
+    .pause(Environment.constantthinkTime)
 
     .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket50")
       .post(ccdDataStoreUrl + "/searchCases")
@@ -120,7 +120,7 @@ val ElasticSearchGetVaryingSizes =
       .queryParam("page", "1")
       .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":50,\"sort\":[{\"created_date\":\"DESC\"}]}")))
 
-    .pause(5)
+    .pause(Environment.constantthinkTime)
 
     .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket75")
       .post(ccdDataStoreUrl + "/searchCases")
@@ -133,7 +133,7 @@ val ElasticSearchGetVaryingSizes =
       .queryParam("page", "1")
       .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":75,\"sort\":[{\"created_date\":\"DESC\"}]}")))
 
-    .pause(5)
+    .pause(Environment.constantthinkTime)
 
     .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket100")
       .post(ccdDataStoreUrl + "/searchCases")
@@ -146,7 +146,7 @@ val ElasticSearchGetVaryingSizes =
       .queryParam("page", "1")
       .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":100,\"sort\":[{\"created_date\":\"DESC\"}]}")))
 
-    .pause(5)
+    .pause(Environment.constantthinkTime)
 
   val CitizenSearch =
 

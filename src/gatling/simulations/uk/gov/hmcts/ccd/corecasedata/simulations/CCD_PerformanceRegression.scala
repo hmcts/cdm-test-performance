@@ -45,7 +45,7 @@ class CCD_PerformanceRegression extends Simulation  {
   val searchTargetPerHour:Double = 8000
   val searchRepeatsPerUser = 400 //40
   val elasticSearchTargetPerHour:Double = 120000
-  val esRepeatsPerUser = 1200 //120
+  val esRepeatsPerUser = 120 //120
 
   val caseActivityIteration = 900
   val caseActivityListIteration = 120
@@ -213,6 +213,7 @@ class CCD_PerformanceRegression extends Simulation  {
       .repeat(esRepeatsPerUser) {
         exec(elasticsearch.ElasticSearchGetVaryingSizes)
         .exec(elasticsearch.ElasticSearchWorkbasket)
+        .exec(WaitforNextIteration.waitforNextIteration)
       }
     }
 
@@ -265,8 +266,8 @@ class CCD_PerformanceRegression extends Simulation  {
 		API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
     CaseActivityListScn.inject(rampUsers(500) during (10 minutes)),		
 		CaseActivityScn.inject(rampUsers(500) during (10 minutes)),
-    CCDSearchView.inject(rampUsers(200) during (10 minutes)),		
-		CCDElasticSearch.inject(rampUsers(300) during (10 minutes)),
+    CCDSearchView.inject(rampUsers(100) during (20 minutes)),		
+		CCDElasticSearch.inject(rampUsers(300) during (20 minutes)),
 		// CaseActivityListScn.it(simulationProfile(testType, searchTargetPerHour/searchRepeatsPerUser, numberOfPipelineUsers)).pauses(pauseOption),  	
 
 		// CCDSearchView.inject(simulationProfile(testType, searchTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
