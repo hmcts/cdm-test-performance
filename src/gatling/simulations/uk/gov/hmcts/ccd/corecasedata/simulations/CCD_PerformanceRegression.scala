@@ -210,8 +210,10 @@ class CCD_PerformanceRegression extends Simulation  {
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
       .exec(elasticsearch.CDSGetRequest)
-      .repeat(esRepeatsPerUser) {
-        exec(elasticsearch.ElasticSearchGetVaryingSizes)
+      .repeat(esRepeatsPerUser) { //esRepeatsPerUser
+        exec(GetUserProfile.SearchJurisdiction)
+        .exec(GetUserProfile.SearchAllUsers)
+        .exec(elasticsearch.ElasticSearchGetVaryingSizes)
         .exec(elasticsearch.ElasticSearchWorkbasket)
         .exec(WaitforNextIteration.waitforNextIteration)
       }
@@ -267,7 +269,7 @@ class CCD_PerformanceRegression extends Simulation  {
     CaseActivityListScn.inject(rampUsers(500) during (10 minutes)),		
 		CaseActivityScn.inject(rampUsers(500) during (10 minutes)),
     CCDSearchView.inject(rampUsers(200) during (20 minutes)),		
-		CCDElasticSearch.inject(rampUsers(300) during (20 minutes)),
+		CCDElasticSearch.inject(rampUsers(300) during (20 minutes)), //300 during 20
 		// CaseActivityListScn.it(simulationProfile(testType, searchTargetPerHour/searchRepeatsPerUser, numberOfPipelineUsers)).pauses(pauseOption),  	
 
 		// CCDSearchView.inject(simulationProfile(testType, searchTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		

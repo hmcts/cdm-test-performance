@@ -7,37 +7,28 @@ import scala.concurrent.duration._
 
 object GetUserProfile {
 
-  val BaseURL = Environment.baseURL
-  val IdamURL = Environment.idamURL
-  val CCDEnvurl = Environment.ccdEnvurl
-  val CommonHeader = Environment.commonHeader
-  val idam_header = Environment.idam_header
-  val MinThinkTime = Environment.minThinkTime
-  val MaxThinkTime = Environment.maxThinkTime
   val feedUserData = csv("UserProfileJurisdictions.csv").random
 
-  val headers_0 = Map(
-    "Content-Type" -> "application/json",
-    "Authorization" -> "Bearer ",
-    "ServiceAuthorization" -> "Bearer ")
-
-  val SearchJurisdiction = feed(feedUserData)
+  val SearchJurisdiction = 
+  
+    feed(feedUserData)
+    
     .exec(http("CUP_GetJurisdiction")
-    .get("http://ccd-user-profile-api-perftest.service.core-compute-perftest.internal/users?jurisdiction=${UPJurisdiction}")
-      .headers(headers_0))
+      .get(Environment.userProfileUrl + "/users?jurisdiction=${UPJurisdiction}")
+      .header("Content-Type", "application/json")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("ServiceAuthorization", "Bearer ${bearerToken}"))
 
-    .exec {
-      session =>
-        println("Selected jurisdiction is ")
-        println(session("UPJurisdiction").as[String])
-        session}
+    .pause(Environment.constantthinkTime)
 
-    .pause(MinThinkTime seconds, MaxThinkTime seconds)
+  val SearchAllUsers = 
+  
+    exec(http("CUP_GetAllUsers")
+      .get(Environment.userProfileUrl + "/users")
+      .header("Content-Type", "application/json")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("ServiceAuthorization", "Bearer ${bearerToken}"))
 
-  val SearchAllUsers = exec(http("CUP_GetAllUsers")
-    .get("http://ccd-user-profile-api-perftest.service.core-compute-perftest.internal/users")
-      .headers(headers_0))
-
-    .pause(MinThinkTime seconds, MaxThinkTime seconds)
+    .pause(Environment.constantthinkTime)
 
 }

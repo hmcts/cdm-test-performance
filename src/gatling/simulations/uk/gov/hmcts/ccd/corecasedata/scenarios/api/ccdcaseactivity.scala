@@ -77,6 +77,14 @@ val CaseActivityRequest =
 
   .pause(1)
 
+  .exec(http("CaseActivity_GET0")
+    .get(ccdCaseActivityUrl + "/cases/0/activity")
+    .header("Content-Type", "application/json")
+    .header("ServiceAuthorization", "Bearer ${bearerToken}")
+    .header("Authorization", "Bearer ${access_token}"))
+
+  .pause(1)
+
 val CaseActivityList = 
 
   feed(caseActivityListFeeder)
