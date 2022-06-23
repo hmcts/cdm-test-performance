@@ -306,7 +306,7 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
   val CCDAPI_CMCCaseEvents =
 
     exec(http("API_CMC_GetEventToken")
-      .get(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/event-triggers/ReviewedPaperResponse/token")
+      .get(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/event-triggers/StayClaim/token")
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
@@ -329,7 +329,7 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
     .pause(Environment.constantthinkTime)
 
     .exec(http("API_CMC_GetEventToken")
-      .get(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/event-triggers/StayClaim/token")
+      .get(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/event-triggers/ReviewedPaperResponse/token")
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
