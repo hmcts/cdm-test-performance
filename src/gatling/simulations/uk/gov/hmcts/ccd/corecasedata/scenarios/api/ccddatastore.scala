@@ -306,7 +306,7 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
   val CCDAPI_CMCCaseEvents =
 
     exec(http("API_CMC_GetEventToken")
-      .get(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/event-triggers/StayClaim/token")
+      .get(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/event-triggers/ReviewedPaperResponse/token")
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
@@ -325,6 +325,48 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Authorization", "Bearer ${access_token}")
       .header("Content-Type","application/json")
       .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"StayClaim\",\n    \"summary\": \"\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"${eventToken1}\",\n  \"ignore_warning\": false\n}")))
+
+    .pause(Environment.constantthinkTime)
+
+    .exec(http("API_CMC_GetEventToken")
+      .get(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/event-triggers/StayClaim/token")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken1")))
+
+    .exec(_.setAll(  
+      "FileName1"  -> ("1MB.pdf")
+    ))
+
+    .exec(http("API_CMC_DocUploadProcess")
+      .post(CaseDocAPI + "/cases/documents")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("ServiceAuthorization", "${xui_webappBearerToken}")
+      .header("accept", "application/json")
+      .header("Content-Type", "multipart/form-data")
+      .formParam("classification", "PUBLIC")
+      .formParam("caseTypeId", "${CaseType}") 
+      .formParam("jurisdictionId", "${Jurisdiction}") 
+      .bodyPart(RawFileBodyPart("files", "${FileName1}")
+        .fileName("${FileName1}")
+        .transferEncoding("binary"))
+      .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID"))
+      .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken")))
+
+    .exec(http("API_CMC_ValidateDocUpload")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/cmc/CMC_DocUpload.json")))
+
+    .exec(http("API_CMC_DocUpload")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/cmc/CMC_DocUpload.json")))
 
     .pause(Environment.constantthinkTime)
 
