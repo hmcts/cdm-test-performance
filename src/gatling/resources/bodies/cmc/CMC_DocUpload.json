@@ -1,34 +1,73 @@
 {
   "data": {
-     "paperResponseType": "BULK_SCAN",
-     "staffUploadedDocuments": [],
-     "scannedDocuments": [
+     "paperResponseType": "NON_VIA_SERVICE",
+     "scannedDocuments": [],
+     "staffUploadedDocuments": [
         {
            "value": {
-              "type": "form",
-              "subtype": "OCON9x",
-              "formSubtype": "OCON9x",
-              "submittedBy": null,
-              "controlNumber": null,
-              "fileName": "Camunda AAT.jpg",
-              "scannedDate": null,
-              "deliveryDate": "2022-06-23T16:15:41.489584",
-              "exceptionRecordReference": null,
-              "url": {
-                 "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID}",
-                 "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID}/binary",
-                 "document_filename": "Camunda AAT.jpg",
-                 "document_hash": null
+              "documentName": "Test1",
+              "authoredDatetime": null,
+              "size": null,
+              "createdDatetime": null,
+              "createdBy": null,
+              "receivedDatetime": "2022-01-01T00:00:00.000",
+              "handled": null,
+              "documentType": "PAPER_RESPONSE_COUNTER_CLAIM",
+              "documentTypeOther": null,
+              "documentLink": {
+                 "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID1}",
+                 "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID1}/binary",
+                 "document_filename": "${FileName1}",
+                 "document_hash": "${hashToken1}"
               }
            },
-           "id": "a4785f92-ce0c-48ca-a8f8-f041ef58b8f3"
+           "id": null
+        },
+        {
+           "value": {
+              "documentName": "Test2",
+              "authoredDatetime": null,
+              "size": null,
+              "createdDatetime": null,
+              "createdBy": null,
+              "receivedDatetime": "2022-01-01T00:00:00.000",
+              "handled": null,
+              "documentType": "PAPER_RESPONSE_DISPUTES_ALL",
+              "documentTypeOther": null,
+              "documentLink": {
+                 "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID2}",
+                 "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID2}/binary",
+                 "document_filename": "${FileName2}",
+                 "document_hash": "${hashToken2}"
+              }
+           },
+           "id": null
+        },
+        {
+           "value": {
+              "documentName": "Test3",
+              "authoredDatetime": null,
+              "size": null,
+              "createdDatetime": null,
+              "createdBy": null,
+              "receivedDatetime": "2022-01-01T00:00:00.000",
+              "handled": null,
+              "documentType": "PAPER_RESPONSE_STATES_PAID",
+              "documentTypeOther": null,
+              "documentLink": {
+                 "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID3}",
+                 "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID3}/binary",
+                 "document_filename": "${FileName3}",
+                 "document_hash": "${hashToken3}"
+              }
+           },
+           "id": null
         }
-     ],
-     "evidenceHandled": "Yes"
+     ]
   },
   "event": {
      "id": "ReviewedPaperResponse",
-     "summary": "doc upload test",
+     "summary": "",
      "description": ""
   },
   "event_token": "${eventToken1}",
