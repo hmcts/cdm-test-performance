@@ -322,7 +322,6 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
     .exec(_.setAll(  
       "FileName1"  -> ("1MB.pdf"),
       "FileName2"  -> ("1MB2.pdf"),
-      "FileName3"  -> ("1MB3.pdf"),
       "currentDate" -> now.format(patternDate)
     ))
 
@@ -355,21 +354,6 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
         .transferEncoding("binary"))
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID2"))
       .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken2")))
-
-    .exec(http("API_CMC_DocUploadProcess3")
-      .post(CaseDocAPI + "/cases/documents")
-      .header("Authorization", "Bearer ${access_token}")
-      .header("ServiceAuthorization", "${cmc_claim_storeBearerToken}")
-      .header("accept", "application/json")
-      .header("Content-Type", "multipart/form-data")
-      .formParam("classification", "PUBLIC")
-      .formParam("caseTypeId", "MoneyClaimCase")  //${CaseType}
-      .formParam("jurisdictionId", "CMC")  //${Jurisdiction}
-      .bodyPart(RawFileBodyPart("files", "${FileName3}")
-        .fileName("${FileName3}")
-        .transferEncoding("binary"))
-      .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID3"))
-      .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken3")))
 
     .exec(http("API_CMC_ValidateDocUpload")
       .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")

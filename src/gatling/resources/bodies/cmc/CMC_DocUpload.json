@@ -42,26 +42,6 @@
               }
            },
            "id": null
-        },
-        {
-           "value": {
-              "documentName": "Test3",
-              "authoredDatetime": null,
-              "size": null,
-              "createdDatetime": null,
-              "createdBy": null,
-              "receivedDatetime": "${currentDate}T00:00:00.000",
-              "handled": null,
-              "documentType": "PAPER_RESPONSE_STATES_PAID",
-              "documentTypeOther": null,
-              "documentLink": {
-                 "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID3}",
-                 "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID3}/binary",
-                 "document_filename": "${FileName3}",
-                 "document_hash": "${hashToken3}"
-              }
-           },
-           "id": null
         }
      ]
   },
