@@ -232,7 +232,17 @@ class CCD_PerformanceRegression extends Simulation  {
       .exec(ccddatastore.CCDAPI_CMCUploadDoc)
     }
 
-
+  //CMC Case Events
+  val API_CMCCaseEvents = scenario("CMC CaseEvents")
+    .exitBlockOnFail {
+      exec(_.set("env", s"${env}"))
+      .exec(S2S.s2s("ccd_data"))
+      .feed(feedCMCUserData)
+      .feed(feedCMCCaseData)
+      .exec(IdamLogin.GetIdamToken)
+      // .exec(S2S.s2s("cmc_claim_store"))
+      .exec(ccddatastore.CCDAPI_CMCCaseHandedToCCBC)
+    }
 
 	def simulationProfile(simulationType: String, userPerHourRate: Double, numberOfPipelineUsers: Double): Seq[OpenInjectionStep] = {
 		val userPerSecRate = userPerHourRate / 3600
@@ -286,7 +296,7 @@ class CCD_PerformanceRegression extends Simulation  {
     // CCDSearchView.inject(rampUsers(200) during (20 minutes)),		
 		// CCDElasticSearch.inject(rampUsers(300) during (20 minutes)), //300 during 20
 
-    API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+    API_CMCCaseEvents.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
 
 
 		// CaseActivityListScn.it(simulationProfile(testType, searchTargetPerHour/searchRepeatsPerUser, numberOfPipelineUsers)).pauses(pauseOption),  	
