@@ -286,7 +286,7 @@ class CCD_PerformanceRegression extends Simulation  {
     // CCDSearchView.inject(rampUsers(200) during (20 minutes)),		
 		// CCDElasticSearch.inject(rampUsers(300) during (20 minutes)), //300 during 20
 
-    API_CMCAddDoc.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+    API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
 
 
 		// CaseActivityListScn.it(simulationProfile(testType, searchTargetPerHour/searchRepeatsPerUser, numberOfPipelineUsers)).pauses(pauseOption),  	

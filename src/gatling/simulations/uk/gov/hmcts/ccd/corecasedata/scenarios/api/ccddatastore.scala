@@ -371,6 +371,31 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
 
     .pause(Environment.constantthinkTime)
 
+  val CCDAPI_CMCCaseHandedToCCBC =
+
+    exec(http("API_CMC_GetEventToken")
+      .get(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/event-triggers/CaseMovedOffline/token")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken1")))
+
+    .exec(http("API_CMC_ValidateHandedToCCBC")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/CMC/CMC_HandedToCCBC.json")))
+
+    .exec(http("API_CMC_HandedToCCBC")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/CMC/CMC_HandedToCCBC.json")))
+
+    .pause(Environment.constantthinkTime)
+
 
   val CCDAPI_CMCCaseEvents =
 
@@ -388,15 +413,7 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Content-Type","application/json")
       .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"StayClaim\",\n    \"summary\": \"\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"${eventToken1}\",\n  \"ignore_warning\": false\n}")))
 
-    .exec(http("API_CMC_CaseStayed")
-      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
-      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
-      .header("Authorization", "Bearer ${access_token}")
-      .header("Content-Type","application/json")
-      .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"StayClaim\",\n    \"summary\": \"\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"${eventToken1}\",\n  \"ignore_warning\": false\n}")))
-
-    .pause(Environment.constantthinkTime)
-
+    
     .exec(http("API_CMC_GetEventToken")
       .get(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/event-triggers/ClaimNotes/token")
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
