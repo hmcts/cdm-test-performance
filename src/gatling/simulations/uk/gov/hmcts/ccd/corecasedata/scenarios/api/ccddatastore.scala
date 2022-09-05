@@ -1,4 +1,5 @@
-package uk.gov.hmcts.ccd.corecasedata.scenarios
+package uk.gov.hmcts.ccd.corecasedata.scenarios.api
+
 
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -413,7 +414,16 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Content-Type","application/json")
       .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"StayClaim\",\n    \"summary\": \"\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"${eventToken1}\",\n  \"ignore_warning\": false\n}")))
 
-    
+    //this request has been added as part of the preparation work for the GC profiling in ccd (fixing a legacy script issue).  Possible improvements needed for
+    //other requests including json response checks as well as extracting json payloads from request body to json file
+    .exec(http("API_CMC_CaseStayed")
+      .post(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/events")
+      .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")
+      .header("Authorization", "Bearer ${access_token}")
+      .header("Content-Type","application/json")
+      .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"StayClaim\",\n    \"summary\": \"\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"${eventToken1}\",\n  \"ignore_warning\": false\n}"))
+      .check(jsonPath("$.state").is("stayed")))
+
     .exec(http("API_CMC_GetEventToken")
       .get(ccdDataStoreUrl + "/caseworkers/${idamId}/jurisdictions/${Jurisdiction}/case-types/${CaseType}/cases/${caseId}/event-triggers/ClaimNotes/token")
       .header("ServiceAuthorization", "Bearer ${ccd_dataBearerToken}")

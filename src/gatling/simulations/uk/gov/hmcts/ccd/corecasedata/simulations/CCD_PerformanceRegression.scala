@@ -5,6 +5,7 @@ import io.gatling.core.Predef._
 import io.gatling.core.scenario.Simulation
 import io.gatling.http.Predef._ //comment out for VM runs, only required for proxy
 import uk.gov.hmcts.ccd.corecasedata.scenarios._
+import uk.gov.hmcts.ccd.corecasedata.scenarios.api._
 import uk.gov.hmcts.ccd.corecasedata.scenarios.utils._
 import scala.concurrent.duration._
 import io.gatling.core.controller.inject.open.OpenInjectionStep
@@ -287,24 +288,35 @@ class CCD_PerformanceRegression extends Simulation  {
   }
 
 	setUp(
-		// API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
-		// API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
-		// API_DivorceCreateCase.inject(simulationProfile(testType, divorceTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
-		// API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
-    // CaseActivityListScn.inject(rampUsers(500) during (10 minutes)),		
-		// CaseActivityScn.inject(rampUsers(500) during (10 minutes)),
-    // CCDSearchView.inject(rampUsers(200) during (20 minutes)),		
-		// CCDElasticSearch.inject(rampUsers(300) during (20 minutes)), //300 during 20
+     //simulation for cdm-test-performance repo
+		 API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+		 API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+		 API_DivorceCreateCase.inject(simulationProfile(testType, divorceTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+		 API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+     CaseActivityListScn.inject(rampUsers(500) during (10 minutes)),
+		 CaseActivityScn.inject(rampUsers(500) during (10 minutes)),
+     CCDSearchView.inject(rampUsers(200) during (20 minutes)),
+		 CCDElasticSearch.inject(rampUsers(300) during (20 minutes)), //300 during 20
 
-    API_CMCCaseEvents.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+    //smoke test to be pushed to the ccd_GC_profiling branch only.  Avoids having to amend the full test settings above
+//    API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+//    API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+//    API_DivorceCreateCase.inject(simulationProfile(testType, divorceTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+//    API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+//    CaseActivityListScn.inject(rampUsers(1) during (5 minutes)),
+//    CaseActivityScn.inject(rampUsers(1) during (5 minutes)),
+//    CCDSearchView.inject(rampUsers(1) during (5 minutes)),
+//    CCDElasticSearch.inject(rampUsers(1) during (5 minutes)), //300 during 20
 
 
-		// CaseActivityListScn.it(simulationProfile(testType, searchTargetPerHour/searchRepeatsPerUser, numberOfPipelineUsers)).pauses(pauseOption),  	
+    //commented out simulation.  This is possibly no longer required so could be removed before push to master again
+    //API_CMCCaseEvents.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+		// CaseActivityListScn.it(simulationProfile(testType, searchTargetPerHour/searchRepeatsPerUser, numberOfPipelineUsers)).pauses(pauseOption),
 		// CCDSearchView.inject(simulationProfile(testType, searchTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
 		// CCDElasticSearch.inject(simulationProfile(testType, elasticSearchTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
 	)
   .protocols(httpProtocol)
   .assertions(assertions(testType))
-  .maxDuration(85 minutes)
-
+  //.maxDuration(85 minutes)
+    .maxDuration(85 minutes)
 }
