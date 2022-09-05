@@ -3,11 +3,13 @@ package uk.gov.hmcts.ccd.corecasedata.simulations
 import com.typesafe.config.{Config, ConfigFactory}
 import io.gatling.core.Predef._
 import io.gatling.core.scenario.Simulation
-import io.gatling.http.Predef._ //comment out for VM runs, only required for proxy
+import io.gatling.http.Predef._
 import uk.gov.hmcts.ccd.corecasedata.scenarios._
+import uk.gov.hmcts.ccd.corecasedata.scenarios.api._
 import uk.gov.hmcts.ccd.corecasedata.scenarios.utils._
+
 import scala.concurrent.duration._
-import io.gatling.core.controller.inject.open.OpenInjectionStep
+import io.gatling.core.controller.inject.open.{AtOnceOpenInjection, OpenInjectionStep}
 import io.gatling.commons.stats.assertion.Assertion
 import io.gatling.core.pause.PauseType
 
@@ -287,24 +289,44 @@ class CCD_PerformanceRegression extends Simulation  {
   }
 
 	setUp(
-		// API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
-		// API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
-		// API_DivorceCreateCase.inject(simulationProfile(testType, divorceTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
-		// API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
-    // CaseActivityListScn.inject(rampUsers(500) during (10 minutes)),		
-		// CaseActivityScn.inject(rampUsers(500) during (10 minutes)),
-    // CCDSearchView.inject(rampUsers(200) during (20 minutes)),		
-		// CCDElasticSearch.inject(rampUsers(300) during (20 minutes)), //300 during 20
-
-    API_CMCCaseEvents.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-
-
-		// CaseActivityListScn.it(simulationProfile(testType, searchTargetPerHour/searchRepeatsPerUser, numberOfPipelineUsers)).pauses(pauseOption),  	
-		// CCDSearchView.inject(simulationProfile(testType, searchTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
-		// CCDElasticSearch.inject(simulationProfile(testType, elasticSearchTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),		
-	)
-  .protocols(httpProtocol)
-  .assertions(assertions(testType))
-  .maxDuration(85 minutes)
-
+     //simulation for cdm-test-performance repo
+		 API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+		 API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+		 API_DivorceCreateCase.inject(simulationProfile(testType, divorceTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+		 API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+     CaseActivityListScn.inject(rampUsers(500) during (10 minutes)),
+		 CaseActivityScn.inject(rampUsers(500) during (10 minutes)),
+     CCDSearchView.inject(rampUsers(200) during (20 minutes)),
+		 CCDElasticSearch.inject(rampUsers(300) during (20 minutes)), //300 during 20
+  )
+    .protocols(httpProtocol)
+    .assertions(assertions(testType))
+    .maxDuration(85 minutes)
 }
+
+
+  //setUp(
+  //smoke test to be pushed to master branch only.  Avoids having to amend the full test settings above
+  //To run, comment out the full simulation above including duration and then uncomment this smoke test
+  //   API_ProbateCreateCase.inject(atOnceUsers(1)),
+  //   API_CMCCreateCase.inject(atOnceUsers(1)),
+  //   API_DivorceCreateCase.inject(atOnceUsers(1)),
+  //   API_IACCreateCase.inject(atOnceUsers(1)),
+  //   CaseActivityListScn.inject(atOnceUsers(1)),
+  //   CaseActivityScn.inject(atOnceUsers(1)),
+  //   CCDSearchView.inject(atOnceUsers(1)),
+  //   CCDElasticSearch.inject(atOnceUsers(1)),
+  //   )
+  //    .protocols(httpProtocol)
+  //    .assertions(assertions(testType))
+  //    .maxDuration(15 minutes)
+//}
+
+
+
+
+  //commented out simulation.  This is possibly no longer required so could be removed before push to master again
+  //API_CMCCaseEvents.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+	// CaseActivityListScn.it(simulationProfile(testType, searchTargetPerHour/searchRepeatsPerUser, numberOfPipelineUsers)).pauses(pauseOption),
+	// CCDSearchView.inject(simulationProfile(testType, searchTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+	// CCDElasticSearch.inject(simulationProfile(testType, elasticSearchTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
