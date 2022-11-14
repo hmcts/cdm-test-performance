@@ -290,13 +290,13 @@ class CCD_PerformanceRegression extends Simulation  {
 
 	setUp(
      //simulation for cdm-test-performance repo
-		 API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-		 API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-		 API_DivorceCreateCase.inject(simulationProfile(testType, divorceTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-		 API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-     CaseActivityListScn.inject(rampUsers(500) during (10 minutes)),
-		 CaseActivityScn.inject(rampUsers(500) during (10 minutes)),
-     CCDSearchView.inject(rampUsers(200) during (20 minutes)),
+		 //API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+		 //API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+		 //API_DivorceCreateCase.inject(simulationProfile(testType, divorceTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+		 //API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+     //CaseActivityListScn.inject(rampUsers(500) during (10 minutes)),
+		 //CaseActivityScn.inject(rampUsers(500) during (10 minutes)),
+     //CCDSearchView.inject(rampUsers(200) during (20 minutes)),
 		 CCDElasticSearch.inject(rampUsers(300) during (20 minutes)), //300 during 20
   )
     .protocols(httpProtocol)
