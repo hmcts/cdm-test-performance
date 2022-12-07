@@ -11,7 +11,7 @@ object ManageCaseHeader {
     "Accept" -> "*/*",
     "Host" -> manageCaseHost,
     "Accept-Encoding" -> "gzip, deflate, br",
-    "Connection" -> "keep-alive",
+    "Connection" -> "keep-alive"
   )
   /*Manage Case -  Remove Assignment Header*/
   val manageCaseRemoveAssignmentHeader = Map(
@@ -20,7 +20,7 @@ object ManageCaseHeader {
     "Accept" -> "*/*",
     "Host" -> manageCaseHost,
     "Accept-Encoding" -> "gzip, deflate, br",
-    "Connection" -> "keep-alive",
+    "Connection" -> "keep-alive"
   )
 
   /*Manage Case -  Post Assignment Header*/
@@ -30,9 +30,7 @@ object ManageCaseHeader {
     "Accept" -> "*/*",
     "Host" -> manageCaseHost,
     "Accept-Encoding" -> "gzip, deflate, br",
-    "Connection" -> "keep-alive",
-    //"user-roles" -> "#{userRole}",
-    //"user-id" -> "#{userId}",
+    "Connection" -> "keep-alive"
   )
 
 }
