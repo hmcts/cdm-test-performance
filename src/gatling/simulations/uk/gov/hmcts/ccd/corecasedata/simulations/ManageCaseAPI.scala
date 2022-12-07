@@ -7,7 +7,7 @@ import io.gatling.core.pause.PauseType
 import io.gatling.core.scenario.Simulation
 import uk.gov.hmcts.ccd.corecasedata.scenarios.IdamLogin
 import uk.gov.hmcts.ccd.corecasedata.scenarios.manageCaseAssignments._
-import uk.gov.hmcts.ccd.corecasedata.scenarios.utils.S2S
+import uk.gov.hmcts.ccd.corecasedata.scenarios.utils._
 import uk.gov.hmcts.ccd.corecasedata.scenarios.utils.Environment._
 
 import scala.concurrent.duration._
