@@ -4,8 +4,7 @@ import uk.gov.hmcts.ccd.corecasedata.scenarios.utils.Environment._
 
 object ManageCaseHeader {
 
-  /*Manage Case -  Get Document Header
-    serviceauthorization, userRole and userId value obtained from Authentication*/
+  /*Manage Case -  Get Assignment Header*/
   val manageCaseGetAssignentsHeader = Map(
     "ServiceAuthorization" -> "Bearer ${ccd_dataBearerToken}",
     "Authorization" -> "Bearer ${access_token}",
@@ -14,7 +13,7 @@ object ManageCaseHeader {
     "Accept-Encoding" -> "gzip, deflate, br",
     "Connection" -> "keep-alive",
   )
-
+  /*Manage Case -  Remove Assignment Header*/
   val manageCaseRemoveAssignmentHeader = Map(
     "ServiceAuthorization" -> "Bearer ${ccd_dataBearerToken}",
     "Authorization" -> "Bearer ${access_token}",
@@ -24,8 +23,7 @@ object ManageCaseHeader {
     "Connection" -> "keep-alive",
   )
 
-
-
+  /*Manage Case -  Post Assignment Header*/
   val manageCasePostAssignentsHeader = Map(
     "ServiceAuthorization" -> "Bearer ${ccd_dataBearerToken}",
     "Authorization" -> "Bearer ${access_token}",
