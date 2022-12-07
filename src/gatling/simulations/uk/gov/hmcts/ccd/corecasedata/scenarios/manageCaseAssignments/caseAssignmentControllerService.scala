@@ -22,7 +22,7 @@ object caseAssignmentControllerService {
       exec(http("GET_Case_Assignments")
         .get(manageCaseUrl + "/case-assignments")
         .headers(manageCaseGetAssignentsHeader)
-        .queryParam("case_ids", "${Reference}")
+        .queryParam("case_ids", "${reference}")
         .check(jsonPath("$.case_assignments[0].shared_with[0].idam_id").optional.saveAs("assignmentAssigneeId"))
         .check(jsonPath("$.case_assignments[0].case_id").optional.saveAs("assignmentCaseId"))
         .check(jsonPath("$.case_assignments[0].shared_with[0].case_roles[0]").optional.saveAs("assignmentCaseRoles")))
@@ -62,7 +62,7 @@ object caseAssignmentControllerService {
         .post(manageCaseUrl + "/case-assignments")
         .headers(manageCasePostAssignentsHeader)
         .body(ElFileBody("bodies/caseManagement/assignCase.json")).asJson
-        .check(jsonPath("$.status_message").is("Roles ${AssignmentRole} from the organisation policies successfully assigned to the assignee.")))
+        .check(jsonPath("$.status_message").is("Roles ${assignmentRole} from the organisation policies successfully assigned to the assignee.")))
     }
 
 }
