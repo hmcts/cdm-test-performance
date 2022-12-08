@@ -1,8 +1,9 @@
-package uk.gov.hmcts.ccd.corecasedata.scenarios.utils
+package uk.gov.hmcts.ccd.corecasedata.scenarios
 
 import com.typesafe.config.{Config, ConfigFactory}
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
+import uk.gov.hmcts.ccd.corecasedata.scenarios.utils._
 
 object S2S {
 
