@@ -16,6 +16,8 @@ object Environment {
   val dmStore = "http://dm-store-${env}.service.core-compute-${env}.internal"
   val caseDocUrl = "http://ccd-case-document-am-api-${env}.service.core-compute-${env}.internal"
   val userProfileUrl = "http://ccd-user-profile-api-${env}.service.core-compute-${env}.internal"
+  val manageCaseUrl = "http://aac-manage-case-assignment-${env}.service.core-compute-${env}.internal"
+  val manageCaseHost = "aac-manage-case-assignment-${env}.service.core-compute-${env}.internal"
 
   val minThinkTime = 10 //10
   val maxThinkTime = 30 //30

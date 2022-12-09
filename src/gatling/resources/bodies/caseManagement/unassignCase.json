@@ -1,0 +1,11 @@
+{
+  "unassignments": [
+    {
+      "assignee_id": "${assignmentAssigneeId}",
+      "case_id": "${assignmentCaseId}",
+      "case_roles": [
+        "${assignmentCaseRoles}"
+      ]
+    }
+  ]
+}
