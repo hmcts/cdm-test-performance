@@ -11,7 +11,7 @@ object caseAssignmentControllerService {
   /* GET /case-assignments request to get all assignments from a case.
       The request requires an S2SToken and Idam so these services should be called prior to running this request.
       The S2SToken and Idam is sent within the manageCaseGetAssignmentHeader
-      ${Reference} variable is assigned from the caseAssignmentShareCaseAPI.csv feeder file.  The feeder is defined in the Simulation.
+      ${caseId} variable is assigned from the caseAssignmentShareCaseAPI.csv feeder file.  The feeder is defined in the Simulation.
       If an assignment is found then the required variables are captured in the response.  A successful request can still return no assignment,
       therefore the jsonpath is optional.
    */
@@ -51,7 +51,7 @@ object caseAssignmentControllerService {
   /* POST /case-users request to assign person from the same organisation to a case.
      The request requires an S2SToken and Idam so these services should be called prior to running this request.
        The S2SToken and Idam is sent within the manageCasePostAssignmentHeader
-       ${AssignmentRole} variable is assigned from the caseAssignmentShareCaseAPI.csv feeder file.  The feeder is defined in the Simulation file.
+       ${assignmentRole} variable is assigned from the caseAssignmentShareCaseAPI.csv feeder file.  The feeder is defined in the Simulation file.
        If the assignment is successful then a specific message is expected.
     */
 

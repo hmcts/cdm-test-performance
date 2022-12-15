@@ -10,7 +10,7 @@ object noticeOfChangeControllerService {
 
   /* GET /noc/noc-questions request to get challenge questions for the process of making a notice of change.
       The request requires an S2SToken and Idam so these services should be called prior to running this request.
-      The S2SToken and Idam is sent within the nocGetQuestionsHeader.  ${reference} variable is assigned from the feeder file.
+      The S2SToken and Idam is sent within the nocGetQuestionsHeader.  ${caseId} variable is assigned from the feeder file.
       The feeder is defined in the Simulation.  It is expected that a list of questions will be returned and they are stored in session.
    */
 
