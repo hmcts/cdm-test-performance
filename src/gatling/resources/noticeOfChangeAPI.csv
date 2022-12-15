@@ -1,4 +1,4 @@
-﻿jurisdiction,caseType,state,reference,Username,OrgansiationName,assignmentIdamId,Password,appellantFirstname,appellantSurname,alternativeUserName,alternativeOrgName,alternativeIdamId,alternativePassword
+﻿jurisdiction,caseType,state,caseId,Username,OrgansiationName,assignmentIdamId,Password,appellantFirstname,appellantSurname,alternativeUserName,alternativeOrgName,alternativeIdamId,alternativePassword
 IA,Asylum,pendingPayment,1663686844745481,iacorg-g2xx8_user484@mailtest.co.uk,iacorg-0c4ei,b64e1c86-0811-40d8-b997-c7593eebc376,Pass19word,PerfIRaAw,TestbZZsW,iacorg-n9k5z_user11@mailtest.co.uk,iacorg-fgv6h,f44a2dad-8118-4f82-b60d-194274aafffc,Pass19word
 IA,Asylum,pendingPayment,1663690517903286,iacorg-txqmo_user408@mailtest.co.uk,iacorg-0c4ei,388d389e-fff9-48d1-bafd-e6736b4556eb,Pass19word,PerfCASVY,TestDExTS,iacorg-n9k5z_user11@mailtest.co.uk,iacorg-fgv6h,f44a2dad-8118-4f82-b60d-194274aafffc,Pass19word
 IA,Asylum,pendingPayment,1663686509620524,iacorg-g2xx8_user484@mailtest.co.uk,iacorg-0c4ei,b64e1c86-0811-40d8-b997-c7593eebc376,Pass19word,PerfbvZrw,TestDzMfj,iacorg-n9k5z_user11@mailtest.co.uk,iacorg-fgv6h,f44a2dad-8118-4f82-b60d-194274aafffc,Pass19word

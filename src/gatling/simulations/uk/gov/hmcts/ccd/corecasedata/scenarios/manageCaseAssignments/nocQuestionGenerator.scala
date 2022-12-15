@@ -55,7 +55,7 @@ object nocQuestionGenerator {
     } // end of repeat
    //now that the repeat loop has completed, build the full json payload and store in session to be used in the POST request
    .exec(session => {
-      val caseJSON = jsonNOCBottom.replace("nocCaseId", session("reference").as[String])
+      val caseJSON = jsonNOCBottom.replace("nocCaseId", session("caseId").as[String])
       val completeJSON = jsonNOCTop + jsonNOCQuestionBuilder + caseJSON
       //println("the documentJSON value is" + completeJSON)
       session.setAll("documentJSON" -> completeJSON)

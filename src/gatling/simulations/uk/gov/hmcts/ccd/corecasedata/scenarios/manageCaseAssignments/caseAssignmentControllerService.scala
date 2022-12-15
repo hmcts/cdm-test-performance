@@ -22,7 +22,7 @@ object caseAssignmentControllerService {
       exec(http("GET_Case_Assignments")
         .get(aacUrl + "/case-assignments")
         .headers(manageCaseGetAssignentsHeader)
-        .queryParam("case_ids", "${reference}")
+        .queryParam("case_ids", "${caseId}")
         .check(jsonPath("$.case_assignments[0].shared_with[0].idam_id").optional.saveAs("assignmentAssigneeId"))
         .check(jsonPath("$.case_assignments[0].case_id").optional.saveAs("assignmentCaseId"))
         .check(jsonPath("$.case_assignments[0].shared_with[0].case_roles[0]").optional.saveAs("assignmentCaseRoles")))

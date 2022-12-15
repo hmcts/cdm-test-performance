@@ -20,7 +20,7 @@ object noticeOfChangeControllerService {
       exec(http("GET_NOC_Questions")
         .get(aacUrl + "/noc/noc-questions")
         .headers(nocGetQuestionsHeader)
-        .queryParam("case_id", "${reference}")
+        .queryParam("case_id", "${caseId}")
         .check(jsonPath("$.questions[*].question_id").findAll.optional.saveAs("questionIds"))
         .check(jsonPath("$.questions[*].question_text").findAll.optional.saveAs("questionText"))
         .check(jsonPath("$.questions[-1:].order").optional.saveAs("questionOrder")))
