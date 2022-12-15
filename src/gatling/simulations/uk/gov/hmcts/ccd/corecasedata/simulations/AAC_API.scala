@@ -14,7 +14,7 @@ import scala.concurrent.duration._
 import scala.language.postfixOps
 
 
-class ManageCaseAPI extends Simulation {
+class AAC_API extends Simulation {
 
   val dmBaseURL = aacUrl
 
