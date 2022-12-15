@@ -1,5 +1,5 @@
 {
   "assignee_id": "${assignmentIdamId}",
-  "case_id": "${reference}",
+  "case_id": "${caseId}",
   "case_type_id": "${caseType}"
 }
