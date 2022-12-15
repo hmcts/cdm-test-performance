@@ -33,4 +33,24 @@ object ManageCaseHeader {
     "Connection" -> "keep-alive"
   )
 
+  /*NOC -  Get Questions Header*/
+  val nocGetQuestionsHeader = Map(
+    "ServiceAuthorization" -> "Bearer ${ccd_dataBearerToken}",
+    "Authorization" -> "Bearer ${access_token}",
+    "Accept" -> "*/*",
+    "Host" -> manageCaseHost,
+    "Accept-Encoding" -> "gzip, deflate, br",
+    "Connection" -> "keep-alive"
+  )
+
+  /*NOC -  Post Questions Header*/
+  val nocPostQuestionsHeader = Map(
+    "ServiceAuthorization" -> "Bearer ${ccd_dataBearerToken}",
+    "Authorization" -> "Bearer ${access_token}",
+    "Accept" -> "*/*",
+    "Host" -> manageCaseHost,
+    "Accept-Encoding" -> "gzip, deflate, br",
+    "Connection" -> "keep-alive"
+  )
+
 }
