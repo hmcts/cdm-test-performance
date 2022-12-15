@@ -19,7 +19,7 @@ object noticeOfChangeControllerService {
     group("NoticeOfChange") {
       exec(http("GET_NOC_Questions")
         .get(aacUrl + "/noc/noc-questions")
-        .headers(nocGetQuestionsHeader)
+        .headers(aacHeader)
         .queryParam("case_id", "${caseId}")
         .check(jsonPath("$.questions[*].question_id").findAll.optional.saveAs("questionIds"))
         .check(jsonPath("$.questions[*].question_text").findAll.optional.saveAs("questionText"))
@@ -43,7 +43,7 @@ object noticeOfChangeControllerService {
         exec(nocQuestionGenerator.nocQuestionJSONBuilder())
         .exec(http("POST_NOC_Questions")
           .post(aacUrl + "/noc/verify-noc-answers")
-          .headers(nocPostQuestionsHeader)
+          .headers(aacHeader)
           .body(StringBody("${documentJSON}")).asJson
           .check(jsonPath("$.status_message").optional.saveAs("successMessage"))
           .check(jsonPath("$.message").optional.saveAs("unsuccessfulMessage"))
@@ -76,7 +76,7 @@ object noticeOfChangeControllerService {
           exec(nocQuestionGenerator.nocQuestionJSONBuilder())
           .exec(http("POST_NOC_CreateEvent")
               .post(aacUrl + "/noc/noc-requests")
-              .headers(nocPostQuestionsHeader)
+              .headers(aacHeader)
               .body(StringBody("${documentJSON}")).asJson
               .check(status is 201)
               .check(jsonPath("$.status_message").is("The Notice of Change request has been successfully submitted.")))

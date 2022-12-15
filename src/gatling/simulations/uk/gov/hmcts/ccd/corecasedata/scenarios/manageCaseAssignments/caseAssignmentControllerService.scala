@@ -21,7 +21,7 @@ object caseAssignmentControllerService {
     group("CaseAssignment") {
       exec(http("GET_Case_Assignments")
         .get(aacUrl + "/case-assignments")
-        .headers(manageCaseGetAssignentsHeader)
+        .headers(aacHeader)
         .queryParam("case_ids", "${caseId}")
         .check(jsonPath("$.case_assignments[0].shared_with[0].idam_id").optional.saveAs("assignmentAssigneeId"))
         .check(jsonPath("$.case_assignments[0].case_id").optional.saveAs("assignmentCaseId"))
@@ -41,7 +41,7 @@ object caseAssignmentControllerService {
       {
         exec(http("DELETE_Case_Assignments")
           .delete(aacUrl + "/case-assignments")
-          .headers(manageCaseRemoveAssignmentHeader)
+          .headers(aacHeader)
           .body(ElFileBody("bodies/caseManagement/unassignCase.json")).asJson
           .check(jsonPath("$.status_message").is("Unassignment(s) performed successfully.")))
       }
@@ -60,7 +60,7 @@ object caseAssignmentControllerService {
     group("CaseAssignment") {
       exec(http("POST_Case_Assignments")
         .post(aacUrl + "/case-assignments")
-        .headers(manageCasePostAssignentsHeader)
+        .headers(aacHeader)
         .body(ElFileBody("bodies/caseManagement/assignCase.json")).asJson
         .check(jsonPath("$.status_message").is("Roles ${assignmentRole} from the organisation policies successfully assigned to the assignee.")))
     }
