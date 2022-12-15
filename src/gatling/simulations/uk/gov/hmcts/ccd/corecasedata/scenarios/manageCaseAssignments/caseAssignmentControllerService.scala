@@ -3,7 +3,7 @@ package uk.gov.hmcts.ccd.corecasedata.scenarios.manageCaseAssignments
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import uk.gov.hmcts.ccd.corecasedata.scenarios.utils.Environment._
-import uk.gov.hmcts.ccd.corecasedata.scenarios.utils.ManageCaseHeader._
+import uk.gov.hmcts.ccd.corecasedata.scenarios.utils.AACHeader._
 
 object caseAssignmentControllerService {
 
@@ -20,7 +20,7 @@ object caseAssignmentControllerService {
 
     group("CaseAssignment") {
       exec(http("GET_Case_Assignments")
-        .get(manageCaseUrl + "/case-assignments")
+        .get(aacUrl + "/case-assignments")
         .headers(manageCaseGetAssignentsHeader)
         .queryParam("case_ids", "${reference}")
         .check(jsonPath("$.case_assignments[0].shared_with[0].idam_id").optional.saveAs("assignmentAssigneeId"))
@@ -40,7 +40,7 @@ object caseAssignmentControllerService {
       doIf("${assignmentCaseId.exists()}")
       {
         exec(http("DELETE_Case_Assignments")
-          .delete(manageCaseUrl + "/case-assignments")
+          .delete(aacUrl + "/case-assignments")
           .headers(manageCaseRemoveAssignmentHeader)
           .body(ElFileBody("bodies/caseManagement/unassignCase.json")).asJson
           .check(jsonPath("$.status_message").is("Unassignment(s) performed successfully.")))
@@ -59,7 +59,7 @@ object caseAssignmentControllerService {
   val caseAssignmentPostAssignment =
     group("CaseAssignment") {
       exec(http("POST_Case_Assignments")
-        .post(manageCaseUrl + "/case-assignments")
+        .post(aacUrl + "/case-assignments")
         .headers(manageCasePostAssignentsHeader)
         .body(ElFileBody("bodies/caseManagement/assignCase.json")).asJson
         .check(jsonPath("$.status_message").is("Roles ${assignmentRole} from the organisation policies successfully assigned to the assignee.")))

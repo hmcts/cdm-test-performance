@@ -2,14 +2,14 @@ package uk.gov.hmcts.ccd.corecasedata.scenarios.utils
 
 import uk.gov.hmcts.ccd.corecasedata.scenarios.utils.Environment._
 
-object ManageCaseHeader {
+object AACHeader {
 
   /*Manage Case -  Get Assignment Header*/
   val manageCaseGetAssignentsHeader = Map(
     "ServiceAuthorization" -> "Bearer ${ccd_dataBearerToken}",
     "Authorization" -> "Bearer ${access_token}",
     "Accept" -> "*/*",
-    "Host" -> manageCaseHost,
+    "Host" -> aacHost,
     "Accept-Encoding" -> "gzip, deflate, br",
     "Connection" -> "keep-alive"
   )
@@ -18,7 +18,7 @@ object ManageCaseHeader {
     "ServiceAuthorization" -> "Bearer ${ccd_dataBearerToken}",
     "Authorization" -> "Bearer ${access_token}",
     "Accept" -> "*/*",
-    "Host" -> manageCaseHost,
+    "Host" -> aacHost,
     "Accept-Encoding" -> "gzip, deflate, br",
     "Connection" -> "keep-alive"
   )
@@ -28,7 +28,7 @@ object ManageCaseHeader {
     "ServiceAuthorization" -> "Bearer ${ccd_dataBearerToken}",
     "Authorization" -> "Bearer ${access_token}",
     "Accept" -> "*/*",
-    "Host" -> manageCaseHost,
+    "Host" -> aacHost,
     "Accept-Encoding" -> "gzip, deflate, br",
     "Connection" -> "keep-alive"
   )
@@ -38,7 +38,7 @@ object ManageCaseHeader {
     "ServiceAuthorization" -> "Bearer ${ccd_dataBearerToken}",
     "Authorization" -> "Bearer ${access_token}",
     "Accept" -> "*/*",
-    "Host" -> manageCaseHost,
+    "Host" -> aacHost,
     "Accept-Encoding" -> "gzip, deflate, br",
     "Connection" -> "keep-alive"
   )
@@ -48,7 +48,7 @@ object ManageCaseHeader {
     "ServiceAuthorization" -> "Bearer ${ccd_dataBearerToken}",
     "Authorization" -> "Bearer ${access_token}",
     "Accept" -> "*/*",
-    "Host" -> manageCaseHost,
+    "Host" -> aacHost,
     "Accept-Encoding" -> "gzip, deflate, br",
     "Connection" -> "keep-alive"
   )

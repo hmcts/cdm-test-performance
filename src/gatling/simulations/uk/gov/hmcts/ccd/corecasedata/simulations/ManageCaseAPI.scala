@@ -16,7 +16,7 @@ import scala.language.postfixOps
 
 class ManageCaseAPI extends Simulation {
 
-  val dmBaseURL = manageCaseUrl
+  val dmBaseURL = aacUrl
 
   /* TEST TYPE DEFINITION */
   /* pipeline = nightly pipeline against the AAT environment (see the Jenkins_nightly file) */

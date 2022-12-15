@@ -3,7 +3,7 @@ package uk.gov.hmcts.ccd.corecasedata.scenarios.manageCaseAssignments
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import uk.gov.hmcts.ccd.corecasedata.scenarios.utils.Environment._
-import uk.gov.hmcts.ccd.corecasedata.scenarios.utils.ManageCaseHeader._
+import uk.gov.hmcts.ccd.corecasedata.scenarios.utils.AACHeader._
 import uk.gov.hmcts.ccd.corecasedata.scenarios.IdamLogin
 
 object noticeOfChangeControllerService {
@@ -18,7 +18,7 @@ object noticeOfChangeControllerService {
 
     group("NoticeOfChange") {
       exec(http("GET_NOC_Questions")
-        .get(manageCaseUrl + "/noc/noc-questions")
+        .get(aacUrl + "/noc/noc-questions")
         .headers(nocGetQuestionsHeader)
         .queryParam("case_id", "${reference}")
         .check(jsonPath("$.questions[*].question_id").findAll.optional.saveAs("questionIds"))
@@ -42,7 +42,7 @@ object noticeOfChangeControllerService {
       doIf("${questionOrder.exists()}") {
         exec(nocQuestionGenerator.nocQuestionJSONBuilder())
         .exec(http("POST_NOC_Questions")
-          .post(manageCaseUrl + "/noc/verify-noc-answers")
+          .post(aacUrl + "/noc/verify-noc-answers")
           .headers(nocPostQuestionsHeader)
           .body(StringBody("${documentJSON}")).asJson
           .check(jsonPath("$.status_message").optional.saveAs("successMessage"))
@@ -75,7 +75,7 @@ object noticeOfChangeControllerService {
         doIf("${questionOrder.exists()}") {
           exec(nocQuestionGenerator.nocQuestionJSONBuilder())
           .exec(http("POST_NOC_CreateEvent")
-              .post(manageCaseUrl + "/noc/noc-requests")
+              .post(aacUrl + "/noc/noc-requests")
               .headers(nocPostQuestionsHeader)
               .body(StringBody("${documentJSON}")).asJson
               .check(status is 201)
