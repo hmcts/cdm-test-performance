@@ -57,7 +57,7 @@ object nocQuestionGenerator {
    .exec(session => {
       val caseJSON = jsonNOCBottom.replace("nocCaseId", session("caseId").as[String])
       val completeJSON = jsonNOCTop + jsonNOCQuestionBuilder + caseJSON
-      //println("the documentJSON value is" + completeJSON)
+      jsonNOCQuestionBuilder = ""
       session.setAll("documentJSON" -> completeJSON)
    })
   }  //end of def
