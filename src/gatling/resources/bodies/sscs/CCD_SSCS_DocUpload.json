@@ -18,9 +18,9 @@
               "originalSenderOtherPartyId": null,
               "originalSenderOtherPartyName": null,
               "documentLink": {
-                 "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID}",
-                 "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID}/binary",
-                 "document_filename": "${FileName1}"
+                 "document_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
+                 "document_binary_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
+                 "document_filename": "#{FileName1}"
               }
            },
            "id": null
@@ -32,6 +32,6 @@
      "summary": "",
      "description": ""
   },
-  "event_token": "${eventToken3}",
+  "event_token": "#{eventToken3}",
   "ignore_warning": false
 }

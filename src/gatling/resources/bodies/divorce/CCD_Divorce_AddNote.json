@@ -16,6 +16,6 @@
     "summary": "",
     "description": ""
   },
-  "event_token": "${eventToken2}",
+  "event_token": "#{eventToken2}",
   "ignore_warning": false
 }

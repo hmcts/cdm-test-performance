@@ -1,11 +1,10 @@
-package uk.gov.hmcts.ccd.corecasedata.simulations
+package simulations
 
 import com.typesafe.config.{Config, ConfigFactory}
 import io.gatling.core.Predef._
 import io.gatling.core.scenario.Simulation
-import io.gatling.http.Predef._ //comment out for VM runs, only required for proxy
-import uk.gov.hmcts.ccd.corecasedata.scenarios._
-import uk.gov.hmcts.ccd.corecasedata.scenarios.utils._
+import scenarios.utils._
+import scenarios.api._
 import scala.concurrent.duration._
 
 class DMStoreSimulation extends Simulation  {
@@ -28,7 +27,7 @@ class DMStoreSimulation extends Simulation  {
     }
 
   setUp(
-    tenfilesimulation.inject(rampUsers(1) during (10 minutes)) //60 during 10
+    tenfilesimulation.inject(rampUsers(1) during (10.minutes)) //60 during 10
   )
   .protocols(httpProtocol)
 

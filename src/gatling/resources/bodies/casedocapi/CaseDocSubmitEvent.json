@@ -6,10 +6,10 @@
         "value": {
           "DocumentType": "will",
           "DocumentLink": {
-            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID1}",
-            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID1}/binary",
+            "document_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID1}",
+            "document_binary_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID1}/binary",
             "document_filename": "1MB.pdf",
-            "document_hash": "${hashToken1}"
+            "document_hash": "#{hashToken1}"
           },
           "Comment": "test"
         }
@@ -19,10 +19,10 @@
         "value": {
           "DocumentType": "correspondence",
           "DocumentLink": {
-            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID2}",
-            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID2}/binary",
+            "document_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID2}",
+            "document_binary_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID2}/binary",
             "document_filename": "2MB.pdf",
-            "document_hash": "${hashToken2}"
+            "document_hash": "#{hashToken2}"
           },
           "Comment": "test"
         }
@@ -32,10 +32,10 @@
         "value": {
           "DocumentType": "correspondence",
           "DocumentLink": {
-            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID3}",
-            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID3}/binary",
+            "document_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID3}",
+            "document_binary_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID3}/binary",
             "document_filename": "3MB.pdf",
-            "document_hash": "${hashToken3}"
+            "document_hash": "#{hashToken3}"
           },
           "Comment": "test"
         }
@@ -45,10 +45,10 @@
         "value": {
           "DocumentType": "correspondence",
           "DocumentLink": {
-            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID4}",
-            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID4}/binary",
+            "document_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID4}",
+            "document_binary_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID4}/binary",
             "document_filename": "5MB.pdf",
-            "document_hash": "${hashToken4}"
+            "document_hash": "#{hashToken4}"
           },
           "Comment": "test"
         }
@@ -58,10 +58,10 @@
         "value": {
           "DocumentType": "correspondence",
           "DocumentLink": {
-            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID5}",
-            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID5}/binary",
+            "document_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID5}",
+            "document_binary_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID5}/binary",
             "document_filename": "10MB.pdf",
-            "document_hash": "${hashToken5}"
+            "document_hash": "#{hashToken5}"
           },
           "Comment": "test"
         }
@@ -73,6 +73,6 @@
     "summary": "",
     "description": ""
   },
-  "event_token": "${eventToken}",
+  "event_token": "#{eventToken}",
   "ignore_warning": false
 }

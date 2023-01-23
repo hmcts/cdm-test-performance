@@ -10,15 +10,15 @@
               "size": null,
               "createdDatetime": null,
               "createdBy": null,
-              "receivedDatetime": "${currentDate}T00:00:00.000",
+              "receivedDatetime": "#{currentDate}T00:00:00.000",
               "handled": null,
               "documentType": "PAPER_RESPONSE_COUNTER_CLAIM",
               "documentTypeOther": null,
               "documentLink": {
-                 "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID1}",
-                 "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID1}/binary",
-                 "document_filename": "${FileName1}",
-                 "document_hash": "${hashToken1}"
+                 "document_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID1}",
+                 "document_binary_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID1}/binary",
+                 "document_filename": "#{FileName1}",
+                 "document_hash": "#{hashToken1}"
               }
            },
            "id": null
@@ -30,15 +30,15 @@
               "size": null,
               "createdDatetime": null,
               "createdBy": null,
-              "receivedDatetime": "${currentDate}T00:00:00.000",
+              "receivedDatetime": "#{currentDate}T00:00:00.000",
               "handled": null,
               "documentType": "PAPER_RESPONSE_DISPUTES_ALL",
               "documentTypeOther": null,
               "documentLink": {
-                 "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID2}",
-                 "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID2}/binary",
-                 "document_filename": "${FileName2}",
-                 "document_hash": "${hashToken2}"
+                 "document_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID2}",
+                 "document_binary_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID2}/binary",
+                 "document_filename": "#{FileName2}",
+                 "document_hash": "#{hashToken2}"
               }
            },
            "id": null
@@ -50,6 +50,6 @@
      "summary": "",
      "description": ""
   },
-  "event_token": "${eventToken1}",
+  "event_token": "#{eventToken1}",
   "ignore_warning": false
 }

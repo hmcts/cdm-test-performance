@@ -43,6 +43,6 @@
      "summary": "",
      "description": ""
   },
-  "event_token": "${eventToken7}",
+  "event_token": "#{eventToken7}",
   "ignore_warning": false
 }

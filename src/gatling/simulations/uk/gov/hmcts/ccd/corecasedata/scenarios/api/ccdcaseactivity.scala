@@ -1,16 +1,15 @@
-package uk.gov.hmcts.ccd.corecasedata.scenarios
+package scenarios.api
 
 import com.typesafe.config.{Config, ConfigFactory}
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import scala.concurrent.duration._
-import uk.gov.hmcts.ccd.corecasedata.scenarios.utils._
+import scenarios.utils._
 
 object ccdcaseactivity {
 
 val config: Config = ConfigFactory.load()
 
-val IdamURL = Environment.idamURL
 val IdamAPI = Environment.idamAPI
 val CCDEnvurl = Environment.ccdEnvurl
 val s2sUrl = Environment.s2sUrl
@@ -37,7 +36,7 @@ val CDSGetRequest =
       .exitHereIfFailed
 
   .exec(http("GetIdamToken")
-      .post(IdamAPI + "/o/token?client_id=ccd_gateway&client_secret=" + ccdGatewayClientSecret + "&grant_type=password&scope=" + ccdScope + "&username=${email}&password=Password12")
+      .post(IdamAPI + "/o/token?client_id=ccd_gateway&client_secret=" + ccdGatewayClientSecret + "&grant_type=password&scope=" + ccdScope + "&username=#{email}&password=Password12")
       .header("Content-Type", "application/x-www-form-urlencoded")
       .header("Content-Length", "0")
       .check(status.is(200))
@@ -49,58 +48,58 @@ val CaseActivityRequest =
   feed(caseActivityFeeder)
 
   .exec(http("CaseActivity_GET")
-    .get(ccdCaseActivityUrl + "/cases/${caseRef}/activity")
+    .get(ccdCaseActivityUrl + "/cases/#{caseRef}/activity")
     .header("Content-Type", "application/json")
-    .header("ServiceAuthorization", "Bearer ${bearerToken}")
-    .header("Authorization", "Bearer ${access_token}"))
+    .header("ServiceAuthorization", "Bearer #{bearerToken}")
+    .header("Authorization", "Bearer #{access_token}"))
 
   .exec(http("CaseActivity_OPTIONS")
-    .options(ccdCaseActivityUrl + "/cases/${caseRef}/activity")
+    .options(ccdCaseActivityUrl + "/cases/#{caseRef}/activity")
     .header("Content-Type", "application/json")
-    .header("ServiceAuthorization", "Bearer ${bearerToken}")
-    .header("Authorization", "Bearer ${access_token}"))
+    .header("ServiceAuthorization", "Bearer #{bearerToken}")
+    .header("Authorization", "Bearer #{access_token}"))
 
-  .pause(1)
+  .pause(1.seconds)
 
   .exec(http("CaseActivity_POST")
-    .post(ccdCaseActivityUrl + "/cases/${caseRef}/activity")
+    .post(ccdCaseActivityUrl + "/cases/#{caseRef}/activity")
     .header("Content-Type", "application/json")
-    .header("ServiceAuthorization", "Bearer ${bearerToken}")
-    .header("Authorization", "Bearer ${access_token}")
+    .header("ServiceAuthorization", "Bearer #{bearerToken}")
+    .header("Authorization", "Bearer #{access_token}")
     .body(StringBody("{\n  \"activity\": \"view\"\n}")))
 
   .exec(http("CaseActivity_OPTIONS")
-    .options(ccdCaseActivityUrl + "/cases/${caseRef}/activity")
+    .options(ccdCaseActivityUrl + "/cases/#{caseRef}/activity")
     .header("Content-Type", "application/json")
-    .header("ServiceAuthorization", "Bearer ${bearerToken}")
-    .header("Authorization", "Bearer ${access_token}"))
+    .header("ServiceAuthorization", "Bearer #{bearerToken}")
+    .header("Authorization", "Bearer #{access_token}"))
 
-  .pause(1)
+  .pause(1.seconds)
 
   .exec(http("CaseActivity_GET0")
     .get(ccdCaseActivityUrl + "/cases/0/activity")
     .header("Content-Type", "application/json")
-    .header("ServiceAuthorization", "Bearer ${bearerToken}")
-    .header("Authorization", "Bearer ${access_token}"))
+    .header("ServiceAuthorization", "Bearer #{bearerToken}")
+    .header("Authorization", "Bearer #{access_token}"))
 
-  .pause(1)
+  .pause(1.seconds)
 
 val CaseActivityList = 
 
   feed(caseActivityListFeeder)
 
   .exec(http("CaseActivityList_GET")
-    .get(ccdCaseActivityUrl + "/cases/${caseList}/activity")
+    .get(ccdCaseActivityUrl + "/cases/#{caseList}/activity")
     .header("Content-Type", "application/json")
-    .header("ServiceAuthorization", "Bearer ${bearerToken}")
-    .header("Authorization", "Bearer ${access_token}"))
+    .header("ServiceAuthorization", "Bearer #{bearerToken}")
+    .header("Authorization", "Bearer #{access_token}"))
 
   .exec(http("CaseActivityList_OPTIONS")
-    .options(ccdCaseActivityUrl + "/cases/${caseList}/activity")
+    .options(ccdCaseActivityUrl + "/cases/#{caseList}/activity")
     .header("Content-Type", "application/json")
-    .header("ServiceAuthorization", "Bearer ${bearerToken}")
-    .header("Authorization", "Bearer ${access_token}"))
+    .header("ServiceAuthorization", "Bearer #{bearerToken}")
+    .header("Authorization", "Bearer #{access_token}"))
 
-  .pause(3)
+  .pause(3.seconds)
 
 }

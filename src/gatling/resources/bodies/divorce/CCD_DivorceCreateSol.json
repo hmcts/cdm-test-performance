@@ -3,7 +3,7 @@
      "PetitionerSolicitorName": "perf",
      "D8SolicitorReference": "12121132233",
      "PetitionerSolicitorPhone": "07111222333",
-     "PetitionerSolicitorEmail": "${Username}",
+     "PetitionerSolicitorEmail": "#{Username}",
      "SolicitorAgreeToReceiveEmails": "Yes",
      "DerivedPetitionerSolicitorAddr": "12 test street, kt25bu",
      "PetitionerOrganisationPolicy": {
@@ -11,8 +11,8 @@
         "OrgPolicyReference": null,
         "PrepopulateToUsersOrganisation": null,
         "Organisation": {
-           "OrganisationID": "${orgId}",
-           "OrganisationName": "${orgName}"
+           "OrganisationID": "#{orgId}",
+           "OrganisationName": "#{orgName}"
         },
         "PreviousOrganisations": []
      },
@@ -72,7 +72,7 @@
      "summary": "",
      "description": ""
   },
-  "event_token": "${eventToken}",
+  "event_token": "#{eventToken}",
   "ignore_warning": false,
   "draft_id": null
 }

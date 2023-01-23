@@ -93,14 +93,14 @@
      "natureOfApplication3a": null,
      "natureOfApplication3b": null,
      "consentOrder": {
-        "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/707c3927-dcdf-4042-a2fb-e0c5cab2409f",
-        "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/707c3927-dcdf-4042-a2fb-e0c5cab2409f/binary",
+        "document_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/707c3927-dcdf-4042-a2fb-e0c5cab2409f",
+        "document_binary_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/707c3927-dcdf-4042-a2fb-e0c5cab2409f/binary",
         "document_filename": "1MbFileNew.PDF"
      },
      "d81Question": "Yes",
      "d81Joint": {
-        "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/c7c74647-92d4-4ef2-800a-536513b86bd1",
-        "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/c7c74647-92d4-4ef2-800a-536513b86bd1/binary",
+        "document_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/c7c74647-92d4-4ef2-800a-536513b86bd1",
+        "document_binary_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/c7c74647-92d4-4ef2-800a-536513b86bd1/binary",
         "document_filename": "1MbFileNew.PDF"
      },
      "d81Applicant": null,
@@ -112,7 +112,7 @@
      "summary": "",
      "description": ""
   },
-  "event_token": "${eventToken}",
+  "event_token": "#{eventToken}",
   "ignore_warning": false,
   "draft_id": null
 }

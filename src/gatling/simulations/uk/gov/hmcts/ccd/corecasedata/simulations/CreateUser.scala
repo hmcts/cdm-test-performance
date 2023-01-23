@@ -1,10 +1,9 @@
-package uk.gov.hmcts.ccd.corecasedata.simulations
+package simulations
 
 import io.gatling.core.Predef._
 import io.gatling.core.scenario.Simulation
-import io.gatling.http.Predef.Proxy
-import uk.gov.hmcts.ccd.corecasedata.scenarios.CreateUser
-import uk.gov.hmcts.ccd.corecasedata.scenarios.utils._
+import scenarios.api.CreateUser
+import scenarios.utils._
 import scala.concurrent.duration._
 
 class CreateUser extends Simulation  {
@@ -13,7 +12,6 @@ class CreateUser extends Simulation  {
 
   val httpProtocol = Environment.HttpProtocol
     .baseUrl(BaseURL)
-    // .proxy(Proxy("proxyout.reform.hmcts.net", 8080).httpsPort(8080))
     .doNotTrackHeader("1")
 
   val GrantRole = scenario("Grant idam role")
@@ -59,7 +57,7 @@ class CreateUser extends Simulation  {
   setUp(
     // GrantRole.inject(rampUsers(1) during (5 minutes)))
     // DeleteRole.inject(rampUsers(1) during (1 minutes)))
-    CreateUserTestingSupport.inject(rampUsers(1) during (1 minutes)))
+    CreateUserTestingSupport.inject(rampUsers(1) during (1.minutes)))
     // DeleteUserTestingSupport.inject(rampUsers(1) during (1 minutes)))
     // GetUserID.inject(rampUsers(1) during (1 minutes)))
     .protocols(httpProtocol)

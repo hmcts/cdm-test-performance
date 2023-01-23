@@ -4,9 +4,9 @@
       "agree"
     ],
     "draftApplicationDocument": {
-      "document_url": "${documentUrl}",
-      "document_filename": "${documentFilename}",
-      "document_binary_url": "${documentUrl}/binary"
+      "document_url": "#{documentUrl}",
+      "document_filename": "#{documentFilename}",
+      "document_binary_url": "#{documentUrl}/binary"
     },
     "submissionConsentLabel": "I, sdsdsdsd hjhjhjhj, believe that the facts stated in this application are true.",
     "displayAmountToPay": "Yes",
@@ -17,6 +17,6 @@
     "summary": "",
     "description": ""
   },
-  "event_token": "${eventToken8}",
+  "event_token": "#{eventToken8}",
   "ignore_warning": false
 }

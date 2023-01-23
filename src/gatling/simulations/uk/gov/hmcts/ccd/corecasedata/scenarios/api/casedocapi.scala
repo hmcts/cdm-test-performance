@@ -1,10 +1,11 @@
-package uk.gov.hmcts.ccd.corecasedata.scenarios
+package scenarios.api
 
 import com.typesafe.config.{Config, ConfigFactory}
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import java.io.{BufferedWriter, FileWriter}
-import uk.gov.hmcts.ccd.corecasedata.scenarios.utils._
+import scala.concurrent.duration._
+import scenarios.utils._
 
 object casedocapi {
 
@@ -51,15 +52,15 @@ object casedocapi {
 
     .exec(http("CaseDocApi_Upload1mb")
       .post(CaseDocAPI + "/cases/documents")
-      .header("Authorization", "Bearer ${accessToken}")
-      .header("ServiceAuthorization", "${bearerToken}")
+      .header("Authorization", "Bearer #{accessToken}")
+      .header("ServiceAuthorization", "#{bearerToken}")
       .header("accept", "application/json")
       .header("Content-Type", "multipart/form-data")
       .formParam("classification", "PUBLIC")
       .formParam("caseTypeId", "Benefit") //GrantOfRepresentation
       .formParam("jurisdictionId", "SSCS") //PROBATE
-      .bodyPart(RawFileBodyPart("files", "${FileName1}")
-        .fileName("${FileName1}")
+      .bodyPart(RawFileBodyPart("files", "#{FileName1}")
+        .fileName("#{FileName1}")
         .transferEncoding("binary"))
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID1"))
       .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken1")))
@@ -74,7 +75,7 @@ object casedocapi {
     //     session
     // }
 
-    .pause(Environment.constantthinkTime)
+    .pause(Environment.constantthinkTime.seconds)
 
     .exec(_.setAll(  
       "FileName1"  -> ("2MB.pdf")
@@ -82,14 +83,14 @@ object casedocapi {
 
     .exec(http("CaseDocApi_Upload2mb")
       .post(CaseDocAPI + "/cases/documents")
-      .header("Authorization", "Bearer ${accessToken}")
-      .header("ServiceAuthorization", "${bearerToken}")
+      .header("Authorization", "Bearer #{accessToken}")
+      .header("ServiceAuthorization", "#{bearerToken}")
       .header("accept", "application/json")
       .header("Content-Type", "multipart/form-data")
       .formParam("classification", "PUBLIC")
       .formParam("caseTypeId", "GrantOfRepresentation")
       .formParam("jurisdictionId", "PROBATE")
-      .bodyPart(RawFileBodyPart("files", "${FileName1}")
+      .bodyPart(RawFileBodyPart("files", "#{FileName1}")
         .fileName("1MB.pdf")
         .transferEncoding("binary"))
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID2"))
@@ -105,7 +106,7 @@ object casedocapi {
     //     session
     // }
 
-    .pause(Environment.constantthinkTime)
+    .pause(Environment.constantthinkTime.seconds)
 
     .exec(_.setAll(  
       "FileName1"  -> ("3MB.pdf")
@@ -113,14 +114,14 @@ object casedocapi {
 
     .exec(http("CaseDocApi_Upload3mb")
       .post(CaseDocAPI + "/cases/documents")
-      .header("Authorization", "Bearer ${accessToken}")
-      .header("ServiceAuthorization", "${bearerToken}")
+      .header("Authorization", "Bearer #{accessToken}")
+      .header("ServiceAuthorization", "#{bearerToken}")
       .header("accept", "application/json")
       .header("Content-Type", "multipart/form-data")
       .formParam("classification", "PUBLIC")
       .formParam("caseTypeId", "GrantOfRepresentation")
       .formParam("jurisdictionId", "PROBATE")
-      .bodyPart(RawFileBodyPart("files", "${FileName1}")
+      .bodyPart(RawFileBodyPart("files", "#{FileName1}")
         .fileName("1MB.pdf")
         .transferEncoding("binary"))
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID3"))
@@ -136,7 +137,7 @@ object casedocapi {
     //     session
     // }
 
-    .pause(Environment.constantthinkTime)
+    .pause(Environment.constantthinkTime.seconds)
 
     .exec(_.setAll(  
       "FileName1"  -> ("5MB.pdf")
@@ -144,14 +145,14 @@ object casedocapi {
 
     .exec(http("CaseDocApi_Upload5mb")
       .post(CaseDocAPI + "/cases/documents")
-      .header("Authorization", "Bearer ${accessToken}")
-      .header("ServiceAuthorization", "${bearerToken}")
+      .header("Authorization", "Bearer #{accessToken}")
+      .header("ServiceAuthorization", "#{bearerToken}")
       .header("accept", "application/json")
       .header("Content-Type", "multipart/form-data")
       .formParam("classification", "PUBLIC")
       .formParam("caseTypeId", "GrantOfRepresentation")
       .formParam("jurisdictionId", "PROBATE")
-      .bodyPart(RawFileBodyPart("files", "${FileName1}")
+      .bodyPart(RawFileBodyPart("files", "#{FileName1}")
         .fileName("1MB.pdf")
         .transferEncoding("binary"))
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID4"))
@@ -167,7 +168,7 @@ object casedocapi {
     //     session
     // }
 
-    .pause(Environment.constantthinkTime)
+    .pause(Environment.constantthinkTime.seconds)
     
     .exec(_.setAll(  
       "FileName1"  -> ("10MB.pdf")
@@ -175,14 +176,14 @@ object casedocapi {
 
     .exec(http("CaseDocApi_Upload10mb")
       .post(CaseDocAPI + "/cases/documents")
-      .header("Authorization", "Bearer ${accessToken}")
-      .header("ServiceAuthorization", "${bearerToken}")
+      .header("Authorization", "Bearer #{accessToken}")
+      .header("ServiceAuthorization", "#{bearerToken}")
       .header("accept", "application/json")
       .header("Content-Type", "multipart/form-data")
       .formParam("classification", "PUBLIC")
       .formParam("caseTypeId", "GrantOfRepresentation")
       .formParam("jurisdictionId", "PROBATE")
-      .bodyPart(RawFileBodyPart("files", "${FileName1}")
+      .bodyPart(RawFileBodyPart("files", "#{FileName1}")
         .fileName("1MB.pdf")
         .transferEncoding("binary"))
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID5"))
@@ -198,25 +199,25 @@ object casedocapi {
     //     session
     // }
 
-    .pause(Environment.constantthinkTime)
+    .pause(Environment.constantthinkTime.seconds)
 
   val addDocToCase = 
 
     exec(http("API_Probate_GetEventToken")
-      .get(ccdDataStoreUrl + "/caseworkers/539560/jurisdictions/PROBATE/case-types/GrantOfRepresentation/cases/${caseId}/event-triggers/boUploadDocumentsStop/token")
-      .header("ServiceAuthorization", "Bearer ${bearerToken}")
-      .header("Authorization", "Bearer ${accessToken}")
+      .get(ccdDataStoreUrl + "/caseworkers/539560/jurisdictions/PROBATE/case-types/GrantOfRepresentation/cases/#{caseId}/event-triggers/boUploadDocumentsStop/token")
+      .header("ServiceAuthorization", "Bearer #{bearerToken}")
+      .header("Authorization", "Bearer #{accessToken}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken")))
 
     .exec(http("API_Probate_DocUpload")
-      .post(ccdDataStoreUrl + "/caseworkers/539560/jurisdictions/PROBATE/case-types/GrantOfRepresentation/cases/${caseId}/events")
-      .header("ServiceAuthorization", "Bearer ${bearerToken}")
-      .header("Authorization", "Bearer ${accessToken}")
+      .post(ccdDataStoreUrl + "/caseworkers/539560/jurisdictions/PROBATE/case-types/GrantOfRepresentation/cases/#{caseId}/events")
+      .header("ServiceAuthorization", "Bearer #{bearerToken}")
+      .header("Authorization", "Bearer #{accessToken}")
       .header("Content-Type","application/json")
       .body(ElFileBody("bodies/casedocapi/CaseDocSubmitEvent.json")))
 
-    .pause(Environment.constantthinkTime)
+    .pause(Environment.constantthinkTime.seconds)
 
   val caseDocDownload =
 
@@ -229,44 +230,44 @@ object casedocapi {
     .repeat(2) {
 
       exec(http("CaseDocApi_Download1mb")
-        .get(CaseDocAPI + "/cases/documents/${1mbId}/binary")
-        .header("Authorization", "Bearer ${accessToken}")
-        .header("ServiceAuthorization", "${bearerToken}")
+        .get(CaseDocAPI + "/cases/documents/#{1mbId}/binary")
+        .header("Authorization", "Bearer #{accessToken}")
+        .header("ServiceAuthorization", "#{bearerToken}")
         .header("accept", "application/json"))
 
-      .pause(Environment.constantthinkTime)
+      .pause(Environment.constantthinkTime.seconds)
 
       .exec(http("CaseDocApi_Download2mb")
-        .get(CaseDocAPI + "/cases/documents/${2mbId}/binary")
-        .header("Authorization", "Bearer ${accessToken}")
-        .header("ServiceAuthorization", "${bearerToken}")
+        .get(CaseDocAPI + "/cases/documents/#{2mbId}/binary")
+        .header("Authorization", "Bearer #{accessToken}")
+        .header("ServiceAuthorization", "#{bearerToken}")
         .header("accept", "application/json"))
 
-      .pause(Environment.constantthinkTime)
+      .pause(Environment.constantthinkTime.seconds)
 
       .exec(http("CaseDocApi_Download3mb")
-        .get(CaseDocAPI + "/cases/documents/${3mbId}/binary")
-        .header("Authorization", "Bearer ${accessToken}")
-        .header("ServiceAuthorization", "${bearerToken}")
+        .get(CaseDocAPI + "/cases/documents/#{3mbId}/binary")
+        .header("Authorization", "Bearer #{accessToken}")
+        .header("ServiceAuthorization", "#{bearerToken}")
         .header("accept", "application/json"))
 
-      .pause(Environment.constantthinkTime)
+      .pause(Environment.constantthinkTime.seconds)
 
       .exec(http("CaseDocApi_Download5mb")
-        .get(CaseDocAPI + "/cases/documents/${5mbId}/binary")
-        .header("Authorization", "Bearer ${accessToken}")
-        .header("ServiceAuthorization", "${bearerToken}")
+        .get(CaseDocAPI + "/cases/documents/#{5mbId}/binary")
+        .header("Authorization", "Bearer #{accessToken}")
+        .header("ServiceAuthorization", "#{bearerToken}")
         .header("accept", "application/json"))
 
-      .pause(Environment.constantthinkTime)
+      .pause(Environment.constantthinkTime.seconds)
 
       .exec(http("CaseDocApi_Download10mb")
-        .get(CaseDocAPI + "/cases/documents/${10mbId}/binary")
-        .header("Authorization", "Bearer ${accessToken}")
-        .header("ServiceAuthorization", "${bearerToken}")
+        .get(CaseDocAPI + "/cases/documents/#{10mbId}/binary")
+        .header("Authorization", "Bearer #{accessToken}")
+        .header("ServiceAuthorization", "#{bearerToken}")
         .header("accept", "application/json"))
 
-      .pause(Environment.constantthinkTime)
+      .pause(Environment.constantthinkTime.seconds)
     }
 
 }

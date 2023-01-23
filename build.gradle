@@ -1,83 +1,51 @@
 plugins {
-    id "org.owasp.dependencycheck" version "5.2.1"
+    id 'org.owasp.dependencycheck' version '8.0.1'
     id 'scala'
-    id 'com.github.lkishalmi.gatling' version '3.0.2'
-    id 'java-gradle-plugin'
-    id 'groovy'
-    id 'com.gradle.plugin-publish' version '0.9.8'
-    id 'maven-publish'
+    id 'io.gatling.gradle' version '3.9.0.1'
 }
-
-//apply plugin: 'java'
-apply plugin: 'scala'
-group 'uk.gov.hmcts.reform'
-version = '1.0'
 
 tasks.withType(JavaExec) {
-    jvmArgs = ['-Xms1024m', '-Xmx2048m', '-XX:+UseConcMarkSweepGC']
+    // Configure the size of the JVM if necessary
+    jvmArgs = ['-Xms1024m', '-Xmx2048m']
+    /* Use the following args to build a report when a test was terminated
+    args = [
+        "--reports-only", "fact-20201109092032896",
+        '--results-folder', file('build/reports/gatling').absolutePath,
+        ]
+    */
 }
 
-jar {
-    manifest {
-        attributes 'Implementation-Title': 'CCD UI Performance Tests',
-                'Implementation-Version': version
-    }
+tasks.withType(Copy).all{
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
-
-/*dependencyCheck {
-    // Specifies if the build should be failed if a CVSS score above a specified level is identified.
-    // range of 0-10 fails the build, anything greater and it doesn't fail the build
-    failBuildOnCVSS = System.getProperty('dependencyCheck.failBuild') == 'true' ? 0 : 11
-    suppressionFile = 'dependency-check-suppressions.xml'
-}*/
 
 repositories {
-    jcenter()
-}
-
-ScalaCompileOptions.metaClass.daemonServer = true
-ScalaCompileOptions.metaClass.fork = true
-ScalaCompileOptions.metaClass.useAnt = false
-ScalaCompileOptions.metaClass.useCompileDaemon = false
-
-dependencies {
-    compile 'org.scala-lang:scala-library:2.12.8'
-    gatlingCompile group: 'io.rest-assured', name: 'rest-assured', version: '3.0.0'
-    gatlingCompile 'com.warrenstrange:googleauth:1.1.5'
-    compile group: 'io.gatling', name: 'gatling-app', version: '3.2.0'
-    compile group: 'io.gatling', name: 'gatling-recorder', version: '3.2.0'
-    compile group: 'io.gatling.highcharts', name: 'gatling-charts-highcharts', version: '3.2.0'
+    mavenCentral()
 }
 
 gatling {
-    toolVersion '3.2.0'
-    scalaVersion '2.12.8'
-    simulations = [ 
-                    'uk.gov.hmcts.ccd.corecasedata.simulations.CCD_PerformanceRegression'
-                    // 'uk.gov.hmcts.ccd.corecasedata.simulations.CCDUIPTSimulation'
-                    // 'uk.gov.hmcts.ccd.corecasedata.simulations.DMStoreSimulation'
-                    // 'uk.gov.hmcts.ccd.corecasedata.simulations.CaseDocApiSimulation'
-                    // 'uk.gov.hmcts.ccd.corecasedata.simulations.CCD_StressTest'
-                    // 'uk.gov.hmcts.ccd.corecasedata.simulations.CreateUser'
-                    // 'uk.gov.hmcts.ccd.corecasedata.simulations.CCDDataStoreSimulation'
-                    // 'uk.gov.hmcts.ccd.corecasedata.simulations.CaseSharingSimulation'
-                    // 'uk.gov.hmcts.ccd.corecasedata.simulations.CCD_SearchSimulation'
-    ]
-}
-
-test {
-    testLogging {
-        showStandardStreams = true
+    gatlingVersion '3.9.0'
+    scalaVersion '2.13.10'
+    simulations = {
+        include "simulations/CCD_PerformanceRegression.scala"
+                // "simulations/CCDUIPTSimulation"
+                // "simulations/DMStoreSimulation"
+                // "simulations/CaseDocApiSimulation"
+                // "simulations/CCD_StressTest"
+                // "simulations/CreateUser"
+                // "simulations/CCDDataStoreSimulation"
+                // "simulations/CaseSharingSimulation"
+                // "simulations/CCD_SearchSimulation"
     }
-    dependsOn("publishToMavenLocal")
-    systemProperty "com.github.lkishalmi.gatling.version", project.version
 }
 
-pluginBundle {
-    website = 'https://github.com/lkishalmi/gradle-gatling-plugin'
-    vcsUrl = 'https://github.com/lkishalmi/gradle-gatling-plugin'
-    description = 'Gatling Simulation Execution'
-    tags = ['gatling', 'load test', 'stress test', 'performance test', 'scala']
+sourceSets {
+    gatling {
+        scala {
+            srcDir 'src/gatling/simulations/uk/gov/hmcts/ccd/corecasedata'
+        }
+        resources {
+            srcDir 'src/gatling/resources'
+        }
+    }
 }
-
-ext ['netty.version'] = '4.0.51.Final'

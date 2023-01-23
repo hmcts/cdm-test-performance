@@ -6,10 +6,10 @@
               "DocumentType": "will",
               "Comment": "test doc upload",
               "DocumentLink": {
-                 "document_url": "http://dm-store-${env}.service.core-compute-${env}.internal/documents/${Document_ID}",
-                 "document_binary_url": "http://dm-store-${env}.service.core-compute-${env}.internal/documents/${Document_ID}/binary",
-                 "document_filename": "${FileName1}",
-                 "document_hash": "${hashToken}"
+                 "document_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
+                 "document_binary_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
+                 "document_filename": "#{FileName1}",
+                 "document_hash": "#{hashToken}"
               }
            },
            "id": null
@@ -21,6 +21,6 @@
      "summary": "",
      "description": ""
   },
-  "event_token": "${eventToken3}",
+  "event_token": "#{eventToken3}",
   "ignore_warning": false
 }
