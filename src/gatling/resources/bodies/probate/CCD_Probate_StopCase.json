@@ -1,0 +1,19 @@
+{
+  "data": {
+    "boCaseStopReasonList": [
+      {
+        "value": {
+          "caseStopReason": "IHT421Awaiting"
+        },
+        "id": null
+      }
+    ]
+  },
+  "event": {
+    "id": "boStopCaseForCasePrinted",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "#{eventToken4}",
+  "ignore_warning": false
+}

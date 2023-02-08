@@ -89,7 +89,7 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
     .pause(Environment.constantthinkTime.seconds)
 
     .exec(http("API_Probate_GetEventToken")
-      .get(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/boStopCaseForCaseCreated/token")
+      .get(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/boStopCaseForCasePrinted/token")
       .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
       .header("Authorization", "Bearer #{access_token}")
       .header("Content-Type","application/json")
@@ -100,14 +100,15 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
       .header("Authorization", "Bearer #{access_token}")
       .header("Content-Type","application/json")
-      .body(StringBody("{\n  \"data\": {\n    \"boCaseStopReasonList\": [\n      {\n        \"id\": null,\n        \"value\": {\n          \"caseStopReason\": \"Other\"\n        }\n      }\n    ]\n  },\n  \"event\": {\n    \"id\": \"boStopCaseForCaseCreated\",\n    \"summary\": \"\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"#{eventToken4}\",\n  \"ignore_warning\": false\n}")))
+      .body(ElFileBody("bodies/probate/CCD_Probate_StopCase.json"))
+      .check(substring("boCaseStopReasonList")))
 
     .exec(http("API_Probate_StopCase")
       .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
       .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
       .header("Authorization", "Bearer #{access_token}")
       .header("Content-Type","application/json")
-      .body(StringBody("{\n  \"data\": {\n    \"boCaseStopReasonList\": [\n      {\n        \"id\": null,\n        \"value\": {\n          \"caseStopReason\": \"Other\"\n        }\n      }\n    ]\n  },\n  \"event\": {\n    \"id\": \"boStopCaseForCaseCreated\",\n    \"summary\": \"\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"#{eventToken4}\",\n  \"ignore_warning\": false\n}"))
+      .body(ElFileBody("bodies/probate/CCD_Probate_StopCase.json"))
       .check(jsonPath("$.id").saveAs("caseId")))
 
     .pause(Environment.constantthinkTime.seconds)
