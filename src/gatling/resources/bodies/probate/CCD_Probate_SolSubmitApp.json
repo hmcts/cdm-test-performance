@@ -2,8 +2,8 @@
   "data": {
     "solsSOTNeedToUpdate": "No",
     "solsLegalStatementDocument": {
-      "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/899d6095-3a41-4963-b2de-96fee8fca6ac",
-      "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/899d6095-3a41-4963-b2de-96fee8fca6ac/binary",
+      "document_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/899d6095-3a41-4963-b2de-96fee8fca6ac",
+      "document_binary_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/899d6095-3a41-4963-b2de-96fee8fca6ac/binary",
       "document_filename": "legalStatementProbate.pdf"
     },
     "solsSOTForenames": "John",
@@ -20,6 +20,6 @@
     "summary": "",
     "description": ""
   },
-  "event_token": "${eventToken4}",
+  "event_token": "#{eventToken4}",
   "ignore_warning": false
 }

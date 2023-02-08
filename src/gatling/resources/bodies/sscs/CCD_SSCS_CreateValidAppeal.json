@@ -20,13 +20,13 @@
            "confidentialityRequired": "No",
            "name": {
               "title": "Mr",
-              "firstName": "${firstname}",
+              "firstName": "#{firstname}",
               "middleName": null,
-              "lastName": "${lastname}"
+              "lastName": "#{lastname}"
            },
            "identity": {
               "dob": "1990-09-09",
-              "nino": "AB${NINumber}Z"
+              "nino": "AB#{NINumber}Z"
            },
            "address": {
               "line1": "12 Test Street",
@@ -154,7 +154,7 @@
      "summary": "",
      "description": ""
   },
-  "event_token": "${eventToken}",
+  "event_token": "#{eventToken}",
   "ignore_warning": false,
   "draft_id": null
 }

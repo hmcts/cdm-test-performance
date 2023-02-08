@@ -1,12 +1,10 @@
-package uk.gov.hmcts.ccd.corecasedata.simulations
+package simulations
 
 import com.typesafe.config.{Config, ConfigFactory}
 import io.gatling.core.Predef._
 import io.gatling.core.scenario.Simulation
-import io.gatling.http.Predef._
-import uk.gov.hmcts.ccd.corecasedata.scenarios._
-import uk.gov.hmcts.ccd.corecasedata.scenarios.api._
-import uk.gov.hmcts.ccd.corecasedata.scenarios.utils._
+import scenarios.api._
+import scenarios.utils._
 
 import scala.concurrent.duration._
 import io.gatling.core.controller.inject.open.{AtOnceOpenInjection, OpenInjectionStep}
@@ -90,7 +88,7 @@ class CCD_PerformanceRegression extends Simulation  {
   val config: Config = ConfigFactory.load()
 
   val httpProtocol = Environment.HttpProtocol
-    .baseUrl(Environment.baseURL.replace("${env}", s"${env}"))
+    .baseUrl(Environment.baseURL.replace("#{env}", s"${env}"))
     .doNotTrackHeader("1")
     .disableCaching
 
@@ -105,7 +103,7 @@ class CCD_PerformanceRegression extends Simulation  {
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
       .exec(S2S.s2s("ccd_data"))
-      .doSwitch("${env}") (
+      .doSwitch(s"${env}") (
         "perftest" -> feed(feedProbateUserDataPerftest),
         "aat" -> feed(feedProbateUserDataAAT)
        )
@@ -252,16 +250,16 @@ class CCD_PerformanceRegression extends Simulation  {
 			case "perftest" =>
 				if (debugMode == "off") {
 					Seq(
-						rampUsersPerSec(0.00) to (userPerSecRate) during (rampUpDurationMins minutes),
-						constantUsersPerSec(userPerSecRate) during (testDurationMins minutes),
-						rampUsersPerSec(userPerSecRate) to (0.00) during (rampDownDurationMins minutes)
+						rampUsersPerSec(0.00) to (userPerSecRate) during (rampUpDurationMins.minutes),
+						constantUsersPerSec(userPerSecRate) during (testDurationMins.minutes),
+						rampUsersPerSec(userPerSecRate) to (0.00) during (rampDownDurationMins.minutes)
 					)
 				}
 				else{
 					Seq(atOnceUsers(1))
 				}
 			case "pipeline" =>
-				Seq(rampUsers(numberOfPipelineUsers.toInt) during (2 minutes))
+				Seq(rampUsers(numberOfPipelineUsers.toInt) during (2.minutes))
 			case _ =>
 				Seq(nothingFor(0))
 		}
@@ -294,14 +292,14 @@ class CCD_PerformanceRegression extends Simulation  {
 		 API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
 		 API_DivorceCreateCase.inject(simulationProfile(testType, divorceTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
 		 API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-     CaseActivityListScn.inject(rampUsers(500) during (10 minutes)),
-		 CaseActivityScn.inject(rampUsers(500) during (10 minutes)),
-     CCDSearchView.inject(rampUsers(200) during (20 minutes)),
-		 CCDElasticSearch.inject(rampUsers(300) during (20 minutes)), //300 during 20
+     CaseActivityListScn.inject(rampUsers(500) during (10.minutes)),
+		 CaseActivityScn.inject(rampUsers(500) during (10.minutes)),
+     CCDSearchView.inject(rampUsers(200) during (20.minutes)),
+		 CCDElasticSearch.inject(rampUsers(300) during (20.minutes)), //300 during 20
   )
     .protocols(httpProtocol)
     .assertions(assertions(testType))
-    .maxDuration(85 minutes)
+    .maxDuration(85.minutes)
 }
 
 
@@ -319,7 +317,7 @@ class CCD_PerformanceRegression extends Simulation  {
   //   )
   //    .protocols(httpProtocol)
   //    .assertions(assertions(testType))
-  //    .maxDuration(15 minutes)
+  //    .maxDuration(15.minutes)
 //}
 
 

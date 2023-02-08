@@ -1,8 +1,6 @@
-package uk.gov.hmcts.ccd.corecasedata.scenarios.manageCaseAssignments
+package scenarios.manageCaseAssignments
 
 import io.gatling.core.Predef._
-import io.gatling.http.Predef._
-
 
 object nocQuestionGenerator {
 

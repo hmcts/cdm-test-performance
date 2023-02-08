@@ -1,14 +1,12 @@
-package uk.gov.hmcts.ccd.corecasedata.simulations
+package simulations
 
 import io.gatling.commons.stats.assertion.Assertion
 import io.gatling.core.Predef._
 import io.gatling.core.controller.inject.open.OpenInjectionStep
 import io.gatling.core.pause.PauseType
 import io.gatling.core.scenario.Simulation
-import uk.gov.hmcts.ccd.corecasedata.scenarios.IdamLogin
-import uk.gov.hmcts.ccd.corecasedata.scenarios.manageCaseAssignments._
-import uk.gov.hmcts.ccd.corecasedata.scenarios._
-import uk.gov.hmcts.ccd.corecasedata.scenarios.utils.Environment._
+import scenarios.utils._
+import scenarios.manageCaseAssignments._
 
 import scala.concurrent.duration._
 import scala.language.postfixOps
@@ -16,7 +14,7 @@ import scala.language.postfixOps
 
 class AAC_API extends Simulation {
 
-  val dmBaseURL = aacUrl
+  val dmBaseURL = Environment.aacUrl
 
   /* TEST TYPE DEFINITION */
   /* pipeline = nightly pipeline against the AAT environment (see the Jenkins_nightly file) */
@@ -70,7 +68,7 @@ class AAC_API extends Simulation {
   //  val numberOfPipelineUsersJoint:Double = 5
   /* ******************************** */
 
-  val httpProtocol = HttpProtocol
+  val httpProtocol = Environment.HttpProtocol
     .baseUrl(dmBaseURL)
     .doNotTrackHeader("1")
     .inferHtmlResources()

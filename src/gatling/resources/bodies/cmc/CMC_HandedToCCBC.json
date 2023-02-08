@@ -5,6 +5,6 @@
      "summary": "case handed to ccbc test",
      "description": ""
   },
-  "event_token": "${eventToken1}",
+  "event_token": "#{eventToken1}",
   "ignore_warning": false
 }

@@ -6,10 +6,10 @@
         "value": {
           "documentType": "THRESHOLD",
           "document": {
-            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID}",
-            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${Document_ID}/binary",
-            "document_filename": "${FileName1}",
-            "document_hash": "${hashToken}"
+            "document_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
+            "document_binary_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
+            "document_filename": "#{FileName1}",
+            "document_hash": "#{hashToken}"
           }
         }
       }
@@ -21,6 +21,6 @@
     "summary": "",
     "description": ""
   },
-  "event_token": "${eventToken4}",
+  "event_token": "#{eventToken4}",
   "ignore_warning": false
 }

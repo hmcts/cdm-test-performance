@@ -49,14 +49,14 @@
     "natureOfApplication3b": "No mortgage details",
     "orderForChildrenQuestion1": "No",
     "consentOrder": {
-      "document_url": "${consentOrderDocumentId}",
-      "document_binary_url": "${consentOrderDocumentId}/binary",
+      "document_url": "#{consentOrderDocumentId}",
+      "document_binary_url": "#{consentOrderDocumentId}/binary",
       "document_filename": "1MB.pdf"
     },
     "d81Question": "Yes",
     "d81Joint": {
-      "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${d81JointDocumentId}",
-      "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/${d81JointDocumentId}/binary",
+      "document_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{d81JointDocumentId}",
+      "document_binary_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{d81JointDocumentId}/binary",
       "document_filename": "1MB.pdf"
     },
     "pensionCollection": [],
@@ -67,6 +67,6 @@
     "summary": "",
     "description": ""
   },
-  "event_token": "${eventToken2}",
+  "event_token": "#{eventToken2}",
   "ignore_warning": false
 }

@@ -1,10 +1,10 @@
-package uk.gov.hmcts.ccd.corecasedata.simulations
+package simulations
 
 import com.typesafe.config.{Config, ConfigFactory}
 import io.gatling.core.Predef._
 import io.gatling.core.scenario.Simulation
-import uk.gov.hmcts.ccd.corecasedata.scenarios._
-import uk.gov.hmcts.ccd.corecasedata.scenarios.utils._
+import scenarios.utils._
+import scenarios.api.casedocapi
 
 import scala.concurrent.duration._
 
@@ -32,7 +32,7 @@ class CaseDocApiSimulation extends Simulation  {
     }
 
   setUp(
-    tenfilesimulation.inject(rampUsers(1) during (10 minutes)) //60 during 10
+    tenfilesimulation.inject(rampUsers(1) during (10.minutes)) //60 during 10
   )
   .protocols(httpProtocol)
 

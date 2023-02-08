@@ -1,26 +1,26 @@
-package uk.gov.hmcts.ccd.corecasedata.scenarios.manageCaseAssignments
+package scenarios.manageCaseAssignments
 
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
-import uk.gov.hmcts.ccd.corecasedata.scenarios.utils.Environment._
-import uk.gov.hmcts.ccd.corecasedata.scenarios.utils.AACHeader._
-import uk.gov.hmcts.ccd.corecasedata.scenarios.IdamLogin
+import scenarios.utils._
 
 object noticeOfChangeControllerService {
 
   /* GET /noc/noc-questions request to get challenge questions for the process of making a notice of change.
       The request requires an S2SToken and Idam so these services should be called prior to running this request.
-      The S2SToken and Idam is sent within the nocGetQuestionsHeader.  ${caseId} variable is assigned from the feeder file.
+      The S2SToken and Idam is sent within the nocGetQuestionsHeader.  #{caseId} variable is assigned from the feeder file.
       The feeder is defined in the Simulation.  It is expected that a list of questions will be returned and they are stored in session.
    */
+
+  val aacUrl = Environment.aacUrl
 
   val noticeOfChangeGetQuestions =
 
     group("NoticeOfChange") {
       exec(http("GET_NOC_Questions")
         .get(aacUrl + "/noc/noc-questions")
-        .headers(aacHeader)
-        .queryParam("case_id", "${caseId}")
+        .headers(AACHeader.aacHeader)
+        .queryParam("case_id", "#{caseId}")
         .check(jsonPath("$.questions[*].question_id").findAll.optional.saveAs("questionIds"))
         .check(jsonPath("$.questions[*].question_text").findAll.optional.saveAs("questionText"))
         .check(jsonPath("$.questions[-1:].order").optional.saveAs("questionOrder")))
@@ -39,17 +39,17 @@ object noticeOfChangeControllerService {
   val noticeOfChangePostAnswers =
 
     group("NoticeOfChange") {
-      doIf("${questionOrder.exists()}") {
+      doIf("#{questionOrder.exists()}") {
         exec(nocQuestionGenerator.nocQuestionJSONBuilder())
         .exec(http("POST_NOC_Questions")
           .post(aacUrl + "/noc/verify-noc-answers")
-          .headers(aacHeader)
-          .body(StringBody("${documentJSON}")).asJson
+          .headers(AACHeader.aacHeader)
+          .body(StringBody("#{documentJSON}")).asJson
           .check(jsonPath("$.status_message").optional.saveAs("successMessage"))
           .check(jsonPath("$.message").optional.saveAs("unsuccessfulMessage"))
           .check(status in (200,400)))
         //check to see if the unsuccessful message is because the noc case is already allocated to this user.
-        .doIf("${unsuccessfulMessage.exists()}") {
+        .doIf("#{unsuccessfulMessage.exists()}") {
           doIf(session => session("unsuccessfulMessage").as[String].equals("The requestor has answered questions uniquely identifying a litigant that they are already representing")) {
             //if the case is already allocated then change the credentials to another organisation so that the next post create event can still be submitted
             exec(session => {session.set("Username", session("alternativeUserName").as[String])})
@@ -65,19 +65,19 @@ object noticeOfChangeControllerService {
   /* POST /noc/noc-requests request to submit the creation of a noc event and ultimately.  This request automatically creates
       a call to POST /noc/check-noc-approval and POST /noc/apply-decision, so 3 requests from NOC are simulated.
       The request requires an S2SToken and Idam so these services should be called prior to running this request.
-      The variable ${documentJSON} is created via the nocQuestionJSONBuilder function
+      The variable #{documentJSON} is created via the nocQuestionJSONBuilder function
       The S2SToken and Idam is sent within the nocPostQuestionsHeader.  The feeder is defined in the Simulation.
       A specific string is expected in the json response that indicates a successful noc creation.
    */
   val noticeOfChangePostCreateNOCEvent =
 
     group("NoticeOfChange") {
-        doIf("${questionOrder.exists()}") {
+        doIf("#{questionOrder.exists()}") {
           exec(nocQuestionGenerator.nocQuestionJSONBuilder())
           .exec(http("POST_NOC_CreateEvent")
               .post(aacUrl + "/noc/noc-requests")
-              .headers(aacHeader)
-              .body(StringBody("${documentJSON}")).asJson
+              .headers(AACHeader.aacHeader)
+              .body(StringBody("#{documentJSON}")).asJson
               .check(status is 201)
               .check(jsonPath("$.status_message").is("The Notice of Change request has been successfully submitted.")))
         }

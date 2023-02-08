@@ -13,6 +13,6 @@
     "summary": "",
     "description": ""
   },
-  "event_token": "${eventToken3}",
+  "event_token": "#{eventToken3}",
   "ignore_warning": false
 }
