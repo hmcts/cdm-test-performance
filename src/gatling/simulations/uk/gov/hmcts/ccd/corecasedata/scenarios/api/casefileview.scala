@@ -26,6 +26,8 @@ object casefileview {
       .check(bodyString.saveAs("BearerToken")))
       .exitHereIfFailed
 
+      .pause(Environment.constantthinkTime.seconds)
+
   val idamLogin =
 
     exec(http("GetIdamToken")
@@ -34,6 +36,9 @@ object casefileview {
       .header("Content-Length", "0")
       .check(status.is(200))
       .check(jsonPath("$.access_token").saveAs("accessToken")))
+      .exitHereIfFailed
+
+    .pause(Environment.constantthinkTime.seconds)
 
   val caseDocUpload = 
 
@@ -56,6 +61,8 @@ object casefileview {
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID"))
       .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken1")))
 
+    .pause(Environment.constantthinkTime.seconds)
+
   val createCase =
 
     exec(http("API_CFV_GetEventToken")
@@ -73,6 +80,8 @@ object casefileview {
       .body(ElFileBody("bodies/casefileview/CreateRequest1.json"))
       .check(jsonPath("$.id").saveAs("caseId")))
 
+    .pause(Environment.constantthinkTime.seconds)
+
   val caseFileViewPutCategories = 
 
     exec(http("API_CFV_PutDocumentData")
@@ -82,6 +91,7 @@ object casefileview {
       .header("Content-Type","application/json")
       .body(ElFileBody("bodies/casefileview/PutDocumentCategory1.json")))
 
+    .pause(Environment.constantthinkTime.seconds)
 
   val caseFileViewGet = 
 
@@ -89,5 +99,7 @@ object casefileview {
       .get(Environment.ccdDataStoreUrl + "/categoriesAndDocuments/#{caseId}")
       .header("ServiceAuthorization", "Bearer #{BearerToken}")
       .header("Authorization", "Bearer #{accessToken}"))
+
+    .pause(Environment.constantthinkTime.seconds)
 
 }
