@@ -1,0 +1,34 @@
+{
+  "data" : {
+    "ApplicantName" : "John Doe",
+    "nationalityProof" : {
+      "typeOfProof" : "document",
+      "dateIssued" : "2023-06-02",
+      "documentEvidence" : {
+        "document_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
+        "document_binary_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
+        "document_filename" : "#{FileName1}"
+      }
+    },
+    "Document1" : {
+      "document_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
+      "document_binary_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
+      "document_filename" : "#{FileName1}"
+    },
+    "Document2" : {
+      "document_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
+      "document_binary_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
+      "document_filename" : "#{FileName1}"
+    },
+    "Document3" : {
+      "document_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
+      "document_binary_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
+      "document_filename" : "#{FileName1}"
+    }
+  },
+  "event" : {
+    "id" : "CREATE"
+  },
+  "event_token" : "#{eventToken}",
+  "ignore_warning" : false
+}

@@ -1,0 +1,53 @@
+{
+  "case_version" : 1,
+  "categories" : [ {
+    "category_id" : "CategoryID1",
+    "category_name" : "Evidences",
+    "category_order" : 100,
+    "documents" : [ {
+      "document_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
+      "document_filename" : "#{FileName1}",
+      "document_binary_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
+      "attribute_path" : "Document1",
+      "upload_timestamp" : null
+    } ],
+    "sub_categories" : [ ]
+  }, {
+    "category_id" : "CategoryID2",
+    "category_name" : "Supporting",
+    "category_order" : 110,
+    "documents" : [ {
+      "document_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
+      "document_filename" : "#{FileName1}",
+      "document_binary_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
+      "attribute_path" : "Document3",
+      "upload_timestamp" : null
+    }, {
+      "document_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
+      "document_filename" : "#{FileName1}",
+      "document_binary_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
+      "attribute_path" : "Document2",
+      "upload_timestamp" : null
+    } ],
+    "sub_categories" : [ ]
+  }, {
+    "category_id" : "CategoryID3",
+    "category_name" : "Party Documents",
+    "category_order" : 120,
+    "documents" : [ ],
+    "sub_categories" : [ {
+      "category_id" : "SubCategoryID1",
+      "category_name" : "Proof Documents",
+      "category_order" : 100,
+      "documents" : [ {
+        "document_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
+        "document_filename" : "#{FileName1}",
+        "document_binary_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
+        "attribute_path" : "nationalityProof.documentEvidence",
+        "upload_timestamp" : null
+      } ],
+      "sub_categories" : [ ]
+    } ]
+  } ],
+  "uncategorised_documents" : [ ]
+}

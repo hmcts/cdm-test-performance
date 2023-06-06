@@ -28,11 +28,11 @@ gatling {
     scalaVersion '2.13.10'
     simulations = {
         include "simulations/CCD_PerformanceRegression.scala"
+                // "simulations/CreateUser.scala"
                 // "simulations/CCDUIPTSimulation"
                 // "simulations/DMStoreSimulation"
                 // "simulations/CaseDocApiSimulation"
                 // "simulations/CCD_StressTest"
-                // "simulations/CreateUser"
                 // "simulations/CCDDataStoreSimulation"
                 // "simulations/CaseSharingSimulation"
                 // "simulations/CCD_SearchSimulation"

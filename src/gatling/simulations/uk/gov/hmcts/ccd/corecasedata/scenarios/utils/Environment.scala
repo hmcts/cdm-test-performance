@@ -7,7 +7,7 @@ object Environment {
 
   val idamAPI = "https://idam-api.#{env}.platform.hmcts.net"
   val ccdEnvurl = "https://www-ccd.#{env}.platform.hmcts.net"
-  val ccdDataStoreUrl = "ccd-data-store-api-#{env}.service.core-compute-#{env}.internal"
+  val ccdDataStoreUrl = "http://ccd-data-store-api-#{env}.service.core-compute-#{env}.internal"
   val baseURL = "https://gateway-ccd.#{env}.platform.hmcts.net"
   val s2sUrl = "http://rpe-service-auth-provider-#{env}.service.core-compute-#{env}.internal"
   val dmStore = "http://dm-store-#{env}.service.core-compute-#{env}.internal"

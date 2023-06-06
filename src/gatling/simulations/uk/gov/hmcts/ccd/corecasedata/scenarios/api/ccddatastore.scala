@@ -16,15 +16,14 @@ val config: Config = ConfigFactory.load()
 
 val ccdDataStoreUrl = "http://ccd-data-store-api-#{env}.service.core-compute-#{env}.internal"
 val CaseDocAPI = Environment.caseDocUrl
-
 val ccdScope = "openid profile authorities acr roles openid profile roles"
 val feedCaseSearchData = csv("caseSearchData.csv").random
 val feedEthosSearchData = csv("EthosSearchData.csv").random
 
 val constantThinkTime = Environment.constantthinkTime
 
-  val patternDate = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-  val now = LocalDate.now()
+val patternDate = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+val now = LocalDate.now()
 
 private val rng: Random = new Random()
 private def niNumber(): String = rng.alphanumeric.filter(_.isDigit).take(8).mkString

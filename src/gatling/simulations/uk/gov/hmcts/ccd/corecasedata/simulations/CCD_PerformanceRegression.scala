@@ -46,6 +46,7 @@ class CCD_PerformanceRegression extends Simulation  {
   val searchRepeatsPerUser = 400 //40
   val elasticSearchTargetPerHour:Double = 120000
   val esRepeatsPerUser = 120 //120
+  val caseFileViewTargetPerHour:Double = 5363
 
   val caseActivityIteration = 900
   val caseActivityListIteration = 120
@@ -244,6 +245,17 @@ class CCD_PerformanceRegression extends Simulation  {
       .exec(ccddatastore.CCDAPI_CMCCaseHandedToCCBC)
     }
 
+  val CaseFileView = scenario("Case File View scenario")
+  .exitBlockOnFail {
+      exec(_.set("env", s"${env}"))
+      .exec(casefileview.S2SLogin)
+      .exec(casefileview.idamLogin)
+      .exec(casefileview.caseDocUpload)
+      .exec(casefileview.createCase)
+      .exec(casefileview.caseFileViewPutCategories)
+      .exec(casefileview.caseFileViewGet)
+  }
+
 	def simulationProfile(simulationType: String, userPerHourRate: Double, numberOfPipelineUsers: Double): Seq[OpenInjectionStep] = {
 		val userPerSecRate = userPerHourRate / 3600
 		simulationType match {
@@ -288,14 +300,16 @@ class CCD_PerformanceRegression extends Simulation  {
 
 	setUp(
      //simulation for cdm-test-performance repo
-		 API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-		 API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-		 API_DivorceCreateCase.inject(simulationProfile(testType, divorceTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-		 API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-     CaseActivityListScn.inject(rampUsers(500) during (10.minutes)),
-		 CaseActivityScn.inject(rampUsers(500) during (10.minutes)),
-     CCDSearchView.inject(rampUsers(200) during (20.minutes)),
-		 CCDElasticSearch.inject(rampUsers(300) during (20.minutes)), //300 during 20
+		//  API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+		//  API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+		//  API_DivorceCreateCase.inject(simulationProfile(testType, divorceTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+		//  API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+    //  CaseActivityListScn.inject(rampUsers(500) during (10.minutes)),
+		//  CaseActivityScn.inject(rampUsers(500) during (10.minutes)),
+    //  CCDSearchView.inject(rampUsers(200) during (20.minutes)),
+		//  CCDElasticSearch.inject(rampUsers(300) during (20.minutes)), //300 during 20
+
+     CaseFileView.inject(simulationProfile(testType, caseFileViewTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption)
   )
     .protocols(httpProtocol)
     .assertions(assertions(testType))
