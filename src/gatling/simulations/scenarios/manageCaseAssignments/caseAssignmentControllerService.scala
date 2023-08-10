@@ -6,7 +6,6 @@ import scenarios.utils._
 
 object caseAssignmentControllerService {
 
-
   /* GET /case-assignments request to get all assignments from a case.
       The request requires an S2SToken and Idam so these services should be called prior to running this request.
       The S2SToken and Idam is sent within the manageCaseGetAssignmentHeader
@@ -48,14 +47,12 @@ object caseAssignmentControllerService {
       }
     }
 
-
   /* POST /case-users request to assign person from the same organisation to a case.
      The request requires an S2SToken and Idam so these services should be called prior to running this request.
        The S2SToken and Idam is sent within the manageCasePostAssignmentHeader
        #{assignmentRole} variable is assigned from the caseAssignmentShareCaseAPI.csv feeder file.  The feeder is defined in the Simulation file.
        If the assignment is successful then a specific message is expected.
     */
-
 
   val caseAssignmentPostAssignment =
     group("CaseAssignment") {
@@ -65,5 +62,4 @@ object caseAssignmentControllerService {
         .body(ElFileBody("bodies/caseManagement/assignCase.json")).asJson
         .check(jsonPath("$.status_message").is("Roles #{assignmentRole} from the organisation policies successfully assigned to the assignee.")))
     }
-
 }

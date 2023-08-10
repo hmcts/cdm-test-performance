@@ -9,7 +9,6 @@ properties([
 
 @Library("Infrastructure") 
 
-
 def product = "ccd"
 def component = "case-worker"
 

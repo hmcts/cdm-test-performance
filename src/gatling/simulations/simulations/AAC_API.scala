@@ -11,7 +11,6 @@ import scenarios.manageCaseAssignments._
 import scala.concurrent.duration._
 import scala.language.postfixOps
 
-
 class AAC_API extends Simulation {
 
   val dmBaseURL = Environment.aacUrl
@@ -50,8 +49,6 @@ class AAC_API extends Simulation {
    /* PIPELINE CONFIGURATION */
   val numberOfPipelineUsers = 1
 
-
-
   /* SIMULATION FEEDER FILES */
   val ManageCaseAPIFeeder = csv("caseAssignmentShareCaseAPI.csv").circular
   val NOCAPIFeeder =  csv("noticeOfChangeAPI.csv")
@@ -79,7 +76,6 @@ class AAC_API extends Simulation {
     println(s"Test Environment: ${env}")
     println(s"Debug Mode: ${debugMode}")
   }
-
 
   //defines the Gatling simulation model, based on the inputs
   def simulationProfile(simulationType: String, userPerSecRate: Double, numberOfPipelineUsers: Double): Seq[OpenInjectionStep] = {
@@ -127,7 +123,6 @@ class AAC_API extends Simulation {
         .exec(caseAssignmentControllerService.caseAssignmentRemoveAssignments)
         .exec(caseAssignmentControllerService.caseAssignmentPostAssignment)
     }
-
 
   //scenario for Share Case - Get Assignment, Delete Assignment, Create Assignment
   val ScnNoticeOfChange = scenario("NoticeOfChange")

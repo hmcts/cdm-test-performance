@@ -19,7 +19,6 @@ object nocQuestionGenerator {
     |  "case_id": "nocCaseId"
     |}""".stripMargin
 
-
   //  /* function to create a dynamic JSON request containing the answers and add it within the JSON payload for notice of change
   //   The full payload is then saved to session as documentJSON */
   //
@@ -60,7 +59,6 @@ object nocQuestionGenerator {
    })
   }  //end of def
 
-
  /* function to set a session variable based on the list of known answers.  This list can be increased to accommodate new questions when required*/
 
   def setQuestionAnswer() = {
@@ -77,10 +75,4 @@ object nocQuestionGenerator {
       })
     }
   }
-
 }
-
-
-
-
-

@@ -9,7 +9,6 @@ import scala.concurrent.duration._
 object CreateUser {
 
   val CCDAPIEnvurl = Environment.baseURL
-//  val feedUserData = csv("CaseSharingUsers_Small.csv")
   val idamAdminFeeder = csv("IdamAdmin.csv").circular
   val feedUserData = csv("RolesForUsers.csv")
   val divUserData = csv("DivorceSolUserData.csv")

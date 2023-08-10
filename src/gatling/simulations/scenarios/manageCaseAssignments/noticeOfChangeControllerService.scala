@@ -82,9 +82,4 @@ object noticeOfChangeControllerService {
               .check(jsonPath("$.status_message").is("The Notice of Change request has been successfully submitted.")))
         }
     }
-
-
 }
-
-
-
