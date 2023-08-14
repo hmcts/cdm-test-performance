@@ -308,7 +308,7 @@ class CCD_PerformanceRegression extends Simulation  {
      CCDSearchView.inject(rampUsers(200) during (20.minutes)),
 		 CCDElasticSearch.inject(rampUsers(300) during (20.minutes)), //300 during 20
 
-    //  CaseFileView.inject(simulationProfile(testType, caseFileViewTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption)
+     CaseFileView.inject(simulationProfile(testType, caseFileViewTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption)
   )
     .protocols(httpProtocol)
     .assertions(assertions(testType))
