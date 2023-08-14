@@ -13,15 +13,13 @@ val config: Config = ConfigFactory.load()
 val IdamAPI = Environment.idamAPI
 val CCDEnvurl = Environment.ccdEnvurl
 val s2sUrl = Environment.s2sUrl
-val ccdDataStoreUrl = "http://ccd-data-store-api-perftest.service.core-compute-perftest.internal"
+val ccdDataStoreUrl = "http://ccd-data-store-api-#{env}.service.core-compute-#{env}.internal"
 val ccdClientId = "ccd_gateway"
 val ccdGatewayClientSecret = config.getString("auth.ccdGatewayCS")
 
 val ccdScope = "openid profile authorities acr roles openid profile roles"
-val feedCSUserData = csv("CaseSharingUsers_Large.csv").circular
 val feedCaseSearchData = csv("caseSearchData.csv").random
 val feedWorkbasketData = csv("workbasketCaseTypes.csv").circular
-val feedXUISearchData = csv("XUISearchData.csv").circular
 val feedXUIUserData = csv("XUISearchUsers.csv").circular
 val feedProbateUserData = csv("ProbateUserData.csv").circular
 val feedSSCSUserData = csv("SSCSUserData.csv").circular
@@ -178,32 +176,6 @@ val ElasticSearchGetVaryingSizes =
 
     .pause(Environment.constantthinkTime.seconds)  
 
-  val XUICaseworkerSearch = 
-
-    feed(feedXUISearchData)
-
-    // .exec(http("XUI_#{jurisdiction}_CaseworkerSearch")
-    //   .get(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{jurisdiction}/case-types/#{caseType}/cases")
-    //   .header("ServiceAuthorization", "Bearer #{bearerToken}")
-    //   .header("Authorization", "Bearer #{access_token}")
-    //   .header("Content-Type","application/json")
-    //   .queryParam("state", "#{state}")
-    //   .queryParam("page", "1")
-    //   .check(status in (200)))
-
-      //.pause(Environment.constantthinkTime.seconds) 
-
-    .exec(http("XUI_#{jurisdiction}_CaseworkerSearch")
-      .post(ccdDataStoreUrl + "/searchCases")
-      .header("ServiceAuthorization", "Bearer #{bearerToken}")
-      .header("Authorization", "Bearer #{access_token}")
-      .header("Content-Type","application/json")
-      .queryParam("ctid", "#{caseType}")
-      .body(StringBody("{\n\t\"query\": {\n\t\t\"match_all\": {}\n\t\t},\n\t\t\"size\": 25,\n\t\t\"sort\":[ \n      { \n         \"last_modified\":\"desc\"\n      },\n      \"_score\"\n   ]\n}"))
-      .check(status in  (200)))
-
-    .pause(Environment.constantthinkTime.seconds)
-
   val ElasticSearchWorkbasketGoR = 
 
     exec(http("CCD_SearchCaseEndpoint_ElasticSearch")
@@ -229,7 +201,6 @@ val ElasticSearchGetVaryingSizes =
       .header("Authorization", "Bearer #{access_token}")
       .header("Content-Type","application/json")
       .queryParam("ctid", "GrantOfRepresentation")
-      //.body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":10000,\"}"))
       .body(StringBody("{\"query\":{\"match_all\":{}},\"size\":10000}"))
       .check(status in (200)))
 
@@ -238,12 +209,11 @@ val ElasticSearchGetVaryingSizes =
   val GatewaySearchWorkbasketGoR1000 = 
 
     exec(http("CCD_SearchCaseEndpoint_ElasticSearch")
-      .post("https://gateway-ccd.perftest.platform.hmcts.net/data/internal/searchCases")
+      .post("https://gateway-ccd.#{env}.platform.hmcts.net/data/internal/searchCases")
       .header("ServiceAuthorization", "Bearer #{bearerToken}")
       .header("Authorization", "Bearer #{access_token}")
       .header("Content-Type","application/json")
       .queryParam("ctid", "GrantOfRepresentation")
-      //.body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":10000,\"}"))
       .body(StringBody("{\"query\":{\"match_all\":{}},\"size\":10000}"))
       .check(status in (200)))
 
@@ -316,10 +286,8 @@ val ElasticSearchGetVaryingSizes =
       .header("Authorization", "Bearer #{access_token}")
       .header("Content-Type","application/json")
       .queryParam("ctid", "Scotland")
-      //.body(StringBody("{\"size\":10000,\"query\":{\"terms\":{\"data.ethosCaseReference.keyword\":[\"4178987/2020\"],\"boost\":1.0}}}"))
       .body(StringBody("{\"from\":0,\"query\":{\"bool\":{\"must\":[]}},\"size\":25,\"sort\":[{\"created_date\":\"DESC\"}]}"))
       .check(status in  (200)))
 
     .pause(Environment.constantthinkTime.seconds)
-
 }

@@ -5,7 +5,6 @@ import io.gatling.core.Predef._
 import io.gatling.core.scenario.Simulation
 import scenarios.api._
 import scenarios.utils._
-
 import scala.concurrent.duration._
 import io.gatling.core.controller.inject.open.{AtOnceOpenInjection, OpenInjectionStep}
 import io.gatling.commons.stats.assertion.Assertion
@@ -314,22 +313,21 @@ class CCD_PerformanceRegression extends Simulation  {
     .protocols(httpProtocol)
     .assertions(assertions(testType))
     .maxDuration(85.minutes)
-}
 
 
-  //setUp(
+  /*setUp(
   //smoke test to be pushed to master branch only.  Avoids having to amend the full test settings above
   //To run, comment out the full simulation above including duration and then uncomment this smoke test
-  //   API_ProbateCreateCase.inject(atOnceUsers(1)),
-  //   API_CMCCreateCase.inject(atOnceUsers(1)),
-  //   API_DivorceCreateCase.inject(atOnceUsers(1)),
-  //   API_IACCreateCase.inject(atOnceUsers(1)),
-  //   CaseActivityListScn.inject(atOnceUsers(1)),
-  //   CaseActivityScn.inject(atOnceUsers(1)),
-  //   CCDSearchView.inject(atOnceUsers(1)),
-  //   CCDElasticSearch.inject(atOnceUsers(1)),
-  //   )
-  //    .protocols(httpProtocol)
-  //    .assertions(assertions(testType))
-  //    .maxDuration(15.minutes)
-//}
+    API_ProbateCreateCase.inject(atOnceUsers(1)),
+    API_CMCCreateCase.inject(atOnceUsers(1)),
+    API_DivorceCreateCase.inject(atOnceUsers(1)),
+    API_IACCreateCase.inject(atOnceUsers(1)),
+    CaseActivityListScn.inject(atOnceUsers(1)),
+    CaseActivityScn.inject(atOnceUsers(1)),
+    CCDSearchView.inject(atOnceUsers(1)),
+    CCDElasticSearch.inject(atOnceUsers(1)),
+    )
+     .protocols(httpProtocol)
+     .assertions(assertions(testType))
+     .maxDuration(15.minutes)*/
+}

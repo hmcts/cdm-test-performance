@@ -1,9 +1,0 @@
-jurisdiction,caseType,state
-PROBATE,GrantOfRepresentation,CaseCreated
-PROBATE,GrantOfRepresentation,CasePrinted
-PROBATE,GrantOfRepresentation,BOCaseStopped
-PROBATE,Caveat,PAAppCreated
-PROBATE,Caveat,CaveatRaised
-DIVORCE,DIVORCE,Submitted
-DIVORCE,DIVORCE,AwaitingHWFDecision
-DIVORCE,DIVORCE,SOTAgreementPayAndSubmitRequired

@@ -14,9 +14,9 @@ object casedocapi {
   val s2sUrl = Environment.s2sUrl
   val IdamAPI = Environment.idamAPI
   val CaseDocAPI = Environment.caseDocUrl
-  val ccdDataStoreUrl = "http://ccd-data-store-api-perftest.service.core-compute-perftest.internal"
+  val ccdDataStoreUrl = "http://ccd-data-store-api-#{env}.service.core-compute-#{env}.internal"
   val ccdClientId = "ccd_gateway"
-  val ccdRedirectUri = "https://ccd-data-store-api-perftest.service.core-compute-perftest.internal/oauth2redirect"
+  val ccdRedirectUri = "https://ccd-data-store-api-#{env}.service.core-compute-#{env}.internal/oauth2redirect"
   val ccdGatewayClientSecret = config.getString("auth.ccdGatewayCS")
   val constantThinkTime = Environment.constantthinkTime
   val ccdScope = "openid profile authorities acr roles openid profile roles"

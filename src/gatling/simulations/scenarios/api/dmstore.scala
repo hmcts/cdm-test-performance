@@ -11,7 +11,7 @@ object dmstore {
   val config: Config = ConfigFactory.load()
 
   val s2sUrl = Environment.s2sUrl
-  val dmStoreUrl = "http://dm-store-perftest.service.core-compute-perftest.internal"
+  val dmStoreUrl = "http://dm-store-#{env}.service.core-compute-#{env}.internal"
   val feedProbateUserData = csv("ProbateUserData.csv").circular
   val constantThinkTime = Environment.constantthinkTime
 

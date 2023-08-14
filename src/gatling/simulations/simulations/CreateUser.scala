@@ -57,24 +57,29 @@ class CreateUser extends Simulation  {
 
   val GrantRole = scenario("Grant idam role")
     .exec(_.set("env", s"${env}"))
-    .repeat(1) {
-      exec(CreateUser.IdamAdminLogin)
-      .repeat(1) { //Set this value to the number of users you need to update (RolesForUsers.csv)
-        exec(CreateUser.IdamUser)
-        .repeat(1) { //Set this value to the number of roles you need to add per user (RolesToAdd.csv)
-          exec(CreateUser.GetAndApplyRole)
+    .exitBlockOnFail {
+      repeat(1) {
+        exec(CreateUser.IdamAdminLogin)
+        .repeat(1) { //Set this value to the number of users you need to update (RolesForUsers.csv)
+          exec(CreateUser.IdamUser)
+          .repeat(1) { //Set this value to the number of roles you need to add per user (RolesToAdd.csv)
+            exec(CreateUser.GetAndApplyRole)
+          }
         }
       }
     }
 
   val DeleteRole = scenario("Remove idam roles")
-    .repeat(1) {
-      exec(CreateUser.IdamAdminLogin)
-      .repeat(49) { //Set this value to the number of users you need to update (RolesForUsers.csv)
-        exec(CreateUser.IdamUser)
-        .repeat(1) { //Set this value to the number of roles you need to remove per user (RolesToAdd.csv)
-          exec(CreateUser.GetAndRemoveRole)
-      }
+    .exec(_.set("env", s"${env}"))
+    .exitBlockOnFail {
+      repeat(1) {
+        exec(CreateUser.IdamAdminLogin)
+        .repeat(1) { //Set this value to the number of users you need to update (RolesForUsers.csv)
+          exec(CreateUser.IdamUser)
+          .repeat(1) { //Set this value to the number of roles you need to remove per user (RolesToAdd.csv)
+            exec(CreateUser.GetAndRemoveRole)
+          }
+        }
       }
     }
 
