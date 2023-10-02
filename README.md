@@ -15,3 +15,7 @@ Flags:
 
 Debug (single-user mode): `-Ddebug=on e.g. ./gradlew gatlingRun -Ddebug=on`
 Run against AAT: Denv=aat e.g. `./gradlew gatlingRun -Denv=aat`
+
+To run the DMStore or CaseDocAPI Simulations you will need to manually create the large PDF files - these cannot be stored in Git for obvious reasons
+
+eg. to create a 50mb file you can run `truncate -s 50M 50MB.pdf` locally or from the VM
