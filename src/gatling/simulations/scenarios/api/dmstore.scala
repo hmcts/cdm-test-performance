@@ -26,122 +26,192 @@ object dmstore {
       .check(bodyString.saveAs("bearerToken")))
       .exitHereIfFailed
 
-  val API_DocUpload = 
-
-    exec(_.setAll(
-      "FileName1" -> "1MB.pdf",
-      "FileName2" -> "2MB.pdf",
-      "FileName3" -> "3MB.pdf",
-      "FileName4" -> "5MB.pdf",
-      "FileName5" -> "10MB.pdf"))
-
-    .exec(http("API_DocUploadProcess1mb")
+  val API_DocUpload1mb = 
+  
+    exec(http("API_DocUploadProcess1mb")
       .post(dmStoreUrl + "/documents")
       .header("ServiceAuthorization", "Bearer #{bearerToken}")
-      .bodyPart(RawFileBodyPart("files", "#{FileName1}")
-        .fileName("#{FileName1}")
+      .bodyPart(RawFileBodyPart("files", "1MB.pdf")
+        .fileName("1MB.pdf")
         .transferEncoding("binary"))
       .asMultipartForm
       .formParam("classification", "PUBLIC")
       .check(regex("""documents/(.+?)/binary""").saveAs("Document_ID1")))
 
-    .pause(Environment.constantthinkTime.seconds)
+  val API_DocUpload5mb = 
 
-    .exec(http("API_DocUploadProcess2mb")
+    exec(http("API_DocUploadProcess5mb")
       .post(dmStoreUrl + "/documents")
       .header("ServiceAuthorization", "Bearer #{bearerToken}")
-      .bodyPart(RawFileBodyPart("files", "#{FileName2}")
-        .fileName("#{FileName1}")
+      .bodyPart(RawFileBodyPart("files", "5MB.pdf")
+        .fileName("5MB.pdf")
         .transferEncoding("binary"))
       .asMultipartForm
       .formParam("classification", "PUBLIC")
       .check(regex("""documents/(.+?)/binary""").saveAs("Document_ID2")))
 
-    .pause(Environment.constantthinkTime.seconds)
+  val API_DocUpload10mb =
 
-    .exec(http("API_DocUploadProcess3mb")
+    exec(http("API_DocUploadProcess10mb")
       .post(dmStoreUrl + "/documents")
       .header("ServiceAuthorization", "Bearer #{bearerToken}")
-      .bodyPart(RawFileBodyPart("files", "#{FileName3}")
-        .fileName("#{FileName1}")
+      .bodyPart(RawFileBodyPart("files", "10MB.pdf")
+        .fileName("10MB.pdf")
         .transferEncoding("binary"))
       .asMultipartForm
       .formParam("classification", "PUBLIC")
       .check(regex("""documents/(.+?)/binary""").saveAs("Document_ID3")))
 
-    .pause(Environment.constantthinkTime.seconds)
+  val API_DocUpload20mb =
 
-    .exec(http("API_DocUploadProcess5mb")
+    exec(http("API_DocUploadProcess20mb")
       .post(dmStoreUrl + "/documents")
       .header("ServiceAuthorization", "Bearer #{bearerToken}")
-      .bodyPart(RawFileBodyPart("files", "#{FileName4}")
-        .fileName("#{FileName1}")
+      .bodyPart(RawFileBodyPart("files", "20MB.pdf")
+        .fileName("20MB.pdf")
         .transferEncoding("binary"))
       .asMultipartForm
       .formParam("classification", "PUBLIC")
       .check(regex("""documents/(.+?)/binary""").saveAs("Document_ID4")))
 
-    .pause(Environment.constantthinkTime.seconds)
+  val API_DocUpload50mb =
 
-    .exec(http("API_DocUploadProcess10mb")
+    exec(http("API_DocUploadProcess50mb")
       .post(dmStoreUrl + "/documents")
       .header("ServiceAuthorization", "Bearer #{bearerToken}")
-      .bodyPart(RawFileBodyPart("files", "#{FileName5}")
-        .fileName("#{FileName1}")
+      .bodyPart(RawFileBodyPart("files", "50MB.pdf")
+        .fileName("50MB.pdf")
         .transferEncoding("binary"))
       .asMultipartForm
       .formParam("classification", "PUBLIC")
       .check(regex("""documents/(.+?)/binary""").saveAs("Document_ID5")))
 
-    .pause(Environment.constantthinkTime.seconds)
+  val API_DocUpload100mb =
 
-  val API_DocDownload = 
+    exec(http("API_DocUploadProcess100mb")
+      .post(dmStoreUrl + "/documents")
+      .header("ServiceAuthorization", "Bearer #{bearerToken}")
+      .bodyPart(RawFileBodyPart("files", "100MB.pdf")
+        .fileName("100MB.pdf")
+        .transferEncoding("binary"))
+      .asMultipartForm
+      .formParam("classification", "PUBLIC")
+      .check(regex("""documents/(.+?)/binary""").saveAs("Document_ID6")))
 
-    repeat(2) {
+  val API_DocUpload250mb =
 
-      exec(http("API_DocDownloadProcess1mb")
-        .get(dmStoreUrl + "/documents/#{Document_ID1}/binary")
-        .header("ServiceAuthorization", "Bearer #{bearerToken}")
-        .header("accept","*/*")
-        .header("user-id", "#{ProbateUserName}")
-        .header("user-roles", "caseworker"))
+    exec(http("API_DocUploadProcess250mb")
+      .post(dmStoreUrl + "/documents")
+      .header("ServiceAuthorization", "Bearer #{bearerToken}")
+      .bodyPart(RawFileBodyPart("files", "250MB.pdf")
+        .fileName("250MB.pdf")
+        .transferEncoding("binary"))
+      .asMultipartForm
+      .formParam("classification", "PUBLIC")
+      .check(regex("""documents/(.+?)/binary""").saveAs("Document_ID7")))
 
-      .pause(Environment.constantthinkTime.seconds)
+  val API_DocUpload500mb =
 
-      .exec(http("API_DocDownloadProcess2mb")
-        .get(dmStoreUrl + "/documents/#{Document_ID2}/binary")
-        .header("ServiceAuthorization", "Bearer #{bearerToken}")
-        .header("accept","*/*")
-        .header("user-id", "#{ProbateUserName}")
-        .header("user-roles", "caseworker"))
+    exec(http("API_DocUploadProcess500mb")
+      .post(dmStoreUrl + "/documents")
+      .header("ServiceAuthorization", "Bearer #{bearerToken}")
+      .bodyPart(RawFileBodyPart("files", "500MB.pdf")
+        .fileName("500MB.pdf")
+        .transferEncoding("binary"))
+      .asMultipartForm
+      .formParam("classification", "PUBLIC")
+      .check(regex("""documents/(.+?)/binary""").saveAs("Document_ID8")))
 
-      .pause(Environment.constantthinkTime.seconds)
+  val API_DocUpload1000mb =
 
-      .exec(http("API_DocDownloadProcess3mb")
-        .get(dmStoreUrl + "/documents/#{Document_ID3}/binary")
-        .header("ServiceAuthorization", "Bearer #{bearerToken}")
-        .header("accept","*/*")
-        .header("user-id", "#{ProbateUserName}")
-        .header("user-roles", "caseworker"))
+    exec(http("API_DocUploadProcess1000mb")
+      .post(dmStoreUrl + "/documents")
+      .header("ServiceAuthorization", "Bearer #{bearerToken}")
+      .bodyPart(RawFileBodyPart("files", "1000MB.pdf")
+        .fileName("1000MB.pdf")
+        .transferEncoding("binary"))
+      .asMultipartForm
+      .formParam("classification", "PUBLIC")
+      .check(regex("""documents/(.+?)/binary""").saveAs("Document_ID9")))
 
-      .pause(Environment.constantthinkTime.seconds)
+  val API_DocDownload1mb = 
 
-      .exec(http("API_DocDownloadProcess5mb")
-        .get(dmStoreUrl + "/documents/#{Document_ID4}/binary")
-        .header("ServiceAuthorization", "Bearer #{bearerToken}")
-        .header("accept","*/*")
-        .header("user-id", "#{ProbateUserName}")
-        .header("user-roles", "caseworker"))
+    exec(http("API_DocDownloadProcess1mb")
+      .get(dmStoreUrl + "/documents/#{Document_ID1}/binary")
+      .header("ServiceAuthorization", "Bearer #{bearerToken}")
+      .header("accept","*/*")
+      .header("user-id", "#{Username}")
+      .header("user-roles", "caseworker"))
 
-      .pause(Environment.constantthinkTime.seconds)
+  val API_DocDownload5mb =
 
-      .exec(http("API_DocDownloadProcess10mb")
-        .get(dmStoreUrl + "/documents/#{Document_ID5}/binary")
-        .header("ServiceAuthorization", "Bearer #{bearerToken}")
-        .header("accept","*/*")
-        .header("user-id", "#{ProbateUserName}")
-        .header("user-roles", "caseworker"))
+    exec(http("API_DocDownloadProcess5mb")
+      .get(dmStoreUrl + "/documents/#{Document_ID2}/binary")
+      .header("ServiceAuthorization", "Bearer #{bearerToken}")
+      .header("accept","*/*")
+      .header("user-id", "#{Username}")
+      .header("user-roles", "caseworker"))
 
-      .pause(Environment.constantthinkTime.seconds)
-    }
+  val API_DocDownload10mb =
+
+    exec(http("API_DocDownloadProcess10mb")
+      .get(dmStoreUrl + "/documents/#{Document_ID3}/binary")
+      .header("ServiceAuthorization", "Bearer #{bearerToken}")
+      .header("accept","*/*")
+      .header("user-id", "#{Username}")
+      .header("user-roles", "caseworker"))
+
+  val API_DocDownload20mb =
+
+    exec(http("API_DocDownloadProcess20mb")
+      .get(dmStoreUrl + "/documents/#{Document_ID4}/binary")
+      .header("ServiceAuthorization", "Bearer #{bearerToken}")
+      .header("accept","*/*")
+      .header("user-id", "#{Username}")
+      .header("user-roles", "caseworker"))
+
+  val API_DocDownload50mb =
+
+    exec(http("API_DocDownloadProcess50mb")
+      .get(dmStoreUrl + "/documents/#{Document_ID5}/binary")
+      .header("ServiceAuthorization", "Bearer #{bearerToken}")
+      .header("accept","*/*")
+      .header("user-id", "#{Username}")
+      .header("user-roles", "caseworker"))
+
+  val API_DocDownload100mb =
+
+    exec(http("API_DocDownloadProcess100mb")
+      .get(dmStoreUrl + "/documents/#{Document_ID6}/binary")
+      .header("ServiceAuthorization", "Bearer #{bearerToken}")
+      .header("accept","*/*")
+      .header("user-id", "#{Username}")
+      .header("user-roles", "caseworker"))
+
+  val API_DocDownload250mb =
+
+    exec(http("API_DocDownloadProcess250mb")
+      .get(dmStoreUrl + "/documents/#{Document_ID7}/binary")
+      .header("ServiceAuthorization", "Bearer #{bearerToken}")
+      .header("accept","*/*")
+      .header("user-id", "#{Username}")
+      .header("user-roles", "caseworker"))
+  
+  val API_DocDownload500mb =
+
+    exec(http("API_DocDownloadProcess500mb")
+      .get(dmStoreUrl + "/documents/#{Document_ID8}/binary")
+      .header("ServiceAuthorization", "Bearer #{bearerToken}")
+      .header("accept","*/*")
+      .header("user-id", "#{Username}")
+      .header("user-roles", "caseworker"))
+
+  val API_DocDownload1000mb =
+
+    exec(http("API_DocDownloadProcess1000mb")
+      .get(dmStoreUrl + "/documents/#{Document_ID9}/binary")
+      .header("ServiceAuthorization", "Bearer #{bearerToken}")
+      .header("accept","*/*")
+      .header("user-id", "#{Username}")
+      .header("user-roles", "caseworker"))
 }

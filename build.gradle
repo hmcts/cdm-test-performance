@@ -34,16 +34,11 @@ gatling {
     gatlingVersion '3.9.5'
     scalaVersion '2.13.10'
     simulations = {
-        include  "simulations/CCD_PerformanceRegression.scala"
-                // "simulations/CCD_PerformanceRegression.scala"
+        include  "simulations/DMStoreSimulation.scala"
+                  // "simulations/CCD_PerformanceRegression.scala"
+                // "simulations/DMStoreSimulation.scala"
                 //  "simulations/CreateUser.scala"
-                // "simulations/CCDUIPTSimulation"
-                // "simulations/DMStoreSimulation"
-                // "simulations/CaseDocApiSimulation"
-                // "simulations/CCD_StressTest"
-                // "simulations/CCDDataStoreSimulation"
-                // "simulations/CaseSharingSimulation"
-                // "simulations/CCD_SearchSimulation"
+                // "simulations/CaseDocApiSimulation.scala"
     }
 }
 
