@@ -68,93 +68,75 @@ class DMStoreSimulation extends Simulation  {
     .disableCaching
 
   val onembfilescenario = scenario("DM Store 1mb file upload & download")
-    .exitBlockOnFail {
-      exec(_.set("env", s"${env}"))
-      .exec(dmstore.S2SLogin)
-      .exec(dmstore.API_DocUpload1mb)
-      .repeat(4) {
-        exec(dmstore.API_DocDownload1mb)
-      }
+    .exec(_.set("env", s"${env}"))
+    .exec(dmstore.S2SLogin)
+    .exec(dmstore.API_DocUpload1mb)
+    .repeat(4) {
+      exec(dmstore.API_DocDownload1mb)
     }
 
   val fivembfilescenario = scenario("DM Store 5mb file upload & download")
-    .exitBlockOnFail {
-      exec(_.set("env", s"${env}"))
-      .exec(dmstore.S2SLogin)
-      .exec(dmstore.API_DocUpload5mb)
-      .repeat(4) {
-        exec(dmstore.API_DocDownload5mb)
-      }
+    .exec(_.set("env", s"${env}"))
+    .exec(dmstore.S2SLogin)
+    .exec(dmstore.API_DocUpload5mb)
+    .repeat(4) {
+      exec(dmstore.API_DocDownload5mb)
     }
 
   val tenmbfilescenario = scenario("DM Store 10mb file upload & download")
-    .exitBlockOnFail {
-      exec(_.set("env", s"${env}"))
-      .exec(dmstore.S2SLogin)
-      .exec(dmstore.API_DocUpload10mb)
-      .repeat(4) {
-        exec(dmstore.API_DocDownload10mb)
-      }
+    .exec(_.set("env", s"${env}"))
+    .exec(dmstore.S2SLogin)
+    .exec(dmstore.API_DocUpload10mb)
+    .repeat(4) {
+      exec(dmstore.API_DocDownload10mb)
     }
 
   val twentymbfilescenario = scenario("DM Store 20mb file upload & download")
-    .exitBlockOnFail {
-      exec(_.set("env", s"${env}"))
-      .exec(dmstore.S2SLogin)
-      .exec(dmstore.API_DocUpload20mb)
-      .repeat(4) {
-        exec(dmstore.API_DocDownload20mb)
-      }
+    .exec(_.set("env", s"${env}"))
+    .exec(dmstore.S2SLogin)
+    .exec(dmstore.API_DocUpload20mb)
+    .repeat(4) {
+      exec(dmstore.API_DocDownload20mb)
     }
 
   val fiftymbfilescenario = scenario("DM Store 50mb file upload & download")
-    .exitBlockOnFail {
-      exec(_.set("env", s"${env}"))
-      .exec(dmstore.S2SLogin)
-      .exec(dmstore.API_DocUpload50mb)
-      .repeat(4) {
-        exec(dmstore.API_DocDownload50mb)
-      }
+    .exec(_.set("env", s"${env}"))
+    .exec(dmstore.S2SLogin)
+    .exec(dmstore.API_DocUpload50mb)
+    .repeat(4) {
+      exec(dmstore.API_DocDownload50mb)
     }
 
   val onehundredmbfilescenario = scenario("DM Store 100mb file upload & download")
-    .exitBlockOnFail {
-      exec(_.set("env", s"${env}"))
-      .exec(dmstore.S2SLogin)
-      .exec(dmstore.API_DocUpload100mb)
-      .repeat(4) {
-        exec(dmstore.API_DocDownload100mb)
-      }
+    .exec(_.set("env", s"${env}"))
+    .exec(dmstore.S2SLogin)
+    .exec(dmstore.API_DocUpload100mb)
+    .repeat(4) {
+      exec(dmstore.API_DocDownload100mb)
     }
 
   val twofiftymbfilescenario = scenario("DM Store 250mb file upload & download")
-    .exitBlockOnFail {
-      exec(_.set("env", s"${env}"))
-      .exec(dmstore.S2SLogin)
-      .exec(dmstore.API_DocUpload250mb)
-      .repeat(4) {
-        exec(dmstore.API_DocDownload250mb)
-      }
+    .exec(_.set("env", s"${env}"))
+    .exec(dmstore.S2SLogin)
+    .exec(dmstore.API_DocUpload250mb)
+    .repeat(4) {
+      exec(dmstore.API_DocDownload250mb)
     }
 
   val fivehundredmbfilescenario = scenario("DM Store 500mb file upload & download")
-    .exitBlockOnFail {
-      exec(_.set("env", s"${env}"))
-      .exec(dmstore.S2SLogin)
-      .exec(dmstore.API_DocUpload500mb)
-      .repeat(4) {
-        exec(dmstore.API_DocDownload500mb)
-      }
+    .exec(_.set("env", s"${env}"))
+    .exec(dmstore.S2SLogin)
+    .exec(dmstore.API_DocUpload500mb)
+    .repeat(4) {
+      exec(dmstore.API_DocDownload500mb)
     }
 
   val onegbfilescenario = scenario("DM Store 1gb file upload & download")
-    .exitBlockOnFail {
-      exec(_.set("env", s"${env}"))
-      .exec(dmstore.S2SLogin)
-      .exec(dmstore.API_DocUpload1000mb)
-      .repeat(4) {
-        exec(dmstore.API_DocDownload1000mb)
-      }
+    .exec(_.set("env", s"${env}"))
+    .exec(dmstore.S2SLogin)
+    .exec(dmstore.API_DocUpload1000mb)
+    .repeat(4) {
+      exec(dmstore.API_DocDownload1000mb)
     }
 
 	def simulationProfile(simulationType: String, userPerHourRate: Double, numberOfPipelineUsers: Double): Seq[OpenInjectionStep] = {
