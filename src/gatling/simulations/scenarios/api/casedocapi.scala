@@ -32,7 +32,7 @@ object casedocapi {
       .post(s2sUrl + "/testing-support/lease")
       .header("Content-Type", "application/json")
       .body(StringBody("{\"microservice\":\"probate_backend\"}")) //probate_backend
-      .check(bodyString.saveAs("docUploadBearerToken")))
+      .check(bodyString.saveAs("bearerToken"))) //docUploadBearerToken
       .exitHereIfFailed
 
   val idamLogin =
@@ -44,44 +44,26 @@ object casedocapi {
       .check(status.is(200))
       .check(jsonPath("$.access_token").saveAs("accessToken")))
 
-  val caseDocUpload = 
+  val caseDocUpload1mb = 
 
-    exec(_.setAll(  
-      "FileName1"  -> ("1MB.pdf")
-    ))
-
-    .exec(http("CaseDocApi_Upload1mb")
+    exec(http("CaseDocApi_Upload1mb")
       .post(CaseDocAPI + "/cases/documents")
       .header("Authorization", "Bearer #{accessToken}")
       .header("ServiceAuthorization", "#{bearerToken}")
       .header("accept", "application/json")
       .header("Content-Type", "multipart/form-data")
       .formParam("classification", "PUBLIC")
-      .formParam("caseTypeId", "Benefit") //GrantOfRepresentation
-      .formParam("jurisdictionId", "SSCS") //PROBATE
-      .bodyPart(RawFileBodyPart("files", "#{FileName1}")
-        .fileName("#{FileName1}")
+      .formParam("caseTypeId", "GrantOfRepresentation") //GrantOfRepresentation
+      .formParam("jurisdictionId", "PROBATE") //PROBATE
+      .bodyPart(RawFileBodyPart("files", "1MB.pdf")
+        .fileName("1MB.pdf")
         .transferEncoding("binary"))
-      .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID1"))
+      .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID1mb"))
       .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken1")))
 
-    // .exec {
-    //   session =>
-    //     val fw = new BufferedWriter(new FileWriter("1mbFileIds.csv", true))
-    //     try {
-    //       fw.write(session("caseId").as[String] + "," + session("Document_ID1").as[String] + "\r\n")
-    //     }
-    //     finally fw.close()
-    //     session
-    // }
+  val caseDocUpload5mb =
 
-    .pause(Environment.constantthinkTime.seconds)
-
-    .exec(_.setAll(  
-      "FileName1"  -> ("2MB.pdf")
-    ))
-
-    .exec(http("CaseDocApi_Upload2mb")
+    exec(http("CaseDocApi_Upload5mb")
       .post(CaseDocAPI + "/cases/documents")
       .header("Authorization", "Bearer #{accessToken}")
       .header("ServiceAuthorization", "#{bearerToken}")
@@ -90,29 +72,15 @@ object casedocapi {
       .formParam("classification", "PUBLIC")
       .formParam("caseTypeId", "GrantOfRepresentation")
       .formParam("jurisdictionId", "PROBATE")
-      .bodyPart(RawFileBodyPart("files", "#{FileName1}")
-        .fileName("1MB.pdf")
+      .bodyPart(RawFileBodyPart("files", "5MB.pdf")
+        .fileName("5MB.pdf")
         .transferEncoding("binary"))
-      .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID2"))
+      .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID5mb"))
       .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken2")))
 
-    // .exec {
-    //   session =>
-    //     val fw = new BufferedWriter(new FileWriter("2mbFileIds.csv", true))
-    //     try {
-    //       fw.write(session("caseId").as[String] + "," + session("Document_ID2").as[String] + "\r\n")
-    //     }
-    //     finally fw.close()
-    //     session
-    // }
+  val caseDocUpload10mb =
 
-    .pause(Environment.constantthinkTime.seconds)
-
-    .exec(_.setAll(  
-      "FileName1"  -> ("3MB.pdf")
-    ))
-
-    .exec(http("CaseDocApi_Upload3mb")
+    exec(http("CaseDocApi_Upload10mb")
       .post(CaseDocAPI + "/cases/documents")
       .header("Authorization", "Bearer #{accessToken}")
       .header("ServiceAuthorization", "#{bearerToken}")
@@ -121,29 +89,15 @@ object casedocapi {
       .formParam("classification", "PUBLIC")
       .formParam("caseTypeId", "GrantOfRepresentation")
       .formParam("jurisdictionId", "PROBATE")
-      .bodyPart(RawFileBodyPart("files", "#{FileName1}")
-        .fileName("1MB.pdf")
+      .bodyPart(RawFileBodyPart("files", "10MB.pdf")
+        .fileName("10MB.pdf")
         .transferEncoding("binary"))
-      .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID3"))
-      .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken3")))
+      .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID10mb"))
+      .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken2")))
 
-    // .exec {
-    //   session =>
-    //     val fw = new BufferedWriter(new FileWriter("3mbFileIds.csv", true))
-    //     try {
-    //       fw.write(session("caseId").as[String] + "," + session("Document_ID3").as[String] + "\r\n")
-    //     }
-    //     finally fw.close()
-    //     session
-    // }
+  val caseDocUpload20mb =
 
-    .pause(Environment.constantthinkTime.seconds)
-
-    .exec(_.setAll(  
-      "FileName1"  -> ("5MB.pdf")
-    ))
-
-    .exec(http("CaseDocApi_Upload5mb")
+    exec(http("CaseDocApi_Upload20mb")
       .post(CaseDocAPI + "/cases/documents")
       .header("Authorization", "Bearer #{accessToken}")
       .header("ServiceAuthorization", "#{bearerToken}")
@@ -152,29 +106,15 @@ object casedocapi {
       .formParam("classification", "PUBLIC")
       .formParam("caseTypeId", "GrantOfRepresentation")
       .formParam("jurisdictionId", "PROBATE")
-      .bodyPart(RawFileBodyPart("files", "#{FileName1}")
-        .fileName("1MB.pdf")
+      .bodyPart(RawFileBodyPart("files", "20MB.pdf")
+        .fileName("20MB.pdf")
         .transferEncoding("binary"))
-      .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID4"))
-      .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken4")))
+      .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID20mb"))
+      .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken2")))
 
-    // .exec {
-    //   session =>
-    //     val fw = new BufferedWriter(new FileWriter("5mbFileIds.csv", true))
-    //     try {
-    //       fw.write(session("caseId").as[String] + "," + session("Document_ID4").as[String] + "\r\n")
-    //     }
-    //     finally fw.close()
-    //     session
-    // }
+  val caseDocUpload50mb =
 
-    .pause(Environment.constantthinkTime.seconds)
-    
-    .exec(_.setAll(  
-      "FileName1"  -> ("10MB.pdf")
-    ))
-
-    .exec(http("CaseDocApi_Upload10mb")
+    exec(http("CaseDocApi_Upload50mb")
       .post(CaseDocAPI + "/cases/documents")
       .header("Authorization", "Bearer #{accessToken}")
       .header("ServiceAuthorization", "#{bearerToken}")
@@ -183,23 +123,79 @@ object casedocapi {
       .formParam("classification", "PUBLIC")
       .formParam("caseTypeId", "GrantOfRepresentation")
       .formParam("jurisdictionId", "PROBATE")
-      .bodyPart(RawFileBodyPart("files", "#{FileName1}")
-        .fileName("1MB.pdf")
+      .bodyPart(RawFileBodyPart("files", "50MB.pdf")
+        .fileName("50MB.pdf")
         .transferEncoding("binary"))
-      .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID5"))
-      .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken5")))
+      .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID50mb"))
+      .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken2")))
 
-    // .exec {
-    //   session =>
-    //     val fw = new BufferedWriter(new FileWriter("10mbFileIds.csv", true))
-    //     try {
-    //       fw.write(session("caseId").as[String] + "," + session("Document_ID5").as[String] + "\r\n")
-    //     }
-    //     finally fw.close()
-    //     session
-    // }
+  val caseDocUpload100mb =
 
-    .pause(Environment.constantthinkTime.seconds)
+    exec(http("CaseDocApi_Upload100mb")
+      .post(CaseDocAPI + "/cases/documents")
+      .header("Authorization", "Bearer #{accessToken}")
+      .header("ServiceAuthorization", "#{bearerToken}")
+      .header("accept", "application/json")
+      .header("Content-Type", "multipart/form-data")
+      .formParam("classification", "PUBLIC")
+      .formParam("caseTypeId", "GrantOfRepresentation")
+      .formParam("jurisdictionId", "PROBATE")
+      .bodyPart(RawFileBodyPart("files", "100MB.pdf")
+        .fileName("100MB.pdf")
+        .transferEncoding("binary"))
+      .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID100mb"))
+      .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken2")))
+
+  val caseDocUpload250mb =
+
+    exec(http("CaseDocApi_Upload250mb")
+      .post(CaseDocAPI + "/cases/documents")
+      .header("Authorization", "Bearer #{accessToken}")
+      .header("ServiceAuthorization", "#{bearerToken}")
+      .header("accept", "application/json")
+      .header("Content-Type", "multipart/form-data")
+      .formParam("classification", "PUBLIC")
+      .formParam("caseTypeId", "GrantOfRepresentation")
+      .formParam("jurisdictionId", "PROBATE")
+      .bodyPart(RawFileBodyPart("files", "250MB.pdf")
+        .fileName("250MB.pdf")
+        .transferEncoding("binary"))
+      .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID250mb"))
+      .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken2")))
+
+  val caseDocUpload500mb =
+
+    exec(http("CaseDocApi_Upload500mb")
+      .post(CaseDocAPI + "/cases/documents")
+      .header("Authorization", "Bearer #{accessToken}")
+      .header("ServiceAuthorization", "#{bearerToken}")
+      .header("accept", "application/json")
+      .header("Content-Type", "multipart/form-data")
+      .formParam("classification", "PUBLIC")
+      .formParam("caseTypeId", "GrantOfRepresentation")
+      .formParam("jurisdictionId", "PROBATE")
+      .bodyPart(RawFileBodyPart("files", "500MB.pdf")
+        .fileName("500MB.pdf")
+        .transferEncoding("binary"))
+      .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID500mb"))
+      .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken2")))
+
+  val caseDocUpload1000mb =
+
+    exec(http("CaseDocApi_Upload1000mb")
+      .post(CaseDocAPI + "/cases/documents")
+      .header("Authorization", "Bearer #{accessToken}")
+      .header("ServiceAuthorization", "#{bearerToken}")
+      .header("accept", "application/json")
+      .header("Content-Type", "multipart/form-data")
+      .formParam("classification", "PUBLIC")
+      .formParam("caseTypeId", "GrantOfRepresentation")
+      .formParam("jurisdictionId", "PROBATE")
+      .bodyPart(RawFileBodyPart("files", "1000MB.pdf")
+        .fileName("1000MB.pdf")
+        .transferEncoding("binary"))
+      .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID1000mb"))
+      .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken2")))
 
   val addDocToCase = 
 
@@ -219,55 +215,81 @@ object casedocapi {
 
     .pause(Environment.constantthinkTime.seconds)
 
-  val caseDocDownload =
+  val caseDocDownload1mb =
 
-    feed(feed1mb)
-    .feed(feed2mb)
-    .feed(feed3mb)
-    .feed(feed5mb)
-    .feed(feed10mb)
+    exec(http("CaseDocApi_Download1mb")
+      .get(CaseDocAPI + "/cases/documents/#{Document_ID1mb}/binary")
+      .header("Authorization", "Bearer #{accessToken}")
+      .header("ServiceAuthorization", "#{bearerToken}")
+      .header("accept", "application/json"))
 
-    .repeat(2) {
+  val caseDocDownload5mb =
 
-      exec(http("CaseDocApi_Download1mb")
-        .get(CaseDocAPI + "/cases/documents/#{1mbId}/binary")
-        .header("Authorization", "Bearer #{accessToken}")
-        .header("ServiceAuthorization", "#{bearerToken}")
-        .header("accept", "application/json"))
+    exec(http("CaseDocApi_Download5mb")
+      .get(CaseDocAPI + "/cases/documents/#{Document_ID5mb}/binary")
+      .header("Authorization", "Bearer #{accessToken}")
+      .header("ServiceAuthorization", "#{bearerToken}")
+      .header("accept", "application/json"))
 
-      .pause(Environment.constantthinkTime.seconds)
+  val caseDocDownload10mb =
 
-      .exec(http("CaseDocApi_Download2mb")
-        .get(CaseDocAPI + "/cases/documents/#{2mbId}/binary")
-        .header("Authorization", "Bearer #{accessToken}")
-        .header("ServiceAuthorization", "#{bearerToken}")
-        .header("accept", "application/json"))
+    exec(http("CaseDocApi_Download10mb")
+      .get(CaseDocAPI + "/cases/documents/#{Document_ID10mb}/binary")
+      .header("Authorization", "Bearer #{accessToken}")
+      .header("ServiceAuthorization", "#{bearerToken}")
+      .header("accept", "application/json"))
 
-      .pause(Environment.constantthinkTime.seconds)
+  val caseDocDownload20mb =
 
-      .exec(http("CaseDocApi_Download3mb")
-        .get(CaseDocAPI + "/cases/documents/#{3mbId}/binary")
-        .header("Authorization", "Bearer #{accessToken}")
-        .header("ServiceAuthorization", "#{bearerToken}")
-        .header("accept", "application/json"))
+    exec(http("CaseDocApi_Download20mb")
+      .get(CaseDocAPI + "/cases/documents/#{Document_ID20mb}/binary")
+      .header("Authorization", "Bearer #{accessToken}")
+      .header("ServiceAuthorization", "#{bearerToken}")
+      .header("accept", "application/json"))
 
-      .pause(Environment.constantthinkTime.seconds)
+  val caseDocDownload50mb =
 
-      .exec(http("CaseDocApi_Download5mb")
-        .get(CaseDocAPI + "/cases/documents/#{5mbId}/binary")
-        .header("Authorization", "Bearer #{accessToken}")
-        .header("ServiceAuthorization", "#{bearerToken}")
-        .header("accept", "application/json"))
+    exec(http("CaseDocApi_Download50mb")
+      .get(CaseDocAPI + "/cases/documents/#{Document_ID50mb}/binary")
+      .header("Authorization", "Bearer #{accessToken}")
+      .header("ServiceAuthorization", "#{bearerToken}")
+      .header("accept", "application/json"))
 
-      .pause(Environment.constantthinkTime.seconds)
+  val caseDocDownload100mb =
 
-      .exec(http("CaseDocApi_Download10mb")
-        .get(CaseDocAPI + "/cases/documents/#{10mbId}/binary")
-        .header("Authorization", "Bearer #{accessToken}")
-        .header("ServiceAuthorization", "#{bearerToken}")
-        .header("accept", "application/json"))
+    exec(http("CaseDocApi_Download100mb")
+      .get(CaseDocAPI + "/cases/documents/#{Document_ID100mb}/binary")
+      .header("Authorization", "Bearer #{accessToken}")
+      .header("ServiceAuthorization", "#{bearerToken}")
+      .header("accept", "application/json"))
 
-      .pause(Environment.constantthinkTime.seconds)
-    }
+  val caseDocDownload250mb =
+
+    exec(http("CaseDocApi_Download250mb")
+      .get(CaseDocAPI + "/cases/documents/#{Document_ID250mb}/binary")
+      .header("Authorization", "Bearer #{accessToken}")
+      .header("ServiceAuthorization", "#{bearerToken}")
+      .header("accept", "application/json"))
+
+  val caseDocDownload500mb =
+
+    exec(http("CaseDocApi_Download500mb")
+      .get(CaseDocAPI + "/cases/documents/#{Document_ID500mb}/binary")
+      .header("Authorization", "Bearer #{accessToken}")
+      .header("ServiceAuthorization", "#{bearerToken}")
+      .header("accept", "application/json"))
+
+  val caseDocDownload1000mb =
+
+    exec(http("CaseDocApi_Download1000mb")
+      .get(CaseDocAPI + "/cases/documents/#{Document_ID1000mb}/binary")
+      .header("Authorization", "Bearer #{accessToken}")
+      .header("ServiceAuthorization", "#{bearerToken}")
+      .header("accept", "application/json"))
+
+
+
+
+
 
 }
