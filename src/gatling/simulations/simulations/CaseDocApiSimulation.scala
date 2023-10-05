@@ -71,100 +71,118 @@ class CaseDocApiSimulation extends Simulation  {
 
   val onembfilescenario = scenario("CDAM 1mb file upload & download")
     .exec(_.set("env", s"${env}"))
-    .exec(casedocapi.S2SLogin)
-    .exec(casedocapi.idamLogin)
-    .exec(casedocapi.caseDocUpload1mb)
-    .doIf("#{Document_ID1mb.exists()}") {
-      repeat(4) {
-        exec(casedocapi.caseDocDownload1mb)
+    .exitBlockOnFail {
+      exec(casedocapi.S2SLogin)
+      .exec(casedocapi.idamLogin)
+      .exec(casedocapi.caseDocUpload1mb)
+      .doIf("#{Document_ID1mb.exists()}") {
+        repeat(4) {
+          exec(casedocapi.caseDocDownload1mb)
+        }
       }
     }
 
   val fivembfilescenario = scenario("CDAM 5mb file upload & download")
     .exec(_.set("env", s"${env}"))
-    .exec(casedocapi.S2SLogin)
-    .exec(casedocapi.idamLogin)
-    .exec(casedocapi.caseDocUpload5mb)
-    .doIf("#{Document_ID5mb.exists()}") {
-      repeat(4) {
-        exec(casedocapi.caseDocDownload5mb)
+    .exitBlockOnFail {
+      exec(casedocapi.S2SLogin)
+      .exec(casedocapi.idamLogin)
+      .exec(casedocapi.caseDocUpload5mb)
+      .doIf("#{Document_ID5mb.exists()}") {
+        repeat(4) {
+          exec(casedocapi.caseDocDownload5mb)
+        }
       }
     }
 
   val tenmbfilescenario = scenario("CDAM 10mb file upload & download")
     .exec(_.set("env", s"${env}"))
-    .exec(casedocapi.S2SLogin)
-    .exec(casedocapi.idamLogin)
-    .exec(casedocapi.caseDocUpload10mb)
-    .doIf("#{Document_ID10mb.exists()}") {
-      repeat(4) {
-        exec(casedocapi.caseDocDownload10mb)
+    .exitBlockOnFail {
+      exec(casedocapi.S2SLogin)
+      .exec(casedocapi.idamLogin)
+      .exec(casedocapi.caseDocUpload10mb)
+      .doIf("#{Document_ID10mb.exists()}") {
+        repeat(4) {
+          exec(casedocapi.caseDocDownload10mb)
+        }
       }
     }
 
   val twentymbfilescenario = scenario("CDAM 20mb file upload & download")
     .exec(_.set("env", s"${env}"))
-    .exec(casedocapi.S2SLogin)
-    .exec(casedocapi.idamLogin)
-    .exec(casedocapi.caseDocUpload20mb)
-    .doIf("#{Document_ID20mb.exists()}") {
-      repeat(4) {
-        exec(casedocapi.caseDocDownload20mb)
+    .exitBlockOnFail {
+      exec(casedocapi.S2SLogin)
+      .exec(casedocapi.idamLogin)
+      .exec(casedocapi.caseDocUpload20mb)
+      .doIf("#{Document_ID20mb.exists()}") {
+        repeat(4) {
+          exec(casedocapi.caseDocDownload20mb)
+        }
       }
     }
 
   val fiftymbfilescenario = scenario("CDAM 50mb file upload & download")
     .exec(_.set("env", s"${env}"))
-    .exec(casedocapi.S2SLogin)
-    .exec(casedocapi.idamLogin)
-    .exec(casedocapi.caseDocUpload50mb)
-    .doIf("#{Document_ID50mb.exists()}") {
-      repeat(4) {
-        exec(casedocapi.caseDocDownload50mb)
+    .exitBlockOnFail {
+      exec(casedocapi.S2SLogin)
+      .exec(casedocapi.idamLogin)
+      .exec(casedocapi.caseDocUpload50mb)
+      .doIf("#{Document_ID50mb.exists()}") {
+        repeat(4) {
+          exec(casedocapi.caseDocDownload50mb)
+        }
       }
     }
 
   val onehundredmbfilescenario = scenario("CDAM 100mb file upload & download")
     .exec(_.set("env", s"${env}"))
-    .exec(casedocapi.S2SLogin)
-    .exec(casedocapi.idamLogin)
-    .exec(casedocapi.caseDocUpload100mb)
-    .doIf("#{Document_ID100mb.exists()}") {
-      repeat(4) {
-        exec(casedocapi.caseDocDownload100mb)
+    .exitBlockOnFail {
+      exec(casedocapi.S2SLogin)
+      .exec(casedocapi.idamLogin)
+      .exec(casedocapi.caseDocUpload100mb)
+      .doIf("#{Document_ID100mb.exists()}") {
+        repeat(4) {
+          exec(casedocapi.caseDocDownload100mb)
+        }
       }
     }
 
   val twofiftymbfilescenario = scenario("CDAM 250mb file upload & download")
     .exec(_.set("env", s"${env}"))
-    .exec(casedocapi.S2SLogin)
-    .exec(casedocapi.idamLogin)
-    .exec(casedocapi.caseDocUpload250mb)
-    .doIf("#{Document_ID250mb.exists()}") {
-      repeat(4) {
-        exec(casedocapi.caseDocDownload250mb)
+    .exitBlockOnFail {
+      exec(casedocapi.S2SLogin)
+      .exec(casedocapi.idamLogin)
+      .exec(casedocapi.caseDocUpload250mb)
+      .doIf("#{Document_ID250mb.exists()}") {
+        repeat(4) {
+          exec(casedocapi.caseDocDownload250mb)
+        }
       }
     }
 
   val fivehundredmbfilescenario = scenario("CDAM 500mb file upload & download")
     .exec(_.set("env", s"${env}"))
-    .exec(casedocapi.S2SLogin)
-    .exec(casedocapi.idamLogin)
-    .exec(casedocapi.caseDocUpload500mb)
-    .doIf("#{Document_ID500mb.exists()}") {
-      repeat(4) {
-        exec(casedocapi.caseDocDownload500mb)
+    .exitBlockOnFail {
+      exec(casedocapi.S2SLogin)
+      .exec(casedocapi.idamLogin)
+      .exec(casedocapi.caseDocUpload500mb)
+      .doIf("#{Document_ID500mb.exists()}") {
+        repeat(4) {
+          exec(casedocapi.caseDocDownload500mb)
+        }
       }
     }
 
   val onegbfilescenario = scenario("CDAM 1gb file upload & download")
     .exec(_.set("env", s"${env}"))
-    .exec(casedocapi.S2SLogin)
-    .exec(casedocapi.idamLogin)
-    .exec(casedocapi.caseDocUpload1000mb)
-    .doIf("#{Document_ID1000mb.exists()}") {
-      repeat(4) {
-        exec(casedocapi.caseDocDownload1000mb)
+    .exitBlockOnFail {
+      exec(casedocapi.S2SLogin)
+      .exec(casedocapi.idamLogin)
+      .exec(casedocapi.caseDocUpload1000mb)
+      .doIf("#{Document_ID1000mb.exists()}") {
+        repeat(4) {
+          exec(casedocapi.caseDocDownload1000mb)
+        }
       }
     }
 
