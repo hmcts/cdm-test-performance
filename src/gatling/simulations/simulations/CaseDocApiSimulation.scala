@@ -62,7 +62,7 @@ class CaseDocApiSimulation extends Simulation  {
   val BaseURL = Environment.baseURL
   val config: Config = ConfigFactory.load()
   val caseDocUsers = csv("CMCUserData.csv").circular
-  val caseDocCases = csv("casedocdata/ProbateCaseIds.csv").queue
+  val feedProbateUserDataPerftest = csv("ProbateUserData.csv").circular
 
   val httpProtocol = Environment.HttpProtocol
     .baseUrl(Environment.baseURL.replace("#{env}", s"${env}"))
@@ -72,12 +72,18 @@ class CaseDocApiSimulation extends Simulation  {
   val onembfilescenario = scenario("CDAM 1mb file upload & download")
     .exec(_.set("env", s"${env}"))
     .exitBlockOnFail {
-      exec(casedocapi.S2SLogin)
+      feed(feedProbateUserDataPerftest)
+      .exec(S2S.s2s("ccd_data"))
+      .exec(IdamLogin.GetIdamToken)
+      .exec(casedocapi.CCDAPI_ProbateCreate)
+      .exec(casedocapi.S2SLogin)
       .exec(casedocapi.idamLogin)
-      .exec(casedocapi.caseDocUpload1mb)
-      .doIf("#{Document_ID1mb.exists()}") {
+      .exec(_.set("filename", "1MB.pdf"))
+      .exec(casedocapi.caseDocUpload)
+      .exec(casedocapi.addDocToCase)
+      .doIf("#{Document_ID.exists()}") {
         repeat(4) {
-          exec(casedocapi.caseDocDownload1mb)
+          exec(casedocapi.caseDocDownload)
         }
       }
     }
@@ -85,12 +91,18 @@ class CaseDocApiSimulation extends Simulation  {
   val fivembfilescenario = scenario("CDAM 5mb file upload & download")
     .exec(_.set("env", s"${env}"))
     .exitBlockOnFail {
-      exec(casedocapi.S2SLogin)
+      feed(feedProbateUserDataPerftest)
+      .exec(S2S.s2s("ccd_data"))
+      .exec(IdamLogin.GetIdamToken)
+      .exec(casedocapi.CCDAPI_ProbateCreate)
+      .exec(casedocapi.S2SLogin)
       .exec(casedocapi.idamLogin)
-      .exec(casedocapi.caseDocUpload5mb)
-      .doIf("#{Document_ID5mb.exists()}") {
+      .exec(_.set("filename", "5MB.pdf"))
+      .exec(casedocapi.caseDocUpload)
+      .exec(casedocapi.addDocToCase)
+      .doIf("#{Document_ID.exists()}") {
         repeat(4) {
-          exec(casedocapi.caseDocDownload5mb)
+          exec(casedocapi.caseDocDownload)
         }
       }
     }
@@ -98,12 +110,18 @@ class CaseDocApiSimulation extends Simulation  {
   val tenmbfilescenario = scenario("CDAM 10mb file upload & download")
     .exec(_.set("env", s"${env}"))
     .exitBlockOnFail {
-      exec(casedocapi.S2SLogin)
+      feed(feedProbateUserDataPerftest)
+      .exec(S2S.s2s("ccd_data"))
+      .exec(IdamLogin.GetIdamToken)
+      .exec(casedocapi.CCDAPI_ProbateCreate)
+      .exec(casedocapi.S2SLogin)
       .exec(casedocapi.idamLogin)
-      .exec(casedocapi.caseDocUpload10mb)
-      .doIf("#{Document_ID10mb.exists()}") {
+      .exec(_.set("filename", "10MB.pdf"))
+      .exec(casedocapi.caseDocUpload)
+      .exec(casedocapi.addDocToCase)
+      .doIf("#{Document_ID.exists()}") {
         repeat(4) {
-          exec(casedocapi.caseDocDownload10mb)
+          exec(casedocapi.caseDocDownload)
         }
       }
     }
@@ -111,12 +129,18 @@ class CaseDocApiSimulation extends Simulation  {
   val twentymbfilescenario = scenario("CDAM 20mb file upload & download")
     .exec(_.set("env", s"${env}"))
     .exitBlockOnFail {
-      exec(casedocapi.S2SLogin)
+      feed(feedProbateUserDataPerftest)
+      .exec(S2S.s2s("ccd_data"))
+      .exec(IdamLogin.GetIdamToken)
+      .exec(casedocapi.CCDAPI_ProbateCreate)
+      .exec(casedocapi.S2SLogin)
       .exec(casedocapi.idamLogin)
-      .exec(casedocapi.caseDocUpload20mb)
-      .doIf("#{Document_ID20mb.exists()}") {
+      .exec(_.set("filename", "20MB.pdf"))
+      .exec(casedocapi.caseDocUpload)
+      .exec(casedocapi.addDocToCase)
+      .doIf("#{Document_ID.exists()}") {
         repeat(4) {
-          exec(casedocapi.caseDocDownload20mb)
+          exec(casedocapi.caseDocDownload)
         }
       }
     }
@@ -124,12 +148,18 @@ class CaseDocApiSimulation extends Simulation  {
   val fiftymbfilescenario = scenario("CDAM 50mb file upload & download")
     .exec(_.set("env", s"${env}"))
     .exitBlockOnFail {
-      exec(casedocapi.S2SLogin)
+      feed(feedProbateUserDataPerftest)
+      .exec(S2S.s2s("ccd_data"))
+      .exec(IdamLogin.GetIdamToken)
+      .exec(casedocapi.CCDAPI_ProbateCreate)
+      .exec(casedocapi.S2SLogin)
       .exec(casedocapi.idamLogin)
-      .exec(casedocapi.caseDocUpload50mb)
-      .doIf("#{Document_ID50mb.exists()}") {
+      .exec(_.set("filename", "50MB.pdf"))
+      .exec(casedocapi.caseDocUpload)
+      .exec(casedocapi.addDocToCase)
+      .doIf("#{Document_ID.exists()}") {
         repeat(4) {
-          exec(casedocapi.caseDocDownload50mb)
+          exec(casedocapi.caseDocDownload)
         }
       }
     }
@@ -137,12 +167,18 @@ class CaseDocApiSimulation extends Simulation  {
   val onehundredmbfilescenario = scenario("CDAM 100mb file upload & download")
     .exec(_.set("env", s"${env}"))
     .exitBlockOnFail {
-      exec(casedocapi.S2SLogin)
+      feed(feedProbateUserDataPerftest)
+      .exec(S2S.s2s("ccd_data"))
+      .exec(IdamLogin.GetIdamToken)
+      .exec(casedocapi.CCDAPI_ProbateCreate)
+      .exec(casedocapi.S2SLogin)
       .exec(casedocapi.idamLogin)
-      .exec(casedocapi.caseDocUpload100mb)
-      .doIf("#{Document_ID100mb.exists()}") {
+      .exec(_.set("filename", "100MB.pdf"))
+      .exec(casedocapi.caseDocUpload)
+      .exec(casedocapi.addDocToCase)
+      .doIf("#{Document_ID.exists()}") {
         repeat(4) {
-          exec(casedocapi.caseDocDownload100mb)
+          exec(casedocapi.caseDocDownload)
         }
       }
     }
@@ -150,12 +186,18 @@ class CaseDocApiSimulation extends Simulation  {
   val twofiftymbfilescenario = scenario("CDAM 250mb file upload & download")
     .exec(_.set("env", s"${env}"))
     .exitBlockOnFail {
-      exec(casedocapi.S2SLogin)
+      feed(feedProbateUserDataPerftest)
+      .exec(S2S.s2s("ccd_data"))
+      .exec(IdamLogin.GetIdamToken)
+      .exec(casedocapi.CCDAPI_ProbateCreate)
+      .exec(casedocapi.S2SLogin)
       .exec(casedocapi.idamLogin)
-      .exec(casedocapi.caseDocUpload250mb)
-      .doIf("#{Document_ID250mb.exists()}") {
+      .exec(_.set("filename", "250MB.pdf"))
+      .exec(casedocapi.caseDocUpload)
+      .exec(casedocapi.addDocToCase)
+      .doIf("#{Document_ID.exists()}") {
         repeat(4) {
-          exec(casedocapi.caseDocDownload250mb)
+          exec(casedocapi.caseDocDownload)
         }
       }
     }
@@ -163,12 +205,18 @@ class CaseDocApiSimulation extends Simulation  {
   val fivehundredmbfilescenario = scenario("CDAM 500mb file upload & download")
     .exec(_.set("env", s"${env}"))
     .exitBlockOnFail {
-      exec(casedocapi.S2SLogin)
+      feed(feedProbateUserDataPerftest)
+      .exec(S2S.s2s("ccd_data"))
+      .exec(IdamLogin.GetIdamToken)
+      .exec(casedocapi.CCDAPI_ProbateCreate)
+      .exec(casedocapi.S2SLogin)
       .exec(casedocapi.idamLogin)
-      .exec(casedocapi.caseDocUpload500mb)
-      .doIf("#{Document_ID500mb.exists()}") {
+      .exec(_.set("filename", "500MB.pdf"))
+      .exec(casedocapi.caseDocUpload)
+      .exec(casedocapi.addDocToCase)
+      .doIf("#{Document_ID.exists()}") {
         repeat(4) {
-          exec(casedocapi.caseDocDownload500mb)
+          exec(casedocapi.caseDocDownload)
         }
       }
     }
@@ -176,12 +224,18 @@ class CaseDocApiSimulation extends Simulation  {
   val onegbfilescenario = scenario("CDAM 1gb file upload & download")
     .exec(_.set("env", s"${env}"))
     .exitBlockOnFail {
-      exec(casedocapi.S2SLogin)
+      feed(feedProbateUserDataPerftest)
+      .exec(S2S.s2s("ccd_data"))
+      .exec(IdamLogin.GetIdamToken)
+      .exec(casedocapi.CCDAPI_ProbateCreate)
+      .exec(casedocapi.S2SLogin)
       .exec(casedocapi.idamLogin)
-      .exec(casedocapi.caseDocUpload1000mb)
-      .doIf("#{Document_ID1000mb.exists()}") {
+      .exec(_.set("filename", "1000MB.pdf"))
+      .exec(casedocapi.caseDocUpload)
+      .exec(casedocapi.addDocToCase)
+      .doIf("#{Document_ID.exists()}") {
         repeat(4) {
-          exec(casedocapi.caseDocDownload1000mb)
+          exec(casedocapi.caseDocDownload)
         }
       }
     }
