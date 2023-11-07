@@ -96,7 +96,7 @@ object casedocapi {
       .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID"))
       .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken")))
 
-    .pause(Environment.constantthinkTime.seconds)
+    .pause(Environment.constantthinkTime.seconds) 
 
   val addDocToCase = 
 
