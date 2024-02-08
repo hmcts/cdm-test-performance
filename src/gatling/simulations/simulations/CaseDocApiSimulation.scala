@@ -81,10 +81,10 @@ class CaseDocApiSimulation extends Simulation  {
       .exec(_.set("filename", "1MB.pdf"))
       .exec(casedocapi.caseDocUpload)
       .exec(casedocapi.addDocToCase)
-      .doIf("#{Document_ID.exists()}") {
-        repeat(4) {
-          exec(casedocapi.caseDocDownload)
-        }
+    }
+    .doIf("#{Document_ID.exists()}") {
+      repeat(4) {
+        exec(casedocapi.caseDocDownload)
       }
     }
 
@@ -100,10 +100,10 @@ class CaseDocApiSimulation extends Simulation  {
       .exec(_.set("filename", "5MB.pdf"))
       .exec(casedocapi.caseDocUpload)
       .exec(casedocapi.addDocToCase)
-      .doIf("#{Document_ID.exists()}") {
-        repeat(4) {
-          exec(casedocapi.caseDocDownload)
-        }
+    }
+    .doIf("#{Document_ID.exists()}") {
+      repeat(4) {
+        exec(casedocapi.caseDocDownload)
       }
     }
 
@@ -119,10 +119,10 @@ class CaseDocApiSimulation extends Simulation  {
       .exec(_.set("filename", "10MB.pdf"))
       .exec(casedocapi.caseDocUpload)
       .exec(casedocapi.addDocToCase)
-      .doIf("#{Document_ID.exists()}") {
-        repeat(4) {
-          exec(casedocapi.caseDocDownload)
-        }
+    }
+    .doIf("#{Document_ID.exists()}") {
+      repeat(4) {
+        exec(casedocapi.caseDocDownload)
       }
     }
 
@@ -138,10 +138,10 @@ class CaseDocApiSimulation extends Simulation  {
       .exec(_.set("filename", "20MB.pdf"))
       .exec(casedocapi.caseDocUpload)
       .exec(casedocapi.addDocToCase)
-      .doIf("#{Document_ID.exists()}") {
-        repeat(4) {
-          exec(casedocapi.caseDocDownload)
-        }
+    }
+    .doIf("#{Document_ID.exists()}") {
+      repeat(4) {
+        exec(casedocapi.caseDocDownload)
       }
     }
 
@@ -157,10 +157,10 @@ class CaseDocApiSimulation extends Simulation  {
       .exec(_.set("filename", "50MB.pdf"))
       .exec(casedocapi.caseDocUpload)
       .exec(casedocapi.addDocToCase)
-      .doIf("#{Document_ID.exists()}") {
-        repeat(4) {
-          exec(casedocapi.caseDocDownload)
-        }
+    }
+    .doIf("#{Document_ID.exists()}") {
+      repeat(4) {
+        exec(casedocapi.caseDocDownload)
       }
     }
 
@@ -176,10 +176,10 @@ class CaseDocApiSimulation extends Simulation  {
       .exec(_.set("filename", "100MB.pdf"))
       .exec(casedocapi.caseDocUpload)
       .exec(casedocapi.addDocToCase)
-      .doIf("#{Document_ID.exists()}") {
-        repeat(4) {
-          exec(casedocapi.caseDocDownload)
-        }
+    }
+    .doIf("#{Document_ID.exists()}") {
+      repeat(4) {
+        exec(casedocapi.caseDocDownload)
       }
     }
 
@@ -195,10 +195,10 @@ class CaseDocApiSimulation extends Simulation  {
       .exec(_.set("filename", "250MB.pdf"))
       .exec(casedocapi.caseDocUpload)
       .exec(casedocapi.addDocToCase)
-      .doIf("#{Document_ID.exists()}") {
-        repeat(4) {
-          exec(casedocapi.caseDocDownload)
-        }
+    }
+    .doIf("#{Document_ID.exists()}") {
+      repeat(4) {
+        exec(casedocapi.caseDocDownload)
       }
     }
 
@@ -214,10 +214,10 @@ class CaseDocApiSimulation extends Simulation  {
       .exec(_.set("filename", "500MB.pdf"))
       .exec(casedocapi.caseDocUpload)
       .exec(casedocapi.addDocToCase)
-      .doIf("#{Document_ID.exists()}") {
-        repeat(4) {
-          exec(casedocapi.caseDocDownload)
-        }
+    }
+    .doIf("#{Document_ID.exists()}") {
+      repeat(4) {
+        exec(casedocapi.caseDocDownload)
       }
     }
 
@@ -233,10 +233,10 @@ class CaseDocApiSimulation extends Simulation  {
       .exec(_.set("filename", "1000MB.pdf"))
       .exec(casedocapi.caseDocUpload)
       .exec(casedocapi.addDocToCase)
-      .doIf("#{Document_ID.exists()}") {
-        repeat(4) {
-          exec(casedocapi.caseDocDownload)
-        }
+    }
+    .doIf("#{Document_ID.exists()}") {
+      repeat(4) {
+        exec(casedocapi.caseDocDownload)
       }
     }
 
