@@ -44,7 +44,7 @@ class CaseDocApiSimulation extends Simulation  {
 
 	val rampUpDurationMins = 10
 	val rampDownDurationMins = 10
-	val testDurationMins = 30 //60
+	val testDurationMins = 60 //60
 
 	val numberOfPipelineUsers = 5
 	val pipelinePausesMillis:Long = 3000 //3 seconds
