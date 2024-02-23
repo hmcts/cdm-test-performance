@@ -249,7 +249,9 @@ class CaseDocApiSimulation extends Simulation  {
       .exec(casedocapi.idamLogin)
       .feed(feed500mbfiles)
       .exec(_.set("filename", "500MB.pdf"))
-      .exec(casedocapi.caseDocDownload)
+      .repeat(5) {
+        .exec(casedocapi.caseDocDownload)
+      }
     }
 
 	def simulationProfile(simulationType: String, userPerHourRate: Double, numberOfPipelineUsers: Double): Seq[OpenInjectionStep] = {
