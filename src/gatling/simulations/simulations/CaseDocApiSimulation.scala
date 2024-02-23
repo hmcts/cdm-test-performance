@@ -248,6 +248,7 @@ class CaseDocApiSimulation extends Simulation  {
       .exec(casedocapi.S2SLogin)
       .exec(casedocapi.idamLogin)
       .feed(feed500mbfiles)
+      .exec(_.set("filename", "500MB.pdf"))
       .exec(casedocapi.caseDocDownload)
     }
 
