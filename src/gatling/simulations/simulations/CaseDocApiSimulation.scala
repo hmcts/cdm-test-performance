@@ -241,17 +241,6 @@ class CaseDocApiSimulation extends Simulation  {
       }
     }
 
-  val fivehundreddownload = scenario("CDAM - download 500mb file only")
-    .exec(_.set("env", s"${env}"))
-    .exitBlockOnFail {
-      feed(feedProbateUserDataPerftest)
-      .exec(casedocapi.S2SLogin)
-      .exec(casedocapi.idamLogin)
-      .feed(feed500mbfiles)
-      .exec(_.set("filename", "500MB.pdf"))
-      .exec(casedocapi.caseDocDownload)
-    }
-
 	def simulationProfile(simulationType: String, userPerHourRate: Double, numberOfPipelineUsers: Double): Seq[OpenInjectionStep] = {
 		val userPerSecRate = userPerHourRate / 3600
 		simulationType match {
@@ -295,16 +284,15 @@ class CaseDocApiSimulation extends Simulation  {
   }
 
   setUp(
-    // onembfilescenario.inject(simulationProfile(testType, oneMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-    // fivembfilescenario.inject(simulationProfile(testType, fiveMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-    // tenmbfilescenario.inject(simulationProfile(testType, tenMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-    // twentymbfilescenario.inject(simulationProfile(testType, twentyMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-    // fiftymbfilescenario.inject(simulationProfile(testType, fiftyMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-    // onehundredmbfilescenario.inject(simulationProfile(testType, oneHundredMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-    // twofiftymbfilescenario.inject(simulationProfile(testType, twofiftyMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-    // fivehundredmbfilescenario.inject(simulationProfile(testType, fiveHundredMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-    // onegbfilescenario.inject(simulationProfile(testType, oneGbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-    fivehundreddownload.inject(simulationProfile(testType, fiveHundredMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption)
+    onembfilescenario.inject(simulationProfile(testType, oneMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+    fivembfilescenario.inject(simulationProfile(testType, fiveMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+    tenmbfilescenario.inject(simulationProfile(testType, tenMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+    twentymbfilescenario.inject(simulationProfile(testType, twentyMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+    fiftymbfilescenario.inject(simulationProfile(testType, fiftyMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+    onehundredmbfilescenario.inject(simulationProfile(testType, oneHundredMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+    twofiftymbfilescenario.inject(simulationProfile(testType, twofiftyMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+    fivehundredmbfilescenario.inject(simulationProfile(testType, fiveHundredMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+    onegbfilescenario.inject(simulationProfile(testType, oneGbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
     )
   .protocols(httpProtocol)
   .assertions(assertions(testType))
