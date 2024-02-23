@@ -13,7 +13,7 @@ java {
 
 tasks.withType(JavaExec) {
     // Configure the size of the JVM if necessary
-    jvmArgs = ['-Xms1024m', '-Xmx10240m']
+    jvmArgs = ['-Xms4096m', '-Xmx10240m']
     /* Use the following args to build a report when a test was terminated
     args = [
         "--reports-only", "fact-20201109092032896",
