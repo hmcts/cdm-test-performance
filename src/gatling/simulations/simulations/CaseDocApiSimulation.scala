@@ -40,7 +40,7 @@ class CaseDocApiSimulation extends Simulation  {
   val twofiftyMbStoreTargetPerHour:Double = 22
   val fiveHundredMbStoreTargetPerHour:Double = 4
   val oneGbStoreTargetPerHour:Double = 1
-  val fiveHundredDownloadTarget:Double = 50
+  val fiveHundredDownloadTarget:Double = 150
 
 	val rampUpDurationMins = 10
 	val rampDownDurationMins = 10
