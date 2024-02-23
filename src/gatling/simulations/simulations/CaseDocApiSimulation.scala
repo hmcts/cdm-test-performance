@@ -40,6 +40,7 @@ class CaseDocApiSimulation extends Simulation  {
   val twofiftyMbStoreTargetPerHour:Double = 22
   val fiveHundredMbStoreTargetPerHour:Double = 4
   val oneGbStoreTargetPerHour:Double = 1
+  val fiveHundredDownloadTarget:Double = 10
 
 	val rampUpDurationMins = 10
 	val rampDownDurationMins = 10
@@ -306,7 +307,7 @@ class CaseDocApiSimulation extends Simulation  {
     // twofiftymbfilescenario.inject(simulationProfile(testType, twofiftyMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
     // fivehundredmbfilescenario.inject(simulationProfile(testType, fiveHundredMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
     // onegbfilescenario.inject(simulationProfile(testType, oneGbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-    fivehundreddownload.inject(simulationProfile(testType, fiveHundredMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption)
+    fivehundreddownload.inject(simulationProfile(testType, fiveHundredDownloadTarget, numberOfPipelineUsers)).pauses(pauseOption)
     )
   .protocols(httpProtocol)
   .assertions(assertions(testType))
