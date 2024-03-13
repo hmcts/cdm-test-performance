@@ -1,0 +1,38 @@
+{
+  "data": {
+     "SolUrgentCase": "No",
+     "SolServiceMethod": "personalService",
+     "SolStatementOfReconciliationCertify": "Yes",
+     "SolStatementOfReconciliationDiscussed": "Yes",
+     "D8StatementOfTruth": "Yes",
+     "solSignStatementofTruth": "Yes",
+     "SolStatementOfReconciliationName": "Mr Perf Solicitor",
+     "SolStatementOfReconciliationFirm": "pforgdiv-02bu5",
+     "StatementOfReconciliationComments": "CCD Perf test",
+     "solApplicationFeeInPounds": "593",
+     "SolPaymentHowToPay": "feesHelpWith",
+     "D8HelpWithFeesReferenceNumber": "123123",
+     "solApplicationFeeOrderSummary": {
+        "PaymentReference": null,
+        "PaymentTotal": "59300",
+        "Fees": [
+           {
+              "value": {
+                 "FeeCode": "FEE0002",
+                 "FeeAmount": "59300",
+                 "FeeDescription": "Filing an application for a divorce, nullity or civil partnership dissolution",
+                 "FeeVersion": "6"
+              }
+           }
+        ]
+     },
+     "D8ReasonForDivorce": "unreasonable-behaviour"
+  },
+  "event": {
+     "id": "solicitorStatementOfTruthPaySubmit",
+     "summary": "",
+     "description": ""
+  },
+  "event_token": "#{eventToken2}",
+  "ignore_warning": false
+}

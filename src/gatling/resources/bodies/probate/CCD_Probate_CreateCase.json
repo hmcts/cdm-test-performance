@@ -1,0 +1,11 @@
+{
+  "data": {},
+  "event": {
+     "id": "applyForGrant",
+     "summary": "CCD-Perftest",
+     "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false,
+  "draft_id": null
+}

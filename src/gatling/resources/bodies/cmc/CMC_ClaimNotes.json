@@ -1,0 +1,10 @@
+{
+  "data": {},
+  "event": {
+     "id": "ClaimNotes",
+     "summary": "CCD Perf test notes",
+     "description": ""
+  },
+  "event_token": "#{eventToken2}",
+  "ignore_warning": false
+}

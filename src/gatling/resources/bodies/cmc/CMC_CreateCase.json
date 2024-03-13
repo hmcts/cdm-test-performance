@@ -1,0 +1,11 @@
+{
+  "data": {},
+  "event": {
+     "id": "CreateClaim",
+     "summary": "",
+     "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false,
+  "draft_id": null
+}

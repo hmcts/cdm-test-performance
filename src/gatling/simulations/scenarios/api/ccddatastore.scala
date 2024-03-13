@@ -48,15 +48,14 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
       .header("Authorization", "Bearer #{access_token}")
       .header("Content-Type","application/json")
-      .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"applyForGrant\",\n    \"summary\": \"test case\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"#{eventToken}\",\n  \"ignore_warning\": false,\n  \"draft_id\": null\n}"))
-      )
+      .body(ElFileBody("bodies/probate/CCD_Probate_CreateCase.json")))
 
     .exec(http("API_Probate_CreateCase")
       .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases")
       .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
       .header("Authorization", "Bearer #{access_token}")
       .header("Content-Type","application/json")
-      .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"applyForGrant\",\n    \"summary\": \"test case\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"#{eventToken}\",\n  \"ignore_warning\": false,\n  \"draft_id\": null\n}"))
+      .body(ElFileBody("bodies/probate/CCD_Probate_CreateCase.json"))
       .check(jsonPath("$.id").saveAs("caseId")))
 
     .pause(Environment.constantthinkTime.seconds)
@@ -293,14 +292,14 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
       .header("Authorization", "Bearer #{access_token}")
       .header("Content-Type","application/json")
-      .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"CreateClaim\",\n    \"summary\": \"\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"#{eventToken}\",\n  \"ignore_warning\": false,\n  \"draft_id\": null\n}")))
+      .body(ElFileBody("bodies/cmc/CMC_CreateCase.json")))
 
     .exec(http("API_CMC_CreateCase")
       .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases")
       .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
       .header("Authorization", "Bearer #{access_token}")
       .header("Content-Type","application/json")
-      .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"CreateClaim\",\n    \"summary\": \"\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"#{eventToken}\",\n  \"ignore_warning\": false,\n  \"draft_id\": null\n}"))
+      .body(ElFileBody("bodies/cmc/CMC_CreateCase.json"))
       .check(jsonPath("$.id").saveAs("caseId")))
 
     .pause(Environment.constantthinkTime.seconds)
@@ -391,7 +390,6 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
 
     .pause(Environment.constantthinkTime.seconds)
 
-
   val CCDAPI_CMCCaseEvents =
 
     exec(http("API_CMC_GetEventToken")
@@ -406,17 +404,17 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
       .header("Authorization", "Bearer #{access_token}")
       .header("Content-Type","application/json")
-      .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"StayClaim\",\n    \"summary\": \"\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"#{eventToken1}\",\n  \"ignore_warning\": false\n}")))
+      .body(ElFileBody("bodies/cmc/CMC_StayClaim.json")))
 
-    //this request has been added as part of the preparation work for the GC profiling in ccd (fixing a legacy script issue).  Possible improvements needed for
-    //other requests including json response checks as well as extracting json payloads from request body to json file
     .exec(http("API_CMC_CaseStayed")
       .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
       .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
       .header("Authorization", "Bearer #{access_token}")
       .header("Content-Type","application/json")
-      .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"StayClaim\",\n    \"summary\": \"\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"#{eventToken1}\",\n  \"ignore_warning\": false\n}"))
+      .body(ElFileBody("bodies/cmc/CMC_StayClaim.json"))
       .check(jsonPath("$.state").is("stayed")))
+
+    .pause(Environment.constantthinkTime.seconds)
 
     .exec(http("API_CMC_GetEventToken")
       .get(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/ClaimNotes/token")
@@ -430,37 +428,14 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
       .header("Authorization", "Bearer #{access_token}")
       .header("Content-Type","application/json")
-      .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"ClaimNotes\",\n    \"summary\": \"Test Claim Note\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"#{eventToken2}\",\n  \"ignore_warning\": false\n}")))
+      .body(ElFileBody("bodies/cmc/CMC_ClaimNotes.json")))
 
     .exec(http("API_CMC_ClaimNotes")
       .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
       .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
       .header("Authorization", "Bearer #{access_token}")
       .header("Content-Type","application/json")
-      .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"ClaimNotes\",\n    \"summary\": \"Test Claim Note\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"#{eventToken2}\",\n  \"ignore_warning\": false\n}")))
-
-    .pause(Environment.constantthinkTime.seconds)
-
-    .exec(http("API_CMC_GetEventToken")
-      .get(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/LinkLetterHolder/token")
-      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
-      .header("Authorization", "Bearer #{access_token}")
-      .header("Content-Type","application/json")
-      .check(jsonPath("$.token").saveAs("eventToken4")))
-
-    .exec(http("API_CMC_ValidateLinkLetterHolder")
-      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate")
-      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
-      .header("Authorization", "Bearer #{access_token}")
-      .header("Content-Type","application/json")
-      .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"LinkLetterHolder\",\n    \"summary\": \"perf test\",\n    \"description\": \"link letter holder perf test description\"\n  },\n  \"event_token\": \"#{eventToken4}\",\n  \"ignore_warning\": false\n}")))
-
-    .exec(http("API_CMC_LinkLetterHolder")
-      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
-      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
-      .header("Authorization", "Bearer #{access_token}")
-      .header("Content-Type","application/json")
-      .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"LinkLetterHolder\",\n    \"summary\": \"perf test\",\n    \"description\": \"link letter holder perf test description\"\n  },\n  \"event_token\": \"#{eventToken4}\",\n  \"ignore_warning\": false\n}")))
+      .body(ElFileBody("bodies/cmc/CMC_ClaimNotes.json")))
 
     .pause(Environment.constantthinkTime.seconds)
 
@@ -476,14 +451,37 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
       .header("Authorization", "Bearer #{access_token}")
       .header("Content-Type","application/json")
-      .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"LiftStay\",\n    \"summary\": \"perf test\",\n    \"description\": \"lift stay perf testing description\"\n  },\n  \"event_token\": \"#{eventToken5}\",\n  \"ignore_warning\": false\n}")))
+      .body(ElFileBody("bodies/cmc/CMC_LiftStay.json")))
 
     .exec(http("API_CMC_LiftStay")
       .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
       .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
       .header("Authorization", "Bearer #{access_token}")
       .header("Content-Type","application/json")
-      .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"LiftStay\",\n    \"summary\": \"perf test\",\n    \"description\": \"lift stay perf testing description\"\n  },\n  \"event_token\": \"#{eventToken5}\",\n  \"ignore_warning\": false\n}")))
+      .body(ElFileBody("bodies/cmc/CMC_LiftStay.json")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_CMC_GetEventToken")
+      .get(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/SupportUpdate/token")
+      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken5")))
+
+    .exec(http("API_CMC_ValidateSupportUpdate")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/cmc/CMC_SupportUpdate.json")))
+
+    .exec(http("API_CMC_SupportUpdate")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
+      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/cmc/CMC_SupportUpdate.json")))
 
     .pause(Environment.constantthinkTime.seconds)
 
@@ -527,39 +525,39 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
       .header("Authorization", "Bearer #{access_token}")
       .header("Content-Type","application/json")      
-      .body(StringBody("{\"data\":{\"LanguagePreferenceWelsh\":\"No\"},\"event\":{\"id\":\"UpdateLanguage\",\"summary\":\"\",\"description\":\"\"},\"event_token\":\"#{eventToken2}\",\"ignore_warning\":false}")))
+      .body(ElFileBody("bodies/divorce/CCD_Divorce_UpdateLanguage.json")))
 
     .exec(http("API_Divorce_SolUpdateLanguage")
       .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
       .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
       .header("Authorization", "Bearer #{access_token}")
       .header("Content-Type","application/json")      
-      .body(StringBody("{\"data\":{\"LanguagePreferenceWelsh\":\"No\"},\"event\":{\"id\":\"UpdateLanguage\",\"summary\":\"\",\"description\":\"\"},\"event_token\":\"#{eventToken2}\",\"ignore_warning\":false}")))
+      .body(ElFileBody("bodies/divorce/CCD_Divorce_UpdateLanguage.json")))
 
     .pause(Environment.constantthinkTime.seconds)
 
-    // .exec(http("API_Divorce_GetEventToken")
-    //   .get(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/solicitorStatementOfTruthPaySubmit/token")
-    //   .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
-    //   .header("Authorization", "Bearer #{access_token}")
-    //   .header("Content-Type","application/json")
-    //   .check(jsonPath("$.token").saveAs("eventToken3")))
+    .exec(http("API_Divorce_GetEventToken")
+      .get(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/solicitorStatementOfTruthPaySubmit/token")
+      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken2")))
 
-    // .exec(http("API_Divorce_ValidateSolCaseSubmit")
-    //   .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate")
-    //   .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
-    //   .header("Authorization", "Bearer #{access_token}")
-    //   .header("Content-Type","application/json")      
-    //   .body(StringBody("{\n   \"data\":{\n      \"SolUrgentCase\":\"No\",\n      \"SolServiceMethod\":\"courtService\",\n      \"SolStatementOfReconciliationCertify\":\"Yes\",\n      \"SolStatementOfReconciliationDiscussed\":\"Yes\",\n      \"D8StatementOfTruth\":\"Yes\",\n      \"solSignStatementofTruth\":\"Yes\",\n      \"SolStatementOfReconciliationName\":\"Vuser\",\n      \"SolStatementOfReconciliationFirm\":\"Perf\",\n      \"StatementOfReconciliationComments\":null,\n      \"solApplicationFeeInPounds\":\"550\",\n      \"SolPaymentHowToPay\":\"feesHelpWith\",\n      \"D8HelpWithFeesReferenceNumber\":\"perfte\",\n      \"solApplicationFeeOrderSummary\":{\n         \"PaymentReference\":null,\n         \"PaymentTotal\":\"55000\",\n         \"Fees\":[\n            {\n               \"value\":{\n                  \"FeeCode\":\"FEE0002\",\n                  \"FeeAmount\":\"55000\",\n                  \"FeeDescription\":\"Filing an application for a divorce, nullity or civil partnership dissolution\",\n                  \"FeeVersion\":\"5\"\n               }\n            }\n         ]\n      }\n   },\n   \"event\":{\n      \"id\":\"solicitorStatementOfTruthPaySubmit\",\n      \"summary\":\"\",\n      \"description\":\"\"\n   },\n   \"event_token\":\"#{eventToken3}\",\n   \"ignore_warning\":false\n}")))
+    .exec(http("API_Divorce_ValidateCaseSubmission")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")      
+      .body(ElFileBody("bodies/divorce/CCD_Divorce_UpdateLanguage.json")))
 
-    // .exec(http("API_Divorce_SolCaseSubmit")
-    //   .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
-    //   .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
-    //   .header("Authorization", "Bearer #{access_token}")
-    //   .header("Content-Type","application/json")      
-    //   .body(StringBody("{\n   \"data\":{\n      \"SolUrgentCase\":\"No\",\n      \"SolServiceMethod\":\"courtService\",\n      \"SolStatementOfReconciliationCertify\":\"Yes\",\n      \"SolStatementOfReconciliationDiscussed\":\"Yes\",\n      \"D8StatementOfTruth\":\"Yes\",\n      \"solSignStatementofTruth\":\"Yes\",\n      \"SolStatementOfReconciliationName\":\"Vuser\",\n      \"SolStatementOfReconciliationFirm\":\"Perf\",\n      \"StatementOfReconciliationComments\":null,\n      \"solApplicationFeeInPounds\":\"550\",\n      \"SolPaymentHowToPay\":\"feesHelpWith\",\n      \"D8HelpWithFeesReferenceNumber\":\"perfte\",\n      \"solApplicationFeeOrderSummary\":{\n         \"PaymentReference\":null,\n         \"PaymentTotal\":\"55000\",\n         \"Fees\":[\n            {\n               \"value\":{\n                  \"FeeCode\":\"FEE0002\",\n                  \"FeeAmount\":\"55000\",\n                  \"FeeDescription\":\"Filing an application for a divorce, nullity or civil partnership dissolution\",\n                  \"FeeVersion\":\"5\"\n               }\n            }\n         ]\n      }\n   },\n   \"event\":{\n      \"id\":\"solicitorStatementOfTruthPaySubmit\",\n      \"summary\":\"\",\n      \"description\":\"\"\n   },\n   \"event_token\":\"#{eventToken3}\",\n   \"ignore_warning\":false\n}")))
+    .exec(http("API_Divorce_CaseSubmission")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
+      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")      
+      .body(ElFileBody("bodies/divorce/CCD_Divorce_UpdateLanguage.json")))
 
-    // .pause(Environment.constantthinkTime.seconds)
+    .pause(Environment.constantthinkTime.seconds)
 
   val CCDAPI_DivorceNFDCreate = 
 

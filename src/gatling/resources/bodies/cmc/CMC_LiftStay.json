@@ -1,0 +1,10 @@
+{
+  "data": {},
+  "event": {
+     "id": "LiftStay",
+     "summary": "",
+     "description": ""
+  },
+  "event_token": "#{eventToken5}",
+  "ignore_warning": false
+}
