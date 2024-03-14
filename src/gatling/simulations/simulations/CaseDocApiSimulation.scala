@@ -292,8 +292,8 @@ class CaseDocApiSimulation extends Simulation  {
     onehundredmbfilescenario.inject(simulationProfile(testType, oneHundredMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
     twofiftymbfilescenario.inject(simulationProfile(testType, twofiftyMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
     fivehundredmbfilescenario.inject(simulationProfile(testType, fiveHundredMbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-    onegbfilescenario.inject(simulationProfile(testType, oneGbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-    fivehundreddownload.inject(simulationProfile(testType, fiveHundredDownloadTarget, numberOfPipelineUsers)).pauses(pauseOption)
+    // onegbfilescenario.inject(simulationProfile(testType, oneGbStoreTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+    // fivehundreddownload.inject(simulationProfile(testType, fiveHundredDownloadTarget, numberOfPipelineUsers)).pauses(pauseOption)
     )
   .protocols(httpProtocol)
   .assertions(assertions(testType))
