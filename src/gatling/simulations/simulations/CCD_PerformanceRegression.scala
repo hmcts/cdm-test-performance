@@ -49,6 +49,7 @@ class CCD_PerformanceRegression extends Simulation  {
   val caseActivityUsers:Double = 500
   val searchUsers:Double = 200
   val esUsers:Double = 300
+  val definitionStoreUsers:Double = 900
 
   val caseActivityIteration = 900
   val caseActivityListIteration = 120
@@ -82,6 +83,7 @@ class CCD_PerformanceRegression extends Simulation  {
   val feedEthosUserData = csv("EthosUserData.csv").circular
   val feedNFDUserData = csv("NFDUserData.csv").circular
   val feedCMCCaseData = csv("CMCCaseData.csv").circular
+  val feedJurisdictions = csv("Jurisdictions.csv").random
 
   //AAT Data
   val feedProbateUserDataAAT = csv("AATProbateUserData.csv").circular
@@ -258,6 +260,18 @@ class CCD_PerformanceRegression extends Simulation  {
       .exec(casefileview.caseFileViewGet)
   }
 
+  val DefinitionStore = scenario("CCD Definition Store scenario")
+    .exitBlockOnFail {
+      exec(_.set("env", s"${env}"))
+      .exec(S2S.s2s("ccd_gw"))
+      .feed(feedDivorceUserData)
+      .exec(IdamLogin.GetIdamToken)
+      .repeat(50) {
+        feed(feedJurisdictions)
+        .exec(ccddefinitionstore.CCD_DefinitionStoreJurisdictions)
+      }
+  }
+
 	def simulationProfile(simulationType: String, userPerHourRate: Double, numberOfPipelineUsers: Double): Seq[OpenInjectionStep] = {
 		val userPerSecRate = userPerHourRate / 3600
 		simulationType match {
@@ -310,7 +324,8 @@ class CCD_PerformanceRegression extends Simulation  {
       CaseActivityScn.inject(simulationProfile(testType, caseActivityUsers, numberOfPipelineUsers)).pauses(pauseOption),
       CCDSearchView.inject(simulationProfile(testType, searchUsers, numberOfPipelineUsers)).pauses(pauseOption),
       CCDElasticSearch.inject(simulationProfile(testType, esUsers, numberOfPipelineUsers)).pauses(pauseOption),
-      CaseFileView.inject(simulationProfile(testType, caseFileViewTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption)
+      CaseFileView.inject(simulationProfile(testType, caseFileViewTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      DefinitionStore.inject(simulationProfile(testType, definitionStoreUsers, numberOfPipelineUsers)).pauses(pauseOption)
 
     //  CaseActivityListScn.inject(rampUsers(500) during (10.minutes)),
 		//  CaseActivityScn.inject(rampUsers(500) during (10.minutes)),

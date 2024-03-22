@@ -15,6 +15,7 @@ object Environment {
   val userProfileUrl = "http://ccd-user-profile-api-#{env}.service.core-compute-#{env}.internal"
   val aacUrl = "http://aac-manage-case-assignment-#{env}.service.core-compute-#{env}.internal"
   val aacHost = "aac-manage-case-assignment-#{env}.service.core-compute-#{env}.internal"
+  val definitionStoreUrl = "http://ccd-definition-store-api-#{env}.service.core-compute-#{env}.internal"
 
   val constantthinkTime = 7 //7
 
