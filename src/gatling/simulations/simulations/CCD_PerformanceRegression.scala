@@ -49,7 +49,7 @@ class CCD_PerformanceRegression extends Simulation  {
   val caseActivityUsers:Double = 500
   val searchUsers:Double = 200
   val esUsers:Double = 300
-  val definitionStoreUsers:Double = 900
+  val definitionStoreUsers:Double = 450
 
   val caseActivityIteration = 900
   val caseActivityListIteration = 120
