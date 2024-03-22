@@ -31,12 +31,12 @@ class CCD_PerformanceRegression extends Simulation  {
 	/* ******************************** */
 
 	/* PERFORMANCE TEST CONFIGURATION */
-	val probateTargetPerHour:Double = 8000
-	val cmcTargetPerHour:Double = 8000
-  val divorceTargetPerHour:Double = 8000
-  val iacTargetPerHour:Double = 8000
-  val fplTargetPerHour:Double = 8000
-  val nfdTargetPerHour:Double = 8000
+	val probateTargetPerHour:Double = 800
+	val cmcTargetPerHour:Double = 800
+  val divorceTargetPerHour:Double = 800
+  val iacTargetPerHour:Double = 800
+  val fplTargetPerHour:Double = 800
+  val nfdTargetPerHour:Double = 800
   val caseActivityTargetPerHour:Double = 850000
   val caseActivityRepeatsPerUser = 8500 //850
   val caseActivityListTargetPerHour:Double = 90000
