@@ -1,0 +1,21 @@
+{
+  "data": {
+     "resolveStopState": "BOReadyToIssue",
+     "boCaseStopReasonList": [
+        {
+           "value": {
+              "caseStopReason": "IHT421Awaiting",
+              "caseStopSubReasonDocRequired": null
+           },
+           "id": "#{caseStopId}"
+        }
+     ]
+  },
+  "event": {
+     "id": "boResolveStop",
+     "summary": "Perf Test resolve stop",
+     "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}

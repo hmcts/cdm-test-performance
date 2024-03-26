@@ -12,27 +12,27 @@ import scala.util.Random
 
 object ccddatastore {
 
-val config: Config = ConfigFactory.load()
+  val config: Config = ConfigFactory.load()
 
-val ccdDataStoreUrl = "http://ccd-data-store-api-#{env}.service.core-compute-#{env}.internal"
-val CaseDocAPI = Environment.caseDocUrl
-val ccdScope = "openid profile authorities acr roles openid profile roles"
-val feedCaseSearchData = csv("caseSearchData.csv").random
-val feedEthosSearchData = csv("EthosSearchData.csv").random
+  val ccdDataStoreUrl = "http://ccd-data-store-api-#{env}.service.core-compute-#{env}.internal"
+  val CaseDocAPI = Environment.caseDocUrl
+  val ccdScope = "openid profile authorities acr roles openid profile roles"
+  val feedCaseSearchData = csv("caseSearchData.csv").random
+  val feedEthosSearchData = csv("EthosSearchData.csv").random
 
-val constantThinkTime = Environment.constantthinkTime
+  val constantThinkTime = Environment.constantthinkTime
 
-val patternDate = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-val now = LocalDate.now()
+  val patternDate = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+  val now = LocalDate.now()
 
-private val rng: Random = new Random()
-private def niNumber(): String = rng.alphanumeric.filter(_.isDigit).take(8).mkString
-private def firstName(): String = rng.alphanumeric.filter(_.isLetter).take(10).mkString
-private def lastName(): String = rng.alphanumeric.filter(_.isLetter).take(10).mkString
+  private val rng: Random = new Random()
+  private def niNumber(): String = rng.alphanumeric.filter(_.isDigit).take(8).mkString
+  private def firstName(): String = rng.alphanumeric.filter(_.isLetter).take(10).mkString
+  private def lastName(): String = rng.alphanumeric.filter(_.isLetter).take(10).mkString
 
-val headers_0 = Map( //Authorization token needs to be generated with idam login
-  "Authorization" -> "AdminApiAuthToken ",
-  "Content-Type" -> "application/json")
+  val headers_0 = Map( //Authorization token needs to be generated with idam login
+    "Authorization" -> "AdminApiAuthToken ",
+    "Content-Type" -> "application/json")
 
   val CCDAPI_ProbateCreate = 
 
@@ -109,11 +109,39 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .body(ElFileBody("bodies/probate/CCD_Probate_StopCase.json"))
       .check(jsonPath("$.id").saveAs("caseId")))
 
+    .exec {
+      session =>
+        println(session("caseId").as[String])
+        session
+    }
+
     .pause(Environment.constantthinkTime.seconds)
 
-  val CCDAPI_ProbateDocUpload = 
+    .exec(http("API_Probate_GetEventToken")
+      .get(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/boAddCommentStop/token")
+      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
 
-    exec(http("API_Probate_GetEventToken")
+    .exec(http("API_Probate_ValidateAddComment")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/probate/CCD_AddComment.json")))
+
+    .exec(http("API_Probate_AddComment")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
+      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/probate/CCD_AddComment.json"))
+      .check(jsonPath("$.id").saveAs("caseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_Probate_GetEventToken")
       .get(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/boUploadDocumentsStop/token")
       .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
       .header("Authorization", "Bearer #{access_token}")
@@ -153,6 +181,103 @@ val headers_0 = Map( //Authorization token needs to be generated with idam login
       .header("Authorization", "Bearer #{access_token}")
       .header("Content-Type","application/json")
       .body(ElFileBody("bodies/probate/CCD_Probate_DocUpload.json")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_Probate_GetEventToken")
+      .get(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/boResolveStop/token")
+      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken"))
+      .check(jsonPath("$.case_details.case_data.boCaseStopReasonList[0].id").saveAs("caseStopId")))
+
+    .exec(http("API_Probate_ValidateResolveStop")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/probate/CCD_ResolveStop.json")))
+
+    .exec(http("API_Probate_ResolveStop")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
+      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/probate/CCD_ResolveStop.json"))
+      .check(jsonPath("$.id").saveAs("caseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_Probate_GetEventToken")
+      .get(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/handleEvidence/token")
+      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .exec(http("API_Probate_ValidateSupplementaryEvidence")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/probate/CCD_SupplementaryEvidence.json")))
+
+    .exec(http("API_Probate_SupplementaryEvidence")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
+      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/probate/CCD_SupplementaryEvidence.json"))
+      .check(jsonPath("$.id").saveAs("caseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_Probate_GetEventToken")
+      .get(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/moveToCWEscalation/token")
+      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .exec(http("API_Probate_ValidateSMEReferral")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/probate/CCD_SMEReferral.json")))
+
+    .exec(http("API_Probate_SMEReferral")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
+      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/probate/CCD_SMEReferral.json"))
+      .check(jsonPath("$.id").saveAs("caseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_Probate_GetEventToken")
+      .get(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/attachScannedDocs/token")
+      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .exec(http("API_Probate_ValidateAttachScannedDocs")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate")
+      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/probate/CCD_AttachScannedDocs.json")))
+
+    .exec(http("API_Probate_AttachScannedDocs")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
+      .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/probate/CCD_AttachScannedDocs.json"))
+      .check(jsonPath("$.id").saveAs("caseId")))
 
     .pause(Environment.constantthinkTime.seconds)
 

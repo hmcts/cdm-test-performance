@@ -1,0 +1,12 @@
+{
+  "data": {
+     "evidenceHandled": "No"
+  },
+  "event": {
+     "id": "handleEvidence",
+     "summary": "Perf test supplementary evidence",
+     "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}

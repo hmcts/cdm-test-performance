@@ -1,0 +1,10 @@
+{
+  "data": {},
+  "event": {
+     "id": "attachScannedDocs",
+     "summary": "Perf test scanned docs",
+     "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}

@@ -49,7 +49,7 @@ class CCD_PerformanceRegression extends Simulation  {
   val caseActivityUsers:Double = 500
   val searchUsers:Double = 200
   val esUsers:Double = 300
-  val definitionStoreUsers:Double = 150
+  val definitionStoreUsers:Double = 300
 
   val caseActivityIteration = 900
   val caseActivityListIteration = 120
@@ -114,9 +114,8 @@ class CCD_PerformanceRegression extends Simulation  {
        )
       .exec(IdamLogin.GetIdamToken)
       .exec(ccddatastore.CCDAPI_ProbateCreate)
-      .exec(ccddatastore.CCDAPI_ProbateCaseEvents)
       .exec(S2S.s2s("probate_backend")) 
-      .exec(ccddatastore.CCDAPI_ProbateDocUpload) 
+      .exec(ccddatastore.CCDAPI_ProbateCaseEvents)
     }
 
   val API_SSCSCreateCase = scenario("SSCS Case Create")
@@ -266,7 +265,7 @@ class CCD_PerformanceRegression extends Simulation  {
       .exec(S2S.s2s("ccd_gw"))
       .feed(feedDivorceUserData)
       .exec(IdamLogin.GetIdamToken)
-      .repeat(50) {
+      .repeat(25) {
         feed(feedJurisdictions)
         .exec(ccddefinitionstore.CCD_DefinitionStoreJurisdictions)
       }
