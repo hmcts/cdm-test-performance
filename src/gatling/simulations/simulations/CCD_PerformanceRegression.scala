@@ -154,7 +154,8 @@ class CCD_PerformanceRegression extends Simulation  {
       exec(_.set("env", s"${env}"))
       .exec(S2S.s2s("ccd_data"))
       .feed(feedIACUserData)
-      .exec(IdamLogin.GetIdamToken)      
+      .exec(IdamLogin.GetIdamToken)   
+      .exec(S2S.s2s("xui_webapp"))   
       .exec(ccddatastore.CCDAPI_IACCreate)
     }
 

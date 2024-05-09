@@ -710,6 +710,26 @@ object ccddatastore {
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken")))
 
+    .exec(session => {
+      session.set("FileName1", "1MB.pdf")
+    })
+
+    .exec(http("API_IAC_DocUploadProcess")
+      .post(CaseDocAPI + "/cases/documents")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("ServiceAuthorization", "#{xui_webappBearerToken}")
+      .header("accept", "application/json")
+      .header("Content-Type", "multipart/form-data")
+      .formParam("classification", "PUBLIC")
+      .formParam("caseTypeId", "#{CaseType}")
+      .formParam("jurisdictionId", "#{Jurisdiction}")
+      .bodyPart(RawFileBodyPart("files", "#{FileName1}")
+        .fileName("#{FileName1}")
+        .transferEncoding("binary"))
+      .check(regex("""http://(.+)/""").saveAs("DMURL"))
+      .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID"))
+      .check(jsonPath("$.documents[0].hashToken").saveAs("hashToken")))
+
     .exec(http("API_IAC_ValidateCreateCase")
       .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate")
       .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")

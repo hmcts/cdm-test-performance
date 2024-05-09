@@ -1,66 +1,85 @@
-{
+  {
     "data": {
-      "checklist": {
-        "checklist5": [
-          "isResidingInUK"
-        ],
-        "checklist2": [
-          "isNotDetained"
-        ],
-        "checklist7": [
-          "isNotEUDecision"
-        ]
-      },
-      "homeOfficeReferenceNumber": "12345678",
-      "homeOfficeDecisionDate": "2021-02-16",
-      "uploadTheNoticeOfDecisionExplanation": null,
-      "appellantTitle": "mr",
-      "appellantGivenNames": "john",
-      "appellantFamilyName": "smith",
-      "appellantDateOfBirth": "1990-01-19",
-      "appellantStateless": "hasNationality",
-      "appellantNationalities": [
-        {
-          "value": {
-            "code": "AL"
-          },
-          "id": null
-        }
-      ],
-      "appellantHasFixedAddress": "Yes",
-      "appellantAddress": {
-        "AddressLine1": "6 Hibernia Gardens",
-        "AddressLine2": "",
-        "AddressLine3": "",
-        "PostTown": "Hounslow",
-        "County": "",
-        "PostCode": "TW3 3SD",
-        "Country": "United Kingdom"
-      },
-      "contactPreference": "wantsEmail",
-      "email": "john@test.com",
-      "appealType": "refusalOfHumanRights",
-      "appealGroundsHumanRightsRefusal": {
-        "values": [
-          "protectionHumanRights"
-        ]
-      },
-      "deportationOrderOptions": "No",
-      "hasNewMatters": "No",
-      "hasOtherAppeals": "No",
-      "legalRepCompany": "legal company",
-      "legalRepName": "steve smith",
-      "legalRepReferenceNumber": "perf testing",
-      "isFeePaymentEnabled": null,
-      "isRemissionsEnabled": null,
-      "uploadTheNoticeOfDecisionDocument": null
+       "searchParties": [],
+       "checklist": {
+          "checklist5": [],
+          "checklist1": [],
+          "checklist2": [
+             "isNotDetained"
+          ],
+          "checklist7": [],
+          "checklist3": [],
+          "checklist4": [],
+          "checklist6": []
+       },
+       "isOutOfCountryEnabled": "Yes",
+       "appellantInUk": "Yes",
+       "homeOfficeReferenceNumber": "12345678",
+       "homeOfficeDecisionDate": "2021-10-01",
+       "uploadTheNoticeOfDecisionDocs": [
+          {
+             "value": {
+                "description": "NoD",
+                "document": {
+                   "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/#{Document_ID}",
+                   "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/#{Document_ID}/binary",
+                   "document_filename": "1MB.pdf",
+                   "document_hash": "#{hashToken}"
+                }
+             },
+             "id": null
+          }
+       ],
+       "appellantTitle": "Mr",
+       "appellantGivenNames": "John",
+       "appellantFamilyName": "Smith",
+       "appellantDateOfBirth": "1980-02-01",
+       "appellantStateless": "hasNationality",
+       "appellantNationalities": [
+          {
+             "value": {
+                "code": "AF"
+             },
+             "id": null
+          }
+       ],
+       "appellantHasFixedAddress": "Yes",
+       "appellantAddress": {
+          "AddressLine1": "6 Hibernia Gardens",
+          "AddressLine2": "",
+          "AddressLine3": "",
+          "PostTown": "Hounslow",
+          "County": "",
+          "PostCode": "TW3 3SD",
+          "Country": "United Kingdom"
+       },
+       "contactPreference": "wantsEmail",
+       "email": "john@test.com",
+       "appealType": "refusalOfHumanRights",
+       "appealGroundsDecisionHumanRightsRefusal": {
+          "values": [
+             "humanRightsRefusal"
+          ]
+       },
+       "deportationOrderOptions": "No",
+       "hasNewMatters": "No",
+       "hasOtherAppeals": "No",
+       "legalRepCompany": "Legal Company",
+       "legalRepName": "Steve Smith",
+       "legalRepReferenceNumber": "Perf test",
+       "isFeePaymentEnabled": "Yes",
+       "isRemissionsEnabled": "Yes",
+       "decisionHearingFeeOption": "decisionWithHearing",
+       "remissionType": "noRemission",
+       "feeWithHearing": null,
+       "feeWithoutHearing": null
     },
     "event": {
-      "id": "startAppeal",
-      "summary": "",
-      "description": ""
+       "id": "startAppeal",
+       "summary": "",
+       "description": ""
     },
     "event_token": "#{eventToken}",
     "ignore_warning": false,
     "draft_id": null
-  }
+ }
