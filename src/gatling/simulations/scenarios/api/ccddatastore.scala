@@ -109,11 +109,11 @@ object ccddatastore {
       .body(ElFileBody("bodies/probate/CCD_Probate_StopCase.json"))
       .check(jsonPath("$.id").saveAs("caseId")))
 
-    .exec {
-      session =>
-        println(session("caseId").as[String])
-        session
-    }
+    // .exec {
+    //   session =>
+    //     println(session("caseId").as[String])
+    //     session
+    // }
 
     .pause(Environment.constantthinkTime.seconds)
 
