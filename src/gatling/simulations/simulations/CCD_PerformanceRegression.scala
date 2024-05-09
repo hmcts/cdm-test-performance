@@ -58,7 +58,7 @@ class CCD_PerformanceRegression extends Simulation  {
 
 	val rampUpDurationMins = 10
 	val rampDownDurationMins = 10
-	val testDurationMins = 60
+	val testDurationMins = 240 // 60
 
 	val numberOfPipelineUsers = 5
 	val pipelinePausesMillis:Long = 3000 //3 seconds
@@ -333,6 +333,6 @@ class CCD_PerformanceRegression extends Simulation  {
   )
     .protocols(httpProtocol)
     .assertions(assertions(testType))
-    .maxDuration(85.minutes)
+    // .maxDuration(85.minutes)
 
 }
