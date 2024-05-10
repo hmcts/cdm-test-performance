@@ -334,6 +334,6 @@ class CCD_PerformanceRegression extends Simulation  {
   )
     .protocols(httpProtocol)
     .assertions(assertions(testType))
-    // .maxDuration(85.minutes)
+    .maxDuration(250.minutes)
 
 }
