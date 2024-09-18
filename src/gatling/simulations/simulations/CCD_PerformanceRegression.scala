@@ -250,13 +250,24 @@ class CCD_PerformanceRegression extends Simulation  {
     }
 
   val CaseFileView = scenario("Case File View scenario")
-  .exitBlockOnFail {
+    .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
       .exec(casefileview.S2SLogin)
       .exec(casefileview.idamLogin)
       .exec(casefileview.caseDocUpload)
       .exec(casefileview.createCase)
       .exec(casefileview.caseFileViewPutCategories)
+      .exec(casefileview.caseFileViewGet)
+  }
+
+  val CaseFileView5and2 = scenario("Case File View - 5 docs, 2 categories")
+    .exitBlockOnFail {
+      exec(_.set("env", s"${env}"))
+      .exec(casefileview.S2SLogin)
+      .exec(casefileview.idamLogin)
+      .exec(casefileview.caseDocUpload)
+      .exec(casefileview.createCase5Doc)
+      .exec(casefileview.caseFileViewPut2Categories)
       .exec(casefileview.caseFileViewGet)
   }
 
@@ -271,6 +282,15 @@ class CCD_PerformanceRegression extends Simulation  {
         .exec(ccddefinitionstore.CCD_DefinitionStoreJurisdictions)
       }
   }
+
+  val DefinitionStoreUserRoles = scenario("CCD Definition Store Get Roles")
+    .exitBlockOnFail {
+      exec(_.set("env", s"${env}"))
+      .exec(S2S.s2s("ccd_gw"))
+      .feed(feedDivorceUserData)
+      .exec(IdamLogin.GetIdamToken)
+      .exec(ccddefinitionstore.CCD_DefinitionStoreGetUserRole)
+    }
 
 	def simulationProfile(simulationType: String, userPerHourRate: Double, numberOfPipelineUsers: Double): Seq[OpenInjectionStep] = {
 		val userPerSecRate = userPerHourRate / 3600
@@ -325,7 +345,10 @@ class CCD_PerformanceRegression extends Simulation  {
       CCDSearchView.inject(simulationProfile(testType, searchUsers, numberOfPipelineUsers)).pauses(pauseOption),
       CCDElasticSearch.inject(simulationProfile(testType, esUsers, numberOfPipelineUsers)).pauses(pauseOption),
       CaseFileView.inject(simulationProfile(testType, caseFileViewTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      DefinitionStore.inject(simulationProfile(testType, definitionStoreUsers, numberOfPipelineUsers)).pauses(pauseOption)
+      // CaseFileView5and2.inject(simulationProfile(testType, caseFileViewTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      DefinitionStore.inject(simulationProfile(testType, definitionStoreUsers, numberOfPipelineUsers)).pauses(pauseOption),
+
+      // DefinitionStoreUserRoles.inject(simulationProfile(testType, definitionStoreUsers, numberOfPipelineUsers)).pauses(pauseOption)
 
     //  CaseActivityListScn.inject(rampUsers(500) during (10.minutes)),
 		//  CaseActivityScn.inject(rampUsers(500) during (10.minutes)),
@@ -334,6 +357,6 @@ class CCD_PerformanceRegression extends Simulation  {
   )
     .protocols(httpProtocol)
     .assertions(assertions(testType))
-    .maxDuration(380.minutes)
+    .maxDuration(85.minutes)
 
 }
