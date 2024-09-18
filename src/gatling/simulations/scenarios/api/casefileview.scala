@@ -82,6 +82,25 @@ object casefileview {
 
     .pause(Environment.constantthinkTime.seconds)
 
+  val createCase5Doc =
+
+    exec(http("API_CFV_GetEventToken")
+      .get(Environment.ccdDataStoreUrl + "/caseworkers/5ab7f2c2-c288-4afb-9607-10da5a4980d8/jurisdictions/BEFTA_MASTER/case-types/FT_CaseFileView_1/event-triggers/CREATE/token")
+      .header("ServiceAuthorization", "Bearer #{BearerToken}")
+      .header("Authorization", "Bearer #{accessToken}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .exec(http("API_CFV_CreateCase")
+      .post(Environment.ccdDataStoreUrl + "/caseworkers/5ab7f2c2-c288-4afb-9607-10da5a4980d8/jurisdictions/BEFTA_MASTER/case-types/FT_CaseFileView_1/cases")
+      .header("ServiceAuthorization", "Bearer #{BearerToken}")
+      .header("Authorization", "Bearer #{accessToken}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/casefileview/CreateRequest5Docs.json"))
+      .check(jsonPath("$.id").saveAs("caseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
   val caseFileViewPutCategories = 
 
     exec(http("API_CFV_PutDocumentData")
@@ -90,6 +109,17 @@ object casefileview {
       .header("Authorization", "Bearer #{accessToken}")
       .header("Content-Type","application/json")
       .body(ElFileBody("bodies/casefileview/PutDocumentCategory1.json")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+  val caseFileViewPut2Categories = 
+
+    exec(http("API_CFV_PutDocumentData")
+      .put(Environment.ccdDataStoreUrl + "/documentData/caseref/#{caseId}")
+      .header("ServiceAuthorization", "Bearer #{BearerToken}")
+      .header("Authorization", "Bearer #{accessToken}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/casefileview/Put2DocCategories.json")))
 
     .pause(Environment.constantthinkTime.seconds)
 

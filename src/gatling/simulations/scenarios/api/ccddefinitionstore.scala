@@ -40,4 +40,14 @@ val CCD_DefinitionStoreJurisdictions =
 
   .pause(Environment.constantthinkTime.seconds)
 
+val CCD_DefinitionStoreGetUserRole = 
+
+  exec(http("API_DefinitionStore_GetUserRole")
+    .get(Environment.definitionStoreUrl + "/api/user-role?role=Y2FzZXdvcmtlci1wdWJsaWNsYXctc3lzdGVtdXBkYXRl")
+    .header("ServiceAuthorization", "Bearer #{ccd_gwBearerToken}")
+    .header("Authorization", "Bearer #{access_token}")
+    .header("Content-Type","application/json"))
+
+  .pause(Environment.constantthinkTime.seconds)
+
 }
