@@ -759,14 +759,14 @@ object ccddatastore {
       .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
       .header("Authorization", "Bearer #{access_token}")
       .header("Content-Type","application/json")
-      .body(ElFileBody("FPLCreateCase.json")))
+      .body(ElFileBody("bodies/fpl/FPLCreateCase.json")))
 
     .exec(http("API_FPL_CreateCase")
       .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases")
       .header("ServiceAuthorization", "Bearer #{ccd_dataBearerToken}")
       .header("Authorization", "Bearer #{access_token}")
       .header("Content-Type","application/json")
-      .body(ElFileBody("FPLCreateCase.json"))//.asJson
+      .body(ElFileBody("bodies/fpl/FPLCreateCase.json"))//.asJson
       .check(jsonPath("$.id").saveAs("caseId")))
 
     .pause(Environment.constantthinkTime.seconds)

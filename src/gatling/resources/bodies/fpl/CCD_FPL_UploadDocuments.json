@@ -1,20 +1,32 @@
 {
   "data": {
-    "applicationDocuments": [
+    "temporaryApplicationDocuments": [
       {
-        "id": null,
         "value": {
-          "documentType": "THRESHOLD",
+          "documentType": "OTHER",
+          "documentName": "Perf test",
+          "includedInSWET": null,
+          "dateTimeUploaded": null,
+          "uploadedBy": null,
+          "allowMarkDocumentConfidential": "YES",
+          "removalReason": null,
+          "uploaderType": null,
+          "markAsConfidential": null,
+          "translationRequirements": null,
           "document": {
             "document_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
             "document_binary_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
             "document_filename": "#{FileName1}",
             "document_hash": "#{hashToken}"
-          }
-        }
+          },
+          "confidential": [],
+          "documentAcknowledge": [],
+          "uploaderCaseRoles": []
+        },
+        "id": "0b321ce4-341d-495e-ae6e-3a6f43873eb7"
       }
     ],
-    "applicationDocumentsToFollowReason": "perf testing"
+    "applicationDocumentsToFollowReason": null
   },
   "event": {
     "id": "uploadDocuments",

@@ -338,8 +338,9 @@ class CCD_PerformanceRegression extends Simulation  {
      //simulation for cdm-test-performance repo
       API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      API_DivorceCreateCase.inject(simulationProfile(testType, divorceTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+//      API_DivorceCreateCase.inject(simulationProfile(testType, divorceTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      API_FPLCreateCase.inject(simulationProfile(testType, fplTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       CaseActivityListScn.inject(simulationProfile(testType, caseActivityUsers, numberOfPipelineUsers)).pauses(pauseOption),
       CaseActivityScn.inject(simulationProfile(testType, caseActivityUsers, numberOfPipelineUsers)).pauses(pauseOption),
       CCDSearchView.inject(simulationProfile(testType, searchUsers, numberOfPipelineUsers)).pauses(pauseOption),
