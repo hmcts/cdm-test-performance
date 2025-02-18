@@ -34,7 +34,7 @@ gatling {
     scalaVersion '2.13.10'
     jvmArgs = ['-Xms2048m', '-Xmx4096m']
     simulations = {
-        include  "simulations/CCD_PerformanceRegression.scala"
+        include  "simulations/CaseDocApiSimulation.scala"
                 // "simulations/CCD_PerformanceRegression.scala"
                 // "simulations/DMStoreSimulation.scala"
                 // "simulations/CreateUser.scala"

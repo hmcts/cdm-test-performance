@@ -61,6 +61,12 @@ object casedocapi {
       .body(StringBody("{\n  \"data\": {},\n  \"event\": {\n    \"id\": \"applyForGrant\",\n    \"summary\": \"test case\",\n    \"description\": \"\"\n  },\n  \"event_token\": \"#{eventToken}\",\n  \"ignore_warning\": false,\n  \"draft_id\": null\n}"))
       .check(jsonPath("$.id").saveAs("caseId")))
 
+//    .exec {
+//      session =>
+//        println(session("caseId").as[String])
+//        session
+//    }
+
     .pause(Environment.constantthinkTime.seconds)
 
     .exec(http("API_Probate_GetEventToken")
