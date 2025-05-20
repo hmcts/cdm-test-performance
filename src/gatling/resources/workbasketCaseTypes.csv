@@ -1,4 +1,5 @@
 jurisdiction,caseType
+DIVORCE,NFD
 IA,Asylum
 CMC,MoneyClaimCase
 PROBATE,GrantOfRepresentation
@@ -6,4 +7,3 @@ PROBATE,Caveat
 DIVORCE,DIVORCE
 PUBLICLAW,CARE_SUPERVISION_EPO
 DIVORCE,FinancialRemedyMVP2
-IA,Asylum

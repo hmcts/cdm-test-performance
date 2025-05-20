@@ -1,54 +1,44 @@
 {
-  "case_version" : 1,
-  "categories" : [ {
-    "category_id" : "CategoryID1",
-    "category_name" : "Evidences",
-    "category_order" : 100,
-    "documents" : [ {
-      "document_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
-      "document_filename" : "#{FileName1}",
-      "document_binary_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
-      "attribute_path" : "Document1",
-      "upload_timestamp" : null
+  "data" : {
+    "ApplicantName" : "John Smith",
+    "nationalityProof" : {
+      "typeOfProof" : "document",
+      "dateIssued" : "2024-07-29",
+      "documentEvidence" : {
+        "document_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
+        "document_binary_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
+        "document_filename" : "#{FileName1}"
+      }
     },
-    {
+    "Document1" : {
       "document_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
-      "document_filename" : "#{FileName1}",
       "document_binary_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
-      "attribute_path" : "Document2",
-      "upload_timestamp" : null
+      "document_filename" : "#{FileName1}"
+    },
+    "Document2" : {
+      "document_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
+      "document_binary_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
+      "document_filename" : "#{FileName1}"
+    },
+    "Document3" : {
+      "document_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
+      "document_binary_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
+      "document_filename" : "#{FileName1}"
+    },
+    "Document4" : {
+      "document_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
+      "document_binary_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
+      "document_filename" : "#{FileName1}"
+    },
+    "Document5" : {
+      "document_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
+      "document_binary_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
+      "document_filename" : "#{FileName1}"
     }
-  ],
-    "sub_categories" : [ ]
-  }, 
-  {
-    "category_id" : "CategoryID2",
-    "category_name" : "Supporting",
-    "category_order" : 110,
-    "documents" : [ {
-      "document_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
-      "document_filename" : "#{FileName1}",
-      "document_binary_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
-      "attribute_path" : "Document3",
-      "upload_timestamp" : null
-    }, 
-    {
-      "document_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
-      "document_filename" : "#{FileName1}",
-      "document_binary_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
-      "attribute_path" : "Document4",
-      "upload_timestamp" : null
-    }, 
-    {
-      "document_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
-      "document_filename" : "#{FileName1}",
-      "document_binary_url" : "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
-      "attribute_path" : "Document5",
-      "upload_timestamp" : null
-    }
-  ],
-    "sub_categories" : [ ]
-  }
-   ],
-  "uncategorised_documents" : [ ]
+  },
+  "event" : {
+    "id" : "CREATE"
+  },
+  "event_token" : "#{eventToken}",
+  "ignore_warning" : false
 }
