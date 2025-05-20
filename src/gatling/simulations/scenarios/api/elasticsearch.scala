@@ -48,7 +48,7 @@ val ElasticSearchGetVaryingSizes =
 
     feed(feedWorkbasketData)
 
-    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet25Cases")
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet25Cases_#{caseType}")
       .post(ccdDataStoreUrl + "/searchCases")
       .header("ServiceAuthorization", "Bearer #{bearerToken}")
       .header("Authorization", "Bearer #{access_token}")
@@ -58,7 +58,7 @@ val ElasticSearchGetVaryingSizes =
 
     .pause(Environment.constantthinkTime.seconds)
 
-    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet50Cases")
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet50Cases_#{caseType}")
       .post(ccdDataStoreUrl + "/searchCases")
       .header("ServiceAuthorization", "Bearer #{bearerToken}")
       .header("Authorization", "Bearer #{access_token}")
@@ -68,7 +68,7 @@ val ElasticSearchGetVaryingSizes =
 
     .pause(Environment.constantthinkTime.seconds)
 
-    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet75Cases")
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet75Cases_#{caseType}")
       .post(ccdDataStoreUrl + "/searchCases")
       .header("ServiceAuthorization", "Bearer #{bearerToken}")
       .header("Authorization", "Bearer #{access_token}")
@@ -78,7 +78,7 @@ val ElasticSearchGetVaryingSizes =
 
     .pause(Environment.constantthinkTime.seconds)
 
-    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet100Cases")
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchGet100Cases_#{caseType}")
       .post(ccdDataStoreUrl + "/searchCases")
       .header("ServiceAuthorization", "Bearer #{bearerToken}")
       .header("Authorization", "Bearer #{access_token}")
@@ -92,7 +92,7 @@ val ElasticSearchGetVaryingSizes =
 
     feed(feedWorkbasketData)
 
-    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket25")
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket25_#{caseType}")
       .post(ccdDataStoreUrl + "/searchCases")
       .header("ServiceAuthorization", "Bearer #{bearerToken}")
       .header("Authorization", "Bearer #{access_token}")
@@ -105,7 +105,7 @@ val ElasticSearchGetVaryingSizes =
 
     .pause(Environment.constantthinkTime.seconds)
 
-    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket50")
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket50_#{caseType}")
       .post(ccdDataStoreUrl + "/searchCases")
       .header("ServiceAuthorization", "Bearer #{bearerToken}")
       .header("Authorization", "Bearer #{access_token}")
@@ -118,7 +118,7 @@ val ElasticSearchGetVaryingSizes =
 
     .pause(Environment.constantthinkTime.seconds)
 
-    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket75")
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket75_#{caseType}")
       .post(ccdDataStoreUrl + "/searchCases")
       .header("ServiceAuthorization", "Bearer #{bearerToken}")
       .header("Authorization", "Bearer #{access_token}")
@@ -131,7 +131,7 @@ val ElasticSearchGetVaryingSizes =
 
     .pause(Environment.constantthinkTime.seconds)
 
-    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket100")
+    .exec(http("CCD_SearchCaseEndpoint_ElasticSearchWorkbasket100_#{caseType}")
       .post(ccdDataStoreUrl + "/searchCases")
       .header("ServiceAuthorization", "Bearer #{bearerToken}")
       .header("Authorization", "Bearer #{access_token}")
