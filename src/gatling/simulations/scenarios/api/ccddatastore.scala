@@ -1035,4 +1035,193 @@ object ccddatastore {
 
     .pause(Environment.constantthinkTime.seconds)
 
+  val CCDAPI_SpecialTribunalsCreate =
+
+    exec(http("API_SpTribs_GetEventToken")
+      .get(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/event-triggers/caseworker-create-case/token")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_SpTribs_ValidateCategorisation")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/st/CCD_STCategorisation.json"))
+      .check(substring("cicCaseCaseCategory")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_SpTribs_ValidateDate")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/st/CCD_STDate.json"))
+      .check(substring("cicCaseCaseReceivedDate")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_SpTribs_ValidateSubjects")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/st/CCD_STSubjects.json"))
+      .check(substring("cicCasePartiesCIC")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_SpTribs_ValidateDetails")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/st/CCD_STDetails.json"))
+      .check(substring("cicCaseDateOfBirth")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_SpTribs_ValidateApplicantDetails")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/st/CCD_STApplicantDetails.json"))
+      .check(substring("cicCaseApplicantFullName")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_SpTribs_ValidateRepDetails")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/st/CCD_STRepDetails.json"))
+      .check(substring("cicCaseRepresentativeFullName")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_SpTribs_ValidateContacts")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/st/CCD_STContacts.json"))
+      .check(substring("cicCaseSubjectCIC")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("GetS2SToken")
+      .post(Environment.s2sUrl + "/testing-support/lease")
+      .header("Content-Type", "application/json")
+      .body(StringBody("""{"microservice":"xui_webapp"}"""))
+      .check(bodyString.saveAs("cdamS2sToken")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_SpTribs_CDAMDocUpload")
+      .post(CaseDocAPI + "/cases/documents")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("ServiceAuthorization", "#{cdamS2sToken}")
+      .header("accept", "application/json")
+      .header("Content-Type", "multipart/form-data")
+      .formParam("classification", "PUBLIC")
+      .formParam("caseTypeId", "CriminalInjuriesCompensation")
+      .formParam("jurisdictionId", "ST_CIC")
+      .bodyPart(RawFileBodyPart("files", "1MB.pdf")
+        .fileName("1MB.pdf")
+        .transferEncoding("binary"))
+      .check(regex("""documents/([0-9a-z-]+?)/binary""").saveAs("Document_ID")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_SpTribs_ValidateDocUpload")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/st/CCD_STDocUpload.json"))
+      .check(substring("cicCaseCaseDocumentsUpload")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_SpTribs_ValidateFurtherDetails")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/st/CCD_STFurtherDetails.json"))
+      .check(substring("cicCaseSchemeCic")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_SpTribs_CreateCase")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/st/CCD_STCreateCase.json"))
+      .check(jsonPath("$.id").saveAs("caseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+  val CCDAPI_SpecialTribunalsBuildCaseEvent =
+
+    exec(http("API_ST_GetEventToken")
+      .get(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/caseworker-case-built/token")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .exec(http("API_ST_ValidateBuildCase")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/st/CCD_STBuildCaseValidate.json"))
+      .check(substring("data")))
+
+    .exec(http("API_ST_BuildCase")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/st/CCD_STBuildCase.json"))
+      .check(jsonPath("$.id").saveAs("caseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+  val CCDAPI_SpecialTribunalsViewCase =
+
+    exec(http("CCD_STViewCase")
+      .get(ccdDataStoreUrl + "/cases/#{caseId}")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .header("Experimental","true")
+      .check(jsonPath("$.id").is("#{caseId}")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+  val CCDAPI_SpecialTribunalsGetEvents =
+
+    exec(http("CCD_STGetEvents")
+      .get(ccdDataStoreUrl + "/cases/#{caseId}/events")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .header("Experimental","true")
+      .check(substring("auditEvents")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+
+
+
 }

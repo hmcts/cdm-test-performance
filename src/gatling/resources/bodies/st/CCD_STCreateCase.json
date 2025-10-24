@@ -1,0 +1,72 @@
+{
+  "data": {
+    "cicCaseCaseCategory": "Assessment",
+    "cicCaseCaseSubcategory": "Fatal",
+    "cicCaseCaseReceivedDate": "2025-10-01",
+    "cicCasePartiesCIC": [
+      "SubjectCIC",
+      "ApplicantCIC",
+      "RepresentativeCIC"
+    ],
+    "cicCaseFullName": "Perf Test",
+    "cicCasePhoneNumber": null,
+    "cicCaseDateOfBirth": "1950-01-01",
+    "cicCaseAddress": {
+      "AddressLine1": "Flat 105",
+      "AddressLine2": "Godwin Court",
+      "AddressLine3": "Crowndale Road",
+      "PostTown": "London",
+      "County": "",
+      "Country": "United Kingdom",
+      "PostCode": "NW1 1NW"
+    },
+    "cicCaseContactPreferenceType": "Email",
+    "cicCaseEmail": "perftest@perftest.com",
+    "cicCaseApplicantFullName": "Applicant Test",
+    "cicCaseApplicantPhoneNumber": "07000000000",
+    "cicCaseApplicantDateOfBirth": "1960-02-02",
+    "cicCaseApplicantContactDetailsPreference": "Email",
+    "cicCaseApplicantEmailAddress": "applicant@perftest.com",
+    "cicCaseRepresentativeFullName": "Rep Test",
+    "cicCaseRepresentativeOrgName": "Org",
+    "cicCaseRepresentativePhoneNumber": "07000000001",
+    "cicCaseRepresentativeReference": "Rep123",
+    "cicCaseIsRepresentativeQualified": "Yes",
+    "cicCaseRepresentativeContactDetailsPreference": "Email",
+    "cicCaseRepresentativeEmailAddress": "rep@perftest.com",
+    "cicCaseSubjectCIC": [],
+    "cicCaseApplicantCIC": [
+      "ApplicantCIC"
+    ],
+    "cicCaseRepresentativeCIC": [
+      "RepresentativeCIC"
+    ],
+    "cicCaseCaseDocumentsUpload": [
+      {
+        "value": {
+          "documentCategory": "DSS Tribunal form uploaded documents",
+          "documentEmailContent": "Uploaded Document",
+          "documentLink": {
+            "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/#{Document_ID}",
+            "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/#{Document_ID}/binary",
+            "document_filename": "check-your-answers.pdf"
+          }
+        },
+        "id": "6f28f406-bf56-42f4-8332-eb0994a728e5"
+      }
+    ],
+    "cicCaseSchemeCic": "Year2012",
+    "cicCaseRegionCIC": "London",
+    "cicCaseClaimLinkedToCic": "No",
+    "cicCaseCompensationClaimLinkCIC": "No",
+    "cicCaseFormReceivedInTime": "Yes"
+  },
+  "event": {
+    "id": "caseworker-create-case",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false,
+  "draft_id": null
+}

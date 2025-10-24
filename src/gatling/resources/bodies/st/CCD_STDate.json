@@ -1,0 +1,17 @@
+{
+  "data": {
+    "cicCaseCaseReceivedDate": "2025-10-01"
+  },
+  "event": {
+    "id": "caseworker-create-case",
+    "summary": "",
+    "description": ""
+  },
+  "event_data": {
+    "cicCaseCaseCategory": "Assessment",
+    "cicCaseCaseSubcategory": "Fatal",
+    "cicCaseCaseReceivedDate": "2025-10-01"
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}

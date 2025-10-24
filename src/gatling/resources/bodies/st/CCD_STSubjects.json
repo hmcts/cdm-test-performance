@@ -1,0 +1,26 @@
+{
+  "data": {
+    "cicCasePartiesCIC": [
+      "SubjectCIC",
+      "RepresentativeCIC",
+      "ApplicantCIC"
+    ]
+  },
+  "event": {
+    "id": "caseworker-create-case",
+    "summary": "",
+    "description": ""
+  },
+  "event_data": {
+    "cicCaseCaseCategory": "Assessment",
+    "cicCaseCaseSubcategory": "Fatal",
+    "cicCaseCaseReceivedDate": "2025-10-01",
+    "cicCasePartiesCIC": [
+      "SubjectCIC",
+      "RepresentativeCIC",
+      "ApplicantCIC"
+    ]
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}

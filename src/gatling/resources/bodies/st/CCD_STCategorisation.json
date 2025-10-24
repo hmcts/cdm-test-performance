@@ -1,0 +1,17 @@
+{
+  "data": {
+    "cicCaseCaseCategory": "Assessment",
+    "cicCaseCaseSubcategory": "Fatal"
+  },
+  "event": {
+    "id": "caseworker-create-case",
+    "summary": "",
+    "description": ""
+  },
+  "event_data": {
+    "cicCaseCaseCategory": "Assessment",
+    "cicCaseCaseSubcategory": "Fatal"
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}
