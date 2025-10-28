@@ -3,6 +3,18 @@
      "localAuthority": {
         "name": "fplorg-a00rw",
         "email": null,
+        "pbaNumberDynamicList": {
+          "value": {
+            "code": "PBA0082126",
+            "label": "PBA0082126"
+          },
+          "list_items": [
+            {
+              "code": "PBA0082126",
+              "label": "PBA0082126"
+            }
+          ]
+        },
         "legalTeamManager": null,
         "pbaNumber": "PBA0082126",
         "customerReference": null,
