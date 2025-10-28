@@ -1,48 +1,75 @@
 {
-  "data": {
-     "localAuthority": {
-        "name": "fplorg-a00rw",
-        "email": null,
-        "legalTeamManager": null,
-        "pbaNumber": "PBA0082126",
-        "customerReference": null,
-        "clientCode": null,
-        "phone": "02081002000",
-        "id": "H01PU5I",
-        "designated": null,
-        "address": {
-           "AddressLine1": "4",
-           "AddressLine2": "Hibernia Gardens",
-           "AddressLine3": null,
-           "PostTown": "Hounslow",
-           "County": "middlesex",
-           "PostCode": "TW3 3SD",
-           "Country": null
-        },
-        "colleagues": []
-     },
-     "localAuthorityColleagues": [
-        {
-           "value": {
-              "role": "SOLICITOR",
-              "dx": null,
-              "title": null,
-              "reference": null,
-              "fullName": "John Smith",
-              "email": "john@testsol.com",
-              "phone": null,
-              "notificationRecipient": "No",
-              "mainContact": null
-           },
-           "id": "e87a0443-4a34-483e-848b-1476bd3302bc"
-        }
-     ]
-  },
-  "event": {
-     "id": "enterApplicantDetailsLA",
-     "summary": "",
-     "description": ""
-  },
-  "event_token": "#{eventToken7}",
-  "ignore_warning": false
+   "data": {
+      "localAuthority": {
+         "name": "fplorg-a00rw",
+         "email": "fplorg-a00rw@test.com",
+         "pbaNumberDynamicList": {
+            "value": {
+               "code": "PBA0066906",
+               "label": "PBA0066906"
+            },
+            "list_items": [
+               {
+                  "code": "PBA0066906",
+                  "label": "PBA0066906"
+               }
+            ]
+         },
+         "legalTeamManager": null,
+         "pbaNumber": "PBA0066906",
+         "customerReference": "PBA0066906",
+         "clientCode": null,
+         "phone": null,
+         "id": "H01PU5I",
+         "designated": null,
+         "address": {
+            "AddressLine1": "4",
+            "AddressLine2": "Hibernia Gardens",
+            "AddressLine3": null,
+            "PostTown": "Hounslow",
+            "County": "middlesex",
+            "PostCode": "TW3 3SD",
+            "Country": "UK"
+         },
+         "colleagues": [],
+         "representingDetails": {
+            "firstName": null,
+            "lastName": null
+         }
+      },
+      "applicantContact": {
+         "firstName": "PerfTest",
+         "lastName": "ApplicantContact",
+         "fullName": null,
+         "phone": "07000000000",
+         "alternativePhone": null,
+         "dx": null,
+         "email": null,
+         "mainContact": "Yes",
+         "notificationRecipient": null,
+         "reference": null,
+         "role": null,
+         "title": null
+      },
+      "applicantContactOthers": [
+         {
+            "value": {
+               "firstName": "PerfTest",
+               "lastName": "ApplicantContact",
+               "email": "perftestcontact@test.com",
+               "role": "SOLICITOR",
+               "title": null,
+               "mainContact": null
+            },
+            "id": "e87a0443-4a34-483e-848b-1476bd3302bc"
+         }
+      ]
+   },
+   "event": {
+      "id": "enterApplicantDetailsLA",
+      "summary": "",
+      "description": ""
+   },
+   "event_token": "#{eventToken7}",
+   "ignore_warning": false
 }
