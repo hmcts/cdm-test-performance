@@ -1,14 +1,15 @@
 package simulations
 
 import com.typesafe.config.{Config, ConfigFactory}
+import io.gatling.commons.stats.assertion.Assertion
 import io.gatling.core.Predef._
+import io.gatling.core.controller.inject.open.OpenInjectionStep
+import io.gatling.core.pause.PauseType
 import io.gatling.core.scenario.Simulation
 import scenarios.api._
 import scenarios.utils._
+
 import scala.concurrent.duration._
-import io.gatling.core.controller.inject.open.{AtOnceOpenInjection, OpenInjectionStep}
-import io.gatling.commons.stats.assertion.Assertion
-import io.gatling.core.pause.PauseType
 
 class CCD_PerformanceRegression extends Simulation  {
 
@@ -221,7 +222,6 @@ class CCD_PerformanceRegression extends Simulation  {
         .exec(GetUserProfile.SearchAllUsers)
         .exec(elasticsearch.ElasticSearchGetVaryingSizes)
         .exec(elasticsearch.ElasticSearchWorkbasket)
-        .exec(WaitforNextIteration.waitforNextIteration)
       }
     }
 
@@ -340,20 +340,13 @@ class CCD_PerformanceRegression extends Simulation  {
       API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       API_FPLCreateCase.inject(simulationProfile(testType, fplTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      API_NFDCreateCase.inject(simulationProfile(testType, nfdTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       CaseActivityListScn.inject(simulationProfile(testType, caseActivityUsers, numberOfPipelineUsers)).pauses(pauseOption),
       CaseActivityScn.inject(simulationProfile(testType, caseActivityUsers, numberOfPipelineUsers)).pauses(pauseOption),
       CCDSearchView.inject(simulationProfile(testType, searchUsers, numberOfPipelineUsers)).pauses(pauseOption),
       CCDElasticSearch.inject(simulationProfile(testType, esUsers, numberOfPipelineUsers)).pauses(pauseOption),
       CaseFileView.inject(simulationProfile(testType, caseFileViewTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      // CaseFileView5and2.inject(simulationProfile(testType, caseFileViewTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       DefinitionStore.inject(simulationProfile(testType, definitionStoreUsers, numberOfPipelineUsers)).pauses(pauseOption),
-
-      // DefinitionStoreUserRoles.inject(simulationProfile(testType, definitionStoreUsers, numberOfPipelineUsers)).pauses(pauseOption)
-
-    //  CaseActivityListScn.inject(rampUsers(500) during (10.minutes)),
-		//  CaseActivityScn.inject(rampUsers(500) during (10.minutes)),
-    //  CCDSearchView.inject(rampUsers(200) during (20.minutes)),
-		//  CCDElasticSearch.inject(rampUsers(300) during (20.minutes)), //300 during 20
   )
     .protocols(httpProtocol)
     .assertions(assertions(testType))
