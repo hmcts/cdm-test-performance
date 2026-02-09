@@ -222,7 +222,6 @@ class CCD_PerformanceRegression extends Simulation  {
         .exec(GetUserProfile.SearchAllUsers)
         .exec(elasticsearch.ElasticSearchGetVaryingSizes)
         .exec(elasticsearch.ElasticSearchWorkbasket)
-        .exec(WaitforNextIteration.waitforNextIteration)
       }
     }
 
