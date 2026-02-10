@@ -47,9 +47,9 @@ class CCD_PerformanceRegression extends Simulation  {
   val elasticSearchTargetPerHour:Double = 200000
   val esRepeatsPerUser = 120 //120
   val caseFileViewTargetPerHour:Double = 5363
-  val caseActivityUsers:Double = 500
-  val searchUsers:Double = 200
-  val esUsers:Double = 300
+  val caseActivityUsers:Double = 1000
+  val searchUsers:Double = 400
+  val esUsers:Double = 600
   val definitionStoreUsers:Double = 300
 
   val caseActivityIteration = 900
@@ -185,7 +185,7 @@ class CCD_PerformanceRegression extends Simulation  {
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
       .exec(ccdcaseactivity.CDSGetRequest)
-      .repeat(900) {
+      .repeat(450) {
         exec(ccdcaseactivity.CaseActivityList)
       }
     }
@@ -194,7 +194,7 @@ class CCD_PerformanceRegression extends Simulation  {
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
       .exec(ccdcaseactivity.CDSGetRequest)
-      .repeat(8500) {
+      .repeat(4000) {
         exec(ccdcaseactivity.CaseActivityRequest)
       }
     }
@@ -206,7 +206,7 @@ class CCD_PerformanceRegression extends Simulation  {
       .exec(S2S.s2s("ccd_data"))
       .feed(feedEthosUserData)
       .exec(IdamLogin.GetIdamToken) 
-      .repeat(400) {
+      .repeat(200) {
         exec(ccddatastore.CCDAPI_EthosJourney)
 //        .exec(WaitforNextIteration.waitforNextIteration)
       }
@@ -217,7 +217,7 @@ class CCD_PerformanceRegression extends Simulation  {
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
       .exec(elasticsearch.CDSGetRequest)
-      .repeat(120) { //esRepeatsPerUser
+      .repeat(80) { //esRepeatsPerUser
         exec(GetUserProfile.SearchJurisdiction)
         .exec(GetUserProfile.SearchAllUsers)
         .exec(elasticsearch.ElasticSearchGetVaryingSizes)
