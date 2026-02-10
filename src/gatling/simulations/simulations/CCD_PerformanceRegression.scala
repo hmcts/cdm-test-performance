@@ -34,31 +34,17 @@ class CCD_PerformanceRegression extends Simulation  {
 	/* PERFORMANCE TEST CONFIGURATION */
 	val probateTargetPerHour:Double = 800
 	val cmcTargetPerHour:Double = 800
-  val divorceTargetPerHour:Double = 800
   val iacTargetPerHour:Double = 800
   val fplTargetPerHour:Double = 800
   val nfdTargetPerHour:Double = 800
-  val caseActivityTargetPerHour:Double = 850000
-  val caseActivityRepeatsPerUser = 8500 //850
-  val caseActivityListTargetPerHour:Double = 90000
-  val caseActivityListRepeatsPerUser = 1800 //180
-  val searchTargetPerHour:Double = 8000
-  val searchRepeatsPerUser = 400 //40
-  val elasticSearchTargetPerHour:Double = 200000
-  val esRepeatsPerUser = 120 //120
   val caseFileViewTargetPerHour:Double = 100
-  val caseActivityUsers:Double = 1000
-  val searchUsers:Double = 400
-  val esUsers:Double = 600
+  val caseActivityUsers:Double = 1700
+  val searchUsers:Double = 800
+  val esUsers:Double = 1200
   val definitionStoreUsers:Double = 300
 
-  val caseActivityIteration = 900
-  val caseActivityListIteration = 120
-  val ccdSearchIteration = 40
-  val elasticSearchIteration = 370
-
-	val rampUpDurationMins = 10
-	val rampDownDurationMins = 10
+	val rampUpDurationMins = 5
+	val rampDownDurationMins = 5
 	val testDurationMins = 60 // 60
 
 	val numberOfPipelineUsers = 5
@@ -83,7 +69,6 @@ class CCD_PerformanceRegression extends Simulation  {
   val feedFPLUserData = csv("FPLUserData.csv").circular
   val feedEthosUserData = csv("EthosUserData.csv").circular
   val feedNFDUserData = csv("NFDUserData.csv").circular
-  val feedCMCCaseData = csv("CMCCaseData.csv").circular
   val feedJurisdictions = csv("Jurisdictions.csv").random
 
   //AAT Data
@@ -140,16 +125,6 @@ class CCD_PerformanceRegression extends Simulation  {
       .exec(ccddatastore.CCDAPI_CMCCaseEvents)
     }
 
-  val API_DivorceCreateCase = scenario("Divorce Case Create")
-    .exitBlockOnFail {
-      exec(_.set("env", s"${env}"))
-      .exec(S2S.s2s("ccd_data"))
-      .feed(feedDivorceUserData)
-      .exec(IdamLogin.GetIdamToken)
-      .exec(ccddatastore.CCDAPI_DivorceSolicitorCreate)
-      .exec(ccddatastore.CCDAPI_DivorceSolicitorCaseEvents)
-    }
-
   val API_IACCreateCase = scenario("IAC Case Create")
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
@@ -171,7 +146,7 @@ class CCD_PerformanceRegression extends Simulation  {
       .exec(ccddatastore.CCDAPI_FPLCaseEvents)
     }
 
-  val API_NFDCreateCase = scenario("Divorce Case Create")
+  val API_NFDCreateCase = scenario("NFD Case Create")
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
       .exec(S2S.s2s("ccd_data"))
@@ -185,7 +160,7 @@ class CCD_PerformanceRegression extends Simulation  {
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
       .exec(ccdcaseactivity.CDSGetRequest)
-      .repeat(450) {
+      .repeat(350) {
         exec(ccdcaseactivity.CaseActivityList)
       }
     }
@@ -194,7 +169,7 @@ class CCD_PerformanceRegression extends Simulation  {
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
       .exec(ccdcaseactivity.CDSGetRequest)
-      .repeat(4000) {
+      .repeat(2000) {
         exec(ccdcaseactivity.CaseActivityRequest)
       }
     }
@@ -206,9 +181,8 @@ class CCD_PerformanceRegression extends Simulation  {
       .exec(S2S.s2s("ccd_data"))
       .feed(feedEthosUserData)
       .exec(IdamLogin.GetIdamToken) 
-      .repeat(200) {
+      .repeat(100) {
         exec(ccddatastore.CCDAPI_EthosJourney)
-//        .exec(WaitforNextIteration.waitforNextIteration)
       }
     }
 
@@ -217,36 +191,12 @@ class CCD_PerformanceRegression extends Simulation  {
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
       .exec(elasticsearch.CDSGetRequest)
-      .repeat(80) { //esRepeatsPerUser
+      .repeat(20) { //esRepeatsPerUser
         exec(GetUserProfile.SearchJurisdiction)
         .exec(GetUserProfile.SearchAllUsers)
         .exec(elasticsearch.ElasticSearchGetVaryingSizes)
         .exec(elasticsearch.ElasticSearchWorkbasket)
       }
-    }
-
-  //CMC Add Doc to Case
-  val API_CMCAddDoc = scenario("CMC Add Doc To Case")
-    .exitBlockOnFail {
-      exec(_.set("env", s"${env}"))
-      .exec(S2S.s2s("ccd_data"))
-      .feed(feedCMCUserData)
-      .feed(feedCMCCaseData)
-      .exec(IdamLogin.GetIdamToken)
-      .exec(S2S.s2s("cmc_claim_store"))
-      .exec(ccddatastore.CCDAPI_CMCUploadDoc)
-    }
-
-  //CMC Case Events
-  val API_CMCCaseEvents = scenario("CMC CaseEvents")
-    .exitBlockOnFail {
-      exec(_.set("env", s"${env}"))
-      .exec(S2S.s2s("ccd_data"))
-      .feed(feedCMCUserData)
-      .feed(feedCMCCaseData)
-      .exec(IdamLogin.GetIdamToken)
-      // .exec(S2S.s2s("cmc_claim_store"))
-      .exec(ccddatastore.CCDAPI_CMCCaseHandedToCCBC)
     }
 
   val CaseFileView = scenario("Case File View scenario")
@@ -257,17 +207,6 @@ class CCD_PerformanceRegression extends Simulation  {
       .exec(casefileview.caseDocUpload)
       .exec(casefileview.createCase)
       .exec(casefileview.caseFileViewPutCategories)
-      .exec(casefileview.caseFileViewGet)
-  }
-
-  val CaseFileView5and2 = scenario("Case File View - 5 docs, 2 categories")
-    .exitBlockOnFail {
-      exec(_.set("env", s"${env}"))
-      .exec(casefileview.S2SLogin)
-      .exec(casefileview.idamLogin)
-      .exec(casefileview.caseDocUpload)
-      .exec(casefileview.createCase5Doc)
-      .exec(casefileview.caseFileViewPut2Categories)
       .exec(casefileview.caseFileViewGet)
   }
 
@@ -282,15 +221,6 @@ class CCD_PerformanceRegression extends Simulation  {
         .exec(ccddefinitionstore.CCD_DefinitionStoreJurisdictions)
       }
   }
-
-  val DefinitionStoreUserRoles = scenario("CCD Definition Store Get Roles")
-    .exitBlockOnFail {
-      exec(_.set("env", s"${env}"))
-      .exec(S2S.s2s("ccd_gw"))
-      .feed(feedDivorceUserData)
-      .exec(IdamLogin.GetIdamToken)
-      .exec(ccddefinitionstore.CCD_DefinitionStoreGetUserRole)
-    }
 
 	def simulationProfile(simulationType: String, userPerHourRate: Double, numberOfPipelineUsers: Double): Seq[OpenInjectionStep] = {
 		val userPerSecRate = userPerHourRate / 3600
