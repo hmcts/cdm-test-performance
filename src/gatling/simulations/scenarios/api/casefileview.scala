@@ -1,14 +1,11 @@
 package scenarios.api
 
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import com.typesafe.config.{Config, ConfigFactory}
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import scenarios.utils._
+
 import scala.concurrent.duration._
-import java.io.{BufferedWriter, FileWriter}
-import scala.util.Random
 
 object casefileview {
 
@@ -123,13 +120,17 @@ object casefileview {
 
     .pause(Environment.constantthinkTime.seconds)
 
-  val caseFileViewGet = 
+  val caseFileViewGet = {
 
-    exec(http("API_CFV_GetCategoriesAndDocuments")
-      .get(Environment.ccdDataStoreUrl + "/categoriesAndDocuments/#{caseId}")
-      .header("ServiceAuthorization", "Bearer #{BearerToken}")
-      .header("Authorization", "Bearer #{accessToken}"))
+    repeat(150) {
 
-    .pause(Environment.constantthinkTime.seconds)
+      exec(http("API_CFV_GetCategoriesAndDocuments")
+        .get(Environment.ccdDataStoreUrl + "/categoriesAndDocuments/#{caseId}")
+        .header("ServiceAuthorization", "Bearer #{BearerToken}")
+        .header("Authorization", "Bearer #{accessToken}"))
+
+      .pause(Environment.constantthinkTime.seconds)
+    }
+  }
 
 }

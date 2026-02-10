@@ -46,7 +46,7 @@ class CCD_PerformanceRegression extends Simulation  {
   val searchRepeatsPerUser = 400 //40
   val elasticSearchTargetPerHour:Double = 200000
   val esRepeatsPerUser = 120 //120
-  val caseFileViewTargetPerHour:Double = 5363
+  val caseFileViewTargetPerHour:Double = 100
   val caseActivityUsers:Double = 1000
   val searchUsers:Double = 400
   val esUsers:Double = 600

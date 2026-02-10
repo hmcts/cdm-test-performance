@@ -15,3 +15,4 @@ bin/*
 build/*
 CreatedIdamUsers.csv
 src/gatling/resources/950mb_file.pdf
+src/gatling/resources/application.conf
