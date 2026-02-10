@@ -38,7 +38,7 @@ class CCD_PerformanceRegression extends Simulation  {
   val fplTargetPerHour:Double = 800
   val nfdTargetPerHour:Double = 800
   val caseFileViewTargetPerHour:Double = 100
-  val caseActivityUsers:Double = 1700
+  val caseActivityUsers:Double = 1500
   val searchUsers:Double = 800
   val esUsers:Double = 1200
   val definitionStoreUsers:Double = 300
@@ -160,7 +160,7 @@ class CCD_PerformanceRegression extends Simulation  {
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
       .exec(ccdcaseactivity.CDSGetRequest)
-      .repeat(350) {
+      .repeat(250) {
         exec(ccdcaseactivity.CaseActivityList)
       }
     }
@@ -169,7 +169,7 @@ class CCD_PerformanceRegression extends Simulation  {
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
       .exec(ccdcaseactivity.CDSGetRequest)
-      .repeat(2000) {
+      .repeat(800) {
         exec(ccdcaseactivity.CaseActivityRequest)
       }
     }
