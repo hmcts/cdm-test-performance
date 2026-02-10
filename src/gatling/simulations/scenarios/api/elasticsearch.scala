@@ -17,7 +17,6 @@ object elasticsearch {
   val ccdGatewayClientSecret = config.getString("auth.ccdGatewayCS")
 
   val ccdScope = "openid profile authorities acr roles openid profile roles"
-  val feedCaseSearchData = csv("caseSearchData.csv").random
   val feedWorkbasketData = csv("workbasketCaseTypes.csv").random //circular
   val feedXUIUserData = csv("XUISearchUsers.csv").circular
   val feedProbateUserData = csv("ProbateUserData.csv").circular

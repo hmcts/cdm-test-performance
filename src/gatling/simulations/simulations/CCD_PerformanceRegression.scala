@@ -208,7 +208,7 @@ class CCD_PerformanceRegression extends Simulation  {
       .exec(IdamLogin.GetIdamToken) 
       .repeat(400) {
         exec(ccddatastore.CCDAPI_EthosJourney)
-        .exec(WaitforNextIteration.waitforNextIteration)
+//        .exec(WaitforNextIteration.waitforNextIteration)
       }
     }
 
