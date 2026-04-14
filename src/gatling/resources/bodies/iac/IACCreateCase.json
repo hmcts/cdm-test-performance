@@ -15,14 +15,14 @@
        "isOutOfCountryEnabled": "Yes",
        "appellantInUk": "Yes",
        "homeOfficeReferenceNumber": "123456789",
-       "homeOfficeDecisionDate": "2021-10-01",
+       "homeOfficeDecisionDate": "#{todayDate}",
        "uploadTheNoticeOfDecisionDocs": [
           {
              "value": {
                 "description": "NoD",
                 "document": {
-                   "document_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/#{Document_ID}",
-                   "document_binary_url": "http://dm-store-perftest.service.core-compute-perftest.internal/documents/#{Document_ID}/binary",
+                   "document_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{docId}",
+                   "document_binary_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{docId}/binary",
                    "document_filename": "1MB.pdf",
                    "document_hash": "#{hashToken}"
                 }
