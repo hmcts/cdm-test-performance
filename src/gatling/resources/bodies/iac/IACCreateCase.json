@@ -33,7 +33,7 @@
        "appellantTitle": "Mr",
        "appellantGivenNames": "John",
        "appellantFamilyName": "Smith",
-       "appellantDateOfBirth": "1980-02-01",
+       "appellantDateOfBirth": "#{dob}",
        "appellantStateless": "hasNationality",
        "appellantNationalities": [
           {
