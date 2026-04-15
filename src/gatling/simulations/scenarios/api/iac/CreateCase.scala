@@ -2,23 +2,15 @@ package scenarios.api.iac
 
 import ccd._
 import io.gatling.core.Predef._
-import utilities.DateUtils
-
-import scala.util.Random
+import utilities.{DateUtils, StringUtils}
 
 object CreateCase {
 
   val feedIACUserData = csv("IACUserData.csv").circular
 
-  val rnd = new Random()
-
-  def randomString(length: Int) = {
-    rnd.alphanumeric.filter(_.isLetter).take(length).mkString
-  }
-
   val execute =
 
-    exec(_.setAll("randomString" -> randomString(5),
+    exec(_.setAll("randomString" -> StringUtils.randomString(5),
       "dob" -> DateUtils.getDatePastRandom("yyyy-MM-dd", minYears = 20, maxYears = 50),
       "todayDate" -> DateUtils.getDateNow("yyyy-MM-dd")))
 
