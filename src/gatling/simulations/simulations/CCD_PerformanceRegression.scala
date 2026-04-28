@@ -104,19 +104,6 @@ class CCD_PerformanceRegression extends Simulation  {
 
 
   //CCD API - Create & Case Event Journeys
-  val API_ProbateCreateCase = scenario("Probate Case Create")
-    .exitBlockOnFail {
-      exec(_.set("env", s"${env}"))
-      .exec(S2S.s2s("ccd_data"))
-      .doSwitch(s"${env}") (
-        "perftest" -> feed(feedProbateUserDataPerftest),
-        "aat" -> feed(feedProbateUserDataAAT)
-       )
-      .exec(IdamLogin.GetIdamToken)
-      .exec(ccddatastore.CCDAPI_ProbateCreate)
-      .exec(S2S.s2s("probate_backend")) 
-      .exec(ccddatastore.CCDAPI_ProbateCaseEvents)
-    }
 
   val API_SSCSCreateCase = scenario("SSCS Case Create")
     .exitBlockOnFail {
@@ -137,16 +124,6 @@ class CCD_PerformanceRegression extends Simulation  {
       .exec(IdamLogin.GetIdamToken)
       .exec(ccddatastore.CCDAPI_CMCCreate)
       .exec(ccddatastore.CCDAPI_CMCCaseEvents)
-    }
-
-  val API_IACCreateCase = scenario("IAC Case Create")
-    .exitBlockOnFail {
-      exec(_.set("env", s"${env}"))
-      .exec(S2S.s2s("ccd_data"))
-      .feed(feedIACUserData)
-      .exec(IdamLogin.GetIdamToken)   
-      .exec(S2S.s2s("xui_webapp"))   
-      .exec(ccddatastore.CCDAPI_IACCreate)
     }
 
   val API_FPLCreateCase = scenario("FPL Case Create")
