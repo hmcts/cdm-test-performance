@@ -100,6 +100,7 @@ class CCD_PerformanceRegression extends Simulation  {
   }
 
   val IACScenario = buildScenario(CcdCaseTypes.IA_Asylum, iac.CreateCase.execute)
+  val ProbateScenario = buildScenario(CcdCaseTypes.PROBATE_GrantOfRepresentation, probate.CreateCase.execute)
 
 
   //CCD API - Create & Case Event Journeys
@@ -293,6 +294,7 @@ class CCD_PerformanceRegression extends Simulation  {
 
 
       IACScenario.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      ProbateScenario.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
   )
     .protocols(httpProtocol)
     .assertions(assertions(testType))
