@@ -191,12 +191,10 @@ class CCD_PerformanceRegression extends Simulation  {
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
       .exec(elasticsearch.CDSGetRequest)
-      .repeat(20) { //esRepeatsPerUser
-        exec(GetUserProfile.SearchJurisdiction)
-        .exec(GetUserProfile.SearchAllUsers)
-        .exec(elasticsearch.ElasticSearchGetVaryingSizes)
-        .exec(elasticsearch.ElasticSearchWorkbasket)
-      }
+      .exec(GetUserProfile.SearchJurisdiction)
+      .exec(GetUserProfile.SearchAllUsers)
+      .exec(elasticsearch.ElasticSearchGetVaryingSizes)
+      .exec(elasticsearch.ElasticSearchWorkbasket)
     }
 
   val CaseFileView = scenario("Case File View scenario")
