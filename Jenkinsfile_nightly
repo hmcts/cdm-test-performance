@@ -33,7 +33,7 @@ withNightlyPipeline("java", product, component) {
     enablePerformanceTest(20)
 
     afterAlways('checkout') {
-        sh """ git submodule update --init --recursive"""
+        sh """git submodule update --init --recursive --remote"""
     }
 
     after('performanceTest') {
