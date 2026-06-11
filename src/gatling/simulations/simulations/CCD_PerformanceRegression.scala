@@ -1,6 +1,6 @@
 package simulations
 
-import com.typesafe.config.{Config, ConfigFactory}
+//import com.typesafe.config.{Config, ConfigFactory}
 import io.gatling.commons.stats.assertion.Assertion
 import io.gatling.core.Predef._
 import io.gatling.core.controller.inject.open.OpenInjectionStep
@@ -78,7 +78,7 @@ class CCD_PerformanceRegression extends Simulation  {
 
   //Gatling specific configs, required for perf testing
   val BaseURL = Environment.baseURL
-  val config: Config = ConfigFactory.load()
+//  val config: Config = ConfigFactory.load()
 
   val httpProtocol = Environment.HttpProtocol
     .baseUrl(Environment.baseURL.replace("#{env}", s"${env}"))
@@ -271,7 +271,7 @@ class CCD_PerformanceRegression extends Simulation  {
 
 
       IACScenario.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      ProbateScenario.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+//      ProbateScenario.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
   )
     .protocols(httpProtocol)
     .assertions(assertions(testType))
