@@ -1,18 +1,11 @@
 package scenarios.api
 
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import com.typesafe.config.{Config, ConfigFactory}
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import scenarios.utils._
 import scala.concurrent.duration._
-import java.io.{BufferedWriter, FileWriter}
-import scala.util.Random
 
 object ccddefinitionstore {
-
-val config: Config = ConfigFactory.load()
 
 val CCD_DefinitionStoreJurisdictions = 
 

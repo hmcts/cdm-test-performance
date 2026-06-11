@@ -4,7 +4,7 @@ import com.typesafe.config.{Config, ConfigFactory}
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import scenarios.utils._
-
+import utilities.AzureKeyVault
 import scala.concurrent.duration._
 
 object elasticsearch {
@@ -14,8 +14,7 @@ object elasticsearch {
   val s2sUrl = Environment.s2sUrl
   val ccdDataStoreUrl = "http://ccd-data-store-api-#{env}.service.core-compute-#{env}.internal"
   val ccdClientId = "ccd_gateway"
-  val ccdGatewayClientSecret = config.getString("auth.ccdGatewayCS")
-
+  val clientSecret = AzureKeyVault.loadClientSecret("ccd-perftest", "ccd-api-gateway-oauth2-client-secret", "CCD_CLIENT_SECRET")
   val ccdScope = "openid profile authorities acr roles openid profile roles"
   val feedWorkbasketData = csv("workbasketCaseTypes.csv").random //circular
   val feedXUIUserData = csv("XUISearchUsers.csv").circular
@@ -35,7 +34,7 @@ object elasticsearch {
       .exitHereIfFailed
 
     .exec(http("GetIdamToken")
-      .post(IdamAPI + "/o/token?client_id=ccd_gateway&client_secret=" + ccdGatewayClientSecret + "&grant_type=password&scope=" + ccdScope + "&username=#{email}&password=Password12")
+      .post(IdamAPI + "/o/token?client_id=ccd_gateway&client_secret=" + clientSecret + "&grant_type=password&scope=" + ccdScope + "&username=#{email}&password=Password12")
       .header("Content-Type", "application/x-www-form-urlencoded")
       .header("Content-Length", "0")
       .check(status.is(200))
