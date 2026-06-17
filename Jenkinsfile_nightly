@@ -13,7 +13,7 @@ def product = "ccd"
 def component = "case-worker"
 
 def secrets = [
-    'ccd-aat': [
+    'ccd-perftest': [
         secret('ccd-api-gateway-oauth2-client-secret', 'S2S_SECRET')
     ]
 ]
