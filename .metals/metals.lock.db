@@ -1,0 +1,6 @@
+#FileLock
+#Thu Jul 02 10:48:36 BST 2026
+hostName=localhost
+id=19f223af1efd9545db340dfeb1263a06f4ecc263a07
+method=file
+server=localhost\:22055
