@@ -14,4 +14,4 @@ bin/*
 .classpath
 build/*
 CreatedIdamUsers.csv
-metals/*
+.metals/*
