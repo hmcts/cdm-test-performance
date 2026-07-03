@@ -16,3 +16,4 @@ build/*
 CreatedIdamUsers.csv
 .metals/*
 metals/*
+.bloop
