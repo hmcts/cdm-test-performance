@@ -38,6 +38,7 @@ class CCD_PerformanceRegression extends Simulation  {
   val fplTargetPerHour:Double = 800
   val nfdTargetPerHour:Double = 800
   val stTargetPerHour:Double = 800
+  val etCaseworkerTargetPerHour:Double = 200
   val caseActivityTargetPerHour:Double = 850000
   val caseActivityRepeatsPerUser = 8500 //850
   val caseActivityListTargetPerHour:Double = 90000
@@ -84,6 +85,7 @@ class CCD_PerformanceRegression extends Simulation  {
   val feedEthosUserData = csv("EthosUserData.csv").circular
   val feedNFDUserData = csv("NFDUserData.csv").circular
   val feedSTUserData = csv("STUserData.csv").circular
+  val feedETUserData = csv("ETUserData.csv").circular
   val feedCMCCaseData = csv("CMCCaseData.csv").circular
   val feedJurisdictions = csv("Jurisdictions.csv").random
 
@@ -191,6 +193,15 @@ class CCD_PerformanceRegression extends Simulation  {
         .exec(ccddatastore.CCDAPI_SpecialTribunalsBuildCaseEvent)
         .exec(ccddatastore.CCDAPI_SpecialTribunalsViewCase)
         .exec(ccddatastore.CCDAPI_SpecialTribunalsGetEvents)
+    }
+
+  val API_ET1CaseworkerCreate = scenario("ET1 Caseworker Create Case")
+    .exitBlockOnFail {
+      exec(_.set("env", s"${env}"))
+      .exec(S2S.s2s("ccd_data"))
+      .feed(feedETUserData)
+      .exec(IdamLogin.GetIdamToken)
+      .exec(ccddatastore.CCDAPI_ET1CaseworkerCreate)
     }
 
   //CCD Case Activity Requests
@@ -351,6 +362,7 @@ class CCD_PerformanceRegression extends Simulation  {
 	setUp(
      //simulation for cdm-test-performance repo
       API_STCreateCase.inject(simulationProfile(testType, stTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      API_ET1CaseworkerCreate.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
