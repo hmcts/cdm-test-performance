@@ -1,0 +1,75 @@
+{
+  "data": {
+    "claimant_TypeOfClaimant": "Individual",
+    "claimantIndType": {
+      "claimant_preferred_title": "Mr",
+      "claimant_first_names": "Perf",
+      "claimant_last_name": "Claimant",
+      "claimant_date_of_birth": "1985-06-15",
+      "claimant_sex": "Male",
+      "claimant_gender_identity_same": "Yes",
+      "claimant_gender_identity": null,
+      "claimant_title1": null,
+      "claimant_gender": null
+    },
+    "claimantType": {
+      "claimant_phone_number": "07700900000",
+      "claimant_mobile_number": null,
+      "claimant_email_address": null,
+      "claimant_contact_preference": "Post",
+      "claimant_contact_language": null,
+      "claimant_hearing_language": null,
+      "claimant_addressUK": {
+        "AddressLine1": "9 Ebley Road",
+        "AddressLine2": "",
+        "AddressLine3": "",
+        "PostTown": "Leeds",
+        "County": "",
+        "Country": "United Kingdom",
+        "PostCode": "LS1 1AA"
+      }
+    }
+  },
+  "event": {
+    "id": "initiateCase",
+    "summary": "",
+    "description": ""
+  },
+  "event_data": {
+    "receiptDate": "2025-01-01",
+    "managingOffice": "Leeds",
+    "multipleReference": null,
+    "leadClaimant": null,
+    "claimant_TypeOfClaimant": "Individual",
+    "claimantIndType": {
+      "claimant_preferred_title": "Mr",
+      "claimant_first_names": "Perf",
+      "claimant_last_name": "Claimant",
+      "claimant_date_of_birth": "1985-06-15",
+      "claimant_sex": "Male",
+      "claimant_gender_identity_same": "Yes",
+      "claimant_gender_identity": null,
+      "claimant_title1": null,
+      "claimant_gender": null
+    },
+    "claimantType": {
+      "claimant_phone_number": "07700900000",
+      "claimant_mobile_number": null,
+      "claimant_email_address": null,
+      "claimant_contact_preference": "Post",
+      "claimant_contact_language": null,
+      "claimant_hearing_language": null,
+      "claimant_addressUK": {
+        "AddressLine1": "9 Ebley Road",
+        "AddressLine2": "",
+        "AddressLine3": "",
+        "PostTown": "Leeds",
+        "County": "",
+        "Country": "United Kingdom",
+        "PostCode": "LS1 1AA"
+      }
+    }
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}

@@ -1221,7 +1221,619 @@ object ccddatastore {
 
     .pause(Environment.constantthinkTime.seconds)
 
+  val CCDAPI_ET1CaseworkerCreate =
 
+    exec(http("API_ET_CW_GetEventToken")
+      .get(ccdDataStoreUrl + "/internal/case-types/#{CaseType}/event-triggers/initiateCase?ignore-warning=false")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .check(jsonPath("$.event_token").saveAs("eventToken")))
 
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_InitiateCase_Validate1")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=initiateCase1")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_InitiateCaseValidate1.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_InitiateCase_Validate2")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=initiateCase2")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_InitiateCaseValidate2.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_InitiateCase_Validate3")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=initiateCase3")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_InitiateCaseValidate3.json"))
+      .check(jsonPath("$.data.respondentCollection[0].id").saveAs("respondentId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_InitiateCase_Validate4")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=initiateCase4")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_InitiateCaseValidate4.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_InitiateCase_Validate7")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=initiateCase7")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_InitiateCaseValidate7.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_InitiateCase_Validate8")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=initiateCase8")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_InitiateCaseValidate8.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_InitiateCase_Validate9")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=initiateCase9")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_InitiateCaseValidate9.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_InitiateCase_Create")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/cases?ignore-warning=false")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_InitiateCase.json"))
+      .check(jsonPath("$.id").saveAs("caseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+  val CCDAPI_ET1CaseworkerSectionOne =
+
+    exec(http("API_ET_SectionOne_GetEventToken")
+      .get(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/et1SectionOne/token")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionOne_ValidatePage1")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionOne1")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionOneValidate1.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionOne_ValidatePage2")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionOne2")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionOneValidate2.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionOne_ValidatePage3")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionOne3")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionOneValidate3.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionOne_ValidatePage4")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionOne4")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionOneValidate4.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionOne_ValidatePage5")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionOne5")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionOneValidate5.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionOne_ValidatePage6")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionOne6")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionOneValidate6.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionOne_ValidatePage7")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionOne7")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionOneValidate7.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionOne_Event")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionOne.json"))
+      .check(jsonPath("$.id").saveAs("caseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+  val CCDAPI_ET1CaseworkerSectionTwo =
+
+    exec(http("API_ET_SectionTwo_GetEventToken")
+      .get(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/et1SectionTwo/token")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionTwo_ValidatePage1")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionTwo1")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionTwoValidate1.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionTwo_ValidatePage2")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionTwo2")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionTwoValidate2.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionTwo_ValidatePage3")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionTwo3")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionTwoValidate3.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionTwo_ValidatePage4")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionTwo4")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionTwoValidate4.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionTwo_ValidatePage7")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionTwo7")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionTwoValidate7.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionTwo_ValidatePage8")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionTwo8")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionTwoValidate8.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionTwo_ValidatePage9")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionTwo9")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionTwoValidate9.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionTwo_ValidatePage10")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionTwo10")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionTwoValidate10.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionTwo_ValidatePage11")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionTwo11")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionTwoValidate11.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionTwo_ValidatePage12")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionTwo12")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionTwoValidate12.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionTwo_ValidatePage13")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionTwo13")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionTwoValidate13.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionTwo_ValidatePage14")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionTwo14")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionTwoValidate14.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionTwo_ValidatePage15")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionTwo15")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionTwoValidate15.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionTwo_ValidatePage17")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionTwo17")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionTwoValidate17.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionTwo_ValidatePage19")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionTwo19")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionTwoValidate19.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionTwo_Event")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionTwo.json"))
+      .check(jsonPath("$.id").saveAs("caseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+  val CCDAPI_ET1CaseworkerSectionThree =
+
+    exec(http("API_ET_SectionThree_GetEventToken")
+      .get(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/et1SectionThree/token")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionThree_ValidatePage1")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionThree1")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionThreeValidate1.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionThree_ValidatePage2")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionThree2")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionThreeValidate2.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionThree_ValidatePage3")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionThree3")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionThreeValidate3.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionThree_ValidatePage4")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionThree4")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionThreeValidate4.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionThree_ValidatePage5")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=et1SectionThree5")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionThreeValidate5.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_SectionThree_Event")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SectionThree.json"))
+      .check(jsonPath("$.id").saveAs("caseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+  val CCDAPI_ET1CaseworkerSubmit =
+
+    exec(http("API_ET_Submit_GetEventToken")
+      .get(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/submitEt1Draft/token")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_Submit_Validate")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/validate?pageId=submitEt1Draft1")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_SubmitValidate.json"))
+      .check(substring("submitEt1Confirmation")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_Submit_Event")
+      .post(ccdDataStoreUrl + "/caseworkers/#{idamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_Submit.json"))
+      .check(jsonPath("$.id").saveAs("caseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+  val CCDAPI_ETCitizenCreate =
+
+    exec(http("API_ET_Citizen_GetInitiateToken")
+      .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/event-triggers/INITIATE_CASE_DRAFT/token")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_Citizen_InitiateCase")
+      .post(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_CitizenInitiate.json"))
+      .check(jsonPath("$.id").saveAs("citizenCaseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+  val CCDAPI_ETCitizenUpdate =
+
+    exec(http("API_ET_Citizen_GetUpdateToken")
+      .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/event-triggers/UPDATE_CASE_DRAFT/token")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_Citizen_UpdateCase")
+      .post(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/events")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_CitizenUpdate.json"))
+      .check(jsonPath("$.id").saveAs("citizenCaseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+  val CCDAPI_ETCitizenSubmit =
+
+    exec(http("API_ET_Citizen_GetSubmitToken")
+      .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/event-triggers/SUBMIT_CASE_DRAFT/token")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_Citizen_SubmitCase")
+      .post(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/events")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_CitizenSubmit.json"))
+      .check(jsonPath("$.id").saveAs("citizenCaseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+  val CCDAPI_ETRespondentUpdate =
+
+    exec(http("API_ET_Respondent_GetUpdateEt3Token")
+      .get(ccdDataStoreUrl + "/citizens/#{respondentIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/UPDATE_ET3_FORM/token")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{respondentAccessToken}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_Respondent_UpdateEt3")
+      .post(ccdDataStoreUrl + "/citizens/#{respondentIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{respondentAccessToken}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_Et3Update.json"))
+      .check(jsonPath("$.id").saveAs("caseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+  val CCDAPI_ETRespondentSubmit =
+
+    exec(http("API_ET_Respondent_GetSubmitEt3Token")
+      .get(ccdDataStoreUrl + "/citizens/#{respondentIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/SUBMIT_ET3_FORM/token")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{respondentAccessToken}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_Respondent_SubmitEt3")
+      .post(ccdDataStoreUrl + "/citizens/#{respondentIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{respondentAccessToken}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_Et3Submit.json"))
+      .check(jsonPath("$.id").saveAs("caseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+  val CCDAPI_ETViewCase =
+
+    exec(http("CCD_ET_ViewCase")
+      .get(ccdDataStoreUrl + "/cases/#{caseId}")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .header("Experimental","true")
+      .check(jsonPath("$.id").is("#{caseId}")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+  val CCDAPI_ETGetEvents =
+
+    exec(http("CCD_ET_GetEvents")
+      .get(ccdDataStoreUrl + "/cases/#{caseId}/events")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type","application/json")
+      .header("Experimental","true")
+      .check(substring("auditEvents")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+  val CCDAPI_ETCitizenGetIdamToken =
+
+    exec(http("IDAM_ET_Citizen_GetToken")
+      .post(IdamLogin.IdamAPI + "/o/token?client_id=ccd_gateway&client_secret=" + IdamLogin.ccdGatewayClientSecret + "&grant_type=password&scope=" + ccdScope + "&username=#{citizenUsername}&password=#{citizenPassword}")
+      .header("Content-Type", "application/x-www-form-urlencoded")
+      .header("Content-Length", "0")
+      .check(status.is(200))
+      .check(jsonPath("$.access_token").saveAs("citizenAccessToken")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+  val CCDAPI_ETRespondentGetIdamToken =
+
+    exec(http("IDAM_ET_Respondent_GetToken")
+      .post(IdamLogin.IdamAPI + "/o/token?client_id=ccd_gateway&client_secret=" + IdamLogin.ccdGatewayClientSecret + "&grant_type=password&scope=" + ccdScope + "&username=#{respondentUsername}&password=#{respondentPassword}")
+      .header("Content-Type", "application/x-www-form-urlencoded")
+      .header("Content-Length", "0")
+      .check(status.is(200))
+      .check(jsonPath("$.access_token").saveAs("respondentAccessToken")))
+
+    .pause(Environment.constantthinkTime.seconds)
 
 }

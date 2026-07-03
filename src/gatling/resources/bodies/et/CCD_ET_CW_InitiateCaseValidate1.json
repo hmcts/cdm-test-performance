@@ -1,0 +1,21 @@
+{
+  "data": {
+    "receiptDate": "2025-01-01",
+    "managingOffice": "Leeds",
+    "multipleReference": null,
+    "leadClaimant": null
+  },
+  "event": {
+    "id": "initiateCase",
+    "summary": "",
+    "description": ""
+  },
+  "event_data": {
+    "receiptDate": "2025-01-01",
+    "managingOffice": "Leeds",
+    "multipleReference": null,
+    "leadClaimant": null
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}
