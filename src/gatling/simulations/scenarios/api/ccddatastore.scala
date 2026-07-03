@@ -1321,6 +1321,12 @@ object ccddatastore {
 
     .pause(Environment.constantthinkTime.seconds)
 
+    .exec(session => {
+      val caseId = session("caseId").asOption[String].getOrElse("NOT SET")
+      println(s"ET1 Caseworker case created - caseId: $caseId")
+      session
+    })
+
   val CCDAPI_ET1CaseworkerSectionOne =
 
     exec(http("API_ET_SectionOne_GetEventToken")
@@ -1685,7 +1691,7 @@ object ccddatastore {
 
     .pause(Environment.constantthinkTime.seconds)
 
-  val CCDAPI_ETCitizenCreate =
+  val CCDAPI_ET1CitizenCreate =
 
     exec(http("API_ET_Citizen_GetInitiateToken")
       .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/event-triggers/INITIATE_CASE_DRAFT/token")
@@ -1706,7 +1712,7 @@ object ccddatastore {
 
     .pause(Environment.constantthinkTime.seconds)
 
-  val CCDAPI_ETCitizenUpdate =
+  val CCDAPI_ET1CitizenUpdate =
 
     exec(http("API_ET_Citizen_GetUpdateToken")
       .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/event-triggers/UPDATE_CASE_DRAFT/token")
@@ -1727,7 +1733,7 @@ object ccddatastore {
 
     .pause(Environment.constantthinkTime.seconds)
 
-  val CCDAPI_ETCitizenSubmit =
+  val CCDAPI_ET1CitizenSubmit =
 
     exec(http("API_ET_Citizen_GetSubmitToken")
       .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/event-triggers/SUBMIT_CASE_DRAFT/token")
@@ -1748,42 +1754,42 @@ object ccddatastore {
 
     .pause(Environment.constantthinkTime.seconds)
 
-  val CCDAPI_ETRespondentUpdate =
+  val CCDAPI_ET3RespondentUpdate =
 
     exec(http("API_ET_Respondent_GetUpdateEt3Token")
-      .get(ccdDataStoreUrl + "/citizens/#{respondentIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/UPDATE_ET3_FORM/token")
+      .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/UPDATE_ET3_FORM/token")
       .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
-      .header("Authorization", "Bearer #{respondentAccessToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken")))
 
     .pause(Environment.constantthinkTime.seconds)
 
     .exec(http("API_ET_Respondent_UpdateEt3")
-      .post(ccdDataStoreUrl + "/citizens/#{respondentIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
+      .post(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
       .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
-      .header("Authorization", "Bearer #{respondentAccessToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
       .header("Content-Type","application/json")
       .body(ElFileBody("bodies/et/CCD_ET_Et3Update.json"))
       .check(jsonPath("$.id").saveAs("caseId")))
 
     .pause(Environment.constantthinkTime.seconds)
 
-  val CCDAPI_ETRespondentSubmit =
+  val CCDAPI_ET3RespondentSubmit =
 
     exec(http("API_ET_Respondent_GetSubmitEt3Token")
-      .get(ccdDataStoreUrl + "/citizens/#{respondentIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/SUBMIT_ET3_FORM/token")
+      .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/SUBMIT_ET3_FORM/token")
       .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
-      .header("Authorization", "Bearer #{respondentAccessToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken")))
 
     .pause(Environment.constantthinkTime.seconds)
 
     .exec(http("API_ET_Respondent_SubmitEt3")
-      .post(ccdDataStoreUrl + "/citizens/#{respondentIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
+      .post(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
       .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
-      .header("Authorization", "Bearer #{respondentAccessToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
       .header("Content-Type","application/json")
       .body(ElFileBody("bodies/et/CCD_ET_Et3Submit.json"))
       .check(jsonPath("$.id").saveAs("caseId")))
@@ -1822,17 +1828,6 @@ object ccddatastore {
       .header("Content-Length", "0")
       .check(status.is(200))
       .check(jsonPath("$.access_token").saveAs("citizenAccessToken")))
-
-    .pause(Environment.constantthinkTime.seconds)
-
-  val CCDAPI_ETRespondentGetIdamToken =
-
-    exec(http("IDAM_ET_Respondent_GetToken")
-      .post(IdamLogin.IdamAPI + "/o/token?client_id=ccd_gateway&client_secret=" + IdamLogin.ccdGatewayClientSecret + "&grant_type=password&scope=" + ccdScope + "&username=#{respondentUsername}&password=#{respondentPassword}")
-      .header("Content-Type", "application/x-www-form-urlencoded")
-      .header("Content-Length", "0")
-      .check(status.is(200))
-      .check(jsonPath("$.access_token").saveAs("respondentAccessToken")))
 
     .pause(Environment.constantthinkTime.seconds)
 

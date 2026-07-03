@@ -39,6 +39,7 @@ class CCD_PerformanceRegression extends Simulation  {
   val nfdTargetPerHour:Double = 800
   val stTargetPerHour:Double = 800
   val etCaseworkerTargetPerHour:Double = 200
+  val etCitizenTargetPerHour:Double = 200
   val caseActivityTargetPerHour:Double = 850000
   val caseActivityRepeatsPerUser = 8500 //850
   val caseActivityListTargetPerHour:Double = 90000
@@ -86,6 +87,7 @@ class CCD_PerformanceRegression extends Simulation  {
   val feedNFDUserData = csv("NFDUserData.csv").circular
   val feedSTUserData = csv("STUserData.csv").circular
   val feedETUserData = csv("ETUserData.csv").circular
+  val feedETCitizenData = csv("ETCitizenData.csv").circular
   val feedCMCCaseData = csv("CMCCaseData.csv").circular
   val feedJurisdictions = csv("Jurisdictions.csv").random
 
@@ -202,6 +204,17 @@ class CCD_PerformanceRegression extends Simulation  {
       .feed(feedETUserData)
       .exec(IdamLogin.GetIdamToken)
       .exec(ccddatastore.CCDAPI_ET1CaseworkerCreate)
+    }
+
+  val API_ET1CitizenCreate = scenario("ET1 Citizen Create Case")
+    .exitBlockOnFail {
+      exec(_.set("env", s"${env}"))
+      .exec(S2S.s2s("ccd_data"))
+      .feed(feedETCitizenData)
+      .exec(ccddatastore.CCDAPI_ETCitizenGetIdamToken)
+      .exec(ccddatastore.CCDAPI_ET1CitizenCreate)
+      .exec(ccddatastore.CCDAPI_ET1CitizenUpdate)
+      .exec(ccddatastore.CCDAPI_ET1CitizenSubmit)
     }
 
   //CCD Case Activity Requests
@@ -361,19 +374,20 @@ class CCD_PerformanceRegression extends Simulation  {
 
 	setUp(
      //simulation for cdm-test-performance repo
-      API_STCreateCase.inject(simulationProfile(testType, stTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      //API_STCreateCase.inject(simulationProfile(testType, stTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       API_ET1CaseworkerCreate.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      API_FPLCreateCase.inject(simulationProfile(testType, fplTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      CaseActivityListScn.inject(simulationProfile(testType, caseActivityUsers, numberOfPipelineUsers)).pauses(pauseOption),
-      CaseActivityScn.inject(simulationProfile(testType, caseActivityUsers, numberOfPipelineUsers)).pauses(pauseOption),
-      CCDSearchView.inject(simulationProfile(testType, searchUsers, numberOfPipelineUsers)).pauses(pauseOption),
-      CCDElasticSearch.inject(simulationProfile(testType, esUsers, numberOfPipelineUsers)).pauses(pauseOption),
-      CaseFileView.inject(simulationProfile(testType, caseFileViewTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+     // API_ET1CitizenCreate.inject(simulationProfile(testType, etCitizenTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+     // API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+     // API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+     // API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+     // API_FPLCreateCase.inject(simulationProfile(testType, fplTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+     // CaseActivityListScn.inject(simulationProfile(testType, caseActivityUsers, numberOfPipelineUsers)).pauses(pauseOption),
+     // CaseActivityScn.inject(simulationProfile(testType, caseActivityUsers, numberOfPipelineUsers)).pauses(pauseOption),
+     // CCDSearchView.inject(simulationProfile(testType, searchUsers, numberOfPipelineUsers)).pauses(pauseOption),
+     // CCDElasticSearch.inject(simulationProfile(testType, esUsers, numberOfPipelineUsers)).pauses(pauseOption),
+     //CaseFileView.inject(simulationProfile(testType, caseFileViewTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       // CaseFileView5and2.inject(simulationProfile(testType, caseFileViewTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      DefinitionStore.inject(simulationProfile(testType, definitionStoreUsers, numberOfPipelineUsers)).pauses(pauseOption),
+     // DefinitionStore.inject(simulationProfile(testType, definitionStoreUsers, numberOfPipelineUsers)).pauses(pauseOption),
 
       // DefinitionStoreUserRoles.inject(simulationProfile(testType, definitionStoreUsers, numberOfPipelineUsers)).pauses(pauseOption)
 
