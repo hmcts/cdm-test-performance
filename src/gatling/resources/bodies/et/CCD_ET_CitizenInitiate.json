@@ -1,0 +1,33 @@
+{
+  "data": {
+    "caseType": "Single",
+    "claimantRepresentedQuestion": "No",
+    "typesOfClaim": ["discrimination"],
+    "caseSource": "ET1 Online",
+    "claimant_TypeOfClaimant": "Individual",
+    "claimantIndType": {
+      "claimant_first_names": "Perf",
+      "claimant_last_name": "Citizen"
+    },
+    "claimantType": {
+      "claimant_email_address": "#{citizenUsername}"
+    },
+    "claimantRequests": {
+      "other_claim": null
+    },
+    "triageQuestions": {
+      "claimJurisdiction": "#{Jurisdiction}",
+      "claimantRepresentedQuestion": "No",
+      "caseType": "Single",
+      "acasMultiple": "Yes",
+      "typesOfClaim": ["discrimination"]
+    }
+  },
+  "event": {
+    "id": "INITIATE_CASE_DRAFT",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}

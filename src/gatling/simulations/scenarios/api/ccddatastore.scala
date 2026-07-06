@@ -1714,28 +1714,155 @@ object ccddatastore {
 
   val CCDAPI_ET1CitizenUpdate =
 
-    exec(http("API_ET_Citizen_GetUpdateToken")
+    // S1: personal info (DOB, address, phone)
+    exec(http("API_ET_Citizen_GetUpdateToken_S1_PersonalInfo")
       .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/event-triggers/UPDATE_CASE_DRAFT/token")
       .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
       .header("Authorization", "Bearer #{citizenAccessToken}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken")))
 
-    .pause(Environment.constantthinkTime.seconds)
-
-    .exec(http("API_ET_Citizen_UpdateCase")
+    .exec(http("API_ET_Citizen_Update_S1_PersonalInfo")
       .post(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/events")
       .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
       .header("Authorization", "Bearer #{citizenAccessToken}")
       .header("Content-Type","application/json")
-      .body(ElFileBody("bodies/et/CCD_ET_CitizenUpdate.json"))
+      .body(ElFileBody("bodies/et/CCD_ET_Citizen_S1_PersonalInfo.json"))
+      .check(jsonPath("$.id").saveAs("citizenCaseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    // S1: contact preferences, hearing preferences, reasonable adjustments
+    .exec(http("API_ET_Citizen_GetUpdateToken_S1_ContactPrefs")
+      .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/event-triggers/UPDATE_CASE_DRAFT/token")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .exec(http("API_ET_Citizen_Update_S1_ContactPrefs")
+      .post(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/events")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_Citizen_S1_ContactPrefs.json"))
+      .check(jsonPath("$.id").saveAs("citizenCaseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    // S1: section check
+    .exec(http("API_ET_Citizen_GetUpdateToken_S1_Check")
+      .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/event-triggers/UPDATE_CASE_DRAFT/token")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .exec(http("API_ET_Citizen_Update_S1_Check")
+      .post(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/events")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_Citizen_S1_Check.json"))
+      .check(jsonPath("$.id").saveAs("citizenCaseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    // S2: employment details
+    .exec(http("API_ET_Citizen_GetUpdateToken_S2_Employment")
+      .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/event-triggers/UPDATE_CASE_DRAFT/token")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .exec(http("API_ET_Citizen_Update_S2_Employment")
+      .post(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/events")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_Citizen_S2_Employment.json"))
+      .check(jsonPath("$.id").saveAs("citizenCaseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    // S2: respondent details
+    .exec(http("API_ET_Citizen_GetUpdateToken_S2_Respondent")
+      .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/event-triggers/UPDATE_CASE_DRAFT/token")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .exec(http("API_ET_Citizen_Update_S2_Respondent")
+      .post(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/events")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_Citizen_S2_Respondent.json"))
+      .check(jsonPath("$.id").saveAs("citizenCaseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    // S2: section check
+    .exec(http("API_ET_Citizen_GetUpdateToken_S2_Check")
+      .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/event-triggers/UPDATE_CASE_DRAFT/token")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .exec(http("API_ET_Citizen_Update_S2_Check")
+      .post(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/events")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_Citizen_S2_Check.json"))
+      .check(jsonPath("$.id").saveAs("citizenCaseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    // S3: claim details
+    .exec(http("API_ET_Citizen_GetUpdateToken_S3_Claim")
+      .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/event-triggers/UPDATE_CASE_DRAFT/token")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .exec(http("API_ET_Citizen_Update_S3_Claim")
+      .post(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/events")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_Citizen_S3_Claim.json"))
+      .check(jsonPath("$.id").saveAs("citizenCaseId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    // S3: section check
+    .exec(http("API_ET_Citizen_GetUpdateToken_S3_Check")
+      .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/event-triggers/UPDATE_CASE_DRAFT/token")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
+      .header("Content-Type","application/json")
+      .check(jsonPath("$.token").saveAs("eventToken")))
+
+    .exec(http("API_ET_Citizen_Update_S3_Check")
+      .post(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/events")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
+      .header("Content-Type","application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_Citizen_S3_Check.json"))
       .check(jsonPath("$.id").saveAs("citizenCaseId")))
 
     .pause(Environment.constantthinkTime.seconds)
 
   val CCDAPI_ET1CitizenSubmit =
 
-    exec(http("API_ET_Citizen_GetSubmitToken")
+    exec(_.set("currentDate", now.format(patternDate)))
+
+    .exec(http("API_ET_Citizen_GetSubmitToken")
       .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/event-triggers/SUBMIT_CASE_DRAFT/token")
       .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
       .header("Authorization", "Bearer #{citizenAccessToken}")

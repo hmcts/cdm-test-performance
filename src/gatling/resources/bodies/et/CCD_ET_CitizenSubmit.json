@@ -1,0 +1,115 @@
+{
+  "data": {
+    "caseType": "Single",
+    "claimantRepresentedQuestion": "No",
+    "typesOfClaim": ["discrimination"],
+    "caseSource": "ET1 Online",
+    "claimant_TypeOfClaimant": "Individual",
+    "claimantIndType": {
+      "claimant_first_names": "Perf",
+      "claimant_last_name": "Citizen",
+      "claimant_date_of_birth": "1980-11-11"
+    },
+    "claimantType": {
+      "claimant_email_address": "#{citizenUsername}",
+      "claimant_phone_number": "07889998998",
+      "claimant_contact_preference": "Post",
+      "claimant_addressUK": {
+        "AddressLine1": "43b, Theobald Street",
+        "AddressLine2": "",
+        "PostTown": "Borehamwood",
+        "Country": "England",
+        "PostCode": "WD6 4RT"
+      }
+    },
+    "claimantHearingPreference": {
+      "contact_language": "English",
+      "hearing_language": "English",
+      "hearing_preferences": ["Video", "Phone"],
+      "hearing_assistance": "",
+      "reasonable_adjustments": "No",
+      "reasonable_adjustments_detail": null
+    },
+    "claimantOtherType": {
+      "pastEmployer": "Yes",
+      "stillWorking": "No longer working",
+      "claimant_occupation": "Performance Test Job",
+      "claimant_employed_from": "2010-12-11",
+      "claimant_employed_to": "2015-12-11",
+      "claimant_notice_period": "Yes",
+      "claimant_notice_period_unit": "Months",
+      "claimant_notice_period_duration": "8",
+      "claimant_average_weekly_hours": 40,
+      "claimant_pay_before_tax": 55000,
+      "claimant_pay_after_tax": 40000,
+      "claimant_pay_cycle": "Annual",
+      "claimant_pension_contribution": "No",
+      "claimant_pension_weekly_contribution": null,
+      "claimant_benefits": "No",
+      "claimant_benefits_detail": null,
+      "claimant_employed_notice_period": null
+    },
+    "newEmploymentType": {
+      "new_job": "No",
+      "newly_employed_from": null,
+      "new_pay_before_tax": null,
+      "new_job_pay_interval": null
+    },
+    "claimantRequests": {
+      "other_claim": null,
+      "discrimination_claims": ["Age", "Race", "Sex"],
+      "claim_description": "Test claim free text add a load of text here in the script",
+      "claim_outcome": ["compensation"],
+      "claimant_compensation_text": "Full apology and payment for dismissal and time off work",
+      "claimant_compensation_amount": 20000,
+      "linked_cases": "No",
+      "linked_cases_detail": null
+    },
+    "claimantTaskListChecks": {
+      "personalDetailsCheck": "Yes",
+      "employmentAndRespondentCheck": "Yes",
+      "claimDetailsCheck": "Yes"
+    },
+    "respondentCollection": [
+      {
+        "value": {
+          "respondent_name": "PerfTest Respondo",
+          "respondent_address": {
+            "AddressLine1": "Smilewell Dental Practice",
+            "AddressLine2": "",
+            "PostTown": "Borehamwood",
+            "Country": "England",
+            "PostCode": "WD6 4RT"
+          },
+          "respondent_ACAS_question": "Yes",
+          "respondent_ACAS": "R807115/23/89",
+          "respondent_ACAS_no": null
+        }
+      }
+    ],
+    "claimantWorkAddressQuestion": "Yes",
+    "claimantWorkAddress": {
+      "claimant_work_address": {
+        "AddressLine1": "Smilewell Dental Practice",
+        "AddressLine2": "",
+        "PostTown": "Borehamwood",
+        "Country": "England",
+        "PostCode": "WD6 4RT"
+      }
+    },
+    "managingOffice": "Unassigned",
+    "receiptDate": "#{currentDate}",
+    "feeGroupReference": "#{citizenCaseId}",
+    "positionType": "ET1 Online submission",
+    "et1OnlineSubmission": "Yes",
+    "ClaimantPcqId": "",
+    "hubLinksStatuses": null
+  },
+  "event": {
+    "id": "SUBMIT_CASE_DRAFT",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}

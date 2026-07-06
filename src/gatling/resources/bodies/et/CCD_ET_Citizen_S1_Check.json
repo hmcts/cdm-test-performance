@@ -1,0 +1,52 @@
+{
+  "data": {
+    "caseType": "Single",
+    "claimantRepresentedQuestion": "No",
+    "typesOfClaim": ["discrimination"],
+    "caseSource": "ET1 Online",
+    "claimant_TypeOfClaimant": "Individual",
+    "claimantIndType": {
+      "claimant_first_names": "Perf",
+      "claimant_last_name": "Citizen",
+      "claimant_date_of_birth": "1980-11-11"
+    },
+    "claimantType": {
+      "claimant_email_address": "#{citizenUsername}",
+      "claimant_phone_number": "07889998998",
+      "claimant_contact_preference": "Post",
+      "claimant_addressUK": {
+        "AddressLine1": "43b, Theobald Street",
+        "AddressLine2": "",
+        "PostTown": "Borehamwood",
+        "Country": "England",
+        "PostCode": "WD6 4RT"
+      }
+    },
+    "claimantHearingPreference": {
+      "contact_language": "English",
+      "hearing_language": "English",
+      "hearing_preferences": ["Video", "Phone"],
+      "hearing_assistance": "",
+      "reasonable_adjustments": "No",
+      "reasonable_adjustments_detail": null
+    },
+    "claimantOtherType": {},
+    "newEmploymentType": {},
+    "claimantRequests": {
+      "other_claim": null
+    },
+    "claimantTaskListChecks": {
+      "personalDetailsCheck": "Yes"
+    },
+    "respondentCollection": [],
+    "claimantWorkAddressQuestion": null,
+    "hubLinksStatuses": null
+  },
+  "event": {
+    "id": "UPDATE_CASE_DRAFT",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}
