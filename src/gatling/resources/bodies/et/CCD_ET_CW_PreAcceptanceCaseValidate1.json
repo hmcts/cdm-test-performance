@@ -1,0 +1,21 @@
+{
+  "data": {
+    "preAcceptCase": {
+      "caseAccepted": "Yes",
+      "dateAccepted": "#{claimAcceptedDate}"
+    }
+  },
+  "event_data": {
+    "preAcceptCase": {
+      "caseAccepted": "Yes",
+      "dateAccepted": "#{claimAcceptedDate}"
+    }
+  },
+  "event": {
+    "id": "preAcceptanceCase",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}

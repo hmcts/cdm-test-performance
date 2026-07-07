@@ -1,0 +1,21 @@
+{
+  "data": {
+    "correspondenceType": {
+      "topLevel_Documents": "EM-TRB-EGW-ENG-00031",
+      "Part_6_Documents": "6.2"
+    }
+  },
+  "event_data": {
+    "correspondenceType": {
+      "topLevel_Documents": "EM-TRB-EGW-ENG-00031",
+      "Part_6_Documents": "6.2"
+    }
+  },
+  "event": {
+    "id": "generateCorrespondence",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}

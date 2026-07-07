@@ -1,0 +1,40 @@
+{
+  "data": {
+    "isLocationCorrect": "Yes",
+    "et1LocationGeneralNotes": null
+  },
+  "event_data": {
+    "et1VettingBeforeYouStart": "Perf test vetting",
+    "et1VettingClaimantDetailsMarkUp": "<h3>Perf Test Claimant</h3>",
+    "et1VettingRespondentDetailsMarkUp": "<h3>Perf Test Respondent</h3>",
+    "et1VettingCanServeClaimYesOrNo": "Yes",
+    "et1VettingCanServeClaimGeneralNote": "Perf test general note",
+    "et1VettingRespondentAcasDetails1": "<h3>Respondent 1</h3><p>Acas certificate R807115/23/89 provided.</p>",
+    "et1VettingAcasCertIsYesOrNo1": "Yes",
+    "et1VettingRespondentAcasDetails2": null,
+    "et1VettingRespondentAcasDetails3": null,
+    "et1VettingRespondentAcasDetails4": null,
+    "et1VettingRespondentAcasDetails5": null,
+    "et1VettingRespondentAcasDetails6": null,
+    "et1VettingAcasCertGeneralNote": "Perf test Acas note",
+    "substantiveDefectsList": [],
+    "et1SubstantiveDefectsGeneralNotes": null,
+    "existingJurisdictionCodes": "<h3>Jurisdiction Codes</h3><h4>RRD</h4>Race<h4>PID</h4>Public Interest Disclosure<h4>DAG</h4>Age<h4>SXD</h4>Sex",
+    "areTheseCodesCorrect": "Yes",
+    "vettingJurisdictionCodeCollection": [],
+    "et1JurisdictionCodeGeneralNotes": null,
+    "trackType": "Open",
+    "trackAllocation": "|||\r\n|--|--|\r\n|Track allocation|Open|",
+    "isTrackAllocationCorrect": "Yes",
+    "trackAllocationGeneralNotes": null,
+    "isLocationCorrect": "Yes",
+    "et1LocationGeneralNotes": null
+  },
+  "event": {
+    "id": "et1Vetting",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}

@@ -1,0 +1,38 @@
+{
+  "data": {
+    "correspondenceType": {
+      "topLevel_Documents": "EM-TRB-EGW-ENG-00031",
+      "part_0_Documents": null,
+      "part_1_Documents": null,
+      "part_2_Documents": null,
+      "part_3_Documents": null,
+      "part_4_Documents": null,
+      "part_5_Documents": null,
+      "Part_6_Documents": "6.2",
+      "Part_7_Documents": null,
+      "Part_8_Documents": null,
+      "Part_9_Documents": null,
+      "Part_10_Documents": null,
+      "Part_11_Documents": null,
+      "Part_12_Documents": null,
+      "Part_13_Documents": null,
+      "Part_14_Documents": null,
+      "Part_15_Documents": null,
+      "Part_16_Documents": null,
+      "Part_17_Documents": null,
+      "Part_18_Documents": null,
+      "hearingNumber": null,
+      "dynamicHearingNumber": null,
+      "Part_20_Documents": null,
+      "dynamicRespondentsWithEcc": null,
+      "flipRespondentAndClaimantValues": null
+    }
+  },
+  "event": {
+    "id": "generateCorrespondence",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}

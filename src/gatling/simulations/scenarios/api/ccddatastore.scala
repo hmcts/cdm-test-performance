@@ -1327,6 +1327,250 @@ object ccddatastore {
       session
     })
 
+  val CCDAPI_ET1CaseworkerVetting =
+
+    exec(http("API_ET_CW_Et1Vetting_GetEventToken")
+      .get(ccdDataStoreUrl + "/internal/cases/#{caseId}/event-triggers/et1Vetting?ignore-warning=false")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .check(jsonPath("$.event_token").saveAs("eventToken")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_Et1Vetting_Validate1")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=et1Vetting1")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_Et1VettingValidate1.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_Et1Vetting_Validate2")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=et1Vetting2")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_Et1VettingValidate2.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_Et1Vetting_Validate3")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=et1Vetting3")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_Et1VettingValidate3.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_Et1Vetting_Validate4")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=et1Vetting4")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_Et1VettingValidate4.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_Et1Vetting_Validate5")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=et1Vetting5")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_Et1VettingValidate5.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_Et1Vetting_Validate6")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=et1Vetting6")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_Et1VettingValidate6.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_Et1Vetting_Validate7")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=et1Vetting7")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_Et1VettingValidate7.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_Et1Vetting_Validate8")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=et1Vetting8")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_Et1VettingValidate8.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_Et1Vetting_Validate9")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=et1Vetting9")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_Et1VettingValidate9.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_Et1Vetting_Validate10")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=et1Vetting10")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_Et1VettingValidate10.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_Et1Vetting_Validate11")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=et1Vetting11")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_Et1VettingValidate11.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_Et1Vetting_Validate12")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=et1Vetting12")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_Et1VettingValidate12.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_Et1Vetting_Validate13")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=et1Vetting13")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_Et1VettingValidate13.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_Et1Vetting_Event")
+      .post(ccdDataStoreUrl + "/cases/#{caseId}/events?ignore-warning=false")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_Et1Vetting.json"))
+      .check(jsonPath("$.state").is("Vetted")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+  val CCDAPI_ET1CaseworkerAcceptCase =
+
+    exec(_.set("claimAcceptedDate", now.format(patternDate)))
+
+    .exec(http("API_ET_CW_PreAcceptance_GetEventToken")
+      .get(ccdDataStoreUrl + "/internal/cases/#{caseId}/event-triggers/preAcceptanceCase?ignore-warning=false")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .check(jsonPath("$.event_token").saveAs("eventToken")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_PreAcceptance_Validate1")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=preAcceptanceCase1")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_PreAcceptanceCaseValidate1.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_PreAcceptance_Event")
+      .post(ccdDataStoreUrl + "/cases/#{caseId}/events?ignore-warning=false")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_PreAcceptanceCase.json"))
+      .check(jsonPath("$.state").is("Accepted")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+  val CCDAPI_ET1CaseworkerGenerateCorrespondence =
+
+    exec(http("API_ET_CW_GenerateCorrespondence_GetEventToken")
+      .get(ccdDataStoreUrl + "/internal/cases/#{caseId}/event-triggers/generateCorrespondence?ignore-warning=false")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .check(jsonPath("$.event_token").saveAs("eventToken")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_GenerateCorrespondence_Validate1")
+      .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=generateCorrespondence1")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_GenerateCorrespondenceValidate1.json"))
+      .check(substring("data")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(http("API_ET_CW_GenerateCorrespondence_Event")
+      .post(ccdDataStoreUrl + "/cases/#{caseId}/events?ignore-warning=false")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .header("experimental", "true")
+      .body(ElFileBody("bodies/et/CCD_ET_CW_GenerateCorrespondence.json"))
+      .check(jsonPath("$.state").is("Accepted"))
+      .check(jsonPath("$.data.ethosCaseReference").saveAs("ethosId")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+    .exec(session => {
+      val ethosId = session("ethosId").asOption[String].getOrElse("NOT SET")
+      val caseId  = session("caseId").asOption[String].getOrElse("NOT SET")
+      println(s"ET1 case progression complete - ethosId: $ethosId, caseId: $caseId")
+      session
+    })
+
   val CCDAPI_ET1CaseworkerSectionOne =
 
     exec(http("API_ET_SectionOne_GetEventToken")

@@ -1,0 +1,22 @@
+{
+  "data": {
+    "et1VettingClaimantDetailsMarkUp": "<h3>Perf Test Claimant</h3>",
+    "et1VettingRespondentDetailsMarkUp": "<h3>Perf Test Respondent</h3>",
+    "et1VettingCanServeClaimYesOrNo": "Yes",
+    "et1VettingCanServeClaimGeneralNote": "Perf test general note"
+  },
+  "event_data": {
+    "et1VettingBeforeYouStart": "Perf test vetting",
+    "et1VettingClaimantDetailsMarkUp": "<h3>Perf Test Claimant</h3>",
+    "et1VettingRespondentDetailsMarkUp": "<h3>Perf Test Respondent</h3>",
+    "et1VettingCanServeClaimYesOrNo": "Yes",
+    "et1VettingCanServeClaimGeneralNote": "Perf test general note"
+  },
+  "event": {
+    "id": "et1Vetting",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}
