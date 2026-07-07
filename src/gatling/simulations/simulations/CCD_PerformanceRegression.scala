@@ -197,13 +197,16 @@ class CCD_PerformanceRegression extends Simulation  {
         .exec(ccddatastore.CCDAPI_SpecialTribunalsGetEvents)
     }
 
-  val API_ET1CaseworkerCreate = scenario("ET1 Caseworker Create Case")
+  val API_ET1CaseworkerCreateAndProgress = scenario("ET1 Caseworker Create and Progress Case")
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
       .exec(S2S.s2s("ccd_data"))
       .feed(feedETUserData)
       .exec(IdamLogin.GetIdamToken)
       .exec(ccddatastore.CCDAPI_ET1CaseworkerCreate)
+      .exec(ccddatastore.CCDAPI_ET1CaseworkerVetting)
+      .exec(ccddatastore.CCDAPI_ET1CaseworkerAcceptCase)
+      .exec(ccddatastore.CCDAPI_ET1CaseworkerGenerateCorrespondence)
     }
 
   val API_ET1CitizenCreate = scenario("ET1 Citizen Create Case")
@@ -375,7 +378,7 @@ class CCD_PerformanceRegression extends Simulation  {
 	setUp(
      //simulation for cdm-test-performance repo
       //API_STCreateCase.inject(simulationProfile(testType, stTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      API_ET1CaseworkerCreate.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      API_ET1CaseworkerCreateAndProgress.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
      // API_ET1CitizenCreate.inject(simulationProfile(testType, etCitizenTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
      // API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
      // API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
