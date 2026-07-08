@@ -88,6 +88,7 @@ class CCD_PerformanceRegression extends Simulation  {
   val feedSTUserData = csv("STUserData.csv").circular
   val feedETUserData = csv("ETUserData.csv").circular
   val feedETCitizenData = csv("ETCitizenData.csv").circular
+  val feedETRespondentData = csv("ETRespondentData").circular
   val feedCMCCaseData = csv("CMCCaseData.csv").circular
   val feedJurisdictions = csv("Jurisdictions.csv").random
 
@@ -218,6 +219,18 @@ class CCD_PerformanceRegression extends Simulation  {
       .exec(ccddatastore.CCDAPI_ET1CitizenCreate)
       .exec(ccddatastore.CCDAPI_ET1CitizenUpdate)
       .exec(ccddatastore.CCDAPI_ET1CitizenSubmit)
+    }
+
+  val API_ET3CitizenRespondent = scenario("ET3 Citizen Respondent")
+    .exitBlockOnFail {
+      exec(_.set("env", s"${env}"))
+      .exec(S2S.s2s("ccd_data"))
+      .feed(feedETCitizenData)
+      .feed(feedETRespondentData)
+      .exec(ccddatastore.CCDAPI_ETCitizenGetIdamToken)
+      .exec(ccddatastore.CCDAPI_ET3SelfAssign)
+      .exec(ccddatastore.CCDAPI_ET3RespondentUpdate)
+      .exec(ccddatastore.CCDAPI_ET3RespondentSubmit)
     }
 
   //CCD Case Activity Requests
