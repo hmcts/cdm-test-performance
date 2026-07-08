@@ -88,7 +88,7 @@ class CCD_PerformanceRegression extends Simulation  {
   val feedSTUserData = csv("STUserData.csv").circular
   val feedETUserData = csv("ETUserData.csv").circular
   val feedETCitizenData = csv("ETCitizenData.csv").circular
-  val feedETRespondentData = csv("ETRespondentData").circular
+  val feedETRespondentData = csv("ETRespondentData.csv").circular
   val feedCMCCaseData = csv("CMCCaseData.csv").circular
   val feedJurisdictions = csv("Jurisdictions.csv").random
 
@@ -215,7 +215,7 @@ class CCD_PerformanceRegression extends Simulation  {
       exec(_.set("env", s"${env}"))
       .exec(S2S.s2s("ccd_data"))
       .feed(feedETCitizenData)
-      .exec(ccddatastore.CCDAPI_ETCitizenGetIdamToken)
+      .exec(IdamLogin.GetIdamToken)
       .exec(ccddatastore.CCDAPI_ET1CitizenCreate)
       .exec(ccddatastore.CCDAPI_ET1CitizenUpdate)
       .exec(ccddatastore.CCDAPI_ET1CitizenSubmit)
@@ -225,9 +225,10 @@ class CCD_PerformanceRegression extends Simulation  {
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
       .exec(S2S.s2s("ccd_data"))
+      .exec(S2S.s2s("aac_manage_case_assignment"))
       .feed(feedETCitizenData)
       .feed(feedETRespondentData)
-      .exec(ccddatastore.CCDAPI_ETCitizenGetIdamToken)
+      .exec(IdamLogin.GetIdamToken)
       .exec(ccddatastore.CCDAPI_ET3SelfAssign)
       .exec(ccddatastore.CCDAPI_ET3RespondentUpdate)
       .exec(ccddatastore.CCDAPI_ET3RespondentSubmit)
@@ -391,7 +392,8 @@ class CCD_PerformanceRegression extends Simulation  {
 	setUp(
      //simulation for cdm-test-performance repo
       //API_STCreateCase.inject(simulationProfile(testType, stTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      API_ET1CaseworkerCreateAndProgress.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      //API_ET1CaseworkerCreateAndProgress.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      API_ET3CitizenRespondent.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
      // API_ET1CitizenCreate.inject(simulationProfile(testType, etCitizenTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
      // API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
      // API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),

@@ -1,4 +1,4 @@
-citizenUsername,citizenPassword,citizenIdamId,caseId,Jurisdiction,CaseType
-ET.Citizen67@testmail.com,Adventure2023,1ca3dfe8-b26e-418c-b46c-ed7a4d478bcd,PLACEHOLDER_CASE_ID_001,ET_EnglandWales
+Username,Password,citizenIdamId,caseId,ethosId,Jurisdiction,CaseType,RespondentName,ClaimantFirstName,ClaimantLastName
+ET.Citizen82@testmail.com,Adventure2023,6c02a4c8-edda-4c68-9a69-d507dd5f802d,1783524162684807,6012465/2026,EMPLOYMENT,ET_EnglandWales,Perf Test Respondent,Perf,Claimant
 ET_RespondentPerftest_001@justice.gov.uk,Password12,PLACEHOLDER_RESPONDENT_IDAM_ID_001,PLACEHOLDER_CASE_ID_001,EMPLOYMENT,ET_EnglandWales
 ET_RespondentPerftest_002@justice.gov.uk,Password12,PLACEHOLDER_RESPONDENT_IDAM_ID_002,PLACEHOLDER_CASE_ID_002,EMPLOYMENT,ET_EnglandWales
