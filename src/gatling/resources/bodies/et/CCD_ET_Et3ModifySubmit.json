@@ -1,0 +1,48 @@
+{
+  "caseSubmissionReference": "#{caseId}",
+  "requestType": "submit",
+  "caseTypeId": "#{CaseType}",
+  "caseDetailsLinksSectionId": "respondentResponse",
+  "caseDetailsLinksSectionStatus": "submitted",
+  "responseHubLinksSectionId": "checkYorAnswers",
+  "responseHubLinksSectionStatus": "completed",
+  "respondent": {
+    "id": "#{respondentCollectionId}",
+    "value": {
+      "idamId": "#{citizenIdamId}",
+      "respondentName": "#{RespondentName}",
+      "respondentOrganisationName": "#{RespondentName}",
+      "respondentAddress": {
+        "AddressLine1": "Cookridge Court",
+        "AddressLine2": "Iveson Rise",
+        "AddressLine3": "",
+        "PostTown": "Leeds",
+        "County": "",
+        "PostCode": "LS16 6NB",
+        "Country": "United Kingdom"
+      },
+      "responseRespondentPhone1": "01132000000",
+      "responseRespondentContactPreference": "Email",
+      "et3ResponseRespondentEmployerType": "Limited company",
+      "et3ResponseHearingRespondent": ["Phone hearings", "Video hearings"],
+      "et3ResponseRespondentSupportNeeded": "No",
+      "et3ResponseEmploymentCount": "",
+      "et3ResponseMultipleSites": "No",
+      "et3ResponseAcasAgree": "No",
+      "et3ResponseAcasAgreeReason": "Performance test disagreement for the Acas conciliation details given",
+      "et3ResponseAreDatesCorrect": "Yes",
+      "et3ResponseContinuingEmployment": "Yes",
+      "et3ResponseIsJobTitleCorrect": "Yes",
+      "et3ResponseClaimantWeeklyHours": "Yes",
+      "et3ResponseEarningDetailsCorrect": "Yes",
+      "et3ResponseIsNoticeCorrect": "Yes",
+      "et3ResponseIsPensionCorrect": "Yes",
+      "et3ResponseRespondentContestClaim": "Yes",
+      "et3ResponseContestClaimDetails": "Performance test respondent is not liable for the claim",
+      "et3ResponseEmployerClaim": "No",
+      "personalDetailsSection": "Yes",
+      "employmentDetailsSection": "Yes",
+      "claimDetailsSection": "Yes"
+    }
+  }
+}

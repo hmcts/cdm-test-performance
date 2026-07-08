@@ -1,0 +1,54 @@
+{
+  "data": {
+    "didClaimantWorkForOrg": [
+      "Yes"
+    ],
+    "claimantStillWorking": [
+      "No longer working"
+    ],
+    "claimantJobTitle": null,
+    "claimantStartDate": null,
+    "claimantEndDate": null,
+    "claimantNoLongerWorkingQuestion": [],
+    "claimantAverageWeeklyWorkHours": "35",
+    "claimantPayBeforeTax": "100",
+    "claimantPayAfterTax": "100",
+    "claimantPayType": [],
+    "claimantPensionContribution": [
+      "Yes"
+    ],
+    "claimantWeeklyPension": null,
+    "claimantEmployeeBenefits": [
+      "Yes"
+    ],
+    "claimantBenefits": "Performance test benefits",
+    "claimantNewJob": [
+      "Yes"
+    ],
+    "claimantNewJobStartDate": null,
+    "claimantNewJobPayBeforeTax": null,
+    "claimantNewJobPayPeriod": [],
+    "respondentType": "Organisation",
+    "respondentOrganisationName": "Perf Test Respondent Ltd",
+    "respondentAddress": {
+      "AddressLine1": "Cookridge Court",
+      "AddressLine2": "Iveson Rise",
+      "AddressLine3": "",
+      "PostTown": "Leeds",
+      "County": "",
+      "PostCode": "LS16 6NB",
+      "Country": "United Kingdom"
+    },
+    "didClaimantWorkAtSameAddress": "Yes",
+    "respondentAcasYesNo": "Yes",
+    "respondentAcasNumber": "R888888/11/11",
+    "addAdditionalRespondent": "No"
+  },
+  "event": {
+    "id": "et1SectionTwo",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}

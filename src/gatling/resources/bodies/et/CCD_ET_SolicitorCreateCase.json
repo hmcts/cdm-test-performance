@@ -1,0 +1,21 @@
+{
+  "data": {
+    "et1ReppedTriageAddress": {
+      "AddressLine1": "Cookridge Court",
+      "AddressLine2": "Iveson Rise",
+      "AddressLine3": "",
+      "PostTown": "Leeds",
+      "County": "",
+      "Country": "United Kingdom",
+      "PostCode": "LS16 6NB"
+    },
+    "et1ReppedTriageYesNo": "Yes"
+  },
+  "event": {
+    "id": "et1ReppedCreateCase",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}

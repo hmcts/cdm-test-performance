@@ -10,7 +10,7 @@
       "claimant_last_name": "Citizen"
     },
     "claimantType": {
-      "claimant_email_address": "#{citizenUsername}"
+      "claimant_email_address": "#{Username}"
     },
     "claimantRequests": {
       "other_claim": null

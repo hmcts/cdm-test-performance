@@ -1,0 +1,43 @@
+{
+  "data": {
+    "et3RepresentingRespondent": [
+      {
+        "value": {
+          "dynamicList": {
+            "value": {
+              "code": "R: #{RespondentName}",
+              "label": "#{RespondentName}"
+            }
+          }
+        }
+      }
+    ],
+    "et3ResponseAreDatesCorrect": "Yes",
+    "et3ResponseContinuingEmployment": "Yes",
+    "et3ResponseIsJobTitleCorrect": "Yes",
+    "et3ResponseClaimantWeeklyHours": "Yes",
+    "et3ResponseEarningDetailsCorrect": "Yes",
+    "et3ResponseIsNoticeCorrect": "Yes",
+    "et3ResponseIsPensionCorrect": "Yes",
+    "et3ResponseEmploymentCount": "",
+    "et3ResponseMultipleSites": "No",
+    "et3ResponseSiteEmploymentCount": null,
+    "et3ResponsePayFrequency": null,
+    "et3ResponsePayBeforeTax": null,
+    "et3ResponsePayTakehome": null,
+    "et3ResponseCorrectNoticeDetails": null,
+    "et3ResponsePensionCorrectDetails": null,
+    "et3ResponseEmploymentStartDate": null,
+    "et3ResponseEmploymentEndDate": null,
+    "et3ResponseEmploymentInformation": null,
+    "et3ResponseCorrectJobTitle": null,
+    "et3ResponseClaimantCorrectHours": null
+  },
+  "event": {
+    "id": "et3ResponseEmploymentDetails",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}

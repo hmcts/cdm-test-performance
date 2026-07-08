@@ -1,0 +1,31 @@
+{
+  "data": {
+    "et3RepresentingRespondent": [
+      {
+        "value": {
+          "dynamicList": {
+            "value": {
+              "code": "R: #{RespondentName}",
+              "label": "#{RespondentName}"
+            }
+          }
+        }
+      }
+    ],
+    "et3ResponseAcasAgree": "No",
+    "et3ResponseAcasAgreeReason": "Performance test disagreement with Acas conciliation details",
+    "et3ResponseRespondentContestClaim": "Yes",
+    "et3ResponseContestClaimDetails": "Performance test respondent is not liable for the claim",
+    "et3ResponseEmployerClaim": "No",
+    "et3ResponseEmployerClaimDetails": null,
+    "et3ResponseContestClaimDocument": null,
+    "et3ResponseEmployerClaimDocument": null
+  },
+  "event": {
+    "id": "et3ResponseDetails",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}

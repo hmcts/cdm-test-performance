@@ -210,6 +210,22 @@ class CCD_PerformanceRegression extends Simulation  {
       .exec(ccddatastore.CCDAPI_ET1CaseworkerGenerateCorrespondence)
     }
 
+  val API_ET1SolicitorCreateAndProgress = scenario("ET1 Solicitor Create and Progress Case")
+    .exitBlockOnFail {
+      exec(_.set("env", s"${env}"))
+      .exec(S2S.s2s("ccd_data"))
+      .feed(feedETUserData)
+      .exec(IdamLogin.GetIdamToken)
+      .exec(ccddatastore.CCDAPI_ET1SolicitorCreate)
+      .exec(ccddatastore.CCDAPI_ET1SolicitorSectionOne)
+      .exec(ccddatastore.CCDAPI_ET1SolicitorSectionTwo)
+      .exec(ccddatastore.CCDAPI_ET1SolicitorSectionThree)
+      .exec(ccddatastore.CCDAPI_ET1SolicitorSubmit)
+      .exec(ccddatastore.CCDAPI_ET1CaseworkerVetting)
+      .exec(ccddatastore.CCDAPI_ET1CaseworkerAcceptCase)
+      .exec(ccddatastore.CCDAPI_ET1CaseworkerGenerateCorrespondence)
+    }
+
   val API_ET1CitizenCreate = scenario("ET1 Citizen Create Case")
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
@@ -231,7 +247,7 @@ class CCD_PerformanceRegression extends Simulation  {
       .exec(IdamLogin.GetIdamToken)
       .exec(ccddatastore.CCDAPI_ET3SelfAssign)
       .exec(ccddatastore.CCDAPI_ET3RespondentUpdate)
-      .exec(ccddatastore.CCDAPI_ET3RespondentSubmit)
+      .exec(ccddatastore.ETCOS_ET3Submit)
     }
 
   //CCD Case Activity Requests
@@ -393,8 +409,9 @@ class CCD_PerformanceRegression extends Simulation  {
      //simulation for cdm-test-performance repo
       //API_STCreateCase.inject(simulationProfile(testType, stTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       //API_ET1CaseworkerCreateAndProgress.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      API_ET3CitizenRespondent.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-     // API_ET1CitizenCreate.inject(simulationProfile(testType, etCitizenTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      //API_ET1SolicitorCreateAndProgress.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+    API_ET3CitizenRespondent.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      //API_ET1CitizenCreate.inject(simulationProfile(testType, etCitizenTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
      // API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
      // API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
      // API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),

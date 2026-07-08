@@ -1,0 +1,50 @@
+{
+  "data": {
+    "claimantFirstName": "perf first",
+    "claimantLastName": "perf last",
+    "claimantDateOfBirth": "1982-08-01",
+    "claimantSex": [
+      "Male"
+    ],
+    "claimantPreferredTitle": "Mr",
+    "claimantContactAddress": {
+      "AddressLine1": "9 Ebley Road",
+      "AddressLine2": "",
+      "AddressLine3": "",
+      "PostTown": "Birmingham",
+      "County": "",
+      "Country": "United Kingdom",
+      "PostCode": "B20 2LX"
+    },
+    "representativeAttendHearing": [
+      "Video"
+    ],
+    "hearingContactLanguage": [
+      "English"
+    ],
+    "claimantAttendHearing": [
+      "Video"
+    ],
+    "claimantHearingContactLanguage": [
+      "English"
+    ],
+    "claimantSupportQuestion": [
+      "No"
+    ],
+    "representativeContactPreference": [
+      "Email"
+    ],
+    "contactLanguageQuestion": [
+      "English"
+    ],
+    "representativePhoneNumber": null,
+    "representativeReferenceNumber": null
+  },
+  "event": {
+    "id": "et1SectionOne",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}

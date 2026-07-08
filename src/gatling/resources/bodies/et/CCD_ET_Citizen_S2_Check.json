@@ -11,7 +11,7 @@
       "claimant_date_of_birth": "1980-11-11"
     },
     "claimantType": {
-      "claimant_email_address": "#{citizenUsername}",
+      "claimant_email_address": "#{Username}",
       "claimant_phone_number": "07889998998",
       "claimant_contact_preference": "Post",
       "claimant_addressUK": {

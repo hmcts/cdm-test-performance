@@ -1,0 +1,42 @@
+{
+  "data": {
+    "submitEt3Respondent": {
+      "value": {
+        "code": "R: #{RespondentName}",
+        "label": "#{RespondentName}"
+      }
+    },
+    "et3ResponseIsClaimantNameCorrect": "Yes",
+    "et3ResponseRespondentLegalName": null,
+    "et3RespondentAddress": {
+      "AddressLine1": "Cookridge Court",
+      "AddressLine2": "Iveson Rise",
+      "AddressLine3": "",
+      "PostTown": "Leeds",
+      "County": "",
+      "PostCode": "LS16 6NB",
+      "Country": "United Kingdom"
+    },
+    "et3ResponsePhone": "01132000000",
+    "et3ResponseContactPreference": "Email",
+    "et3ResponseReference": null,
+    "et3ResponseRespondentEmployerType": "Limited company",
+    "et3ResponseRespondentContactName": "Perf Test Contact",
+    "et3ResponseDXAddress": null,
+    "et3ResponseHearingRepresentative": ["Phone hearings", "Video hearings"],
+    "et3ResponseHearingRespondent": ["Phone hearings", "Video hearings"],
+    "et3ResponseRespondentSupportNeeded": "No",
+    "et3ResponseRespondentSupportDetails": null,
+    "et3ResponseContactLanguage": null,
+    "et3ResponseContactReason": null,
+    "et3ResponseRespondentCompanyNumber": null,
+    "et3ResponseRespondentPreferredTitle": null
+  },
+  "event": {
+    "id": "et3Response",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}

@@ -2,7 +2,9 @@
   "data": {
     "respondentCollection": [
       {
+        "id": "#{respondentCollectionId}",
         "value": {
+          "idamId": "#{citizenIdamId}",
           "respondentOrganisationName": "abc ltd",
           "respondentAddress": {
             "AddressLine1": "Cookridge Court",
@@ -36,8 +38,7 @@
           "personalDetailsSection": "Yes",
           "employmentDetailsSection": "Yes",
           "claimDetailsSection": "Yes"
-        },
-        "id": null
+        }
       }
     ]
   },

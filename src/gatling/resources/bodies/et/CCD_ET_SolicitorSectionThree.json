@@ -1,0 +1,22 @@
+{
+  "data": {
+    "et1SectionThreeClaimDetails": "Performance test claim details for unfair dismissal and discrimination",
+    "et1SectionThreeTypeOfClaim": [
+      "discrimination"
+    ],
+    "discriminationTypesOfClaim": [
+      "Age"
+    ],
+    "claimSuccessful": [],
+    "linkedCasesYesNo": [
+      "No"
+    ]
+  },
+  "event": {
+    "id": "et1SectionThree",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}
