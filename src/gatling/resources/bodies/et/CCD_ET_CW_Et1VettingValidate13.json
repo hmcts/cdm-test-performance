@@ -50,5 +50,6 @@
     "description": ""
   },
   "event_token": "#{eventToken}",
-  "ignore_warning": false
+  "ignore_warning": false,
+  "case_reference": "#{caseId}"
 }

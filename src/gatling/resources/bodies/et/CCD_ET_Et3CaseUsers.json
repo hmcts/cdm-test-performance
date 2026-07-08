@@ -1,0 +1,9 @@
+{
+  "case_users": [
+    {
+      "case_id": "#{caseId}",
+      "user_id": "#{citizenIdamId}",
+      "case_role": "[DEFENDANT]"
+    }
+  ]
+}

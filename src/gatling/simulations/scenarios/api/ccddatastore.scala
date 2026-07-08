@@ -2125,6 +2125,18 @@ object ccddatastore {
 
     .pause(Environment.constantthinkTime.seconds)
 
+  val CCDAPI_ET3SelfAssign =
+
+    exec(http("API_ET_Respondent_AssignDefendantRole")
+      .post(ccdDataStoreUrl + "/case-users")
+      .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
+      .header("Authorization", "Bearer #{access_token}")
+      .header("Content-Type", "application/json")
+      .body(ElFileBody("bodies/et/CCD_ET_Et3CaseUsers.json"))
+      .check(status.is(200)))
+
+    .pause(Environment.constantthinkTime.seconds)
+
   val CCDAPI_ET3RespondentUpdate =
 
     exec(http("API_ET_Respondent_GetUpdateEt3Token")
