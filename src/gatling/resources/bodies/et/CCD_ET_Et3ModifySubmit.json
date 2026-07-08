@@ -10,8 +10,8 @@
     "id": "#{respondentCollectionId}",
     "value": {
       "idamId": "#{citizenIdamId}",
-      "respondentName": "#{RespondentName}",
-      "respondentOrganisationName": "#{RespondentName}",
+      "respondentName": "#{respName}Perf Respondent",
+      "respondentOrganisationName": "#{respName}Perf Respondent LTD",
       "respondentAddress": {
         "AddressLine1": "Cookridge Court",
         "AddressLine2": "Iveson Rise",

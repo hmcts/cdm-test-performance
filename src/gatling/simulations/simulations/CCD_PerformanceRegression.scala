@@ -213,6 +213,11 @@ class CCD_PerformanceRegression extends Simulation  {
   val API_ET1SolicitorCreateAndProgress = scenario("ET1 Solicitor Create and Progress Case")
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
+      .exec(_.setAll(
+        ("respName", respName()),
+        ("firstName", firstName()),
+        ("lastName", lastName())
+      ))
       .exec(S2S.s2s("ccd_data"))
       .feed(feedETUserData)
       .exec(IdamLogin.GetIdamToken)
@@ -229,6 +234,11 @@ class CCD_PerformanceRegression extends Simulation  {
   val API_ET1CitizenCreate = scenario("ET1 Citizen Create Case")
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
+      .exec(_.setAll(
+        ("respName", respName()),
+        ("firstName", firstName()),
+        ("lastName", lastName())
+      ))
       .exec(S2S.s2s("ccd_data"))
       .feed(feedETCitizenData)
       .exec(IdamLogin.GetIdamToken)
@@ -240,6 +250,9 @@ class CCD_PerformanceRegression extends Simulation  {
   val API_ET3CitizenRespondent = scenario("ET3 Citizen Respondent")
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
+      .exec(_.setAll(
+        ("respName", respName())
+      ))
       .exec(S2S.s2s("ccd_data"))
       .exec(S2S.s2s("aac_manage_case_assignment"))
       .feed(feedETCitizenData)

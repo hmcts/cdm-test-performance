@@ -29,7 +29,7 @@
     "claimantNewJobPayBeforeTax": null,
     "claimantNewJobPayPeriod": [],
     "respondentType": "Organisation",
-    "respondentOrganisationName": "Perf Test Respondent Ltd",
+    "respondentOrganisationName": "#{respName}Perf Respondent LTD",
     "respondentAddress": {
       "AddressLine1": "Cookridge Court",
       "AddressLine2": "Iveson Rise",

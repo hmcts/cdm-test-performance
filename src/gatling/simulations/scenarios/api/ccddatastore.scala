@@ -29,6 +29,7 @@ object ccddatastore {
   private def niNumber(): String = rng.alphanumeric.filter(_.isDigit).take(8).mkString
   private def firstName(): String = rng.alphanumeric.filter(_.isLetter).take(10).mkString
   private def lastName(): String = rng.alphanumeric.filter(_.isLetter).take(10).mkString
+  private def respName(): String = rng.alphanumeric.filter(_.isLetter).take(5).mkString
 
   val headers_0 = Map( //Authorization token needs to be generated with idam login
     "Authorization" -> "AdminApiAuthToken ",
@@ -1367,6 +1368,12 @@ object ccddatastore {
       .check(jsonPath("$.event_token").saveAs("eventToken")))
 
     .pause(Environment.constantthinkTime.seconds)
+
+    .exec(_.setAll(
+        ("respName", respName()),
+        ("firstName", firstName()),
+        ("lastName", lastName())
+    ))
 
     .exec(http("API_ET_Solicitor_SectionOne")
       .post(ccdDataStoreUrl + "/cases/#{caseId}/events")

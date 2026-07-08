@@ -6,8 +6,8 @@
     "caseSource": "ET1 Online",
     "claimant_TypeOfClaimant": "Individual",
     "claimantIndType": {
-      "claimant_first_names": "Perf",
-      "claimant_last_name": "Citizen"
+      "claimant_first_names": "#{firstName}Perf",
+      "claimant_last_name": "#{lastName}Claimant"
     },
     "claimantType": {
       "claimant_email_address": "#{Username}"
