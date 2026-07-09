@@ -196,7 +196,8 @@ class CCD_PerformanceRegression extends Simulation  {
       //ET3 Response 
       .exec(S2S.s2s("ccd_data"))
       .exec(S2S.s2s("aac_manage_case_assignment"))
-      .feed(feedETRespondentData)
+      //.feed(feedETRespondentData)
+      .exec(ccddatastore.IDAM_CreateCitizenDefendantUser)
       .exec(ccddatastore.CCDAPI_ETCitizenGetIdamToken)
       .exec(ccddatastore.CCDAPI_ET3SelfAssign)
       .exec(ccddatastore.CCDAPI_ET3RespondentUpdate)

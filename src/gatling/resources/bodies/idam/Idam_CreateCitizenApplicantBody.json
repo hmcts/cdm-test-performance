@@ -1,0 +1,11 @@
+{
+  "email": "#{firstName}Perf-#{lastName}Claimant@testmail.com",
+  "forename": "#{firstName}Perf",
+  "surname": "#{lastName}Claimant",
+  "password": "Password12",
+  "roles": [
+    {
+      "code": "citizen"
+    }
+  ]
+}

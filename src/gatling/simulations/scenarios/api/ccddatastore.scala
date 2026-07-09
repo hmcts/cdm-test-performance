@@ -2071,11 +2071,52 @@ object ccddatastore {
   val CCDAPI_ETCitizenGetIdamToken =
  
     exec(http("IDAM_ET_Citizen_GetToken")
-      .post(IdamLogin.IdamAPI + "/o/token?client_id=ccd_gateway&client_secret=" + IdamLogin.ccdGatewayClientSecret + "&grant_type=password&scope=" + ccdScope + "&username=#{citizenUsername}&password=#{citizenPassword}")
+      .post(IdamLogin.IdamAPI + "/o/token?client_id=ccd_gateway&client_secret=" + IdamLogin.clientSecret + "&grant_type=password&scope=" + ccdScope + "&username=#{citizenUsername}&password=#{citizenPassword}")
       .header("Content-Type", "application/x-www-form-urlencoded")
       .header("Content-Length", "0")
       .check(status.is(200))
       .check(jsonPath("$.access_token").saveAs("citizenAccessToken")))
+
+  val IDAM_CreateCitizenAppUser = 
+
+    exec(_.setAll(
+        ("respName", respName()),
+        ("firstName", firstName()),
+        ("lastName", lastName())
+      ))
+
+    .exec(http("CreateCitizenAppUser")
+      .post(Environment.idamAPI + "/testing-support/accounts")
+      .header("Content-Type", "application/json")
+      .body(ElFileBody("bodies/idam/Idam_CreateCitizenApplicantBody.json"))
+      .check(jsonPath("$.id").saveAs("citizenIdamId"))
+      .check(jsonPath("$.email").saveAs("Username"))
+      .check(status.saveAs("statusvalue")))
+
+    .pause(Environment.constantthinkTime.seconds)
+
+  val IDAM_CreateCitizenDefendantUser =
+
+    exec(_.setAll(
+        ("respName", respName()),
+        ("firstName", firstName()),
+        ("lastName", lastName())
+      ))
+
+    .exec(http("CreateCitizenRespondentUser")
+      .post(Environment.idamAPI + "/testing-support/accounts")
+      .header("Content-Type", "application/json")
+      .body(ElFileBody("bodies/idam/Idam_CreateCitizenDefendantBody.json"))
+      .check(jsonPath("$.id").saveAs("citizenIdamId"))
+      .check(jsonPath("$.email").saveAs("citizenUsername"))
+      .check(status.saveAs("statusvalue")))
+
+    .exec(_.set("citizenPassword", "Password12"))
+
+    .exec(session => {
+      println(s"Created respondent - email: ${session("citizenUsername").as[String]}, id: ${session("citizenIdamId").as[String]}")
+      session
+    })
 
     .pause(Environment.constantthinkTime.seconds)
 
