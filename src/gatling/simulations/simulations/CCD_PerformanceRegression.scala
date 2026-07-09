@@ -376,11 +376,13 @@ class CCD_PerformanceRegression extends Simulation  {
 
 	setUp(
      //simulation for cdm-test-performance repo
-      API_STCreateCase.inject(simulationProfile(testType, stTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      
       //API_ET1CaseworkerCreateAndProgress.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       //API_ET1SolicitorCreateAndProgress.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      API_ET1SolicitorCreateProgressAndET3Response.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       //API_ET1CitizenCreate.inject(simulationProfile(testType, etCitizenTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+
+      API_STCreateCase.inject(simulationProfile(testType, stTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      API_ET1SolicitorCreateProgressAndET3Response.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       API_ETViewCaseAndEvents.inject(simulationProfile(testType, caseFileViewTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
@@ -393,8 +395,8 @@ class CCD_PerformanceRegression extends Simulation  {
       CCDElasticSearch.inject(simulationProfile(testType, esUsers, numberOfPipelineUsers)).pauses(pauseOption),
       CaseFileView.inject(simulationProfile(testType, caseFileViewTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       DefinitionStore.inject(simulationProfile(testType, definitionStoreUsers, numberOfPipelineUsers)).pauses(pauseOption),
-      IACScenario.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      ProbateScenario.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      //IACScenario.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      //ProbateScenario.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
   )
     .protocols(httpProtocol)
     .assertions(assertions(testType))
