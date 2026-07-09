@@ -210,14 +210,10 @@ class CCD_PerformanceRegression extends Simulation  {
       .exec(ccddatastore.CCDAPI_ET1CaseworkerGenerateCorrespondence)
     }
 
-  val API_ET1SolicitorCreateAndProgress = scenario("ET1 Solicitor Create and Progress Case")
+  val API_ET1SolicitorCreateProgressAndET3Response = scenario("ET1 Solicitor Create and Progress Case then ET3 Response")
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
-      .exec(_.setAll(
-        ("respName", respName()),
-        ("firstName", firstName()),
-        ("lastName", lastName())
-      ))
+      //ET Solicitor Create
       .exec(S2S.s2s("ccd_data"))
       .feed(feedETUserData)
       .exec(IdamLogin.GetIdamToken)
@@ -226,19 +222,23 @@ class CCD_PerformanceRegression extends Simulation  {
       .exec(ccddatastore.CCDAPI_ET1SolicitorSectionTwo)
       .exec(ccddatastore.CCDAPI_ET1SolicitorSectionThree)
       .exec(ccddatastore.CCDAPI_ET1SolicitorSubmit)
+      // ET Caseworker Progression
       .exec(ccddatastore.CCDAPI_ET1CaseworkerVetting)
       .exec(ccddatastore.CCDAPI_ET1CaseworkerAcceptCase)
       .exec(ccddatastore.CCDAPI_ET1CaseworkerGenerateCorrespondence)
+      //ET3 Response 
+      .exec(S2S.s2s("ccd_data"))
+      .exec(S2S.s2s("aac_manage_case_assignment"))
+      .feed(feedETRespondentData)
+      .exec(ccddatastore.CCDAPI_ETCitizenGetIdamToken)
+      .exec(ccddatastore.CCDAPI_ET3SelfAssign)
+      .exec(ccddatastore.CCDAPI_ET3RespondentUpdate)
+      .exec(ccddatastore.ETCOS_ET3Submit)
     }
 
   val API_ET1CitizenCreate = scenario("ET1 Citizen Create Case")
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
-      .exec(_.setAll(
-        ("respName", respName()),
-        ("firstName", firstName()),
-        ("lastName", lastName())
-      ))
       .exec(S2S.s2s("ccd_data"))
       .feed(feedETCitizenData)
       .exec(IdamLogin.GetIdamToken)
@@ -250,9 +250,6 @@ class CCD_PerformanceRegression extends Simulation  {
   val API_ET3CitizenRespondent = scenario("ET3 Citizen Respondent")
     .exitBlockOnFail {
       exec(_.set("env", s"${env}"))
-      .exec(_.setAll(
-        ("respName", respName())
-      ))
       .exec(S2S.s2s("ccd_data"))
       .exec(S2S.s2s("aac_manage_case_assignment"))
       .feed(feedETCitizenData)
@@ -423,7 +420,7 @@ class CCD_PerformanceRegression extends Simulation  {
       //API_STCreateCase.inject(simulationProfile(testType, stTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       //API_ET1CaseworkerCreateAndProgress.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       //API_ET1SolicitorCreateAndProgress.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-    API_ET3CitizenRespondent.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+    API_ET1SolicitorCreateProgressAndET3Response.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       //API_ET1CitizenCreate.inject(simulationProfile(testType, etCitizenTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
      // API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
      // API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),

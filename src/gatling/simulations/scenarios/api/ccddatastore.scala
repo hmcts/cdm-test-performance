@@ -1467,6 +1467,12 @@ object ccddatastore {
 
     .pause(Environment.constantthinkTime.seconds)
 
+    .exec(_.setAll(
+        ("respName", respName()),
+        ("firstName", firstName()),
+        ("lastName", lastName())
+      ))
+
     .exec(http("API_ET_CW_Et1Vetting_Validate1")
       .post(ccdDataStoreUrl + "/case-types/#{CaseType}/validate?pageId=et1Vetting1")
       .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
@@ -1730,6 +1736,12 @@ object ccddatastore {
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken")))
 
+      .exec(_.setAll(
+        ("respName", respName()),
+        ("firstName", firstName()),
+        ("lastName", lastName())
+      ))
+
     .exec(http("API_ET_Citizen_Update_S1_PersonalInfo")
       .post(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{citizenCaseId}/events")
       .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
@@ -1900,7 +1912,7 @@ object ccddatastore {
     exec(http("API_ET_Respondent_AssignDefendantRole")
       .post(ccdDataStoreUrl + "/case-users")
       .header("ServiceAuthorization", "#{aac_manage_case_assignmentBearerToken}")
-      .header("Authorization", "Bearer #{access_token}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
       .header("Content-Type", "application/json")
       .body(ElFileBody("bodies/et/CCD_ET_Et3CaseUsers.json"))
       .check(status.is(201)))
@@ -1912,16 +1924,18 @@ object ccddatastore {
     exec(http("API_ET_Respondent_GetEt3SectionOneToken")
       .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/et3Response/token")
       .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
-      .header("Authorization", "Bearer #{access_token}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken")))
 
     .pause(Environment.constantthinkTime.seconds)
 
+    .exec(_.set("respName", respName()))
+
     .exec(http("API_ET_Respondent_Et3SectionOne")
       .post(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
       .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
-      .header("Authorization", "Bearer #{access_token}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
       .header("Content-Type","application/json")
       .body(ElFileBody("bodies/et/CCD_ET_Et3SectionOne.json"))
       .check(status.is(201)))
@@ -1933,7 +1947,7 @@ object ccddatastore {
     exec(http("API_ET_Respondent_GetEt3SectionTwoToken")
       .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/et3ResponseEmploymentDetails/token")
       .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
-      .header("Authorization", "Bearer #{access_token}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken")))
 
@@ -1942,7 +1956,7 @@ object ccddatastore {
     .exec(http("API_ET_Respondent_Et3SectionTwo")
       .post(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
       .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
-      .header("Authorization", "Bearer #{access_token}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
       .header("Content-Type","application/json")
       .body(ElFileBody("bodies/et/CCD_ET_Et3SectionTwo.json"))
       .check(status.is(201)))
@@ -1954,7 +1968,7 @@ object ccddatastore {
     exec(http("API_ET_Respondent_GetEt3SectionThreeToken")
       .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/et3ResponseDetails/token")
       .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
-      .header("Authorization", "Bearer #{access_token}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken")))
 
@@ -1963,7 +1977,7 @@ object ccddatastore {
     .exec(http("API_ET_Respondent_Et3SectionThree")
       .post(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
       .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
-      .header("Authorization", "Bearer #{access_token}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
       .header("Content-Type","application/json")
       .body(ElFileBody("bodies/et/CCD_ET_Et3SectionThree.json"))
       .check(status.is(201)))
@@ -1975,7 +1989,7 @@ object ccddatastore {
     exec(http("API_ET_Respondent_GetUpdateEt3Token")
       .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/UPDATE_ET3_FORM/token")
       .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
-      .header("Authorization", "Bearer #{access_token}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken"))
       .check(jsonPath("$.case_details.case_data.respondentCollection[0].id").saveAs("respondentCollectionId")))
@@ -1985,7 +1999,7 @@ object ccddatastore {
     .exec(http("API_ET_Respondent_UpdateEt3")
       .post(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
       .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
-      .header("Authorization", "Bearer #{access_token}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
       .header("Content-Type","application/json")
       .body(ElFileBody("bodies/et/CCD_ET_Et3Update.json"))
       .check(status.is(201)))
@@ -1997,7 +2011,7 @@ object ccddatastore {
     exec(http("API_ET_Respondent_GetSubmitEt3Token")
       .get(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/event-triggers/SUBMIT_ET3_FORM/token")
       .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
-      .header("Authorization", "Bearer #{access_token}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
       .header("Content-Type","application/json")
       .check(jsonPath("$.token").saveAs("eventToken")))
 
@@ -2006,7 +2020,7 @@ object ccddatastore {
     .exec(http("API_ET_Respondent_SubmitEt3")
       .post(ccdDataStoreUrl + "/citizens/#{citizenIdamId}/jurisdictions/#{Jurisdiction}/case-types/#{CaseType}/cases/#{caseId}/events")
       .header("ServiceAuthorization", "#{ccd_dataBearerToken}")
-      .header("Authorization", "Bearer #{access_token}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
       .header("Content-Type","application/json")
       .body(ElFileBody("bodies/et/CCD_ET_Et3Submit.json"))
       .check(jsonPath("$.id").saveAs("caseId")))
@@ -2017,12 +2031,18 @@ object ccddatastore {
 
     exec(http("ETCOS_ET3_Submit")
       .post(Environment.etCosUrl + "/et3/modifyEt3Data")
-      .header("Authorization", "Bearer #{access_token}")
+      .header("Authorization", "Bearer #{citizenAccessToken}")
       .header("Content-Type","application/json")
       .body(ElFileBody("bodies/et/CCD_ET_Et3ModifySubmit.json"))
       .check(status.is(200)))
 
     .pause(Environment.constantthinkTime.seconds)
+
+    .exec(session => {
+      val caseId  = session("citizenCaseId").asOption[String].getOrElse("NOT SET")
+      println(s"ET3 case response complete - caseId: $caseId")
+      session
+    })
 
   val CCDAPI_ETViewCase =
 
@@ -2048,15 +2068,15 @@ object ccddatastore {
 
     .pause(Environment.constantthinkTime.seconds)
 
-  // val CCDAPI_ETCitizenGetIdamToken =
+  val CCDAPI_ETCitizenGetIdamToken =
+ 
+    exec(http("IDAM_ET_Citizen_GetToken")
+      .post(IdamLogin.IdamAPI + "/o/token?client_id=ccd_gateway&client_secret=" + IdamLogin.ccdGatewayClientSecret + "&grant_type=password&scope=" + ccdScope + "&username=#{citizenUsername}&password=#{citizenPassword}")
+      .header("Content-Type", "application/x-www-form-urlencoded")
+      .header("Content-Length", "0")
+      .check(status.is(200))
+      .check(jsonPath("$.access_token").saveAs("citizenAccessToken")))
 
-  //   exec(http("IDAM_ET_Citizen_GetToken")
-  //     .post(IdamLogin.IdamAPI + "/o/token?client_id=ccd_gateway&client_secret=" + IdamLogin.ccdGatewayClientSecret + "&grant_type=password&scope=" + ccdScope + "&username=#{citizenUsername}&password=#{citizenPassword}")
-  //     .header("Content-Type", "application/x-www-form-urlencoded")
-  //     .header("Content-Length", "0")
-  //     .check(status.is(200))
-  //     .check(jsonPath("$.access_token").saveAs("citizenAccessToken")))
-
-  //   .pause(Environment.constantthinkTime.seconds)
+    .pause(Environment.constantthinkTime.seconds)
 
 }
