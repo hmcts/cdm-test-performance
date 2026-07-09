@@ -1,6 +1,6 @@
 {
     "data": {
-      "applicationSubmittedDate": "#{todayDate}"
+      "applicationSubmittedDate": "2023-02-03"
     },
     "event": {
       "id": "paymentSuccessApp",

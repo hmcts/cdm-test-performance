@@ -15,14 +15,14 @@
        "isOutOfCountryEnabled": "Yes",
        "appellantInUk": "Yes",
        "homeOfficeReferenceNumber": "123456789",
-       "homeOfficeDecisionDate": "#{todayDate}",
+       "homeOfficeDecisionDate": "2021-10-01",
        "uploadTheNoticeOfDecisionDocs": [
           {
              "value": {
                 "description": "NoD",
                 "document": {
-                   "document_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{docId}",
-                   "document_binary_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{docId}/binary",
+                   "document_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}",
+                   "document_binary_url": "http://dm-store-#{env}.service.core-compute-#{env}.internal/documents/#{Document_ID}/binary",
                    "document_filename": "1MB.pdf",
                    "document_hash": "#{hashToken}"
                 }
@@ -33,7 +33,7 @@
        "appellantTitle": "Mr",
        "appellantGivenNames": "John",
        "appellantFamilyName": "Smith",
-       "appellantDateOfBirth": "#{dob}",
+       "appellantDateOfBirth": "1980-02-01",
        "appellantStateless": "hasNationality",
        "appellantNationalities": [
           {
