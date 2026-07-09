@@ -1,15 +1,13 @@
 package scenarios.api
 
-import com.typesafe.config.{Config, ConfigFactory}
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
-import java.io.{BufferedWriter, FileWriter}
-import scala.concurrent.duration._
 import scenarios.utils._
+import utilities.AzureKeyVault
+
+import scala.concurrent.duration._
 
 object casedocapi {
-
-  val config: Config = ConfigFactory.load()
 
   val s2sUrl = Environment.s2sUrl
   val IdamAPI = Environment.idamAPI
@@ -17,7 +15,7 @@ object casedocapi {
   val ccdDataStoreUrl = "http://ccd-data-store-api-#{env}.service.core-compute-#{env}.internal"
   val ccdClientId = "ccd_gateway"
   val ccdRedirectUri = "https://ccd-data-store-api-#{env}.service.core-compute-#{env}.internal/oauth2redirect"
-  val ccdGatewayClientSecret = config.getString("auth.ccdGatewayCS")
+  val clientSecret = AzureKeyVault.loadClientSecret("ccd-perftest", "ccd-api-gateway-oauth2-client-secret", "CCD_CLIENT_SECRET")
   val constantThinkTime = Environment.constantthinkTime
   val ccdScope = "openid profile authorities acr roles openid profile roles"
   val feed1mb = csv("casedocdata/1mbIds.csv").random
@@ -38,7 +36,7 @@ object casedocapi {
   val idamLogin =
 
     exec(http("GetIdamToken")
-      .post(IdamAPI + "/o/token?client_id=" + ccdClientId + "&client_secret=" + ccdGatewayClientSecret + "&grant_type=password&scope=" + ccdScope + "&username=ccdloadtest751@gmail.com&password=Password12")
+      .post(IdamAPI + "/o/token?client_id=" + ccdClientId + "&client_secret=" + clientSecret + "&grant_type=password&scope=" + ccdScope + "&username=ccdloadtest751@gmail.com&password=Password12")
       .header("Content-Type", "application/x-www-form-urlencoded")
       .header("Content-Length", "0")
       .check(status.is(200))

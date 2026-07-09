@@ -7,7 +7,7 @@
               "caseStopReason": "IHT421Awaiting",
               "caseStopSubReasonDocRequired": null
            },
-           "id": "#{caseStopId}"
+           "id": "#{randomUuid()}"
         }
      ]
   },

@@ -154,7 +154,7 @@ object CreateUser {
         session =>
           val fw = new BufferedWriter(new FileWriter("CreatedIdamUsers.csv", true))
           try {
-            fw.write(session("email").as[String] + "," + "Password12,IA,Asylum," + session("idamNewId").as[String] + "\r\n")
+            fw.write(session("email").as[String] + "," + "Password12," + session("idamNewId").as[String] + "\r\n")
           }
           finally fw.close()
           session

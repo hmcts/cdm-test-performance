@@ -1,20 +1,23 @@
 {
   "email": "#{email}",
-  "forename": "IAC",
-  "surname": "Perftest",
+  "forename": "WA_Perftest001",
+  "surname": "User",
   "password": "Password12",
   "roles": [
     {
-      "code": "pui-case-manager"
-    },
-    {
-      "code": "caseworker-ia-legalrep-solicitor"
-    },
-    {
-      "code": "caseworker-ia"
-    },
-    {
       "code": "caseworker"
+    },
+    {
+      "code": "caseworker-wa-task-officer"
+    },
+    {
+      "code": "caseworker-wa-task-configuration"
+    },
+    {
+      "code": "caseworker-wa"
+    },
+    {
+      "code": "payments"
     }
   ]
 }

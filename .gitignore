@@ -14,6 +14,7 @@ bin/*
 .classpath
 build/*
 CreatedIdamUsers.csv
+src/gatling/resources/950mb_file.pdf
 .metals/*
 metals/*
 .bloop

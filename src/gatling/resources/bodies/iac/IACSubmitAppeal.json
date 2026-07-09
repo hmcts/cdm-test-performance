@@ -1,0 +1,18 @@
+{
+  "data": {
+    "legalRepDeclaration": [
+      "hasDeclared"
+    ],
+    "remissionType": null,
+    "paAppealTypePaymentOption": null,
+    "appealType": "revocationOfProtection",
+    "feeAmountGbp": null
+  },
+  "event": {
+    "id": "submitAppeal",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}

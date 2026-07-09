@@ -1,12 +1,12 @@
 {
     "data": {
-      "applicationSubmittedDate": "2023-02-03"
+      "applicationSubmittedDate": "#{todayDate}"
     },
     "event": {
       "id": "paymentSuccessApp",
       "summary": "",
       "description": ""
     },
-    "event_token": "#{eventToken2}",
+    "event_token": "#{eventToken}",
     "ignore_warning": false
   }

@@ -13,7 +13,7 @@ def product = "ccd"
 def component = "case-worker"
 
 def secrets = [
-    'ccd-aat': [
+    'ccd-perftest': [
         secret('ccd-api-gateway-oauth2-client-secret', 'S2S_SECRET')
     ]
 ]
@@ -31,6 +31,10 @@ withNightlyPipeline("java", product, component) {
     loadVaultSecrets(secrets)
         
     enablePerformanceTest(20)
+
+    afterAlways('checkout') {
+        sh """ git submodule update --init --recursive"""
+    }
 
     after('performanceTest') {
         steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'functional-output/**/*'
