@@ -14,6 +14,6 @@
     "summary": "",
     "description": ""
   },
-  "event_token": "#{eventToken}",
+  "event_token": "#{eventToken4}",
   "ignore_warning": false
 }
