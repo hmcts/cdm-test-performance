@@ -2093,7 +2093,14 @@ object ccddatastore {
       .check(jsonPath("$.email").saveAs("Username"))
       .check(status.saveAs("statusvalue")))
 
+    .exec(_.set("Password", "Password12"))
+
     .pause(Environment.constantthinkTime.seconds)
+
+    .exec(session => {
+      println(s"Created Applicant Citizen - email: ${session("Username").as[String]}, id: ${session("citizenIdamId").as[String]}")
+      session
+    })
 
   val IDAM_CreateCitizenDefendantUser =
 
