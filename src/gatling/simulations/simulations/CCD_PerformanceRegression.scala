@@ -111,8 +111,6 @@ class CCD_PerformanceRegression extends Simulation  {
   val ProbateScenario = buildScenario(CcdCaseTypes.PROBATE_GrantOfRepresentation, probate.CreateCase.execute)
 
 
-  //CCD API - Create & Case Event Journeys
-
    //CCD API - Create & Case Event Journeys
   val API_ProbateCreateCase = scenario("Probate Case Create")
     .exitBlockOnFail {
