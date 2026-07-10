@@ -1,15 +1,14 @@
 package simulations
 
+import io.gatling.commons.stats.assertion.Assertion
 import io.gatling.core.Predef._
+import io.gatling.core.controller.inject.open.OpenInjectionStep
+import io.gatling.core.pause.PauseType
 import io.gatling.core.scenario.Simulation
 import scenarios.api.CreateUser
 import scenarios.utils._
-import scala.concurrent.duration._
 
-import io.gatling.core.controller.inject.open.{AtOnceOpenInjection, OpenInjectionStep}
-import io.gatling.commons.stats.assertion.Assertion
-import io.gatling.core.pause.PauseType
-import com.typesafe.config.{Config, ConfigFactory}
+import scala.concurrent.duration._
 
 class CreateUser extends Simulation  {
 
@@ -146,10 +145,11 @@ class CreateUser extends Simulation  {
   }
 
   setUp(
-    GrantRole.inject(rampUsers(1) during (5 minutes)))
+    GrantRole.inject(rampUsers(1) during (1 minute))
     // DeleteRole.inject(rampUsers(1) during (1 minutes)))
 //     CreateUserTestingSupport.inject(rampUsers(1) during (1.minutes)))
     // DeleteUserTestingSupport.inject(rampUsers(1) during (1 minutes)))
     // GetUserID.inject(rampUsers(1) during (1 minutes)))
     .protocols(httpProtocol)
+  )
 }

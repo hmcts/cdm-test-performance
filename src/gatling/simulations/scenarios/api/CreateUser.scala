@@ -9,10 +9,10 @@ import scala.concurrent.duration._
 object CreateUser {
 
   val CCDAPIEnvurl = Environment.baseURL
-  val idamAdminFeeder = csv("IdamAdmin.csv").circular
+  val idamAdminFeeder = csv("IdamAdmin.csv")
   val feedUserData = csv("RolesForUsers.csv")
   val divUserData = csv("DivorceSolUserData.csv")
-  val roleFeeder = csv("RolesToAdd.csv").circular
+  val roleFeeder = csv("RolesToAdd.csv")
   val numberFeeder = csv("NumberList.csv").circular
   val userFeeder = csv("UserFeeder.csv").circular
 
