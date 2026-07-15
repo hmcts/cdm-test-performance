@@ -40,9 +40,9 @@ class CCD_PerformanceRegression extends Simulation  {
   val fplTargetPerHour:Double = 800
   val nfdTargetPerHour:Double = 800
   val stTargetPerHour:Double = 800
-  val etCaseworkerTargetPerHour:Double = 100 //30
-  val etCitizenTargetPerHour:Double = 100 //30
-  val caseFileViewTargetPerHour:Double = 100 //30
+  val etCaseworkerTargetPerHour:Double = 30 //30
+  val etCitizenTargetPerHour:Double = 30 //30
+  val caseFileViewTargetPerHour:Double = 30 //30
   val caseActivityUsers:Double = 2000
   val searchUsers:Double = 800
   val esUsers:Double = 1200
@@ -50,7 +50,7 @@ class CCD_PerformanceRegression extends Simulation  {
 
 	val rampUpDurationMins = 5
 	val rampDownDurationMins = 5
-	val testDurationMins = 60 // 60
+	val testDurationMins = 60
 
 	val numberOfPipelineUsers = 5
 	val pipelinePausesMillis:Long = 3000 //3 seconds
@@ -226,8 +226,8 @@ class CCD_PerformanceRegression extends Simulation  {
       .exec(ccddatastore.CCDAPI_ETCitizenGetIdamToken)
       .exec(ccddatastore.CCDAPI_ET3SelfAssign)
       .exec(ccddatastore.CCDAPI_ET3RespondentUpdate)
-      //.exec(ccddatastore.ETCOS_ET3Submit)
-      //.exec(ccddatastore.IDAM_DeleteCitizenRespondentUser)
+      .exec(ccddatastore.ETCOS_ET3Submit)
+      .exec(ccddatastore.IDAM_DeleteCitizenRespondentUser)
     }
 
   val API_ET1CitizenCreate = scenario("ET1 Citizen Create Case")
@@ -385,22 +385,22 @@ class CCD_PerformanceRegression extends Simulation  {
       //API_ET1SolicitorCreateAndProgress.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       //API_ET1CitizenCreate.inject(simulationProfile(testType, etCitizenTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
 
-      //API_STCreateCase.inject(simulationProfile(testType, stTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      API_STCreateCase.inject(simulationProfile(testType, stTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       API_ET1SolicitorCreateProgressAndET3Response.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      //API_ETViewCaseAndEvents.inject(simulationProfile(testType, caseFileViewTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      // API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      // API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      // API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      // API_FPLCreateCase.inject(simulationProfile(testType, fplTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      // API_NFDCreateCase.inject(simulationProfile(testType, nfdTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      // CaseActivityListScn.inject(simulationProfile(testType, caseActivityUsers, numberOfPipelineUsers)).pauses(pauseOption),
-      // CaseActivityScn.inject(simulationProfile(testType, caseActivityUsers, numberOfPipelineUsers)).pauses(pauseOption),
-      // CCDSearchView.inject(simulationProfile(testType, searchUsers, numberOfPipelineUsers)).pauses(pauseOption),
-      // CCDElasticSearch.inject(simulationProfile(testType, esUsers, numberOfPipelineUsers)).pauses(pauseOption),
-      // CaseFileView.inject(simulationProfile(testType, caseFileViewTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      // DefinitionStore.inject(simulationProfile(testType, definitionStoreUsers, numberOfPipelineUsers)).pauses(pauseOption),
-      //IACScenario.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      //ProbateScenario.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      API_ETViewCaseAndEvents.inject(simulationProfile(testType, caseFileViewTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      API_FPLCreateCase.inject(simulationProfile(testType, fplTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      API_NFDCreateCase.inject(simulationProfile(testType, nfdTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      CaseActivityListScn.inject(simulationProfile(testType, caseActivityUsers, numberOfPipelineUsers)).pauses(pauseOption),
+      CaseActivityScn.inject(simulationProfile(testType, caseActivityUsers, numberOfPipelineUsers)).pauses(pauseOption),
+      CCDSearchView.inject(simulationProfile(testType, searchUsers, numberOfPipelineUsers)).pauses(pauseOption),
+      CCDElasticSearch.inject(simulationProfile(testType, esUsers, numberOfPipelineUsers)).pauses(pauseOption),
+      CaseFileView.inject(simulationProfile(testType, caseFileViewTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      DefinitionStore.inject(simulationProfile(testType, definitionStoreUsers, numberOfPipelineUsers)).pauses(pauseOption),
+      IACScenario.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      ProbateScenario.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
   )
     .protocols(httpProtocol)
     .assertions(assertions(testType))
