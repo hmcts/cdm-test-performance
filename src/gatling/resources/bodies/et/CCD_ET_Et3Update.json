@@ -4,7 +4,7 @@
       {
         "id": "#{respondentCollectionId}",
         "value": {
-          "idamId": "#{citizenIdamId}",
+          "idamId": "#{citizenRespondentIdamId}",
           "respondentOrganisationName": "#{respName}Perf Respondent LTD",
           "respondentAddress": {
             "AddressLine1": "Cookridge Court",

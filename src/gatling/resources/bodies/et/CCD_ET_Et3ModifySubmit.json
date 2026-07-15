@@ -9,7 +9,7 @@
   "respondent": {
     "id": "#{respondentCollectionId}",
     "value": {
-      "idamId": "#{citizenIdamId}",
+      "idamId": "#{citizenRespondentIdamId}",
       "respondentName": "#{respName}Perf Respondent",
       "respondentOrganisationName": "#{respName}Perf Respondent LTD",
       "respondentAddress": {
