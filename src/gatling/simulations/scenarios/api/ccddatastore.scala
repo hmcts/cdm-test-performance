@@ -2041,7 +2041,7 @@ object ccddatastore {
     .pause(Environment.constantthinkTime.seconds)
 
     .exec(session => {
-      val caseId  = session("citizenCaseId").asOption[String].getOrElse("NOT SET")
+      val caseId  = session("caseId").asOption[String].getOrElse("NOT SET")
       println(s"ET3 case response complete - caseId: $caseId")
       session
     })
