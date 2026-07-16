@@ -40,9 +40,9 @@ class CCD_PerformanceRegression extends Simulation  {
   val fplTargetPerHour:Double = 800
   val nfdTargetPerHour:Double = 800
   val stTargetPerHour:Double = 800
-  val etCaseworkerTargetPerHour:Double = 30
-  val etCitizenTargetPerHour:Double = 30
-  val caseFileViewTargetPerHour:Double = 30
+  val etCaseworkerTargetPerHour:Double = 100
+  val etCitizenTargetPerHour:Double = 100
+  val caseFileViewTargetPerHour:Double = 100
   val caseActivityUsers:Double = 2000
   val searchUsers:Double = 800
   val esUsers:Double = 1200
@@ -383,7 +383,7 @@ class CCD_PerformanceRegression extends Simulation  {
       
       //API_ET1CaseworkerCreateAndProgress.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       //API_ET1SolicitorCreateAndProgress.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      //API_ET1CitizenCreate.inject(simulationProfile(testType, etCitizenTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      API_ET1CitizenCreate.inject(simulationProfile(testType, etCitizenTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
 
        API_STCreateCase.inject(simulationProfile(testType, stTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
        API_ET1SolicitorCreateProgressAndET3Response.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
