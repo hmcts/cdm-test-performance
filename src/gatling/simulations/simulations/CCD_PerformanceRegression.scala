@@ -40,8 +40,8 @@ class CCD_PerformanceRegression extends Simulation  {
   val fplTargetPerHour:Double = 800
   val nfdTargetPerHour:Double = 800
   val stTargetPerHour:Double = 800
-  val etCaseworkerTargetPerHour:Double = 100
-  val etCitizenTargetPerHour:Double = 100
+  val etCaseworkerTargetPerHour:Double = 30
+  val etCitizenTargetPerHour:Double = 30
   val caseFileViewTargetPerHour:Double = 100
   val caseActivityUsers:Double = 2000
   val searchUsers:Double = 800
@@ -76,6 +76,7 @@ class CCD_PerformanceRegression extends Simulation  {
   val feedNFDUserData = csv("NFDUserData.csv").circular
   val feedSTUserData = csv("STUserData.csv").circular
   val feedETUserData = csv("ETUserData.csv").circular
+  val feedSolicitorETUserData = csv("ETSolicitorUserData.csv").circular
   val feedETCitizenData = csv("ETCitizenData.csv").circular
   val feedETCaseData = csv("ETCaseData.csv").random
   val feedETRespondentData = csv("ETRespondentData.csv").circular
@@ -207,7 +208,7 @@ class CCD_PerformanceRegression extends Simulation  {
       exec(_.set("env", s"${env}"))
       //ET Solicitor Create
       .exec(S2S.s2s("ccd_data"))
-      .feed(feedETUserData)
+      .feed(feedSolicitorETUserData)
       .exec(IdamLogin.GetIdamToken)
       .exec(ccddatastore.CCDAPI_ET1SolicitorCreate)
       .exec(ccddatastore.CCDAPI_ET1SolicitorSectionOne)
@@ -215,6 +216,8 @@ class CCD_PerformanceRegression extends Simulation  {
       .exec(ccddatastore.CCDAPI_ET1SolicitorSectionThree)
       .exec(ccddatastore.CCDAPI_ET1SolicitorSubmit)
       // ET Caseworker Progression
+      .feed(feedETUserData)
+      .exec(IdamLogin.GetIdamToken)
       .exec(ccddatastore.CCDAPI_ET1CaseworkerVetting)
       .exec(ccddatastore.CCDAPI_ET1CaseworkerAcceptCase)
       .exec(ccddatastore.CCDAPI_ET1CaseworkerGenerateCorrespondence)
@@ -383,10 +386,10 @@ class CCD_PerformanceRegression extends Simulation  {
       
       //API_ET1CaseworkerCreateAndProgress.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       //API_ET1SolicitorCreateAndProgress.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      
       API_ET1CitizenCreate.inject(simulationProfile(testType, etCitizenTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-
-       API_STCreateCase.inject(simulationProfile(testType, stTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-       API_ET1SolicitorCreateProgressAndET3Response.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      API_STCreateCase.inject(simulationProfile(testType, stTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      API_ET1SolicitorCreateProgressAndET3Response.inject(simulationProfile(testType, etCaseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       API_ETViewCaseAndEvents.inject(simulationProfile(testType, caseFileViewTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
