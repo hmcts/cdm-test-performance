@@ -1,23 +1,44 @@
 {
   "email": "#{email}",
-  "forename": "WA_Perftest001",
-  "surname": "User",
-  "password": "Password12",
+  "forename": "Legal",
+  "surname": "Rep",
+  "password": "Nagoya0102",
   "roles": [
     {
       "code": "caseworker"
     },
     {
-      "code": "caseworker-wa-task-officer"
+      "code": "caseworker-divorce"
     },
     {
-      "code": "caseworker-wa-task-configuration"
+      "code": "caseworker-divorce-financialremedy"
     },
     {
-      "code": "caseworker-wa"
+      "code": "caseworker-divorce-financialremedy-solicitor"
     },
     {
-      "code": "payments"
+      "code": "caseworker-divorce-solicitor"
+    },
+    {
+      "code": "caseworker-ia"
+    },
+    {
+      "code": "caseworker-ia-legalrep-solicitor"
+    },
+    {
+      "code": "caseworker-probate"
+    },
+    {
+      "code": "caseworker-probate-solicitor"
+    },
+    {
+      "code": "caseworker-publiclaw"
+    },
+    {
+      "code": "caseworker-publiclaw-solicitor"
+    },
+    {
+      "code": "pui-case-manager"
     }
   ]
 }

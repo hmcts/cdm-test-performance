@@ -264,7 +264,7 @@ class CCD_PerformanceRegression extends Simulation  {
       exec(_.set("env", s"${env}"))
       .exec(S2S.s2s("ccd_data"))
       .exec(S2S.s2s("aac_manage_case_assignment"))
-      .feed(feedETCitizenData)
+      //.feed(feedETCitizenData)
       .exec(ccddatastore.IDAM_CreateCitizenDefendantUser)
       .feed(feedETRespondentData)
       .exec(IdamLogin.GetIdamToken)
