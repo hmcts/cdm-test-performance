@@ -40,8 +40,8 @@ class CCD_PerformanceRegression extends Simulation  {
   val fplTargetPerHour:Double = 800
   val nfdTargetPerHour:Double = 800
   val stTargetPerHour:Double = 800
-  val etCaseworkerTargetPerHour:Double = 30
-  val etCitizenTargetPerHour:Double = 30
+  val etCaseworkerTargetPerHour:Double = 60
+  val etCitizenTargetPerHour:Double = 60
   val caseFileViewTargetPerHour:Double = 100
   val caseActivityUsers:Double = 2000
   val searchUsers:Double = 800
