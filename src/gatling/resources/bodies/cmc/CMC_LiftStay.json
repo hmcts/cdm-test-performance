@@ -5,6 +5,6 @@
      "summary": "",
      "description": ""
   },
-  "event_token": "#{eventToken5}",
+  "event_token": "#{eventToken}",
   "ignore_warning": false
 }

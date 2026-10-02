@@ -1,4 +1,4 @@
-Username,Password,Jurisdiction,CaseType,idamId
+email,password,Jurisdiction,CaseType,idamId
 ccdloadtest2@gmail.com,Password12,CMC,MoneyClaimCase,539669
 ccdloadtest3@gmail.com,Password12,CMC,MoneyClaimCase,539670
 ccdloadtest4@gmail.com,Password12,CMC,MoneyClaimCase,539671

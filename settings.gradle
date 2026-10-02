@@ -1,3 +1,7 @@
+pluginManagement {
+    includeBuild('common/common-performance/build-logic')
+}
+
 rootProject.name = 'cdm-test-performance'
 
 include ':common-performance'
