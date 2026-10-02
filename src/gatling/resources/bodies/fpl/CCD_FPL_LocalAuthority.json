@@ -70,6 +70,6 @@
       "summary": "",
       "description": ""
    },
-   "event_token": "#{eventToken7}",
+   "event_token": "#{eventToken}",
    "ignore_warning": false
 }
