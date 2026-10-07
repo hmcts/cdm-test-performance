@@ -101,6 +101,9 @@ class CCD_PerformanceRegression extends Simulation  {
 
   val IACScenario = buildScenario(CcdCaseTypes.IA_Asylum, iac.CreateCase.execute)
   val ProbateScenario = buildScenario(CcdCaseTypes.PROBATE_GrantOfRepresentation, probate.CreateCase.execute)
+	val CMCScenario = buildScenario(CcdCaseTypes.CMC_MoneyClaimCase, cmc.CreateCase.execute)
+	val FPLScenario = buildScenario(CcdCaseTypes.PUBLICLAW_CARE_SUPERVISION_EPO, fpl.CreateCase.execute)
+	val NFDScenario = buildScenario(CcdCaseTypes.DIVORCE_NFD, nfd.CreateCase.execute)
 
 
   //CCD API - Create & Case Event Journeys
@@ -114,36 +117,6 @@ class CCD_PerformanceRegression extends Simulation  {
       .exec(ccddatastore.CCDAPI_SSCSCreate)
       .exec(S2S.s2s("sscs"))
       .exec(ccddatastore.CCDAPI_SSCSCaseEvents)
-    }
-
-  val API_CMCCreateCase = scenario("CMC Case Create")
-    .exitBlockOnFail {
-      exec(_.set("env", s"${env}"))
-      .exec(S2S.s2s("ccd_data"))
-      .feed(feedCMCUserData)
-      .exec(IdamLogin.GetIdamToken)
-      .exec(ccddatastore.CCDAPI_CMCCreate)
-      .exec(ccddatastore.CCDAPI_CMCCaseEvents)
-    }
-
-  val API_FPLCreateCase = scenario("FPL Case Create")
-    .exitBlockOnFail {
-      exec(_.set("env", s"${env}"))
-      .exec(S2S.s2s("ccd_data"))
-      .feed(feedFPLUserData)
-      .exec(IdamLogin.GetIdamToken) 
-      .exec(ccddatastore.CCDAPI_FPLCreate)
-      .exec(S2S.s2s("xui_webapp"))
-      .exec(ccddatastore.CCDAPI_FPLCaseEvents)
-    }
-
-  val API_NFDCreateCase = scenario("NFD Case Create")
-    .exitBlockOnFail {
-      exec(_.set("env", s"${env}"))
-      .exec(S2S.s2s("ccd_data"))
-      .feed(feedNFDUserData)
-      .exec(IdamLogin.GetIdamToken)
-      .exec(ccddatastore.CCDAPI_DivorceNFDCreate)
     }
 
   //CCD Case Activity Requests
@@ -272,6 +245,9 @@ class CCD_PerformanceRegression extends Simulation  {
 
       IACScenario.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       ProbateScenario.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+			CMCScenario.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+			FPLScenario.inject(simulationProfile(testType, fplTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+			NFDScenario.inject(simulationProfile(testType, nfdTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
   )
     .protocols(httpProtocol)
     .assertions(assertions(testType))
