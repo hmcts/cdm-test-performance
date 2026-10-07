@@ -1,0 +1,50 @@
+{
+  "data": {
+    "applicationType": "soleApplication",
+    "divorceOrDissolution": "divorce",
+    "solUrgentCase": "No",
+    "applicant1FinancialOrder": "No",
+    "serviceMethod": "solicitorService",
+    "solStatementOfReconciliationCertify": "Yes",
+    "solStatementOfReconciliationDiscussed": "Yes",
+    "applicant1PrayerDissolveDivorce": [
+      "dissolveDivorce"
+    ],
+    "applicant1PrayerFinancialOrdersThemselves": [
+      "financialOrdersThemselves"
+    ],
+    "applicant1PrayerFinancialOrdersChild": [
+      "financialOrdersChild"
+    ],
+    "applicant1StatementOfTruth": "Yes",
+    "solSignStatementOfTruth": "Yes",
+    "solStatementOfReconciliationName": "John Sol",
+    "solStatementOfReconciliationFirm": "#{orgName}",
+    "statementOfReconciliationComments": null,
+    "solApplicationFeeInPounds": "628",
+    "applicationFeeServiceRequestReference": "2026-1750001533470",
+    "solPaymentHowToPay": "feesHelpWith",
+    "applicationFeeOrderSummary": {
+      "PaymentReference": null,
+      "PaymentTotal": "62800",
+      "Fees": [
+        {
+          "value": {
+            "FeeCode": "FEE0002",
+            "FeeAmount": "62800",
+            "FeeDescription": "Filing an application for a divorce, nullity or civil partnership dissolution",
+            "FeeVersion": "9"
+          }
+        }
+      ]
+    },
+    "applicant1HWFReferenceNumber": "HWF123"
+  },
+  "event": {
+    "id": "solicitor-submit-application",
+    "summary": "",
+    "description": ""
+  },
+  "event_token": "#{eventToken}",
+  "ignore_warning": false
+}
