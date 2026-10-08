@@ -106,19 +106,6 @@ class CCD_PerformanceRegression extends Simulation  {
 	val NFDScenario = buildScenario(CcdCaseTypes.DIVORCE_NFD, nfd.CreateCase.execute)
 
 
-  //CCD API - Create & Case Event Journeys
-
-  val API_SSCSCreateCase = scenario("SSCS Case Create")
-    .exitBlockOnFail {
-      exec(_.set("env", s"${env}"))
-      .exec(S2S.s2s("ccd_data"))
-      .feed(feedSSCSUserData)
-      .exec(IdamLogin.GetIdamToken)
-      .exec(ccddatastore.CCDAPI_SSCSCreate)
-      .exec(S2S.s2s("sscs"))
-      .exec(ccddatastore.CCDAPI_SSCSCaseEvents)
-    }
-
   //CCD Case Activity Requests
   val CaseActivityListScn = scenario("CCD Case Activity List Requests")
     .exitBlockOnFail {
@@ -230,25 +217,19 @@ class CCD_PerformanceRegression extends Simulation  {
 
 	setUp(
      //simulation for cdm-test-performance repo
-//      API_ProbateCreateCase.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-//      API_CMCCreateCase.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-//      API_IACCreateCase.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-//      API_FPLCreateCase.inject(simulationProfile(testType, fplTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-//      API_NFDCreateCase.inject(simulationProfile(testType, nfdTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-//      CaseActivityListScn.inject(simulationProfile(testType, caseActivityUsers, numberOfPipelineUsers)).pauses(pauseOption),
-//      CaseActivityScn.inject(simulationProfile(testType, caseActivityUsers, numberOfPipelineUsers)).pauses(pauseOption),
-//      CCDSearchView.inject(simulationProfile(testType, searchUsers, numberOfPipelineUsers)).pauses(pauseOption),
-//      CCDElasticSearch.inject(simulationProfile(testType, esUsers, numberOfPipelineUsers)).pauses(pauseOption),
-//      CaseFileView.inject(simulationProfile(testType, caseFileViewTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-//      DefinitionStore.inject(simulationProfile(testType, definitionStoreUsers, numberOfPipelineUsers)).pauses(pauseOption),
-
+      CaseActivityListScn.inject(simulationProfile(testType, caseActivityUsers, numberOfPipelineUsers)).pauses(pauseOption),
+      CaseActivityScn.inject(simulationProfile(testType, caseActivityUsers, numberOfPipelineUsers)).pauses(pauseOption),
+      CCDSearchView.inject(simulationProfile(testType, searchUsers, numberOfPipelineUsers)).pauses(pauseOption),
+      CCDElasticSearch.inject(simulationProfile(testType, esUsers, numberOfPipelineUsers)).pauses(pauseOption),
+      CaseFileView.inject(simulationProfile(testType, caseFileViewTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      DefinitionStore.inject(simulationProfile(testType, definitionStoreUsers, numberOfPipelineUsers)).pauses(pauseOption),
 
       IACScenario.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       ProbateScenario.inject(simulationProfile(testType, probateTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
 			CMCScenario.inject(simulationProfile(testType, cmcTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
 			FPLScenario.inject(simulationProfile(testType, fplTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
 			NFDScenario.inject(simulationProfile(testType, nfdTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-  )
+	)
     .protocols(httpProtocol)
     .assertions(assertions(testType))
     .maxDuration(75.minutes)
